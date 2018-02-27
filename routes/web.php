@@ -12,8 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('layouts.index');
 });
+
+
+
 
 
 Route::get('salve', function() {
@@ -27,3 +30,22 @@ Route::get('ID/{id}', function ($id) {
 Route::get('/user/{name?}',function($name = 'Borat'){ // OPTIONAL PARAMETER
     echo "Name: ".$name;
 });
+
+Route::get('role',[
+    'middleware' => 'Role:editor',
+    'uses' => 'TestController@index',
+]);
+
+Route::get('terminate',[
+    'middleware' => 'terminate',
+    'uses' => 'ABCController@index',
+]);
+
+Route::get('/usercontroller/path',[
+    'middleware' => 'First',
+    'uses' => 'UserController@showPath'
+]);
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index')->name('home');
