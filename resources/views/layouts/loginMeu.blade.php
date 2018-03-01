@@ -20,52 +20,83 @@
             <div class="login-page">
                 <div class="container">
 
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h2 class="text-center" style="color: honeydew">Sign In Your Account</h2>
-                            <form method="post" class="cmxform" action="" id="loginForm">
 
-                                <div class="form-group row">
-                                    <label for="username" class="col-sm-2 form-control-label" style="color: honeydew">Username/Email:</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" name="username" class="form-control" id="username" placeholder="Enter Username   " required />
-                                    </div>
-                                </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="card">
+                                    <div class="card-header" style="color:honeydew;">Login</div>
 
-                                <div class="form-group row">
-                                    <label for="password" class="col-sm-2 form-control-label" style="color: honeydew">Password:</label>
-                                    <div class="col-sm-8">
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required />
-                                    </div>
-                                </div>
+                                    <div class="card-body">
+                                        <form method="POST" action="{{ route('login') }}">
+                                            @csrf
+                                            <div class="form-group row">
+                                                <label for="email" class="col-sm-4 col-form-label text-md-right" style="color:honeydew;">E-Mail Address</label>
 
-                                <div class="form-group row col-sm-offset-2">
+                                                <div class="col-md-6">
+                                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
-                                    <input type="checkbox" id="remember" name="remember" />
-                                    <label for="remember" style="color:#093; font-weight: normal"><span style="opacity:.5">
+                                                    @if ($errors->has('email'))
+                                                        <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right" style="color:honeydew;">Password</label>
+
+                                                <div class="col-md-6">
+                                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                                    @if ($errors->has('password'))
+                                                        <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row col-sm-offset-9">
+                                                <div class="col-md-10s offset-md-4">
+                                                    <div class="checkbox">
+                                                        <label style="color: red; "id="rememeber" name="remember">
+                                                            <input  type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> <span style="opacity: .5">Remember Me
+                                        </span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row col-sm-offset-2">
+
+                                                <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}/>
+                                                <label for="remember" style="color:#093; font-weight: normal"><span style="opacity:.5">
 
                                         </span>Remember Me</label><br />
-                                </div>
+                                            </div>
 
 
-                                <div class="form-group row">
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <input type="submit" class="btn btn-success btn-lg btn-block" id="submitForm" value="Sign In" />
+
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-8 offset-md-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        Login
+                                                    </button>
+
+                                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                                        Forgot Your Password?
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
-
-                                <div class="forget">
-                                    <p class="pull-left"><a href="forgot_password.html">Forgot Password</a></p>
-                                    <p class="pull-right" style="color: honeydew">Not a memeber yet ?<br>
-                                        <a href="../register.php">Create a new account</a>
-                                    </p>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                            </form>
-
+                            </div>
                         </div>
-                    </div> <!--End Row-->
+                    </div>
+
+
 
                 </div>
             </div> <!--End Registration page div-->

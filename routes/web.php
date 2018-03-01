@@ -15,8 +15,12 @@ Route::get('/', function () {
    return view('layouts.index');
 });
 
+Route::auth();
 
+Route::get('/home', 'HomeController@index')->name('home');
 
+/*
+ * Controller based Routes :) */
 
 
 Route::get('salve', function() {
@@ -46,6 +50,4 @@ Route::get('/usercontroller/path',[
     'uses' => 'UserController@showPath'
 ]);
 
-Route::auth();
 
-Route::get('/home', 'HomeController@index')->name('home');

@@ -299,18 +299,43 @@ else {
 
                             <!-- <li class="wscarticon clearfix"> <a href="#"><i class="fa fa-shopping-basket"></i> <em class="roundpoint">8</em><span class="mobiletext">Shopping Cart</span></a> </li> -->
 
-                            <li class="wsshopmyaccount clearfix"><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" class="wtxaccountlink"><i class="fa fa-align-justify"></i>My Account <i class="fa  fa-angle-down"></i></a>
+                            <li class="wsshopmyaccount clearfix"><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span>
+                                <a href="#" class="wtxaccountlink">
+                                    <i class="fa fa-align-justify"></i>
+                                    @guest
+                                    My Account
+                                    @else
+                                        {{ Auth::user()-> name}}
+                                        <?php if(Auth::viaRemember()) {
+                                            echo Auth::viaRemember();
+                                        } else
+                                            echo Auth::viaRemember();
+
+                                        ?>
+                                    @endguest
+
+                                    <i class="fa  fa-angle-down">
+                                    </i>
+                                </a>
                                 <ul class="wsmenu-submenu">
                                     @guest
-                                    <li><a href="/Login"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
-                                    <li><a href="#"><i class="fa fa-registered"></i>Register</a></li>
+                                    <li><a href="/loginMeu"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
+                                    <li><a href="/register"><i class="fa fa-registered"></i>Register</a></li>
                                     @endguest
                                     @if(Auth::check())
                                     <li><a href="<?php echo $reddirect_link?>account.php"><i class="fa fa-black-tie"></i>View Profile</a></li>
                                     <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
                                     <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
                                     <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>
-                                    <li><a href="#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                                           <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a></li>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
                                     @endif
                                 </ul>
                             </li>

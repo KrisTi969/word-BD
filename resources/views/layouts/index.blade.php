@@ -149,14 +149,10 @@
                             </a>
                         </div> <!-- Single Featured Item -->
 
-
-
-
                     </div>
                 </div>
             </div>
         </div> <!--End Featured products Div-->
-
         <div class="latest-products">
             <div class="container">
                 <h2 class="title-div wow slideInLeft" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Our Latest Products available</h2>

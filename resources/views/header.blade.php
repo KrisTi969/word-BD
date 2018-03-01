@@ -303,7 +303,7 @@ else {
                                 <ul class="wsmenu-submenu">
                                     <li><a href="<?php echo $reddirect_link?>account.php"><i class="fa fa-black-tie"></i>View Profile</a></li>
                                     @guest
-                                    <li><a href="/Login"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
+                                    <li><a href="/login"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
                                     <li><a href="#"><i class="fa fa-registered"></i>Register</a></li>
                                     @endguest
                                     <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
