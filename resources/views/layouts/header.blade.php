@@ -319,7 +319,7 @@ else {
                                 </a>
                                 <ul class="wsmenu-submenu">
                                     @guest
-                                    <li><a href="/loginMeu"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
+                                    <li><a href="/login"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
                                     <li><a href="/register"><i class="fa fa-registered"></i>Register</a></li>
                                     @endguest
                                     @if(Auth::check())
