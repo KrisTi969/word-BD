@@ -6,47 +6,61 @@
     <div class="wrapper">
         <!-- Header part  -->
         @include('layouts.header')
+
+        {{--Register form--}}
         <div class="registration-page">
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h2 class="text-center" style="color: honeydew">Create Your Account</h2>
-                        <form method="POST"  action="{{ route('register') }}">
+                        <form method="POST"  id="#Register">
                             @csrf
+                            {{--Daca nu apar probleme, afisam un mesaj--}}
+                            <div id="success-msg" class="hidden">
+                                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <strong>Success!</strong> Check your mail for login confirmation!!
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 form-control-label Whitish" >First Name:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" placeholder="First Name"  minlength="2" required>
-                                    @if ($errors->has('name'))
-                                        <span class="invalid-feedback error">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="First Name"  minlength="2" required>
+
+
+
+                                    <span class="text-danger">
+                                        <strong id="name-error"></strong>
                                     </span>
-                                    @endif
+
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="lastname" class="col-sm-2 form-control-label Whitish">Last Name:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="lname" class="form-control {{ $errors->has('lname') ? ' is-invalid' : '' }}" id="lname" placeholder="Last Name" minlength="2" required>
-                                    @if ($errors->has('lname'))
-                                        <span class="invalid-feedback">
-                                        <strong class="error">{{ $errors->first('lname') }}</strong>
+                                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name" minlength="2" required>
+
+                                    <span class="text-danger">
+                                        <strong id="lname-error"></strong>
                                     </span>
-                                    @endif
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="email" class="col-sm-2 form-control-label Whitish">Email:</label>
                                 <div class="col-sm-8">
-                                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" placeholder="example@example.com">
-                                    @if ($errors->has('email'))
-                                        <span class="invalid-feedback error">
-                                        <strong class="error">{{ $errors->first('email') }}</strong>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="example@example.com">
+
+                                    <span class="text-danger">
+                                        <strong id="email-error"></strong>
                                     </span>
-                                    @endif
+
                                 </div>
                             </div>
 
@@ -54,6 +68,11 @@
                                 <label for="username" class="col-sm-2 form-control-label Whitish">Username:</label>
                                 <div class="col-sm-8">
                                     <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+
+                                    <span class="text-danger">
+                                        <strong id="username-error"></strong>
+                                    </span>
+
                                 </div>
                             </div>
 
@@ -61,21 +80,39 @@
                                 <label for="password" class="col-sm-2 form-control-label Whitish">Password:</label>
                                 <div class="col-sm-8">
                                     <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+
+                                    <span class="text-danger">
+                                        <strong id="password-error"></strong>
+                                    </span>
+
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="confirm_password" class="col-sm-2 form-control-label Whitish">Confirm Password:</label>
+                                <label for="password_confirmation" class="col-sm-2 form-control-label Whitish">Confirm Password:</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" name="confirm_password" id="confirm_password" placeholder="Same password previously entered" required>
+                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Same password previously entered" required>
+
+                                    <span class="text-danger">
+                                        <strong id="confirm_password-error"></strong>
+                                    </span>
                                 </div>
                             </div>
+
 
                             <div class="form-group row">
                                 <label for="birthdate" class="col-sm-2 form-control-label Whitish">Birthdate:</label>
                                 <div class="col-sm-8">
-                                    <div class='input-group date' id='birthdate'>
-                                        <input type='text' class="form-control" placeholder="Enter you birthday" />
+                                    <div class='input-group date'>
+                                        <input type='text' class="form-control" placeholder="Enter you birthday" name="birthdate" id="birthdate"/>
+
+
+                                        <span class="text-danger">
+                                        <strong id="birthdate-error"></strong>
+                                    </span>
+
+
+
                                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                                     </div>
@@ -85,15 +122,26 @@
                             <div class="form-group row">
                                 <label for="address-line" class="col-sm-2 form-control-label Whitish">Address Line:</label>
                                 <div class="col-sm-8" id="address-line">
-                                    <input type='text' class="form-control" placeholder="Street address, Apartment/Building, Unit, Floor etc." />
+                                    <input type='text' class="form-control" placeholder="Street address, Apartment/Building, Unit, Floor etc." name="address" id="address"/>
+
+                                    <span class="text-danger">
+                                        <strong id="address_line-error"></strong>
+                                    </span>
+
                                     </span>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="city" class="col-sm-2 form-control-label Whitish">City:</label>
-                                <div class="col-sm-8" id="city">
-                                    <input type='text' class="form-control" placeholder="City" />
+                                <div class="col-sm-8">
+                                    <input type='text' class="form-control" placeholder="City" name="city" id="city"/>
+
+                                    <span class="text-danger">
+                                        <strong id="city-error"></strong>
+                                    </span>
+
+
                                     </span>
                                 </div>
                             </div>
@@ -101,14 +149,19 @@
                             <div class="form-group row">
                                 <label for="cp" class="col-sm-2 form-control-label Whitish">Postal code:</label>
                                 <div class="col-sm-8" id="cp">
-                                    <input type='number' class="form-control" placeholder="ex:9065500">
+                                    <input type='number' class="form-control" placeholder="ex:9065500" name="postal_code" id="postal_code">
+
+                                    <span class="text-danger">
+                                        <strong id="cp-error"></strong>
+                                    </span>
+
                                     </span>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="country" class="col-sm-2 form-control-label Whitish">Country:</label>
-                                <div class="col-sm-8" id="country">
+                                <div class="col-sm-8"  >
                                     <select id="country" name="country" class="input-group-lg">
                                         <option value="" selected="selected">(please select a country)</option>
                                         <option value="AF">Afghanistan</option>
@@ -351,13 +404,19 @@
                                         <option value="ZM">Zambia</option>
                                         <option value="ZW">Zimbabwe</option>
                                     </select>
+
+                                    <span class="text-danger">
+                                        <strong id="country-error"></strong>
+                                    </span>
+
+
                                     </span>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <div class="col-sm-offset-5 col-sm-8">
-                                    <input type="submit" class="btn btn-success btn-lg " id="submitForm" value="Sign Up Now" />
+                                    <input type="submit" class="btn btn-success btn-lg " id="ajaxSubmit" value="Sign Up Now" />
                                 </div>
                             </div>
 
@@ -381,6 +440,51 @@
 <script type="text/javascript" src="{{asset('js/moment-with-locales.min.js')}}"></script>
 <script src="{{asset('js/bootstrat-datepicker.js')}}"></script>
 <script  src="{{asset('js/datepicker_function.js')}}"></script>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#ajaxSubmit').click(function(e){
+            // jQuery('.alert').show();
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "{{ url('/register/post') }}",
+                method: 'post',
+                dataType: "json",
+
+                data: {
+                    name: jQuery('#name').val(),
+                    lname: jQuery('#lname').val(),
+                    email: jQuery('#email').val(),
+                    username: jQuery('#username').val(),
+                    password: jQuery('#password').val(),
+                    confirm_password: jQuery('#confirm_password').val(),
+                    birthdate: jQuery('#birthdate').val(),
+                    address: jQuery('#address').val(),
+                    city: jQuery('#city').val(),
+                    postal_code: jQuery('#postal_code').val(),
+                    country: jQuery('#country').val()
+                },
+                success: function(result){
+                    alert("Successssss");
+                    alert(result);
+                    // console.log(result);
+                    jQuery('.alert').show();
+                    jQuery('.alert').html(result.success);
+                },
+                error: function(result) {
+                    console.log("Error:");
+                    console.log(result.errors.password);
+                }
+
+            });
+        });
+    });
+</script>
 
 </body>
 </html>

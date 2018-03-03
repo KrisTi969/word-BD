@@ -19,6 +19,16 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+////
+Route::view('/grocery', 'ajax');
+Route::post('/grocery/post', 'GroceryController@store');
+Route::post('/register/post', 'Auth\RegisterController@store');
+
+////
+
+
+
+
 /*
  * Controller based Routes :) */
 

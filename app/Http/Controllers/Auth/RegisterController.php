@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Response;
 
 class RegisterController extends Controller
 {
@@ -42,7 +44,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -58,15 +60,58 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
-           /* 'email' => $data['email'],
-            'password' => bcrypt($data['password']),*/
+            /* 'email' => $data['email'],
+             'password' => bcrypt($data['password']),*/
         ]);
     }
+
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:60|unique:users,name,',
+            'lname' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'email' => 'required|string|email|max:100|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($validator->passes()) {
+
+            $user = new User();
+
+            $user->name = $request->name;
+            $user->lname = $request->lname;
+            $user->email= $request->email;
+            $user->password= bcrypt($request->password);
+            $user->username = $request->username;
+
+            /*Restructuram formatul datei pentru a fi compatibil */
+            $oldFormat  = $request->birthdate;
+            $newFormat = explode("-", $oldFormat);
+            $user->birthdate = $newFormat[2].$newFormat[1].$newFormat[0];
+
+            $user->address = $request->address;
+            $user->city = $request->city;
+            $user->postal_code = $request->postal_code;
+            $user->country = $request->country;
+            $user->timestamps;
+            $user->setRememberToken("dasdasdasdas");
+            $user->save();
+
+            return response()->json(['success'=>'Added new records.'],200);
+        }
+
+        return response()->json(['errors'=>$validator->errors()->messages()],402);
+
+    }
+
+
+
 }
