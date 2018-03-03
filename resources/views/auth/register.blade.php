@@ -469,18 +469,46 @@
                     postal_code: jQuery('#postal_code').val(),
                     country: jQuery('#country').val()
                 },
-                success: function(result){
-                    alert("Successssss");
-                    alert(result);
-                    // console.log(result);
-                    jQuery('.alert').show();
-                    jQuery('.alert').html(result.success);
-                },
-                error: function(result) {
-                    console.log("Error:");
-                    console.log(result.errors.password);
+                success:function(data) {
+                    console.log(data);
+                    if (data.errors) {
+                        if (data.errors.name) {
+                            $('#name-error').html(data.errors.name[0]);
+                        }
+                        if (data.errors.lname) {
+                            $('#lname-error').html(data.errors.lname[0]);
+                        }
+                        if (data.errors.email) {
+                            $('#email-error').html(data.errors.email[0]);
+                        }
+                        if (data.errors.password) {
+                            $('#password-error').html(data.errors.password[0]);
+                            $('#password_confirmation').html(data.errors.password[0]);
+                        }
+                        if (data.errors.birthdate) {
+                            $('#birthdate-error').html(data.errors.birthdate[0]);
+                        }
+                        if (data.errors.address) {
+                            $('#address_line-error').html(data.errors.address[0]);
+                        }
+                        if (data.errors.city) {
+                            $('#city-error').html(data.errors.city[0]);
+                        }
+                        if (data.errors.postal_code) {
+                            $('#postal_code').html(data.errors.postal_code[0]);
+                        }
+                        if (data.errors.username) {
+                            $('#username-error').html(data.errors.username[0]);
+                        }
+                    }
+                    if (data.success) {
+                        $('#success-msg').removeClass('hide');
+                        setInterval(function () {
+                            $('#SignUp').modal('hide');
+                            $('#success-msg').addClass('hide');
+                        }, 3000);
+                    }
                 }
-
             });
         });
     });

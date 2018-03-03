@@ -78,9 +78,15 @@ class RegisterController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z]+$/u|max:60|unique:users,name,',
             'lname' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'username' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6|confirmed',
-        ]);
+            'birthdate' => 'required|string',
+            'address' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'postal_code' => 'required|regex:/^[0-9]+$/u|max:18|',
+            'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|'
+            ]);
 
         if ($validator->passes()) {
 
@@ -88,8 +94,8 @@ class RegisterController extends Controller
 
             $user->name = $request->name;
             $user->lname = $request->lname;
-            $user->email= $request->email;
-            $user->password= bcrypt($request->password);
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
             $user->username = $request->username;
 
             /*Restructuram formatul datei pentru a fi compatibil */
@@ -105,10 +111,10 @@ class RegisterController extends Controller
             $user->setRememberToken("dasdasdasdas");
             $user->save();
 
-            return response()->json(['success'=>'Added new records.'],200);
+            return Response::json(['success' => '1']);
         }
 
-        return response()->json(['errors'=>$validator->errors()->messages()],402);
+        return Response::json(['errors' => $validator->errors()]);
 
     }
 
