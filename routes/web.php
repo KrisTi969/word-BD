@@ -24,6 +24,8 @@ Route::view('/grocery', 'ajax');
 Route::post('/grocery/post', 'GroceryController@store');
 Route::post('/register/post', 'Auth\RegisterController@store');
 
+
+Route::get('/verifyemail/{token}', 'Auth\RegisterController@email_verification');
 ////
 
 

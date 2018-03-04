@@ -28,7 +28,7 @@
                             <div class="form-group row">
                                 <label for="name" class="col-sm-2 form-control-label Whitish" >First Name:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="First Name"  minlength="2" required>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="First Name"  minlength="2" required oninput="myFunction('#name-error')">
 
 
 
@@ -43,7 +43,7 @@
                             <div class="form-group row">
                                 <label for="lastname" class="col-sm-2 form-control-label Whitish">Last Name:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name" minlength="2" required>
+                                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name" minlength="2" required oninput="myFunction('#lname-error')">
 
                                     <span class="text-danger">
                                         <strong id="lname-error"></strong>
@@ -55,7 +55,7 @@
                             <div class="form-group row">
                                 <label for="email" class="col-sm-2 form-control-label Whitish">Email:</label>
                                 <div class="col-sm-8">
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="example@example.com">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="example@example.com" oninput="myFunction('#email-error')">
 
                                     <span class="text-danger">
                                         <strong id="email-error"></strong>
@@ -67,7 +67,7 @@
                             <div class="form-group row">
                                 <label for="username" class="col-sm-2 form-control-label Whitish">Username:</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                                    <input type="text" name="username" class="form-control" id="username" placeholder="Username" oninput="myFunction('#username-error')">
 
                                     <span class="text-danger">
                                         <strong id="username-error"></strong>
@@ -79,7 +79,7 @@
                             <div class="form-group row">
                                 <label for="password" class="col-sm-2 form-control-label Whitish">Password:</label>
                                 <div class="col-sm-8">
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required>
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Enter password" required oninput="myFunction('#password-error')">
 
                                     <span class="text-danger">
                                         <strong id="password-error"></strong>
@@ -91,7 +91,7 @@
                             <div class="form-group row">
                                 <label for="password_confirmation" class="col-sm-2 form-control-label Whitish">Confirm Password:</label>
                                 <div class="col-sm-8">
-                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Same password previously entered" required>
+                                    <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Same password previously entered" required oninput="myFunction('#confirm_password-error')">
 
                                     <span class="text-danger">
                                         <strong id="confirm_password-error"></strong>
@@ -104,7 +104,7 @@
                                 <label for="birthdate" class="col-sm-2 form-control-label Whitish">Birthdate:</label>
                                 <div class="col-sm-8">
                                     <div class='input-group date'>
-                                        <input type='text' class="form-control" placeholder="Enter you birthday" name="birthdate" id="birthdate"/>
+                                        <input type='text' class="form-control" placeholder="Enter you birthday" name="birthdate" id="birthdate" oninput="myFunction('#birthdate-error')"/>
 
 
                                         <span class="text-danger">
@@ -122,7 +122,7 @@
                             <div class="form-group row">
                                 <label for="address-line" class="col-sm-2 form-control-label Whitish">Address Line:</label>
                                 <div class="col-sm-8" id="address-line">
-                                    <input type='text' class="form-control" placeholder="Street address, Apartment/Building, Unit, Floor etc." name="address" id="address"/>
+                                    <input type='text' class="form-control" placeholder="Street address, Apartment/Building, Unit, Floor etc." name="address" id="address" oninput="myFunction('#address_line-error')"/>
 
                                     <span class="text-danger">
                                         <strong id="address_line-error"></strong>
@@ -135,7 +135,7 @@
                             <div class="form-group row">
                                 <label for="city" class="col-sm-2 form-control-label Whitish">City:</label>
                                 <div class="col-sm-8">
-                                    <input type='text' class="form-control" placeholder="City" name="city" id="city"/>
+                                    <input type='text' class="form-control" placeholder="City" name="city" id="city" oninput="myFunction('#city-error')"/>
 
                                     <span class="text-danger">
                                         <strong id="city-error"></strong>
@@ -149,7 +149,7 @@
                             <div class="form-group row">
                                 <label for="cp" class="col-sm-2 form-control-label Whitish">Postal code:</label>
                                 <div class="col-sm-8" id="cp">
-                                    <input type='number' class="form-control" placeholder="ex:9065500" name="postal_code" id="postal_code">
+                                    <input type='number' class="form-control" placeholder="ex:9065500" name="postal_code" id="postal_code" oninput="myFunction('#cp-error')">
 
                                     <span class="text-danger">
                                         <strong id="cp-error"></strong>
@@ -162,7 +162,7 @@
                             <div class="form-group row">
                                 <label for="country" class="col-sm-2 form-control-label Whitish">Country:</label>
                                 <div class="col-sm-8"  >
-                                    <select id="country" name="country" class="input-group-lg">
+                                    <select id="country" name="country" class="input-group-lg" >
                                         <option value="" selected="selected">(please select a country)</option>
                                         <option value="AF">Afghanistan</option>
                                         <option value="AL">Albania</option>
@@ -455,14 +455,13 @@
                 url: "{{ url('/register/post') }}",
                 method: 'post',
                 dataType: "json",
-
                 data: {
                     name: jQuery('#name').val(),
                     lname: jQuery('#lname').val(),
                     email: jQuery('#email').val(),
                     username: jQuery('#username').val(),
                     password: jQuery('#password').val(),
-                    confirm_password: jQuery('#confirm_password').val(),
+                    password_confirmation: jQuery('#password_confirmation').val(),
                     birthdate: jQuery('#birthdate').val(),
                     address: jQuery('#address').val(),
                     city: jQuery('#city').val(),
@@ -502,16 +501,17 @@
                         }
                     }
                     if (data.success) {
-                        $('#success-msg').removeClass('hide');
-                        setInterval(function () {
-                            $('#SignUp').modal('hide');
-                            $('#success-msg').addClass('hide');
-                        }, 3000);
+                        $('#success-msg').removeClass('hidden');
                     }
                 }
             });
         });
     });
+</script>
+    <script>
+        function myFunction(string) {
+            $(string).empty();
+    }
 </script>
 
 </body>

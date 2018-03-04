@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Response;
+use Illuminate\Auth\Events\Registered;
+use App\Jobs\SendVerificationEmail;
+
 
 class RegisterController extends Controller
 {
@@ -86,7 +90,7 @@ class RegisterController extends Controller
             'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'postal_code' => 'required|regex:/^[0-9]+$/u|max:18|',
             'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|'
-            ]);
+        ]);
 
         if ($validator->passes()) {
 
@@ -99,18 +103,20 @@ class RegisterController extends Controller
             $user->username = $request->username;
 
             /*Restructuram formatul datei pentru a fi compatibil */
-            $oldFormat  = $request->birthdate;
+            $oldFormat = $request->birthdate;
             $newFormat = explode("-", $oldFormat);
-            $user->birthdate = $newFormat[2].$newFormat[1].$newFormat[0];
+            $user->birthdate = $newFormat[2] . $newFormat[1] . $newFormat[0];
 
             $user->address = $request->address;
             $user->city = $request->city;
             $user->postal_code = $request->postal_code;
             $user->country = $request->country;
+            $user->email_token = base64_encode($request->email);
             $user->timestamps;
             $user->setRememberToken("dasdasdasdas");
             $user->save();
 
+            dispatch(new SendVerificationEmail($user));
             return Response::json(['success' => '1']);
         }
 
@@ -118,6 +124,13 @@ class RegisterController extends Controller
 
     }
 
-
-
+    public static function email_verification($token)
+    {
+       // $user = new User();
+        $user = User::where('email_token', $token)->first();
+        $user->verified = 1;
+        if ($user->save()) {
+            return view('email.emailconfirm', ['user' => $user]);
+        }
+    }
 }
