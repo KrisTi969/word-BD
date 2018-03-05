@@ -31,7 +31,6 @@
                                     <input type="text" name="name" class="form-control" id="name" placeholder="First Name"  minlength="2" required oninput="myFunction('#name-error')">
 
 
-
                                     <span class="text-danger">
                                         <strong id="name-error"></strong>
                                     </span>

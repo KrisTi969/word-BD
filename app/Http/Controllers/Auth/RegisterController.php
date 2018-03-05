@@ -124,7 +124,7 @@ class RegisterController extends Controller
 
     }
 
-    public static function email_verification($token)
+    public  function email_verification($token)
     {
        // $user = new User();
         $user = User::where('email_token', $token)->first();
