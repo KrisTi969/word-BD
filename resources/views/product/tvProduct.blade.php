@@ -8,15 +8,15 @@
 
 ?>
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html>
-<?php include "head.blade.php"; ?>
+@include('layouts.head')
 <body>
 <div class="wrapper">
     <div class="wrapper">
         <!-- Header part  -->
-        <?php include "header.blade.php";?>
-        <!--Login form-->
+    @include('layouts.header')
+    <!--Login form-->
 
         <div class="content-area prodcuts">
 
@@ -33,13 +33,13 @@
                             <div class="flexslider">
                                 <ul class="slides">
                                     <li data-thumb="../../public/images/products/4ksamsung6120.jpg">
-                                        <div class="thumb-image detail_images"> <img src="../../public/images/products/4ksamsung6120.jpg" data-imagezoom="true" class="img-responsive" alt="" width="420"> </div>
+                                        <div class="thumb-image detail_images"> <img src="../../../public/images/products/4ksamsung6120.jpg" data-imagezoom="true" class="img-responsive" alt="" width="420"> </div>
                                     </li>
                                     <li data-thumb="../../public/images/products/4ksamsung6120-2.jpg">
-                                        <div class="thumb-image"> <img src="../../public/images/products/4ksamsung6120-2.jpg" data-imagezoom="true" class="img-responsive" alt="" aria-posinset="" width="420"/> </div>
+                                        <div class="thumb-image"> <img src="../../../public/images/products/4ksamsung6120-2.jpg" data-imagezoom="true" class="img-responsive" alt="" aria-posinset="" width="420"/> </div>
                                     </li>
                                     <li data-thumb="../../public/images/products/4ksamsung6120-3.jpg">
-                                        <div class="thumb-image"> <img src="../../public/images/products/4ksamsung6120-3.jpg" data-imagezoom="true" class="img-responsive" alt="" width="420"/>  </div>
+                                        <div class="thumb-image"> <img src="../../../public/images/products/4ksamsung6120-3.jpg" data-imagezoom="true" class="img-responsive" alt="" width="420"/>  </div>
                                     </li>
                                 </ul>
                             </div>
@@ -103,6 +103,21 @@
                             </a>
                             <div id="productDescriptionCollapse" class="collapse in collapseDiv">
                                 <p>Detalii despre produs.</p>
+                              {{--  {{request()->route('id')}}--}}
+                                @if($description)
+                                    {{--{{var_dump($description)}}<br>
+                                    {{var_dump($product->description)}}--}}
+                                    @foreach($product->description as $al=>$ceva)
+                                        <h1>{{$al}}</h1>
+                                       {{-- {{var_dump($ceva)}}<br>--}}
+                                        @foreach($ceva as $altceva=>$celelalt)
+                                          {{-- {{var_dump($celelalt)}}<br>--}}
+                                                @foreach($celelalt as $x=>$y)
+                                                {{$x}}{{":"}} {{$y}}<br>
+                                                    @endforeach
+                                            @endforeach
+                                    @endforeach
+                                    @endif
                             </div>
                         </div> <!-- End single product extra div -->
 
@@ -138,30 +153,26 @@
                             </a>
                             <div id="productCollapse" class="collapse collapseDiv">
                                 <p>Accesorii</p>
-                                </div>
+                            </div>
                         </div> <!-- End single product extra div -->
 
 
                     </div> <!--End Sidebar title div-->
 
-
-
-
                 </div>  <!--End Single Product Div Everything-->
-
 
             </div>
 
         </div> <!-- End content Area class -->
-
+    </div>
         <!--End Login form-->
-        <?php include "footer.blade.php"; ?>
+        @include('layouts.footer')
     </div> <!-- End wrapper -->
     <!-- Scripts -->
-    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
 
-    <script src="../../public/js/jquery.flexslider.js" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.flexslider.js') }}" type="text/javascript"></script>
     <script>
         $(window).load(function() {
             $('.flexslider').flexslider({
@@ -171,13 +182,13 @@
         });
     </script>
     <!--flex slider-->
-    <script src="../../public/js/imagezoom.js" type="text/javascript"></script>
+    <script src="{{ asset('js/imagezoom.js') }}" type="text/javascript"></script>
 
-    <script src="../../public/js/wow.min.js"></script>
+    <script src="{{ asset('js/wow.min.js') }}"></script>
 
-    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../public/js/webslidemenu.js"></script>
-    <script type="text/javascript" src="../../public/js/main.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/webslidemenu.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
 
 </body>
