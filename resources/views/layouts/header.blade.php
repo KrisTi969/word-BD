@@ -101,7 +101,7 @@ else {
                                 <div class="wsshoptabing wtsdepartmentmenu clearfix">
                                     <div class="wsshopwp clearfix" style="height: 421px;">
                                         <ul class="wstabitem clearfix">
-                                            <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="<?php echo $reddirect_link?>productsRedirect.php"><i class="fa fa-television"></i>Electronic Appliances</a>
+                                            <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route("Electronic-Appliances")}}"><i class="fa fa-television"></i>Electronic Appliances</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
                                                     <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>

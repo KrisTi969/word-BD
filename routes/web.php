@@ -82,13 +82,12 @@ Route::view('/grocery', 'ajax');
 Route::get('/testProduct/{id}', 'Product\ProductController@findProduct')->name('product');
 
 
-
-
 Route::post('/grocery/post', 'GroceryController@store');
 Route::post('/register/post', 'Auth\RegisterController@store');
 Route::post('/login/check', 'Auth\LoginController@loginCheck');
-
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@email_verification');
+Route::get('/products', 'Product\AllProducts@getProducts')->name('Electronic-Appliances');
+Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
 ////
 
 
