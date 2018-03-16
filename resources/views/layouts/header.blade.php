@@ -112,7 +112,6 @@ else {
                                                         <li><a href="#">LCD TVs</a></li>
                                                         <li><a href="#">OLED TVs</a> <span class="wstmenutag bluetag">Popular</span></li>
                                                         <li><a href="#">Plasma TVs</a></li>
-                                                        <li><a href="#">Smart TVs</a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img02.jpg" alt=" "></li>

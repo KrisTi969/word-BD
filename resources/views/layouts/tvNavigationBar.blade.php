@@ -25,19 +25,17 @@
                 </div> <!--End Sidebar title div-->
                 <div id="typeCollapse" class="collapse out">
                     <br>
-                    <a role="button" onclick="addParameter('type','4kTV')"><span></span>4K UHD THV</a><br />
+                    <a role="button" onclick="addOrReplace('type','4kTV')"><span></span>4kTV</a><br />
                     <br>
-                    <a role="button" onclick="addParameter('producer','curved')"><span></span>CURVED TVs</a><br />
+                    <a role="button" onclick="addOrReplace('type','curved')"><span></span>CURVED TVs</a><br />
                     <br>
-                    <a role="button" onclick="addParameter('producer','led')"><span></span>LED TVs</a><br />
+                    <a role="button" onclick="addOrReplace('type','led')"><span></span>LED TVs</a><br />
                     <br>
-                    <a role="button" onclick="addParameter('producer','LCD')"><span></span>LCD TVs</a><br />
+                    <a role="button" onclick="addOrReplace('type','lcd')"><span></span>LCD TVs</a><br />
                     <br>
-                    <a role="button" onclick="addParameter('producer','oled')"><span></span>OLED TVs</a><br />
+                    <a role="button" onclick="addOrReplace('type','oled')"><span></span>OLED TVs</a><br />
                     <br>
-                    <a role="button" onclick="addParameter('producer','plasma')"><span></span>PLASMA TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addParameter('producer','smart')"><span></span>SMART TVs</a><br />
+                    <a role="button" onclick="addOrReplace('type','plasma')"><span></span>PLASMA TVs</a><br />
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -69,13 +67,13 @@
 
             <div id="producer" class="collapse out">
                 <br>
-                <a role="button" onclick="addParameter('producer','ceva')"><span></span>SAMSUNG</a><br />
+                <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
                 <br>
-                <a role="button" onclick="addParameter('producer','LAVA')"><span></span>LALA</a><br />
+                <a role="button" onclick="addOrReplace('producer','LALA')"><span></span>LALA</a><br />
                 <br>
-                <a role="button" onclick="addParameter('producer','LAVA2')"><span></span>UNDERCONST</a><br />
+                <a role="button" onclick="addOrReplace('producer','LAVA2')"><span></span>UNDERCONST</a><br />
                 <br>
-                <a role="button" onclick="addParameter('producer','LAVA3')"><span></span>UNDERCONST</a><br />
+                <a role="button" onclick="addOrReplace('producer','LAVA3')"><span></span>UNDERCONST</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -118,19 +116,19 @@
 
             <div id="productReviewCollapse" class="collapse out">
 
-                <a role="button" onclick="addParameter('review',5)" style="color:#008000"><span></span>
+                <a role="button" onclick="addOrReplace('review',5)" style="color:#008000"><span></span>
                     <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                 </a><br />
-                <a role="button" onclick="addParameter('review',4)" style="color:#008000"><span></span>
+                <a role="button" onclick="addOrReplace('review',4)" style="color:#008000"><span></span>
                     <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                 </a><br />
-                <a role="button" onclick="addParameter('review',3)" style="color:#008000"><span></span>
+                <a role="button" onclick="addOrReplace('review',3)" style="color:#008000"><span></span>
                     <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                 </a><br />
-                <a role="button" onclick="addParameter('review',2)" style="color:#008000"><span></span>
+                <a role="button" onclick="addOrReplace('review',2)" style="color:#008000"><span></span>
                     <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                 </a><br />
-                <a role="button" onclick="addParameter('review',1)" style="color:#008000"><span></span>
+                <a role="button" onclick="addOrReplace('review',1)" style="color:#008000"><span></span>
                     <i class="fa fa-star"></i>
                 </a><br />
                 <div class="clearfix"></div>

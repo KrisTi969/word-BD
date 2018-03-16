@@ -90,7 +90,9 @@ Route::get('/products', 'Product\AllProducts@getProducts')->name('Electronic-App
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
 ////
 
-
+Route::get('user/{name?}/{type?}', function ($name = 'John', $type = 'ceva') {
+    return $name. "". $type;
+});
 
 
 /*
