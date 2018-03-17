@@ -1,15 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Product;
-use App\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Lang;
-use Illuminate\Support\Facades\Validator;
-use Response;
-use Hash;
 use DB;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class AllProducts extends Controller
 {
@@ -40,7 +35,14 @@ class AllProducts extends Controller
 
     public function getTVs(Request $request)
     {
+
+        function testRange($int,$min,$max){
+            return ($min<$int && $int<$max);
+        }
+
         $baseQuery = DB::table("products");
+
+        $products = $baseQuery->get();
    /*         $baseQuery->where("type", "=", $type);
             $baseQuery->where("description", "like", "%".$producer."%");*/
         if($request->input('type')) {
@@ -52,23 +54,21 @@ class AllProducts extends Controller
         if($request->input('priceMin') & $request->input('priceMax')) {
             $baseQuery->whereBetween('price',array($request->input('priceMin'),$request->input('priceMax')));
         }
-
         //Gasim id'ul produselor care nu se incadreaza in dimensiune
-        if($request->input('sizeMin') & $request->input('sizeMax')) {
+
+
+        if($request->input('sizeMin') && $request->input('sizeMax')) {
        //  dd($baseQuery->get()[2]->description);
        //     dd($baseQuery->get()->forget(3));  // stergem elementul din colectie
-
             $poziton = 0;
             foreach ($baseQuery->get() as $result) {
                 $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
-                $poziton++;
-                //dd((json_decode($result->description)->{'Specificatii tehnice'})[2]);
-               $arrayId =  json_decode($result->description)->{'Specificatii tehnice'};
-               $id = $arrayId[2]->{'Display size'};
-               dd($arrayId[2]->{'Display size'}); ///// 200cm -> sterge cm
-               if($id <= $request->input('sizeMin') & $id >= $request->input('sizeMax')){
-                   $baseQuery->get()->forget($idToDeleteIfNecessary);
-               }
+                $arrayId =  json_decode($result->description)->{'Specificatii tehnice'};
+                $id = str_replace('cm','',$arrayId[2]->{'Display size'});
+                /*  if( ( intval($id) <= intval($request->input('sizeMin')) )==false && ( intval($id)>= intval($request->input('sizeMax')) )==True ){*/
+                if((testRange(intval($id),intval($request->input('sizeMin')),intval($request->input('sizeMax')))==false)) {
+                $baseQuery->where('id','!=',$idToDeleteIfNecessary);
+            }
             }
         }
 

@@ -66,7 +66,7 @@
                                                 </span>
                                                         </div>
 
-                                                        <a href="cart.html"  class="btn btn-cart text-center add-to-cart pull-right">
+                                                        <a href="cart.html"  class="btn-cart text-center add-to-cart pull-right">
                                                             <i class="fa fa-cart-plus"></i>
                                                             Add to cart
                                                         </a>

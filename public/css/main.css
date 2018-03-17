@@ -72,6 +72,7 @@
         -webkit-transition: all 0.5s ease;
         transition: all .5s ease-in-out;
         width: 70%;
+
     }
     .btn-cart:hover{
         color: #ffffff;
@@ -566,6 +567,7 @@ h2.title-div {
     padding: 10px 0px 10px 0px;
     margin-bottom: 1.5em;
     background: white;
+    height: 320px;
 }
 .product-item:hover {
     border: 1px solid darkred;
@@ -576,6 +578,7 @@ h2.title-div {
     padding-left: 2em;
 }
 .product-price{
+    height: 82px;
     padding-left: 2em;
 }
 .product-price a{
