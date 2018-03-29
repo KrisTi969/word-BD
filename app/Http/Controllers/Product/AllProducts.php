@@ -24,7 +24,8 @@ class AllProducts extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // only these people can acces the page
+      //  $this->middleware('guest')->except('logout');
     }
 
     public function getProducts()
@@ -51,7 +52,7 @@ class AllProducts extends Controller
         if($request->input('producer')) {
             $baseQuery->where('description','like',"%".$request->input('producer')."%");
         }
-        if($request->input('priceMin') & $request->input('priceMax')) {
+        if($request->input('priceMin') && $request->input('priceMax')) {
             $baseQuery->whereBetween('price',array($request->input('priceMin'),$request->input('priceMax')));
         }
         //Gasim id'ul produselor care nu se incadreaza in dimensiune

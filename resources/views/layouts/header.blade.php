@@ -87,7 +87,7 @@ else {
 
     <div class="header-navigation">
         <div class="wsmenucontainer clearfix">
-            <div class="overlapblackbg"></div>
+            <div class="overlapblackbg">asdasdas</div>
             <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"><img src="<?php echo $new_path?>images/logo.png" alt=""></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
 
 
@@ -101,17 +101,17 @@ else {
                                 <div class="wsshoptabing wtsdepartmentmenu clearfix">
                                     <div class="wsshopwp clearfix" style="height: 421px;">
                                         <ul class="wstabitem clearfix">
-                                            <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route("Electronic-Appliances")}}"><i class="fa fa-television"></i>Electronic Appliances</a>
+                                            <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Electronic-Appliances')}}"><i class="fa fa-television"></i>Electronic Appliances</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
                                                     <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>
                                                         <li class="wstheading">TVs</li>
-                                                        <li><a href="<?php echo $reddirect_link; ?>TVs.php?type=4k">4K Ultra HD TVs </a></li>
-                                                        <li><a href="#">Curved TVs </a></li>
-                                                        <li><a href="#">LED TVs</a></li>
-                                                        <li><a href="#">LCD TVs</a></li>
-                                                        <li><a href="#">OLED TVs</a> <span class="wstmenutag bluetag">Popular</span></li>
-                                                        <li><a href="#">Plasma TVs</a></li>
+                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=4kTV">4K Ultra HD TVs </a></li>
+                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=curved">Curved TVs </a></li>
+                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=led">LED TVs</a></li>
+                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=lcd">LCD TVs</a></li>
+                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=oled">OLED TVs</a> <span class="wstmenutag bluetag">Popular</span></li>
+                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=plasma">Plasma TVs</a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img02.jpg" alt=" "></li>
@@ -287,8 +287,6 @@ else {
 
                                 </div>
                             </li>
-
-
                             <li class="wssearchbar clearfix">
                                 <form class="topmenusearch">
                                     <input placeholder="Search Product By Name, Category...">
@@ -302,7 +300,7 @@ else {
                                 <a href="#" class="wtxaccountlink">
                                     <i class="fa fa-align-justify"></i>
                                     @guest
-                                    My Account
+                                        My Account
                                     @else
                                         {{ Auth::user()-> name}}
                                         <?php if(Auth::viaRemember()) {
@@ -318,23 +316,23 @@ else {
                                 </a>
                                 <ul class="wsmenu-submenu">
                                     @guest
-                                    <li><a href="/login"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
-                                    <li><a href="/register"><i class="fa fa-registered"></i>Register</a></li>
+                                        <li><a href="/login"><i class="glyphicon glyphicon-log-in"></i>&nbsp;&nbsp;&nbsp;&nbsp;Log in</a></li>
+                                        <li><a href="/register"><i class="fa fa-registered"></i>Register</a></li>
                                     @endguest
                                     @if(Auth::check())
-                                    <li><a href="<?php echo $reddirect_link?>account.php"><i class="fa fa-black-tie"></i>View Profile</a></li>
-                                    <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
-                                    <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>
-                                           <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                        <li><a href="<?php echo $reddirect_link?>account.php"><i class="fa fa-black-tie"></i>View Profile</a></li>
+                                        <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
+                                        <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
+                                        <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                                 Logout
                                             </a></li>
 
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                @csrf
-                                            </form>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
                                     @endif
                                 </ul>
                             </li>

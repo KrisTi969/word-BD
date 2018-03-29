@@ -42,7 +42,7 @@
             <div id="brandCollapse" class="collapse out">
                 <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',0,'priceMax',200)"><span></span>UNDER 200 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
                 <br>
                 <a role="button" onclick="addOrUpdateUrlParam('priceMin',200,'priceMax',450)"><span></span>200 - 450 €</a><br />
                 <br>

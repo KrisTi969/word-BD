@@ -47,7 +47,6 @@
                                 <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"><?php if(count($_GET) === 1 && isset($_GET['type'])) { echo "Our latest ".strtoupper($_GET['type'])." TVs are:";} else {echo "Your filtered results: ";}?></h2>
                                 <div class="products">
                                     <div class="row">
-
                                         @foreach ($products as $product)
                                             <div class="col-md-3">
                                                 <div class="product-item">

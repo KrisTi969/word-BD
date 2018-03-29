@@ -16,7 +16,7 @@ if($file_name != "index.blade.php") {
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <div class="footer-top-address wow slideInLeft" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">
+                <div class="footer-top-address" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">
                     <div class="header-logo" style=" text-align: center;border-bottom: 1px dotted rgba(247, 12, 38, 0.24);">
                         <a href="<?php echo $new_path?>index.php">
                             <p style="position: sticky; ">SkyShop</p>
@@ -33,7 +33,7 @@ if($file_name != "index.blade.php") {
 
             </div>
             <div class="col-md-8">
-                <div class="subscribe wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">
+                <div class="subscribe" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">
                     <h3>Subscribe here to get some exciting offers</h3>
                     <form action="#" method="post">
                         <input type="text" name="email" placeholder="Enter your Email..." required="">
