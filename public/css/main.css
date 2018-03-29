@@ -246,56 +246,128 @@
         margin-top: 5em;
         float: snap;
     }
-    .cart-link {
-        background: #222;
-        border: none;
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
-        -o-border-radius: 50%;
-        -ms-border-radius: 50%;
-        border-radius: 50%;
-        width: 65px;
-        height: 65px;
-        text-align: center;
-        outline: none;
-        padding: 1.5em;
-        z-index: -1;
-    }
-    .cart-link:hover {
-        background: rgb(255, 161, 9);
-    }
-    .cart-link .fa{
-        font-size: 2em;
-        color: #ffffff;
-        vertical-align: middle;
-    }
 
- .cart-link {
+ @media only screen and (min-width: 918px) {
+
+     .cart-link {
+         background: #222;
+         border: none;
+         -webkit-border-radius: 50%;
+         -moz-border-radius: 50%;
+         -o-border-radius: 50%;
+         -ms-border-radius: 50%;
+         border-radius: 50%;
+         width: 65px;
+         height: 65px;
+         text-align: center;
+         outline: none;
+         padding: 1.5em;
+         z-index: -1;
+     }
+
+     .cart-link:hover {
+         background: rgb(255, 161, 9);
+     }
+
+     .cart-link .fa {
+         font-size: 2em;
+         color: #ffffff;
+         vertical-align: middle;
+     }
+
+     .cart-link {
+         position: relative;
+         top: -45px;
+         bottom: 10px;
+         z-index: 1000;
+         right: -195px;
+     }
+
+     span.number-of-cart {
+         margin-left: -2em;
+         color: #ffffff;
+         font-weight: bold;
+         border-radius: 80% 80% 132% 14%;
+         border: 1px solid gray;
+         background: red;
+         opacity: .8;
+         padding: 10px;
+     }
+
+     span.number-of-cart:hover {
+         opacity: 1;
+     }
+
+     .number-of-cart {
+         position: relative;
+         top: -45px;
+         z-index: 9999; /*Deci cu cat ii mai mare z indexul ne asiguram ca ii deasupra elementului(An element with a larger z-index generally covers an element with a lower one.)*/
+         right: -210px;
+     }
+
+ }
+
+ @media only screen and (max-width: 918px) {
+     a.cart-link {
+         display: none;
+     }
+ }
+ /*
+ nou shopping cart
+
+ */
+
+ .cart-link2 {
+     background: #222;
+     border: none;
+     -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+     -o-border-radius: 50%;
+     -ms-border-radius: 50%;
+     border-radius: 50%;
+     width: 65px;
+     height: 65px;
+     text-align: center;
+     outline: none;
+     padding: 1.5em;
+     z-index: -1;
+ }
+ .cart-link2:hover {
+     background: rgb(255, 161, 9);
+ }
+ .cart-link2 .fa{
+     font-size: 2em;
+     color: #ffffff;
+     vertical-align: middle;
+ }
+
+ .cart-link2 {
      position: relative;
      top: -45px;
      bottom: 10px;
      z-index: 1000;
-     right: -200px;
+     right: -195px;
  }
-    span.number-of-cart {
-        margin-left: -2em;
-        color: #ffffff;
-        font-weight: bold;
-        border-radius: 80% 80% 132% 14%;
-        border: 1px solid gray;
-        background: red;
-        opacity: .8;
-        padding: 10px;
-    }
-    span.number-of-cart:hover{
-        opacity: 1;
-    }
- .number-of-cart {
+ span.number-of-cart2 {
+     margin-left: -2em;
+     color: #ffffff;
+     font-weight: bold;
+     border-radius: 80% 80% 132% 14%;
+     border: 1px solid gray;
+     background: red;
+     opacity: .8;
+     padding: 10px;
+ }
+ span.number-of-cart2:hover{
+     opacity: 1;
+ }
+ .number-of-cart2 {
      position: relative;
      top: -45px;
      z-index: 9999; /*Deci cu cat ii mai mare z indexul ne asiguram ca ii deasupra elementului(An element with a larger z-index generally covers an element with a lower one.)*/
      right: -210px;
  }
+
     #cart-item{
 
     }   
@@ -370,13 +442,14 @@
         /* width: 930px; */
         width: 85%;
     }
-    .header-cart{
-        margin: 1.3em 0;
-        margin-right: -3.8em;
-        margin-top: 5em;
-        float: right;
-    }
-
+ @media only screen and (min-width: 918px) {
+     .header-cart {
+         margin: 1.3em 0;
+         margin-right: -3.8em;
+         margin-top: 5em;
+         float: right;
+     }
+ }
 .navbar-fixed{
     position: absolute;
     margin-bottom: 20px;

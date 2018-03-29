@@ -90,8 +90,8 @@ else {
             <div class="overlapblackbg">asdasdas</div>
             <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"></a>{{-- <a class="callusicon" href="tel:0748105856"><span class="fa fa-phone"></span></a>--}}
                 <div class="header-cart2">
-                    <a href="#" class="cart-link" data-toggle="modal" data-target="#cart-item"><i class="fa fa-cart-arrow-down"></i></a>
-                    <span class="number-of-cart">20</span>
+                    <a href="#" class="cart-link2" data-toggle="modal" data-target="#cart-item"><i class="fa fa-cart-arrow-down"></i></a>
+                    <span class="number-of-cart2">20</span>
                 </div>
             </div>
 
