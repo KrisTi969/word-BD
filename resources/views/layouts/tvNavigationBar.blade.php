@@ -11,9 +11,21 @@
                     <span class="pull-right"><i class="fa fa-minus"></i></span>
                     <div class="clearfix"></div>
                 </a>
-            </div> <!--End Sidebar title div-->
-            {{----}}
-            {{----}}
+            </div>
+            <div id="brandCollapse" class="collapse out">
+                <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />
+                <br>
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
+                <br>
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',200,'priceMax',450)"><span></span>200 - 450 €</a><br />
+                <br>
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',450,'priceMax',800)"><span></span>450 - 800€</a><br />
+                <br>
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',800,'priceMax',9999)"><span></span>ABOVE 800 €</a><br />
+                <br>
+                <div class="clearfix"></div>
+            </div>
+        </div>
             <div class="sidebar-single">
                 <div class="sidebar-title">
                     <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#typeCollapse" aria-controls="#typeCollapse">
@@ -39,20 +51,7 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div id="brandCollapse" class="collapse out">
-                <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',200,'priceMax',450)"><span></span>200 - 450 €</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',450,'priceMax',800)"><span></span>450 - 800€</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',800,'priceMax',9999)"><span></span>ABOVE 800 €</a><br />
-                <br>
-                <div class="clearfix"></div>
-            </div>
-        </div> <!--End Single Sidebar-->
+        <!--End Single Sidebar-->
 
         <div class="sidebar-single">
             <div class="sidebar-title">

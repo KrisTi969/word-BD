@@ -63,7 +63,7 @@ else {
                                 </tr>
                                 <tr>
                                     <td colspan="5" rowspan="5">
-                                        Total Price <span class="bold text-primary" style="margin-left: 73%">800$</span>
+                                        Total Price <span class="bold text-primary" style="margin-left: 73%">700$</span>
                                     </td>
                                 </tr>
                                 <div class="clearfix"></div>
@@ -88,7 +88,12 @@ else {
     <div class="header-navigation">
         <div class="wsmenucontainer clearfix">
             <div class="overlapblackbg">asdasdas</div>
-            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"></a>{{-- <a class="callusicon" href="tel:0748105856"><span class="fa fa-phone"></span></a>--}} </div>
+            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"></a>{{-- <a class="callusicon" href="tel:0748105856"><span class="fa fa-phone"></span></a>--}}
+                <div class="header-cart2">
+                    <a href="#" class="cart-link" data-toggle="modal" data-target="#cart-item"><i class="fa fa-cart-arrow-down"></i></a>
+                    <span class="number-of-cart">20</span>
+                </div>
+            </div>
 
 
             <div class="headerfull">
@@ -103,7 +108,7 @@ else {
                                         <ul class="wstabitem clearfix">
                                             <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Electronic-Appliances')}}"><i class="fa fa-television"></i>Electronic Appliances</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
-                       f                            <ul class="wstliststy02">
+                                                  <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>
                                                         <li class="wstheading">TVs</li>
                                                         <li><a href="<?php echo $reddirect_link; ?>TVs?type=4kTV">4K Ultra HD TVs </a></li>

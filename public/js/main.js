@@ -1,6 +1,4 @@
 jQuery(document).ready(function(){
-
-
 	//Hover over navigation bar active
 	$(".dropdown").hover(
 		function() { 

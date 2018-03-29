@@ -379,13 +379,12 @@
     @include('layouts.footer')
 </div> <!-- End wrapper -->
 
-<!-- Scripts -->
+<!-- Scripts --><script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/wow.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/webslidemenu.js') }}"></script>
-<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 
 </body>
 </html>
