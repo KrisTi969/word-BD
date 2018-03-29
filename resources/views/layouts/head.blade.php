@@ -5,12 +5,6 @@
  * Date: 16.02.2018
  * Time: 17:31
  */
-$file_name = basename($_SERVER['SCRIPT_FILENAME']);
-
-$new_path = "";
-if($file_name != "index.blade.php") {
-    $new_path = "../../public/";
-}
 ?>
 <head>
     <title>SkyMobile</title>
@@ -35,7 +29,5 @@ if($file_name != "index.blade.php") {
 
     <!-- Main css link -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/main.css') }} " />
-
-    <script type="text/javascript" src="{{ asset('js/jquery.min.js') }} "></script>
 
 </head>

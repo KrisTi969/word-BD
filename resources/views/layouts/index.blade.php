@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 @include('layouts.head')
+
 <body>
 <div class="wrapper">
     <div class="wrapper">

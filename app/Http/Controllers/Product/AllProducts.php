@@ -72,7 +72,6 @@ class AllProducts extends Controller
             }
             }
         }
-
         $products = $baseQuery->paginate(16);
         return view("product.TVs")->with(["products" => $products]);
     }

@@ -88,7 +88,7 @@ else {
     <div class="header-navigation">
         <div class="wsmenucontainer clearfix">
             <div class="overlapblackbg">asdasdas</div>
-            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"><img src="<?php echo $new_path?>images/logo.png" alt=""></a> <a class="callusicon" href="tel:123456789"><span class="fa fa-phone"></span></a> </div>
+            <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"></a>{{-- <a class="callusicon" href="tel:0748105856"><span class="fa fa-phone"></span></a>--}} </div>
 
 
             <div class="headerfull">
@@ -103,7 +103,7 @@ else {
                                         <ul class="wstabitem clearfix">
                                             <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Electronic-Appliances')}}"><i class="fa fa-television"></i>Electronic Appliances</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
-                                                    <ul class="wstliststy02">
+                       f                            <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>
                                                         <li class="wstheading">TVs</li>
                                                         <li><a href="<?php echo $reddirect_link; ?>TVs?type=4kTV">4K Ultra HD TVs </a></li>
