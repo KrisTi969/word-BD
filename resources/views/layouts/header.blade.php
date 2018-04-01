@@ -293,8 +293,9 @@ else {
                                 </div>
                             </li>
                             <li class="wssearchbar clearfix">
-                                <form class="topmenusearch">
-                                    <input placeholder="Search Product By Name, Category...">
+                                <form method="post" action="{{route('search')}}" class="topmenusearch">
+                                    @csrf
+                                    <input type="text" name="search" id="search" placeholder="Search Product By Name, Type...">
                                     <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </li>
@@ -355,3 +356,6 @@ else {
 
     </div>  <!-- End Navigation header -->
 </div>
+
+{{--/// Activate Selectize--}}
+

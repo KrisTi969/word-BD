@@ -25,6 +25,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-8 col-md-offset-2">
                                 <div class="card">
+
                                     <div class="card-header" style="color:honeydew;">Login</div>
 
                                     <div class="card-body">
@@ -72,11 +73,8 @@
 
                                                 <input type="checkbox" id="remember" name="remember" {{ old('remember') ? 'checked' : '' }}/>
                                                 <label for="remember" style="color:#093; font-weight: normal"><span style="opacity:.5">
-
                                         </span>Remember Me</label><br />
                                             </div>
-
-
 
                                             <div class="form-group row mb-0">
                                                 <div class="col-md-8 offset-md-4">
@@ -95,9 +93,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
             </div> <!--End Registration page div-->
 

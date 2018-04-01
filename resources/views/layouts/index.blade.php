@@ -63,7 +63,6 @@
 
             </div>
         </div> <!-- End Main slider class -->
-
         <div class="featured-products">
             <div class="container" >
                 <h2 class="title-div wow slideInLeft pull-left" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Recommanded products</h2><div class="clear"></div>
@@ -385,7 +384,34 @@
 <script src="{{ asset('js/wow.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/webslidemenu.js') }}"></script>
-
+<link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
+<script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+<script type="text/javascript">
+    $("#search").autocomplete({
+        source: function(request, response){
+            $.get("http://127.0.0.1:8000/autocomplete", {
+                term:request.term
+            }, function(data){
+                response($.map(data, function(item) {
+                    return {
+                        value: item.id,
+                        label: item.title
+                    }
+                }))
+            }, "json");
+        },
+        select: function( event, ui ) {
+            console.log( ui.item ?
+                "Selected: " + ui.item.label :
+                "Nothing selected, input was " + this.value);
+            window.location.href = "/Product/" + ui.item.value;
+        },
+        minLength: 2,
+        dataType: "json",
+        cache: false
+    });
+</script>
 </body>
 </html>
 

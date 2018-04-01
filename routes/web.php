@@ -70,8 +70,10 @@ function prettyPrint( $json )
 
 Route::get('/', function () {
    return view('layouts.index');
-});
+})->name('/');
 
+
+Route::post('/search', 'Api\SearchController@search')->name('search');
 Route::auth();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -79,7 +81,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 ////
 Route::view('/grocery', 'ajax');
 
-Route::get('/testProduct/{id}', 'Product\ProductController@findProduct')->name('product');
+Route::get('/Product/{id}', 'Product\ProductController@findProduct')->name('product');
 
 
 Route::post('/grocery/post', 'GroceryController@store');
@@ -94,6 +96,7 @@ Route::get('user/{name?}/{type?}', function ($name = 'John', $type = 'ceva') {
     return $name. "". $type;
 });
 
+Route::get("/autocomplete",array('as'=>'autocomplete','uses'=> 'Api\SearchController@autocomplete'));
 
 /*
  * Controller based Routes :) */
