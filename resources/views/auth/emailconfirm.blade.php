@@ -46,6 +46,33 @@
 <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/webslidemenu.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
-
+<link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
+<script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+<script type="text/javascript">
+    $("#search").autocomplete({
+        source: function(request, response){
+            $.get("http://127.0.0.1:8000/autocomplete", {
+                term:request.term
+            }, function(data){
+                response($.map(data, function(item) {
+                    return {
+                        value: item.id,
+                        label: item.title
+                    }
+                }))
+            }, "json");
+        },
+        select: function( event, ui ) {
+            console.log( ui.item ?
+                "Selected: " + ui.item.label :
+                "Nothing selected, input was " + this.value);
+            window.location.href = "/Product/" + ui.item.value;
+        },
+        minLength: 2,
+        dataType: "json",
+        cache: false
+    });
+</script>
 </body>
 </html>

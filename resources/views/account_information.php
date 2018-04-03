@@ -30,7 +30,7 @@
                                 <li><a href="account.php">Account Control Panel</a></li>
                                 <li  class="active"><a href="account_information.php">Personal Information</a></li>
                                 <li><a href="account_order.php">My Orders</a></li>
-                                <li><a href="account_cart.php">My Carts</a></li>
+                                <li><a href="account/account_cart.blade.php">My Carts</a></li>
                                 <li><a href="account_reviews.php">My Reviews and Ratings</a></li>
                             </ul>
                         </div>

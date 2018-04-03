@@ -39,28 +39,21 @@ else {
                             <table class="table table-responsive">
                                 <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>Item Name</th>
                                     <th>Item Image</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>
                                 </thead>
+                                <?php foreach(Cart::content() as $row) :?>
                                 <tbody>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Digital Camera</td>
+                                    <td>{{$row->name}}</td>
                                     <td><img src="<?php echo $new_path?>images/product-slide/product2.png" class="img img-responsive img-thumbnail" alt=""></td>
-                                    <td>3</td>
-                                    <td>200$</td>
+                                    <td>{{$row->qty}}</td>
+                                    <td>{{$row->price}}$</td>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Samsung Galaxy 7</td>
-                                    <td><img src="<?php echo $new_path?>images/product-slide/product3.png" class="img img-responsive img-thumbnail" alt=""></td>
-                                    <td>1</td>
-                                    <td>500$</td>
-                                </tr>
+                                <?php endforeach;?>
                                 <tr>
                                     <td colspan="5" rowspan="5">
                                         Total Price <span class="bold text-primary" style="margin-left: 73%">700$</span>
@@ -69,7 +62,7 @@ else {
                                 <div class="clearfix"></div>
                                 </tbody>
                             </table>
-                            <p class="text-right text-danger">There are <span style="font-weight: bold">2</span> more products in the cart. Click Checkout now to buy the items..</p>
+                          {{--  <p class="text-right text-danger">There are <span style="font-weight: bold">2</span> more products in the cart. Click Checkout now to buy the items..</p>--}}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel
@@ -326,7 +319,8 @@ else {
                                         <li><a href="/register"><i class="fa fa-registered"></i>Register</a></li>
                                     @endguest
                                     @if(Auth::check())
-                                        <li><a href="<?php echo $reddirect_link?>account.php"><i class="fa fa-black-tie"></i>View Profile</a></li>
+                                        <li><a href=""><i class="fa fa-black-tie"></i>View Profile</a></li>
+                                            <li><a href="{{route('seeCart')}}"><i class="fa fa-shopping-cart"></i>My Cart</a></li>
                                         <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
                                         <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
                                         <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>

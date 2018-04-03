@@ -10,6 +10,8 @@ use Response;
 use App\User;
 use Hash;
 
+use Gloudemans\Shoppingcart\Cart;
+
 class LoginController extends Controller
 {
     /*
@@ -68,6 +70,7 @@ class LoginController extends Controller
                 return Response::json(['errors' => 'The account is not verified !']);
             }
         }
+
         return Response::json(['success' => '1']);
     }
 }
