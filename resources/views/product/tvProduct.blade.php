@@ -18,6 +18,8 @@
     @include('layouts.header')
     <!--Login form-->
 
+
+
         <div class="content-area prodcuts">
 
             <div class="container">
@@ -45,16 +47,24 @@
                             </div>
                         </div>
                         <div class="col-md-6 single-top-right">
-                            <h3 class="item_name">Samsung Smart TV UE40MU6102K</h3>
-                            <p class="Whitish">Stoc magazin suficient: (10+ buc)</p>
+                            <h3 class="item_name">{{$product->title}}</h3>
+                            <p class="Whitish">Stoc magazin: suficient (10+ buc)</p>
                             <div class="single-rating Whitish">
                                 <ul>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                    <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
-                                    <li class="rating">20 reviews</li>
+                                    <?php $rating = \App\Http\Controllers\Product\ProductController::getProductAverageReview($product->id) ?>
+                                    <?php $toFive = 0 ?>
+                                        @for ($i = 1; $i <= $rating; $i++)
+
+                                            <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                            <?php $toFive++ ?>
+                                        @endfor
+                                        @while($toFive!=5)
+                                            <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                        <?php $toFive++?>
+                                        @endwhile
+
+                                   {{-- <li><i class="fa fa-star-o" aria-hidden="true"></i></li>--}}
+                                    <li class="rating">{{\App\Http\Controllers\Product\ProductController::getProductReviewCount($product->id)}} reviews</li>
                                     <li><a href="#">Add your review</a></li>
                                 </ul>
                             </div>
@@ -126,19 +136,45 @@
                         <span class="pull-left title-sidebar"> <i class="fa fa-check-square-o"></i>
                             Product Reviews <span class="badge">2</span>
                         </span>
-
                                 <span class="pull-right"><i class="fa fa-plus"></i></span>
                                 <span class="pull-right"><i class="fa fa-minus"></i></span>
                                 <div class="clearfix"></div>
                             </a>
                             <div id="productReviewCollapse" class="collapse collapseDiv">
+
                                 <div class="review">
-                                    <h4>Cris :</h4>
-                                    <p>Is my tv nice ? </p>
-                                </div>
-                                <div class="review">
-                                    <h4>Adrian:</h4>
-                                    <p>Ney I say. </p>
+                                @if(\Auth::check())
+                                    <script type="text/javascript" src="{{asset('js/comments.js')}}"></script> <!-- path to tuto_comments.js -->
+                                    <h2>Leave a review</h2>
+                                    <div id="newComment"></div> <!-- the comment posted will be displayed here -->
+
+                                    <form class="form-horizontal" role="form" action="#" method="post">
+                                        <div class="form-group" >
+                                            <input type="number" hidden value="{{$product->id}}" id="product_id" name="product_id">
+                                        </div>
+                                        <div class="form-group" id="idGroup">
+                                            <label class="col-md-2 control-label"for="id">Star number:</label>
+                                            <div class="col-md-10">
+                                                <input type="number" name="rating" id="rating" class="rating" data-max="5" data-min="1" data-clearable="remove" data-empty-value="0"/>
+                                                <span class="help-block"></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="formGroupText">
+                                            <label class="col-md-2 control-label">Comment:</label>
+                                            <div class="col-md-10">
+                                                <span class="help-block"></span>
+                                                <textarea class="form-control" rows="8" id="com_text" name="com_text"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <p align="center"><input type="submit" class="submitComment btn btn-primary" value="Submit Comment" /></p>
+                                    </form>
+                                    {{\App\Http\Controllers\Product\ProductController::getProductReviews($product->id)}}
+                                @else
+                                        {{\App\Http\Controllers\Product\ProductController::getProductReviews($product->id)}}
+                                    @endif
+
+                                    {{----}}
                                 </div>
                             </div>
                         </div> <!-- End single product extra div -->
@@ -169,7 +205,7 @@
         @include('layouts.footer')
     </div> <!-- End wrapper -->
     <!-- Scripts -->
-    <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js.js') }}"></script>
+
     <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
 
     <script src="{{ asset('js/jquery.flexslider.js') }}" type="text/javascript"></script>

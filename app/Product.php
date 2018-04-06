@@ -1,13 +1,17 @@
 <?php
 
 namespace App;
-
+use Actuallymab\LaravelComment\Commentable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Product extends Authenticatable
+class Product extends Model
 {
+    use Commentable;
     use Notifiable;
+    protected $mustBeApproved = true;
+    protected $canBeRated = true;
     /**
      * The attributes that are mass assignable.
      *

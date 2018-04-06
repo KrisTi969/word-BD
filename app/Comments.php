@@ -1,23 +1,20 @@
 <?php
 
 namespace App;
-use Actuallymab\LaravelComment\CanComment;
 use Actuallymab\LaravelComment\Commentable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class Comments extends Model
 {
-    use CanComment;
-    use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name','lname','email','username', 'birthdate', 'address','city','postal_code','country','email_token'
+        'id','commentable_id','commentable_type','commented_id', 'commented_type', 'comment','approved','rate','created_at','updated_at'
     ];
 
     /**
@@ -26,6 +23,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'verified'
+
+    ];
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+
     ];
 }

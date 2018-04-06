@@ -11,15 +11,15 @@
 |
 */
 
+Route::post('/addReview', 'Product\ProductController@addReview');
+
 Route::get('/AccountCart', 'Cart\CartController@index')->name('seeCart');
 Route::get('/cart/{id}', 'Cart\CartController@addToCart')->name('cart');
 Route::get('/removeItem/{id}','Cart\CartController@removeItem')->name('remove');
 
 
-Route::get('/', function () {
-   return view('layouts.index');
-})->name('/');
 
+Route::get('/', 'Index\IndexController@index')->name('/');
 
 Route::post('/search', 'Api\SearchController@addToCart')->name('search');
 Route::auth();
@@ -48,50 +48,6 @@ Route::get("/autocomplete",array('as'=>'autocomplete','uses'=> 'Api\SearchContro
 
 /*
  * Controller based Routes :) */
-
-Route::get('json', function () {
-    $arr = array('Tip' => 'Telefon', 'Pret' => 2, 'data' => 3);
-      //var_dump($arr);
-
-
-
-    $json = '
-{
-    "type": "donut",
-    "name": "Cake",
-    "toppings": [
-        { "id": "5002", "type": "Glazed" },
-        { "id": "5006", "type": "Chocolate with Sprinkles" },
-        { "id": "5004", "type": "Maple" }
-    ]
-}';
-    $osi = '{"physical":"cables","data link":"mac address","network":"ip address","transport":"tcp","session":"application connections","presentation":"translation","application":"email"}';
-    $osi = json_decode($osi);
-
-    foreach ($osi as $key => $value){
-        echo $key.' => '.$value.'<br>';
-    }
-
-
-    $json = json_encode(array(
-        "client" => array(
-            "build" => "1.0",
-            "name" => "xxxxxx",
-            "version" => "1.0"
-        ),
-        "protocolVersion" => 4,
-        "data" => array(
-            "distributorId" => "xxxx",
-            "distributorPin" => "xxxx",
-            "locale" => "en-US"
-        )
-    ));
-    var_dump($json);
-    $deco = json_decode($json);
-    foreach ($deco as $key => $value){
-        echo $key.' => '.$value.'<br>';
-    }
-});
 
 Route::get('salve', function() {
    return view('test');

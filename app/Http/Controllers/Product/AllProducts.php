@@ -36,7 +36,6 @@ class AllProducts extends Controller
 
     public function getTVs(Request $request)
     {
-
         function testRange($int,$min,$max){
             return ($min<$int && $int<$max);
         }

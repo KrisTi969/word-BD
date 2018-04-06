@@ -56,7 +56,7 @@ else {
                                 <?php endforeach;?>
                                 <tr>
                                     <td colspan="5" rowspan="5">
-                                        Total Price <span class="bold text-primary" style="margin-left: 73%">700$</span>
+                                        Total Price <span class="bold text-primary" style="margin-left: 73%">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span>
                                     </td>
                                 </tr>
                                 <div class="clearfix"></div>

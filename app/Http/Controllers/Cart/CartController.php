@@ -48,6 +48,21 @@ class CartController extends Controller
             $product = Product::where('id', $id)->first();
             if($product) {
                \Cart::add($product->id,$product->title,1,$product->price);
+               /// verificam daca trebuie salvat noul cart in db
+                if(Auth::check()) {
+                    $id = \Auth::user()->id;//id'ul lui
+                    $cartIdentifier = DB::table('shoppingcart')->select('identifier')->where('identifier', '=', $id)->first();
+                    if($cartIdentifier) {
+                        //exista deja, trebuie updatat
+                        DB::table('shoppingcart')->where('identifier', $cartIdentifier->identifier)->delete();//stergem
+                        \Cart::store(\Auth::user()->id);//adaugam iar
+                    }
+                    else {
+                        //cazul cand o fost luat din db, si trebuie adaugat iar
+                        \Cart::store(\Auth::user()->id);
+                    }
+
+                }
                 /*Cart::add($product->id,$product->title, 1,$product->price);*/
                 return view('account.account_cart');
             }
@@ -56,6 +71,19 @@ class CartController extends Controller
     public function removeItem($id) {
         if($id) {
             \Cart::remove($id);
+            if(Auth::check()) {
+                $id = \Auth::user()->id;//id'ul lui
+                $cartIdentifier = DB::table('shoppingcart')->select('identifier')->where('identifier', '=', $id)->first();
+                if($cartIdentifier) {
+                    //exista deja, trebuie updatat
+                    DB::table('shoppingcart')->where('identifier', $cartIdentifier->identifier)->delete();//stergem
+                    \Cart::store(\Auth::user()->id);//adaugam iar
+                }
+                else {
+                    //cazul cand o fost luat din db, si trebuie adaugat iar
+                    \Cart::store(\Auth::user()->id);
+                }
+            }
            /* \Cart::remove('c42f6beec9c93fd6afea6eb0684aa99');*/
             return view('account.account_cart');
         }

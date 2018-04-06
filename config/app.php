@@ -149,6 +149,7 @@ return [
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        \Actuallymab\LaravelComment\LaravelCommentServiceProvider::class,
         /*
          * Package Service Providers...
          */

@@ -35,8 +35,9 @@
                                                     <span class="text-danger">
                                                         <strong id="email-error"></strong>
                                                     </span>
-
+                                                    {{$errors->first('email')}}
                                                     @if ($errors->has('email'))
+                                                        {{'daa'}}
                                                         <span class="invalid-feedback">
                                                             <strong style="color:darkred;">{{ $errors->first('email') }}</strong>
                                                         </span>
@@ -110,7 +111,6 @@
 <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 <script>
     jQuery(document).ready(function(){
-        debugger;
         jQuery('#ajaxSubmit').click(function(e){
             // jQuery('.alert').show();
             e.preventDefault();
@@ -131,6 +131,7 @@
                     console.log(data);
                     if (data.errors) {
                         if (data.errors.email) {
+                            console.log(data.errors.email[0]);
                             $('#email-error').html(data.errors.email[0]);
                         }
                         if (data.errors.password) {
