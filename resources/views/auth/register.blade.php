@@ -145,6 +145,22 @@
                                 </div>
                             </div>
 
+
+                            <div class="form-group row">
+                                <label for="phone_number" class="col-sm-2 form-control-label Whitish">Phone Number:</label>
+                                <div class="col-sm-8">
+                                    <input type='text' class="form-control" placeholder="Phone Number" name="phone_number" id="phone_number" oninput="myFunction('#phone_number-error')"/>
+
+                                    <span class="text-danger">
+                                        <strong id="phone_number-error"></strong>
+                                    </span>
+
+
+                                    </span>
+                                </div>
+                            </div>
+
+
                             <div class="form-group row">
                                 <label for="cp" class="col-sm-2 form-control-label Whitish">Postal code:</label>
                                 <div class="col-sm-8" id="cp">
@@ -462,6 +478,7 @@
                     password: jQuery('#password').val(),
                     password_confirmation: jQuery('#password_confirmation').val(),
                     birthdate: jQuery('#birthdate').val(),
+                    phone_number: jQuery('#phone_number').val(),
                     address: jQuery('#address').val(),
                     city: jQuery('#city').val(),
                     postal_code: jQuery('#postal_code').val(),
@@ -478,6 +495,9 @@
                         }
                         if (data.errors.email) {
                             $('#email-error').html(data.errors.email[0]);
+                        }
+                        if (data.errors.phone_number) {
+                            $('#phone_number-error').html(data.errors.phone_number[0]);
                         }
                         if (data.errors.password) {
                             $('#password-error').html(data.errors.password[0]);

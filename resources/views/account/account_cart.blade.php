@@ -98,8 +98,9 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4">
-                                            <input type="submit" class="btn btn-yellow btn-lg pull-right margin-bottom-20" name="" value="Continue to Checkout" />
-                                            <a href="products.html" class="btn btn-success btn-lg pull-right margin-right-20">
+                                            <a href="{{route('checkout')}}" class="btn btn-yellow btn-lg pull-right margin-bottom-20">
+                                                <i class="fa"></i> Continue to checkout</a>
+                                            <a href="{{route('/')}}" class="btn btn-success btn-lg pull-right margin-right-20">
                                                 <i class="fa fa-plus"></i> Add More Products</a>
 
                                             <div class="clearfix"></div>

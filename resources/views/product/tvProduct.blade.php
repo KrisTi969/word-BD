@@ -134,7 +134,7 @@
                         <div class="single-extra-div">
                             <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productReviewCollapse" aria-controls="#productReviewCollapse">
                         <span class="pull-left title-sidebar"> <i class="fa fa-check-square-o"></i>
-                            Product Reviews <span class="badge">2</span>
+                            Product Reviews <span class="badge">{{\App\Http\Controllers\Product\ProductController::getProductReviewCount($product->id)}}</span>
                         </span>
                                 <span class="pull-right"><i class="fa fa-plus"></i></span>
                                 <span class="pull-right"><i class="fa fa-minus"></i></span>

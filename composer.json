@@ -12,10 +12,12 @@
         "etdsolutions/microplugin": "0.0.3",
         "fideloper/proxy": "~4.0",
         "gloudemans/shoppingcart": "2.5.0",
+        "illuminate/database": "5.6.x-dev",
         "laravel/framework": "5.6.*",
         "laravel/scout": "v4.0.3",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "5.6.x-dev"
+        "laravelcollective/html": "5.6.x-dev",
+        "venturecraft/revisionable": "1.28.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -62,6 +64,7 @@
         "sort-packages": true,
         "optimize-autoloader": true
     },
+    "venturecraft/revisionable": "1.*",
     "minimum-stability": "dev",
     "prefer-stable": true
 }

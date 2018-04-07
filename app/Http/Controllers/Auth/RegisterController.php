@@ -89,7 +89,8 @@ class RegisterController extends Controller
             'address' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'postal_code' => 'required|regex:/^[0-9]+$/u|max:18|',
-            'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|'
+            'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+             'phone_number' => 'required|min:10|numeric|'
         ]);
 
         if ($validator->passes()) {
@@ -101,6 +102,7 @@ class RegisterController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->username = $request->username;
+            $user->phone_number = $request->phone_number;
 
             /*Restructuram formatul datei pentru a fi compatibil */
             $oldFormat = $request->birthdate;
@@ -113,7 +115,7 @@ class RegisterController extends Controller
             $user->country = $request->country;
             $user->email_token = base64_encode($request->email);
             $user->timestamps;
-            $user->setRememberToken("dasdasdasdas");
+            $user->setRememberToken($user->name.$user->lname);
             $user->save();
 
             dispatch(new SendVerificationEmail($user));

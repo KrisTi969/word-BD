@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/checkout', 'Order\OrderController@index')->name('checkout');
+
 Route::post('/addReview', 'Product\ProductController@addReview');
 
 Route::get('/AccountCart', 'Cart\CartController@index')->name('seeCart');

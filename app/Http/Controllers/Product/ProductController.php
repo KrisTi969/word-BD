@@ -83,6 +83,9 @@ class ProductController extends Controller
     public static function getProductAverageReview($id){
         $product = Product::where('id',$id)->first();
         $average_review = $product->averageRate();
+        if($average_review == null) {
+            $average_review = 0;
+        }
         $product->average_reviews = $average_review;
         $product->save();
         return $average_review;
