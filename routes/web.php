@@ -13,6 +13,8 @@
 
 Route::get('/checkout', 'Order\OrderController@index')->name('checkout');
 
+Route::post('/newOrder', 'Order\OrderController@newOrder')->name('newOrder');
+
 Route::post('/addReview', 'Product\ProductController@addReview');
 
 Route::get('/AccountCart', 'Cart\CartController@index')->name('seeCart');

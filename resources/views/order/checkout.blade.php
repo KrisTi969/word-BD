@@ -17,6 +17,9 @@
 
     <div class="content-area">
         <div class="container">
+
+
+
             <div class="checkout-page">
                 <h2>Checkout  process</h2>
                 <div class="checkout-top-ok">
@@ -24,8 +27,8 @@
                     <span id="check-two-top">2</span><span class="check-dots">-----></span>
                     <span id="check-three-top">3    </span>
                 </div>
-                <form action="" method="POST" class="form-horizontal" role="form" id="checkoutForm">
-
+                <form action="/newOrder" method="POST" class="form-horizontal" role="form" id="checkoutForm">
+                    {{ csrf_field() }}
                     <div id="check1">
                         <h3>Basic Informations</h3>
                         @if(!Auth::check())
@@ -82,9 +85,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="shipping_contact">Shipping City: *</label>
+                            <label class="control-label col-sm-2" for="shipping_city">Shipping City: *</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control inputs" value="{{Auth::user()->city}}" id="shipping_contact" placeholder="Enter Your Shipping Contact No"  required/>
+                                <input type="text" class="form-control inputs" value="{{Auth::user()->city}}" id="shipping_city" placeholder="Enter Your Shipping City "  required/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -97,6 +100,13 @@
                             <label class="control-label col-sm-2" for="shipping_postal">Postal Code: *</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control inputs" value="{{Auth::user()->postal_code}}" id="shipping_postal" placeholder="Enter Your Postal Code"  required/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="shipping_notes">Notes: *</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control inputs"  id="shipping_notes" placeholder="Enter Additional Details"></textarea>
                             </div>
                         </div>
 
@@ -127,13 +137,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="shipping_contact">Shipping City: *</label>
+                                <label class="control-label col-sm-2" for="shipping_city">Shipping City: *</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control inputs" value="" id="shipping_contact" placeholder="Enter Your Shipping Contact No"  required/>
+                                    <input type="text" class="form-control inputs" value="" id="shipping_city" placeholder="Enter Your Shipping City"  required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-sm-2" for="shipping_address">*</label>
+                                <label class="control-label col-sm-2" for="shipping_address">Shipping Address: *</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control inputs" value="" id="shipping_address" placeholder="Enter Your Shipping Address"  required/>
                                 </div>
@@ -144,6 +154,15 @@
                                     <input type="text" class="form-control inputs" value="" id="shipping_postal" placeholder="Enter Your Postal Code"  required/>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="shipping_notes">Notes: *</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control inputs"  id="shipping_notes" placeholder="Enter Additional Details"></textarea>
+                                </div>
+                            </div>
+
+
 
                             <div class="form-group">
                                 <div class="col-sm-10 col-sm-offset-2">
@@ -161,12 +180,12 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="address_primary">Select Payment Option: *</label>
                             <div class="col-sm-10">
-                                <select name="payments" id="payments" class="form-control inputs"  required>
+                                <select name="payment" id="payment" class="form-control inputs"  required>
                                     <option value="">Select A payment method</option>
-                                    <option value="paymant_cash">Cash on arrival</option>
-                                    <option value="payment_paypal">Paypal</option>
-                                    <option value="payment_stripe">Stripe</option>
-                                    <option value="payment_visa">Visa</option>
+                                    <option value="cash">Cash on arrival</option>
+                                    <option value="paypal">Paypal</option>
+                                    <option value="stripe">Stripe</option>
+                                    <option value="visa">Visa</option>
                                 </select>
                                 <div class="payment-div payment-div-paypal hidden">
                                     <i class="fa fa-cc-paypal"></i> <br />
@@ -181,16 +200,67 @@
                                     <a href="" class="btn btn-lg btn-yellow">Payment Via visa Now</a>
                                 </div>
                             </div>
+                            <div class="cart-page">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th width="50%">Item</th>
+                                        <th width="10%">Quantity</th>
+                                        <th width="20%">Unit Price</th>
+                                        <th width="20%">Total Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {{--/////////////////////--}}
+                                        <?php foreach(Cart::content() as $row) :?>
+                                        <tr>
+                                            <td>
+                                                <img src="images/product-slide/product2.png" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
+                                                <span class="pull-left cart-product-option"></span>
+
+                                                <strong><?php echo $row->name ?></strong><br />
+
+                                                </span>
+                                                <div class="clearfix"></div>
+                                            </td>
+                                            <td><input type="number" min="1" name="product_quantity_p1" value="1" class="form-control product_quantity_p1" /></td>
+                                            <td>{{$row->price}}</td>
+                                            <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
+                                        </tr>
+                                        <?php endforeach;?>
+
+
+                                    {{--/////////////////////--}}
+                                    <tr>
+                                        <td></td>
+                                        <td colspan="1"><strong>Total:</strong></td>
+                                        <td></td>
+                                        <td>
+                                            <p><span class="total_product_sum">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span></p>
+                                        </td>
+                                        <div class="clearfix"></div>
+                                    </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div> <!--End Cart page-->
+
                         </div>
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <input type="submit" class="btn btn-info pull-right  margin-top-20" name="submit_check1" value="Finish Order"/>
+                                <input type="submit" class="submitOrder btn btn-info pull-right  margin-top-20" name="submit_check1" value="Finish Order"/>
+                                <input type="button" class="btn btn-danger pull-right  margin-top-20 margin-right-20 backToCheck2" name="backToCheck2" value="Back"/>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                     </div> <!-- End check3 -->
 
                 </form>
+
+
+
+
             </div> <!--End Checkout page -->
         </div> <!-- End Container -->
 
@@ -202,7 +272,6 @@
 
 <!-- Scripts -->
 
-
 <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('js/wow.min.js') }}"></script>
@@ -212,6 +281,9 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+
+<script type="text/javascript" src="{{asset('js/order.js')}}"></script>
+
 <script type="text/javascript">
     $("#search").autocomplete({
         source: function(request, response){
@@ -317,7 +389,6 @@
                     }
                 }
             }
-
             if (pass_check2 != false) {
                 $('#check2').addClass('hidden');
                 $('#check-two-top').html('<i class="fa fa-check"></i>');
@@ -328,8 +399,6 @@
                 $('#payments').focus();
             }
         });
-
-
         $('.backToCheck1').click(function() {
             pass_check1 = false;
             $('#check1').removeClass('hidden');
@@ -339,13 +408,12 @@
             $('#check-one-top').css({"background-color": "#14074c"});
             $('#check-two-top').css({"background-color": "#bb0018"});
         });
-
         $('.backToCheck2').click(function() {
             pass_check2 = false;
             $('#check2').removeClass('hidden');
             $('#check3').addClass('hidden');
 
-            $('#check-two-top').html('1');
+            $('#check-two-top').html('2');
             $('#check-two-top').css({"background-color": "#001b4c"});
             $('#check-three-top').css({"background-color": "#5fbb32"});
         });
@@ -373,7 +441,6 @@
                 $('.payment-div-paypal').addClass('hidden');
                 $('.payment-div-stripe').addClass('hidden');
             }
-
         });
     });
 </script>

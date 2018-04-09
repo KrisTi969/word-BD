@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a97bd02e2b6fd65c2dce1768902f61e",
+    "content-hash": "eb31b4ec97f41e9c28a9409ed8ba29d3",
     "packages": [
         {
             "name": "actuallymab/laravel-comment",
@@ -3044,6 +3044,268 @@
             "time": "2016-01-20T08:20:44+00:00"
         },
         {
+            "name": "konekt/address",
+            "version": "0.9.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artkonekt/address.git",
+                "reference": "b2942fc972819b8850ac8d1a2e51ec7a3f846a15"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artkonekt/address/zipball/b2942fc972819b8850ac8d1a2e51ec7a3f846a15",
+                "reference": "b2942fc972819b8850ac8d1a2e51ec7a3f846a15",
+                "shasum": ""
+            },
+            "require": {
+                "konekt/concord": ">=0.9.7",
+                "konekt/enum": "~2.1",
+                "konekt/enum-eloquent": "~1.1",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "monolog/monolog": "^1.22",
+                "orchestra/testbench": "^3.4.2",
+                "phpunit/phpunit": "~6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Konekt\\Address\\": "src",
+                    "Konekt\\Address\\Seeds\\": "src/resources/database/seeds"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "Laravel module for handling countries, cities, addresses, people and organizations",
+            "time": "2017-11-24T11:24:20+00:00"
+        },
+        {
+            "name": "konekt/concord",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artkonekt/concord.git",
+                "reference": "7f2a82d5c865539efc8dba665ee2e861a953e882"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artkonekt/concord/zipball/7f2a82d5c865539efc8dba665ee2e861a953e882",
+                "reference": "7f2a82d5c865539efc8dba665ee2e861a953e882",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.4",
+                "illuminate/support": "~5.4",
+                "konekt/enum": "~2.1",
+                "konekt/enum-eloquent": "^1.1.3",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.4.2",
+                "phpunit/phpunit": "6.0 - 7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Konekt\\Concord\\ConcordServiceProvider"
+                    ],
+                    "aliases": {
+                        "Concord": "Konekt\\Concord\\Facades\\Concord",
+                        "Helper": "Konekt\\Concord\\Facades\\Helper"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Konekt\\Concord\\": "src"
+                },
+                "files": [
+                    "src/Support/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "Concord is a Laravel Extension for building modular Laravel Applications",
+            "time": "2018-02-18T14:28:44+00:00"
+        },
+        {
+            "name": "konekt/enum",
+            "version": "2.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artkonekt/enum.git",
+                "reference": "2f4fd79072725ad79a89c9668614af1759d5f09c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artkonekt/enum/zipball/2f4fd79072725ad79a89c9668614af1759d5f09c",
+                "reference": "2f4fd79072725ad79a89c9668614af1759d5f09c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Konekt\\Enum\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "SPL inspired PHP enum class implementation",
+            "keywords": [
+                "artkonekt",
+                "enum",
+                "konekt"
+            ],
+            "time": "2017-10-13T14:21:22+00:00"
+        },
+        {
+            "name": "konekt/enum-eloquent",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artkonekt/enum-eloquent.git",
+                "reference": "f67c981d549f69cddb9956ef51d16267c050a0c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artkonekt/enum-eloquent/zipball/f67c981d549f69cddb9956ef51d16267c050a0c9",
+                "reference": "f67c981d549f69cddb9956ef51d16267c050a0c9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "5.*",
+                "konekt/enum": "^2.0.2",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "illuminate/events": "5.*",
+                "phpunit/phpunit": "~6.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Konekt\\Enum\\Eloquent\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "Enum attribute casting for Eloquent models",
+            "keywords": [
+                "artkonekt",
+                "eloquent",
+                "enum",
+                "konekt",
+                "laravel"
+            ],
+            "time": "2017-12-08T17:57:42+00:00"
+        },
+        {
+            "name": "konekt/user",
+            "version": "0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/artkonekt/user.git",
+                "reference": "6c7897cc0e4189f64d29f33d04b6f9d638c85a72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/artkonekt/user/zipball/6c7897cc0e4189f64d29f33d04b6f9d638c85a72",
+                "reference": "6c7897cc0e4189f64d29f33d04b6f9d638c85a72",
+                "shasum": ""
+            },
+            "require": {
+                "konekt/address": ">=0.9.0",
+                "konekt/concord": ">=0.9.0",
+                "php": ">=7.0.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0@dev",
+                "monolog/monolog": "^1.22",
+                "orchestra/testbench": "~3.4.2|~3.5",
+                "phpunit/phpunit": "~6.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Konekt\\User\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "User handling module for Laravel applications",
+            "keywords": [
+                "concord",
+                "concord-module",
+                "laravel",
+                "user"
+            ],
+            "time": "2017-12-11T20:20:21+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.0",
             "source": {
@@ -4561,6 +4823,214 @@
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
             "time": "2017-04-07T12:08:54+00:00"
+        },
+        {
+            "name": "vanilo/address",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vanilophp/address.git",
+                "reference": "48ea0ecaa864982f3c14352490b412d0a4df148f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vanilophp/address/zipball/48ea0ecaa864982f3c14352490b412d0a4df148f",
+                "reference": "48ea0ecaa864982f3c14352490b412d0a4df148f",
+                "shasum": ""
+            },
+            "require": {
+                "konekt/address": ">=0.9.6",
+                "php": ">=7.0.0",
+                "vanilo/contracts": "0.2.*",
+                "vanilo/support": "0.2.*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "3.4.2",
+                "phpunit/phpunit": "6.2 - 7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vanilo\\Address\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "Vanilo Address Module",
+            "keywords": [
+                "address",
+                "artkonekt",
+                "ecommerce",
+                "laravel",
+                "vanilo"
+            ],
+            "time": "2018-02-19T00:12:55+00:00"
+        },
+        {
+            "name": "vanilo/contracts",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vanilophp/contracts.git",
+                "reference": "5c6df72903ab03e757af1e3293cd1d41ae150bca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vanilophp/contracts/zipball/5c6df72903ab03e757af1e3293cd1d41ae150bca",
+                "reference": "5c6df72903ab03e757af1e3293cd1d41ae150bca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vanilo\\Contracts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "Common set of Vanilo Contracts (Interfaces)",
+            "keywords": [
+                "artkonekt",
+                "ecommerce",
+                "laravel",
+                "vanilo"
+            ],
+            "time": "2018-02-19T00:15:45+00:00"
+        },
+        {
+            "name": "vanilo/order",
+            "version": "0.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vanilophp/order.git",
+                "reference": "a131cbcd92d5966e2800f6263a56061c1905690d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vanilophp/order/zipball/a131cbcd92d5966e2800f6263a56061c1905690d",
+                "reference": "a131cbcd92d5966e2800f6263a56061c1905690d",
+                "shasum": ""
+            },
+            "require": {
+                "konekt/concord": "~1.1",
+                "konekt/user": ">=0.9.0",
+                "php": ">=7.0.0",
+                "vanilo/address": "0.2.*",
+                "vanilo/contracts": "0.2.*",
+                "vanilo/support": "0.2.*"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.4.2",
+                "phpunit/phpunit": "6.2 - 7.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vanilo\\Order\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "Vanilo Order Module",
+            "keywords": [
+                "artkonekt",
+                "ecommerce",
+                "laravel",
+                "order",
+                "vanilo"
+            ],
+            "time": "2018-04-01T17:40:44+00:00"
+        },
+        {
+            "name": "vanilo/support",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vanilophp/support.git",
+                "reference": "29118d894b70cd9608e6a6de79c9c7661507f30b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vanilophp/support/zipball/29118d894b70cd9608e6a6de79c9c7661507f30b",
+                "reference": "29118d894b70cd9608e6a6de79c9c7661507f30b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Vanilo\\Support\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Attila Fulop",
+                    "homepage": "https://github.com/fulopattila122"
+                }
+            ],
+            "description": "Common Vanilo functions, traits, helpers",
+            "keywords": [
+                "artkonekt",
+                "ecommerce",
+                "laravel",
+                "vanilo"
+            ],
+            "time": "2018-02-19T00:17:42+00:00"
         },
         {
             "name": "webmozart/assert",
