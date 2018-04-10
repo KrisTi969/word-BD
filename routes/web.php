@@ -31,16 +31,23 @@ Route::auth();
 Route::get('/home', 'HomeController@index')->name('home');
 
 ////
-Route::view('/grocery', 'ajax');
 
 Route::get('/Product/{id}', 'Product\ProductController@findProduct')->name('product');
-
 
 Route::post('/grocery/post', 'GroceryController@store');
 Route::post('/register/post', 'Auth\RegisterController@store');
 Route::post('/login/check', 'Auth\LoginController@loginCheck');
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@email_verification');
+
+/**/
+
 Route::get('/products', 'Product\AllProducts@getProducts')->name('Electronic-Appliances');
+Route::get('/products/new', 'Product\AllProducts@getProductsWithFilterNew')->name('Electronic-Appliances-New');
+Route::get('/products/lowest-price', 'Product\AllProducts@getProductsWithFilterLowPrice')->name('Electronic-Appliances-Low-Price');
+Route::get('/products/high-price', 'Product\AllProducts@getProductsWithFilterHighPrice')->name('Electronic-Appliances-High-Price');
+Route::get('/products/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Electronic-Appliances-Best-Rating');
+
+/**/
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
 ////
 

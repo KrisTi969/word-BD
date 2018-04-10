@@ -284,31 +284,7 @@
 
 <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
 
-<script type="text/javascript">
-    $("#search").autocomplete({
-        source: function(request, response){
-            $.get("http://127.0.0.1:8000/autocomplete", {
-                term:request.term
-            }, function(data){
-                response($.map(data, function(item) {
-                    return {
-                        value: item.id,
-                        label: item.title
-                    }
-                }))
-            }, "json");
-        },
-        select: function( event, ui ) {
-            console.log( ui.item ?
-                "Selected: " + ui.item.label :
-                "Nothing selected, input was " + this.value);
-            window.location.href = "/Product/" + ui.item.value;
-        },
-        minLength: 2,
-        dataType: "json",
-        cache: false
-    });
-</script>
+<script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
 <script type="text/javascript">
     //Scripts for checkout functions one by one input fields.
     jQuery(document).ready(function() {

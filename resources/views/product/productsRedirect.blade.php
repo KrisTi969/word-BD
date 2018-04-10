@@ -78,11 +78,10 @@
                                 <li class="dropdown head-dpdn">
                                     <a href="#" class="dropdown" data-toggle="dropdown" style="font-size: large">Sort By<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Most Popular</a></li>
-                                        <li><a href="#">New In</a></li>
-                                        <li><a href="#">Lowest price</a></li>
-                                        <li><a href="#">Highest price</a></li>
-                                        <li><a href="#">Best Rating</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-New')}}">New In</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-Low-Price')}}">Lowest price</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-High-Price')}}">Highest price</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-Best-Rating')}}">Best Rating</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -178,30 +177,6 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
-<script type="text/javascript">
-    $("#search").autocomplete({
-        source: function(request, response){
-            $.get("http://127.0.0.1:8000/autocomplete", {
-                term:request.term
-            }, function(data){
-                response($.map(data, function(item) {
-                    return {
-                        value: item.id,
-                        label: item.title
-                    }
-                }))
-            }, "json");
-        },
-        select: function( event, ui ) {
-            console.log( ui.item ?
-                "Selected: " + ui.item.label :
-                "Nothing selected, input was " + this.value);
-            window.location.href = "/Product/" + ui.item.value;
-        },
-        minLength: 2,
-        dataType: "json",
-        cache: false
-    });
-</script>
+<script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
 </body>
 </html>

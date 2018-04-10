@@ -34,6 +34,30 @@ class AllProducts extends Controller
         return view('product.productsRedirect', ['products' => $products]);
     }
 
+    public function getProductsWithFilterNew()
+    {
+            $products = DB::table('products')->orderBy('created_at', 'desc')->paginate(16);
+            return view('product.productsRedirect', ['products' => $products]);
+    }
+
+    public function getProductsWithFilterLowPrice()
+    {
+        $products = DB::table('products')->orderBy('price', 'asc')->paginate(16);
+        return view('product.productsRedirect', ['products' => $products]);
+    }
+
+    public function getProductsWithFilterHighPrice()
+    {
+        $products = DB::table('products')->orderBy('price', 'desc')->paginate(16);
+        return view('product.productsRedirect', ['products' => $products]);
+    }
+
+    public function getProductsWithFilterBestRating()
+    {
+        $products = DB::table('products')->orderBy('rating', 'desc')->paginate(16);
+        return view('product.productsRedirect', ['products' => $products]);
+    }
+
     public function getTVs(Request $request)
     {
         function testRange($int,$min,$max){
