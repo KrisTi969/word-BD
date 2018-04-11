@@ -27,10 +27,10 @@
                         <div class="col-sm-3">
                             <h2>My Account</h2>
                             <ul>
-                                <li><a href="account.php">Account Control Panel</a></li>
+                                <li><a href="account.blade.php">Account Control Panel</a></li>
                                 <li  class="active"><a href="account_information.php">Personal Information</a></li>
                                 <li><a href="account_order.php">My Orders</a></li>
-                                <li><a href="account/account_cart.blade.php">My Carts</a></li>
+                                <li><a href="account_cart.blade.php">My Carts</a></li>
                                 <li><a href="account_reviews.php">My Reviews and Ratings</a></li>
                             </ul>
                         </div>
@@ -112,12 +112,12 @@
         <?php include "footer.blade.php"; ?>
     </div> <!-- End wrapper -->
     <!-- Scripts -->
-    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="../../public/js/wow.min.js"></script>
-    <script type="text/javascript" src="../../public/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../public/js/webslidemenu.js"></script>
-    <script type="text/javascript" src="../../public/js/main.js"></script>
+    <script type="text/javascript" src="../../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../../public/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="../../../public/js/wow.min.js"></script>
+    <script type="text/javascript" src="../../../public/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../public/js/webslidemenu.js"></script>
+    <script type="text/javascript" src="../../../public/js/main.js"></script>
 
 </body>
 </html>

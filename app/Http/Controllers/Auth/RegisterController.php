@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Response;
+use DB;
 use Illuminate\Auth\Events\Registered;
 use App\Jobs\SendVerificationEmail;
 

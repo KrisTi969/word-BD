@@ -18,6 +18,10 @@ Route::post('/newOrder', 'Order\OrderController@newOrder')->name('newOrder');
 Route::post('/addReview', 'Product\ProductController@addReview');
 
 Route::get('/AccountCart', 'Cart\CartController@index')->name('seeCart');
+Route::get('/Account', 'Account\AccountController@index')->name('Account');
+
+
+
 Route::get('/cart/{id}', 'Cart\CartController@addToCart')->name('cart');
 Route::get('/removeItem/{id}','Cart\CartController@removeItem')->name('remove');
 
@@ -36,6 +40,8 @@ Route::get('/Product/{id}', 'Product\ProductController@findProduct')->name('prod
 
 Route::post('/grocery/post', 'GroceryController@store');
 Route::post('/register/post', 'Auth\RegisterController@store');
+Route::post('/edit/contact', 'Account\AccountController@editContact')->name('editContact');
+
 Route::post('/login/check', 'Auth\LoginController@loginCheck');
 Route::get('/verifyemail/{token}', 'Auth\RegisterController@email_verification');
 

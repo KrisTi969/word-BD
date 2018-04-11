@@ -319,7 +319,7 @@ else {
                                         <li><a href="/register"><i class="fa fa-registered"></i>Register</a></li>
                                     @endguest
                                     @if(Auth::check())
-                                        <li><a href=""><i class="fa fa-black-tie"></i>View Profile</a></li>
+                                        <li><a href="{{route('Account')}}"><i class="fa fa-black-tie"></i>View Profile</a></li>
                                             <li><a href="{{route('seeCart')}}"><i class="fa fa-shopping-cart"></i>My Cart</a></li>
                                         <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
                                         <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
@@ -339,7 +339,7 @@ else {
 
                             <div class="header-cart">
                                 <a href="#" class="cart-link" data-toggle="modal" data-target="#cart-item"><i class="fa fa-cart-arrow-down"></i></a>
-                                <span class="number-of-cart">20</span>
+                                <span class="number-of-cart">{{\Cart::count()}}</span>
                             </div>
                         </ul>
                     </nav>
