@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Comments extends Model
+class Comment extends Model
 {
     /**
      * The attributes that are mass assignable.

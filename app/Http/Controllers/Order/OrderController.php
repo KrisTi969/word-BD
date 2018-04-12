@@ -54,7 +54,7 @@ class OrderController extends Controller
         //adaugam order
 
         if(\Auth::user()) {
-            $id = Auth::user()->id;
+            $id = \Auth::user()->id;
         }
         else {
             $id = 85;

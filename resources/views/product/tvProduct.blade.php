@@ -146,7 +146,7 @@
                                 @if(\Auth::check())
                                     <script type="text/javascript" src="{{asset('js/comments.js')}}"></script> <!-- path to tuto_comments.js -->
                                     <h2>Leave a review</h2>
-                                    <div id="newComment"></div> <!-- the comment posted will be displayed here -->
+                                    <div id="newComment"></div> <!-- the result will be  posted displayed here -->
 
                                     <form class="form-horizontal" role="form" action="#" method="post">
                                         <div class="form-group" >

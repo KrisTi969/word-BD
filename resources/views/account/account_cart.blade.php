@@ -19,11 +19,10 @@
                     <div class="col-sm-3">
                         <h2>My Account</h2>
                         <ul>
-                            <li><a href="account.blade.php">Account Control Panel</a></li>
-                            <li><a href="account_information.php">Personal Information</a></li>
-                            <li><a href="account_carts.html">My Orders</a></li>
-                            <li class="active"><a href="account_cart.blade.php">My Carts Products</a></li>
-                            <li><a href="account_reviews.html">My Reviews and Ratings</a></li>
+                            <li><a href="{{route('Account')}}">Account Control Panel</a></li>
+                            <li><a href="{{route('Orders')}}">My Orders</a></li>
+                            <li class="active"><a href="{{route('seeCart')}}">My Carts Products</a></li>
+                            <li><a href="{{route('Reviews')}}">My Reviews and Ratings</a></li>
                         </ul>
                     @endif
                     </div>

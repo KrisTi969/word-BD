@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Product;
 use App\Product;
-use App\Comments;
+use App\Comment;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -59,7 +59,7 @@ class ProductController extends Controller
     }
 
     public static function getProductReviews($id) {
-        $review = Comments::where('commentable_id', $id)->where('approved',1)->get(); // reviewurile de la produsul cu id ul dat ca param
+        $review = Comment::where('commentable_id', $id)->where('approved',1)->get(); // reviewurile de la produsul cu id ul dat ca param
 
         foreach ($review as $item) {
             $authorName = User::where('id', $item->commented_id)->first();
@@ -70,6 +70,15 @@ class ProductController extends Controller
             echo nl2br($item->comment);
             echo '</div>';
         }
+    }
+
+    public static function getProductName($id) {
+        $product = Product::where('id', $id)->first();
+    if($product) {
+
+        return $product->title;
+    }
+    return null;
     }
 
     public static function getProductReviewCount($id){

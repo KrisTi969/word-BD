@@ -1,4 +1,8 @@
- body{
+
+.hiddenRow {
+    padding: 0 !important;
+}
+body{
         font-family: sans-serif monospace;
         zoom: 80%; /* Other non-webkit browsers */
      background: #222;

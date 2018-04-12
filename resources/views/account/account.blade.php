@@ -28,9 +28,9 @@
                             <h2>My Account</h2>
                             <ul>
                                 <li  class="active"><a href="{{route('Account')}}">Account Control Panel</a></li>
-                                <li><a href="account_orders.php">My Orders(!)</a></li>
-                                <li><a href="account_cart.blade.php">My Cart Products</a></li>
-                                <li><a href="account_reviews.php">My Reviews and Ratings</a></li>
+                                <li><a href="{{route('Orders')}}">My Orders</a></li>
+                                <li><a href="{{route('seeCart')}}">My Cart Products</a></li>
+                                <li><a href="{{route('Reviews')}}">My Reviews and Ratings</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-9">

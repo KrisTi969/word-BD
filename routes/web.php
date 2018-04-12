@@ -19,7 +19,8 @@ Route::post('/addReview', 'Product\ProductController@addReview');
 
 Route::get('/AccountCart', 'Cart\CartController@index')->name('seeCart');
 Route::get('/Account', 'Account\AccountController@index')->name('Account');
-
+Route::get('/Orders', 'Account\AccountController@orderIndex')->name('Orders');
+Route::get('/reviews', 'Account\AccountController@reviewsIndex')->name('Reviews');
 
 
 Route::get('/cart/{id}', 'Cart\CartController@addToCart')->name('cart');

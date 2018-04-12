@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Comment;
+use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use DB;
 use Response;
+use App\Model\Order;
 
 class AccountController extends Controller
 {
@@ -22,6 +25,37 @@ class AccountController extends Controller
             return abort(404);
         }
     }
+
+    public function orderIndex(){
+        if(\Auth::check()){
+        $order = Order::where('user_id',\Auth::user()->id)->get();
+        $products = collect();//cream colectie noua
+        foreach ($order as $item){
+            $prodnou = DB::table('order_items')
+                ->select(DB::raw('*'))
+                ->where('order_id', '=', $item->id)
+                ->get();
+            foreach ($prodnou as $prod){
+                $products->push($prod);//adaugam produsul la lista de produse ale repectivului user
+            }
+        }
+            return view('account.orders',['orders' => $order, 'products' => $products]);
+        }
+        else {
+            return abort(404);
+        }
+    }
+
+    public function reviewsIndex(){
+        if(\Auth::check()){
+            $comments = Comment::where('commented_id',\Auth::user()->id)->where('approved','=',1)->get();
+            return view('account.account_reviews',['comments' => $comments]);
+        }
+        else {
+            return abort(404);
+        }
+    }
+
 
     public function editContact(Request $request)
     {
