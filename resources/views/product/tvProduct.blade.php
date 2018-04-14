@@ -66,6 +66,7 @@
                                    {{-- <li><i class="fa fa-star-o" aria-hidden="true"></i></li>--}}
                                     <li class="rating">{{\App\Http\Controllers\Product\ProductController::getProductReviewCount($product->id)}} reviews</li>
                                     <li><a href="#">Add your review</a></li>
+
                                 </ul>
                             </div>
                             <div class="single-price">
@@ -86,6 +87,43 @@
                                 <button type="submit" class="btn btn-red" ><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart</button>
                                 <button class="btn btn-primary"><i class="fa fa-heart-o" aria-hidden="true"></i> Add to Wishlist</button>
                             </form>
+                            <br>
+
+                            <button class="btn btn-warning"data-toggle="modal" data-target="#myModal"><i class="fa fa-eye" aria-hidden="true"></i> Check it wth Augmented Reality </button>
+
+                            <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Augmented Reality</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @mobile
+                                          {{--  @include('ar.augmented_reality')--}}
+
+                                            <img style="width: auto;max-width: 100%;height: auto" src="{{asset('images/ar/HIRO.jpg')}}">
+                                            @endmobile
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <br><br>
+                            <form action="{{route('Augmented-Reality')}}" method="post">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <button type="submit" class="btn btn-warning" ><i class="fa fa-eye" aria-hidden="true"></i> Augmented Reality Camera </button>
+
+
+                            </form>
 
                         </div>
                         <div class="clearfix"> </div>
@@ -101,8 +139,8 @@
                         </ul>
                     </div>
 
-                    <div class="single-product-everything">
 
+                    <div class="single-product-everything">
                         <div class="single-extra-div">
                             <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productDescriptionCollapse" aria-controls="#productDescriptionCollapse">
                                 <span class="pull-left title-sidebar"><i class="fa fa-info-circle"></i> Product Description</span>

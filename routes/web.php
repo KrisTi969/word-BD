@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*Route::group(array('middleware' => 'forceSSL'), function() {*/
+Route::post('/ar', 'Ar\AugmentedRealityController@index')->name('Augmented-Reality');
+/*});*/
 Route::get('/checkout', 'Order\OrderController@index')->name('checkout');
 
 Route::post('/newOrder', 'Order\OrderController@newOrder')->name('newOrder');

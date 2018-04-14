@@ -63,5 +63,6 @@ class Kernel extends HttpKernel
         'terminate' =>\App\Http\Middleware\TerminateMiddleware::class,
         'First' => \App\Http\Middleware\FirstMiddleware::class,
         'Second' => \App\Http\Middleware\SecondMiddleware::class,
+        'forceSSL' => \App\Http\Middleware\ForceSSL::class,
     ];
 }
