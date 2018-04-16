@@ -32,7 +32,7 @@ Route::get('/removeItem/{id}','Cart\CartController@removeItem')->name('remove');
 
 Route::get('/', 'Index\IndexController@index')->name('/');
 
-Route::post('/search', 'Api\SearchController@addToCart')->name('search');
+Route::post('/search', 'Api\SearchController@search')->name('search');
 Route::auth();
 
 Route::get('/home', 'HomeController@index')->name('home');

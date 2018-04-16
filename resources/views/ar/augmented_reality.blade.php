@@ -6,26 +6,48 @@
  * Time: 15:22
  */
 ?>
+
+
+<html>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
+<body style='margin : 0px; overflow: hidden;'>
+<a-scene embedded arjs>
+    <a-assets>
+        <a-asset-item id="ship-obj" src="{{asset('images/ar/Iphone editat.obj')}}"></a-asset-item>
+        <a-asset-item id="ship-mtl" src="{{asset('images/ar/Iphone editat.mtl')}}"></a-asset-item>
+    </a-assets>
+    <a-marker preset="hiro">
+        <a-entity scale=".01 .01 .01" obj-model="obj: #ship-obj; mtl: #ship-mtl" ></a-entity>
+    </a-marker>
+    <a-entity camera></a-entity>
+</a-scene>
+</body>
+</html>
+
+
+{{-- GLTF WORKS
+
 <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
 <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
 
 <body style='margin : 0px; overflow: hidden;'>
-<a-scene embedded arjs='sourceType: webcam;'>
+<a-scene  embedded artoolkit='sourceType: webcam; sourceWidth: 240; sourceHeight: 180;' antialias="true" outline>
+    <a-assets>
+        <a-asset-item id="mymodel" src="{{asset('images/ar/LCD TV.gltf')}}"></a-asset-item>
+    </a-assets>
+    <a-marker preset="hiro">
 
-    <a-marker preset='hiro'>
-        <!--Adding a glTF 2.0 model to your scene-->
-        <a-entity
-                gltf-model-next="src: url(/path/to/nameOfFile.gltf);"
-        >
-        </a-entity>
-
+        --}}{{--<a-entity scale="0.08 0.08 0.08">--}}{{--
+            <a-entity mmd='outline: true' afterglow:2.0;>
+                <a-entity scale="1 1 1" gltf-model="#mymodel"></a-entity>
+            </a-entity>
+      --}}{{--  </a-entity>--}}{{--
     </a-marker>
-
     <a-entity camera></a-entity>
 </a-scene>
-</body>
-
+</body>--}}
 
 {{--<html>
 <head>
