@@ -10,6 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+//Admin Routes
+Route::group(['middleware' => 'admin'], function () {
+    //
+    Route::get('/Admin', 'Admin\AdminController@index')->name('Admin');
+    Route::get('/Admin/newUser', 'Admin\AdminController@newUSer')->name('Admin-newUser');
+    Route::post('/Admin/addUser', 'Admin\AdminController@store');
+    Route::get('/Admin/userList/', 'Admin\AdminController@userList')->name('Admin-userList');
+    Route::post('/Admin/editUser', 'Admin\AdminController@editContactByAdmin')->name('Admin-editUser');
+    Route::post('/Admin/deleteUser', 'Admin\AdminController@deleteUser')->name('Admin-deleteUser');
+});
+
+
 /*Route::group(array('middleware' => 'forceSSL'), function() {*/
 Route::post('/ar', 'Ar\AugmentedRealityController@index')->name('Augmented-Reality');
 /*});*/

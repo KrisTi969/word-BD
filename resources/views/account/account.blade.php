@@ -539,6 +539,9 @@
                         if (data.errors.username) {
                             $('#username-error').html(data.errors.username[0]);
                         }
+                        if (data.errors.country) {
+                            $('#country-error').html(data.errors.country[0]);
+                        }
                     }
                     if (data.success) {
                         $('#success-msg').removeClass('hidden');

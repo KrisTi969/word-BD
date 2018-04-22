@@ -70,7 +70,6 @@ class LoginController extends Controller
                 return Response::json(['errors' => 'The account is not verified !']);
             }
         }
-
         return Response::json(['success' => '1']);
     }
 }

@@ -158,12 +158,15 @@
                                     @foreach($product->description as $al=>$ceva)
                                         <h1>{{$al}}</h1>
                                        {{-- {{var_dump($ceva)}}<br>--}}
+                                    <div>
                                         @foreach($ceva as $altceva=>$celelalt)
                                           {{-- {{var_dump($celelalt)}}<br>--}}
+
                                                 @foreach($celelalt as $x=>$y)
                                                 {{$x}}{{":"}} {{$y}}<br>
                                                     @endforeach
-                                            @endforeach
+                                        @endforeach
+                                        </div>
                                     @endforeach
                                     @endif
                             </div>

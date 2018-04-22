@@ -324,6 +324,9 @@ else {
                                         <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
                                         <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
                                         <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>
+                                    @if(Auth::user()->role == "admin")
+                                            <li><a href="{{route('Admin')}}"><i class="fa fa-exclamation-triangle"></i>Admin Page</a></li>
+                                    @endif
                                         <li><a class="dropdown-item" href="{{ route('logout') }}"
                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
