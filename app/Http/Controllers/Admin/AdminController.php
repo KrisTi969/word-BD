@@ -6,6 +6,7 @@ use Response;
 use Validator;
 use DB;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -140,16 +141,50 @@ class AdminController extends Controller
 
     public function deleteUser(Request $request)
     {
-        var_dump($request->emailBeforeUpgrade);
            try{
                DB::table('users')->where('email', '=', $request->emailBeforeUpgrade)->delete();
-               return Response::json(['succes' => '1']);
+               return Response::json(['success' => '1']);
            }
            catch (\SQLiteException $e){
                return Response::json(['errors' => '1']);
     }
+    }
+
+   public function  showUncheckedComments() {
+        if((new \Illuminate\Http\Request)->isMethod('get')) {
+            $comments = DB::table('comments')->orderBy('created_at', 'desc')->paginate(10);
+            return view('admin.admin-uncheckedComments', ['comments' => $comments]);
+        }
+        else{
+            $comments = DB::table('comments')->orderBy('created_at', 'desc')->paginate(10);
+
+            $html = view('admin.commentsTable', compact('comments'))->render();
+
+            return response()->json(compact('html'));
+        }
+    }
 
 
 
+    public function deleteComment(Request $request) {
+        try {
+            DB::table('comments')->where('id','=',$request->id)->delete();
+
+            return Response::json(['success' => '1']);
+        }
+        catch (\SQLiteException $e) {
+            return Response::json(['errors' => '1']);
+        }
+    }
+
+
+    public function  refreshComments() {
+        $comments = DB::table('comments')->orderBy('created_at', 'desc')->paginate(10);
+
+        $comments->setPath('commentList');
+
+        $html = view('admin.commentsTable', compact('comments'))->render();
+
+        return response()->json(compact('html'));
     }
 }

@@ -5,12 +5,16 @@
     <meta name="_token" content="{{csrf_token()}}" />
 
     <title>Skyshop Admin Page</title>
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/flexslider.css') }} "/>
-    <link type="text/css" rel="stylesheet" href="{{ asset('css/datepicker.css') }} " />
+
+
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+
+
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/flexslider.css') }} "/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/datepicker.css') }} " />
+
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/admin-style.css')}}">
-
 
 </head>

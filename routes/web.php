@@ -20,6 +20,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/Admin/userList/', 'Admin\AdminController@userList')->name('Admin-userList');
     Route::post('/Admin/editUser', 'Admin\AdminController@editContactByAdmin')->name('Admin-editUser');
     Route::post('/Admin/deleteUser', 'Admin\AdminController@deleteUser')->name('Admin-deleteUser');
+    Route::get('/Admin/commentList', 'Admin\AdminController@showUncheckedComments')->name('Admin-UncheckedUsers');
+    Route::post('/Admin/commentList', 'Admin\AdminController@showUncheckedComments')->name('Admin-UncheckedUsersPost');
+    Route::post('/Admin/removeComment', 'Admin\AdminController@deleteComment')->name('Admin-deleteComment');
+    Route::get('Admin/refreshComments','Admin\AdminController@refreshComments')->name('Admin-refreshComments');
 });
 
 
