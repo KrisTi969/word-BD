@@ -26,9 +26,9 @@
                                             {{--<div class="col-sm-11">--}}
                                                 <td>
                                                     <br>
-                                                    <button type="button" id="ajaxDelete" value="{{$item->id}}"  class="btn btn-danger btn-md popconfirm" data-toggle="confirmation" data-title="Open Google?">Delete</button>
+                                                    <button type="button" id="ajaxDelete" value="{{$item->id}}"  class="btn btn-danger btn-md popconfirm" data-toggle="confirmation" data-title="Delete?">Delete</button>
                                                     <br> <br>
-                                                    <button type="button" class="btn btn-success btn-md popconfirm">Approve</button>
+                                                    <button type="button" id="ajaxApprove" value="{{$item->id}}" class="btn btn-success btn-md popconfirm2" data-toggle="confirmation" data-title="Approve?">Approve</button>
 
                                                 </td>
                                             {{--</div>--}}
@@ -50,38 +50,6 @@
     {{ $comments->links() }}
 </div>
 
-
-<script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
-
-{{--<script src="{{asset('js/jquery-1.12.0.min.js')}}"></script>--}}
-<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/popconfirm.js')}}"></script>
-
-<!-- Popper -->
-
-
-
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<script>
-    var reloadAbilities = function()
-    {
-        var $request = $.get('Admin/refreshComments', function(result)
-        {
-            //callback function once server has complete request
-            $('#commentsTable').html(result.html);
-        });
-    }
-
-</script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-    });
-</script>
 
 <script>
     var value;
@@ -124,7 +92,51 @@
         });
     });
 
-    $(".popconfirm").popConfirm();
+
+    /*Approve code*/
+
+    $('.popconfirm2').click(function(e){
+        value = this.val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        jQuery.ajax({
+            url: "{{route('Admin-approveComment')}}",
+            method: 'post',
+            dataType: "json",
+            data: {
+                id: value
+            },
+            success:function(data) {
+                console.log(data.succes);
+                if (data.errors) {
+
+                }
+                if (data.success) {
+
+                    var $request = $.get('{{route('Admin-refreshComments')}}'); // make request
+                    var $container = $('.table-container');
+
+                    $container.addClass('loading'); // add loading class (optional)
+
+                    $request.done(function(data) { // success
+                        $container.html(data.html);
+                    });
+                    $request.always(function() {
+                        $container.removeClass('loading');
+                    });
+
+                    /**/
+                }
+            }
+        });
+    });
+
+
+    /**/
+    $(".popconfirm2").popConfirm();
 
 
 

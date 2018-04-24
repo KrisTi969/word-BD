@@ -95,7 +95,52 @@
         });
     });
 
+
     $(".popconfirm").popConfirm();
+
+    /*Approve code*/
+
+    $('.popconfirm2').click(function(e){
+        value = this.val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        jQuery.ajax({
+            url: "{{route('Admin-approveComment')}}",
+            method: 'post',
+            dataType: "json",
+            data: {
+                id: value
+            },
+            success:function(data) {
+                console.log(data.succes);
+                if (data.errors) {
+
+                }
+                if (data.success) {
+
+                    var $request = $.get('{{route('Admin-refreshComments')}}'); // make request
+                    var $container = $('.table-container');
+
+                    $container.addClass('loading'); // add loading class (optional)
+
+                    $request.done(function(data) { // success
+                        $container.html(data.html);
+                    });
+                    $request.always(function() {
+                        $container.removeClass('loading');
+                    });
+
+                    /**/
+                }
+            }
+        });
+    });
+
+
+    $(".popconfirm2").popConfirm();
 
 </script>
 <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
