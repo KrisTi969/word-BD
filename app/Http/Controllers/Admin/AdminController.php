@@ -24,6 +24,10 @@ class AdminController extends Controller
         return view('admin.admin-addUser');
     }
 
+    public function newProduct() {
+        return view('admin.admin-addProduct');
+    }
+
     public function userList (Request $request){
         $users = DB::table('users')->orderBy('name', 'asc')->paginate(10);
         if($request->search){

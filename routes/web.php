@@ -25,6 +25,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/Admin/removeComment', 'Admin\AdminController@deleteComment')->name('Admin-deleteComment');
     Route::get('Admin/refreshComments','Admin\AdminController@refreshComments')->name('Admin-refreshComments');
     Route::post('Admin/approveComment','Admin\AdminController@approveComment')->name('Admin-approveComment');
+    Route::get('Admin/addProduct','Admin\AdminController@newProduct')->name('Admin-addProduct');
 });
 
 

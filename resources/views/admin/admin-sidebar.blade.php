@@ -22,6 +22,13 @@
             <ul class="collapse list-unstyled" id="commentsSubmenu">
                 <li><a href="{{route('Admin-UncheckedUsers')}}">Unchecked Comments</a></li>
             </ul>
+            <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="glyphicon glyphicon-phone"></i>
+                Products
+            </a>
+            <ul class="collapse list-unstyled" id="productSubmenu">
+                <li><a href="{{route('Admin-addProduct')}}">Add product</a></li>
+            </ul>
         </li>
     </ul>
 </nav>
