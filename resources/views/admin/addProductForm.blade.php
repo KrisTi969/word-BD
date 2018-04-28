@@ -15,7 +15,7 @@
     <div class="form-group row">
         <label for="name" class="col-sm-2 form-control-label Whitish" >Title:</label>
         <div class="col-sm-8">
-            <input type="text" name="name" class="form-control" id="title" placeholder="Title"  minlength="2" required oninput="myFunction('#title-error')">
+            <input type="text" name="mainTitle" class="form-control" id="mainTitle" placeholder="Title"  minlength="2" required oninput="myFunction('#mainTitle-error')">
             <span class="text-danger">
                             <strong id="name-error"></strong>
                         </span>
@@ -101,7 +101,7 @@
 
     <div class="form-group row">
         <div class="col-sm-offset-5 col-sm-8">
-            <input type="submit" class="btn btn-success btn-lg " id="ajaxSubmit" value="Add User" />
+            <input type="submit" class="btn btn-success btn-lg " id="ajaxSubmit" value="Add Product" />
         </div>
     </div>
 

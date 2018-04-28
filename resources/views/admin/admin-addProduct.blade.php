@@ -35,6 +35,7 @@
             @include('admin.addProductForm')
 
 
+        </div>
     </div>
 
 </div>
@@ -54,6 +55,7 @@
 
 <script>
     $(document).ready(function(){
+
         var next = 1;
         var nextTitle = 1;
         $(".add-more").click(function(e){
@@ -104,16 +106,113 @@
             $(addRemove).after(removeButton);
             $("#field" + next).attr('data-source',$(addto).attr('data-source'));
             $("#count").val(next);
-
         });
-
-
-
     });
 
 
 </script>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#ajaxSubmit').click(function(e){
 
+
+
+            var employees = {
+            };
+
+            $("#field input").each(function(){
+                /* console.log($(this).find(':input').context.name )*///<-- Should return all input elements in that specific form.
+                var idGasit = $(this).find(':input.title').context.attributes.id.value;
+                var valoare = jQuery('#' + idGasit).val();
+                if (idGasit.indexOf('title') >= 0 || 'title'.indexOf(idGasit) >= 0) {
+                    employees[valoare] = [];
+                    console.log(valoare + "la titlu");
+                }
+            });
+
+
+            var currentTitle;
+            $("#field input").each(function(){
+                var idGasit = $(this).find(':input').context.attributes.id.value;
+                var valoare = jQuery('#' + idGasit).val();
+
+                if (idGasit.indexOf('title') >= 0 || 'title'.indexOf(idGasit) >= 0) {
+                    currentTitle = valoare;
+                }
+
+                if (idGasit.indexOf('field') >= 0 || 'field'.indexOf(idGasit) >= 0) {
+                    employees[currentTitle].push({
+                        "das":valoare
+                    });
+                }
+
+            });
+            console.log(JSON.stringify(employees));
+
+
+            debugger;
+
+            console.log(JSON.stringify(employees));
+            /* var countries = {};
+             countries["USA"] = {};
+             countries["USA"]["Alaska"] = {};
+             countries["USA"]["Alaska"]["Anchorage"] = 7183;
+             countries["USA"]["Alaska"]["Nome"] = 9378;
+
+             alert(JSON.stringify(countries));   // will give you a valid JSON string representation */
+            /*
+                        var test = {};           // Object
+                        test['b'] = [];        // Array
+                        test['b'].push( 'item: ceva' );
+                        test['b'].push( 'item: ceva' );
+                        test['b'].push( 'item: ceva' );
+                        var json = JSON.stringify(test);
+                        alert(json);*/
+
+
+
+            // jQuery('.alert').show();
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "{{ route('Admin-storeProduct')}}",
+                method: 'post',
+                dataType: "json",
+                data: {
+                    title: jQuery('#mainTitle').val(),
+                    type: jQuery('#type').val(),
+                    price: jQuery('#price').val(),
+                    quantity: jQuery('#quantity').val(),
+                    description: employees,
+                },
+                success:function(data) {
+                    console.log(data);
+                    if (data.errors) {
+                        if (data.errors.name) {
+                            $('#name-error').html(data.errors.name[0]);
+                        }
+                        if (data.errors.lname) {
+                            $('#lname-error').html(data.errors.lname[0]);
+                        }
+                        if (data.errors.email) {
+                            $('#email-error').html(data.errors.email[0]);
+                        }
+                        if (data.errors.phone_number) {
+                            $('#phone_number-error').html(data.errors.phone_number[0]);
+                        }
+                    }
+                    if (data.success) {
+                        $('#success-msg').removeClass('hidden');
+                    }
+                }
+            });
+        });
+    });
+</script>
 <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>

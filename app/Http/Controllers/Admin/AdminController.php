@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Product;
 use Mockery\Exception;
 use Response;
 use Validator;
@@ -96,6 +97,35 @@ class AdminController extends Controller
         return Response::json(['errors' => $validator->errors()]);
 
     }
+
+    public function storeProduct(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|max:60',
+            'type' => 'required|',
+            'price' => 'required|numeric',
+            'quantity' => 'required|numeric'
+        ]);
+
+        if ($validator->passes()) {
+
+            $product = new Product();
+
+            $product->type = $request->type;
+            $product->title= $request->title;
+            $product->price = $request->price;
+            $product->quantity = $request->quantity;
+            $product->description = $request->description;
+
+            $product->save();
+
+            return Response::json(['success' => '1']);
+        }
+
+        return Response::json(['errors' => $validator->errors()]);
+
+    }
+
 
     public function editContactByAdmin(Request $request)
     {
