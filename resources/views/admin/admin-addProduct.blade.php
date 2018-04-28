@@ -60,13 +60,16 @@
         var nextTitle = 1;
         $(".add-more").click(function(e){
             e.preventDefault();
-            var addto = "#field" + next;
-            var addRemove = "#field" + (next);
+            var addto = "#value" + next;
+            var addRemove = "#value" + (next);
             next = next + 1;
             var newIn = '<input class="input" id="field' + next + '" name="field' + next + '" type="text" placeholder="Field ' + next +'">';
             var newInput = $(newIn);
+            var newIn2 = '<input class="input" id="value' + next + '" name="value' + next + '" type="text" placeholder="Value ' + next +'">';
+            var newInput2 = $(newIn2);
             var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
             var removeButton = $(removeBtn);
+            $(addto).after(newInput2);
             $(addto).after(newInput);
             $(addRemove).after(removeButton);
             $("#field" + next).attr('data-source',$(addto).attr('data-source'));
@@ -85,22 +88,26 @@
 
                 var fieldID = "#field" + fieldNum;
                 $(this).remove();
+                $("#value" + fieldNum).remove();
                 $(fieldID).remove();
             });
         });
 
         $(".add-title").click(function(e){
             e.preventDefault();
-            var addto = "#field" + next;
-            var addRemove = "#field" + (next);
+            var addto = "#value" + next;
+            var addRemove = "#value" + (next);
             next = next + 1;
             nextTitle = nextTitle + 1;
             var newTitle = '  <input size="35"  class="input" id="title' + nextTitle + '" name="title' + next + '" type="text" placeholder="Title ' + nextTitle +'"/><br>';
             var newTitleInput = $(newTitle);
             var newIn = '<input class="input" id="field' + next + '" name="field' + next + '" type="text" placeholder="Field ' + next +'">';
             var newInput = $(newIn);
+            var newIn2 = '<input class="input" id="value' + next + '" name="value' + next + '" type="text" placeholder="Value ' + next +'">';
+            var newInput2 = $(newIn2);
             var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
             var removeButton = $(removeBtn);
+            $(addto).after(newInput2);
             $(addto).after(newInput);
             $(addto).after(newTitleInput);
             $(addRemove).after(removeButton);
@@ -120,6 +127,8 @@
             var employees = {
             };
 
+            var firstChestie;
+
             $("#field input").each(function(){
                 /* console.log($(this).find(':input').context.name )*///<-- Should return all input elements in that specific form.
                 var idGasit = $(this).find(':input.title').context.attributes.id.value;
@@ -130,7 +139,7 @@
                 }
             });
 
-
+            var currentId;
             var currentTitle;
             $("#field input").each(function(){
                 var idGasit = $(this).find(':input').context.attributes.id.value;
@@ -141,8 +150,21 @@
                 }
 
                 if (idGasit.indexOf('field') >= 0 || 'field'.indexOf(idGasit) >= 0) {
+                    if(idGasit.length === 6) {
+                        currentId = idGasit.charAt(idGasit.length - 1);
+                    } else {
+                        var unitati = idGasit.charAt(idGasit.length - 1);
+                        var  zecimala = idGasit.charAt(idGasit.length - 2);
+                        currentId = zecimala.concat(unitati);
+                    }
+
+                     firstChestie = jQuery('#field' + currentId).val();
+
+                }
+                if (idGasit.indexOf('value') >= 0 || 'value'.indexOf(idGasit) >= 0) {
+                    var second = jQuery('#value' + currentId).val();
                     employees[currentTitle].push({
-                        "das":valoare
+                        [firstChestie]: second  //// aparent numai asa stie [] ca te referi la text ca js ii nebunel
                     });
                 }
 
@@ -150,28 +172,6 @@
             console.log(JSON.stringify(employees));
 
 
-            debugger;
-
-            console.log(JSON.stringify(employees));
-            /* var countries = {};
-             countries["USA"] = {};
-             countries["USA"]["Alaska"] = {};
-             countries["USA"]["Alaska"]["Anchorage"] = 7183;
-             countries["USA"]["Alaska"]["Nome"] = 9378;
-
-             alert(JSON.stringify(countries));   // will give you a valid JSON string representation */
-            /*
-                        var test = {};           // Object
-                        test['b'] = [];        // Array
-                        test['b'].push( 'item: ceva' );
-                        test['b'].push( 'item: ceva' );
-                        test['b'].push( 'item: ceva' );
-                        var json = JSON.stringify(test);
-                        alert(json);*/
-
-
-
-            // jQuery('.alert').show();
             e.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -193,16 +193,16 @@
                     console.log(data);
                     if (data.errors) {
                         if (data.errors.name) {
-                            $('#name-error').html(data.errors.name[0]);
+                            $('#mainTitle-error').html(data.errors.name[0]);
                         }
-                        if (data.errors.lname) {
-                            $('#lname-error').html(data.errors.lname[0]);
+                        if (data.errors.type) {
+                            $('#type-error').html(data.errors.lname[0]);
                         }
-                        if (data.errors.email) {
-                            $('#email-error').html(data.errors.email[0]);
+                        if (data.errors.price) {
+                            $('#price-error').html(data.errors.email[0]);
                         }
-                        if (data.errors.phone_number) {
-                            $('#phone_number-error').html(data.errors.phone_number[0]);
+                        if (data.errors.quantity) {
+                            $('#quantity-error').html(data.errors.phone_number[0]);
                         }
                     }
                     if (data.success) {

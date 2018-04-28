@@ -101,7 +101,7 @@ class AdminController extends Controller
     public function storeProduct(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:60',
+            'title' => 'required|max:60|unique:products,title   ',
             'type' => 'required|',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric'

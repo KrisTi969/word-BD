@@ -17,7 +17,7 @@
         <div class="col-sm-8">
             <input type="text" name="mainTitle" class="form-control" id="mainTitle" placeholder="Title"  minlength="2" required oninput="myFunction('#mainTitle-error')">
             <span class="text-danger">
-                            <strong id="name-error"></strong>
+                            <strong id="mainTitle-error"></strong>
                         </span>
         </div>
     </div>
@@ -69,7 +69,8 @@
                         <div id="field">
                             <input size="35" autocomplete="off" class="input" id="title1" name="title1" type="text" placeholder="Title"/>
                             <br>
-                            <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Subtitle"/>
+                            <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Field1"/>
+                            <input autocomplete="off" class="input" id="value1" name="value1" type="text" placeholder="Value1"/>
                             <button id="b1" class="btn add-more" type="button">+</button>
                         </div>
 
@@ -94,7 +95,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
-            <strong>Success!</strong> User has been added!
+            <strong>Success!</strong> Products has been added!
         </div>
     </div>
 
