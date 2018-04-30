@@ -7,7 +7,7 @@
  */
 ?>
 
-<form method="POST"  id="#addProduct">
+<form method="POST"  id="#addProduct" name="addProduct" enctype="multipart/form-data">
     @csrf
     {{--Daca nu apar probleme, afisam un mesaj--}}
 
@@ -30,7 +30,7 @@
                 <option value="4kTV">4kTV</option>
                 <option value="lcd">lcd</option>
             </select>
-
+            <br>
             <span class="text-danger">
                             <strong id="type-error"></strong>
                         </span>
@@ -83,21 +83,20 @@
         </div>
     </div>
 
-
     {{--<div id="form-group row">
             <label for="field1" class="col-sm-2 form-control-label Whitish" >Description:</label>
         <input class="input" id="field1" name="prof1" type="text" placeholder="Type something" />
         <button id="b1" class="btn add-more" type="button">+</button>
     </div>--}}
 
-    <div id="success-msg" class="hidden">
+   {{-- <div id="success-msg" class="hidden">
         <div class="alert alert-info alert-dismissible fade in" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
             <strong>Success!</strong> Products has been added!
         </div>
-    </div>
+    </div>--}}
 
 
     <div class="form-group row">
@@ -110,5 +109,4 @@
 
 
 </form>
-
 

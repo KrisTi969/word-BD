@@ -12,6 +12,11 @@
 */
 
 //Admin Routes
+
+Route::get('/uploadfile','Admin\AdminController@show');
+Route::post('/uploadfile','Admin\AdminController@uploadFiles');
+
+
 Route::group(['middleware' => 'admin'], function () {
     //
     Route::get('/Admin', 'Admin\AdminController@index')->name('Admin');
@@ -28,6 +33,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('Admin/addProduct','Admin\AdminController@newProduct')->name('Admin-addProduct');
     Route::post('Admin/storeProduct','Admin\AdminController@storeProduct')->name('Admin-storeProduct');
 });
+
 
 
 /*Route::group(array('middleware' => 'forceSSL'), function() {*/

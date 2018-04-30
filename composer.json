@@ -17,11 +17,13 @@
         "laravel/scout": "v4.0.3",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "5.6.x-dev",
-        "venturecraft/revisionable": "1.28.0"
+        "venturecraft/revisionable": "1.28.0",
+        "matriphe/imageupload": "6.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
+        "matriphe/imageupload": "6.1.2",
         "mockery/mockery": "~1.0",
         "nunomaduro/collision": "~1.1",
         "phpunit/phpunit": "~7.0",

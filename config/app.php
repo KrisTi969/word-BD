@@ -151,6 +151,7 @@ return [
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
         \Actuallymab\LaravelComment\LaravelCommentServiceProvider::class,
         Riverskies\Laravel\MobileDetect\MobileDetectServiceProvider::class,
+        Matriphe\Imageupload\ImageuploadServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -216,6 +217,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'MobileDetect' => Riverskies\Laravel\MobileDetect\Facades\MobileDetect::class,
+        'Imageupload' => Matriphe\Imageupload\ImageuploadFacade::class,
 
     ],
 

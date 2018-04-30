@@ -36,7 +36,51 @@
 
 
         </div>
+
+
     </div>
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Please select 3 images for the product: </h4>
+                </div>
+                <div class="modal-body">
+                    @include('test')
+                </div>
+
+                <div id="product-added" class="hidden">
+                    <div class="alert alert-info alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <strong id="succes-or-fail">Success!</strong> Products has been added successfuly!
+                    </div>
+                </div>
+
+
+                <div id="please-select-three-images" class="hidden">
+                    <div class="alert alert-info alert-dismissible fade in" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        <strong id="succes-or-fail">Error!</strong> Please select three images!
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 
 </div>
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
@@ -52,7 +96,11 @@
     });
 </script>
 
-
+<script>
+    function myFunction(string) {
+        $(string).empty();
+    }
+</script>
 <script>
     $(document).ready(function(){
 
@@ -121,9 +169,6 @@
 <script>
     jQuery(document).ready(function(){
         jQuery('#ajaxSubmit').click(function(e){
-
-
-
             var employees = {
             };
 
@@ -188,31 +233,76 @@
                     price: jQuery('#price').val(),
                     quantity: jQuery('#quantity').val(),
                     description: employees,
-                },
+                    file: jQuery('#file').val()
+        },
                 success:function(data) {
                     console.log(data);
                     if (data.errors) {
-                        if (data.errors.name) {
-                            $('#mainTitle-error').html(data.errors.name[0]);
+                        if (data.errors.title) {
+                            $('#mainTitle-error').html(data.errors.title[0]);
                         }
                         if (data.errors.type) {
-                            $('#type-error').html(data.errors.lname[0]);
+                            $('#type-error').html(data.errors.type[0]);
                         }
                         if (data.errors.price) {
-                            $('#price-error').html(data.errors.email[0]);
+                            $('#price-error').html(data.errors.price[0]);
                         }
                         if (data.errors.quantity) {
-                            $('#quantity-error').html(data.errors.phone_number[0]);
+                            $('#quantity-error').html(data.errors.quantity[0]);
                         }
                     }
                     if (data.success) {
                         $('#success-msg').removeClass('hidden');
+                        $("#image1").val('');
+                        $("#image2").val('');
+                        $("#image3").val('');
+                        $('#myModal').modal('show');
+
+
                     }
                 }
             });
         });
     });
 </script>
+
+<script>
+    $("#form").submit(function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        var url = $this.attr('action');
+        var formData = new FormData(this);
+        $.ajax({
+            url: url,
+            type: "POST",
+            dataType: "json",
+            data: formData,
+            contentType:false,
+            processData:false,
+            success: function (data) {
+                if(data.errors) {
+                    if (data.errors.image1) {
+                        $('#image1-error').html(data.errors.image1[0]);
+                    }
+                    if (data.errors.image2) {
+                        $('#image2-error').html(data.errors.image2[0]);
+                    }
+                    if (data.errors.image3) {
+                        $('#image3-error').html(data.errors.image3[0]);
+                    }
+                }
+                if(data.success) {
+                    $('#product-added').removeClass('hidden');
+                }
+            },
+            error: function (data) {
+
+            }
+        });
+    });
+</script>
+
+
 <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>

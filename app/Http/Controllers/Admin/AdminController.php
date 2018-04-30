@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Product;
+use Intervention\Image\Image;
+use Matriphe\Imageupload\Imageupload;
 use Mockery\Exception;
+use phpDocumentor\Reflection\DocBlock\Tags\Var_;
 use Response;
 use Validator;
 use DB;
@@ -10,6 +13,8 @@ use App\User;
 use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManager;
+use Matriphe\Imageupload\ImageuploadModel;
 
 class AdminController extends Controller
 {
@@ -101,14 +106,13 @@ class AdminController extends Controller
     public function storeProduct(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:60|unique:products,title   ',
+            'title' => 'required|max:60|unique:products,title',
             'type' => 'required|',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric'
         ]);
 
         if ($validator->passes()) {
-
             $product = new Product();
 
             $product->type = $request->type;
@@ -118,7 +122,6 @@ class AdminController extends Controller
             $product->description = $request->description;
 
             $product->save();
-
             return Response::json(['success' => '1']);
         }
 
@@ -233,4 +236,53 @@ class AdminController extends Controller
 
         return response()->json(compact('html'));
     }
+
+
+
+    public function show(){
+        return view('test');
+    }
+    public function uploadFiles(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'image1' => 'required|mimes:jpg,jpeg,png,gif',
+            'image2' => 'required|mimes:jpg,jpeg,png,gif',
+            'image3' => 'required|mimes:jpg,jpeg,png,gif',
+        ]);
+        if ($validator->passes()) {
+
+            $file1 = $request->file('image1');
+            $file2 = $request->file('image2');
+            $file3 = $request->file('image3');
+
+            /*//Display File Name
+            echo 'File Name: '.$file->getClientOriginalName();
+            echo '<br>';
+
+            //Display File Extension
+            echo 'File Extension: '.$file->getClientOriginalExtension();
+            echo '<br>';
+
+            //Display File Real Path
+            echo 'File Real Path: '.$file->getRealPath();
+            echo '<br>';
+
+            //Display File Size
+            echo 'File Size: '.$file->getSize();
+            echo '<br>';
+
+            //Display File Mime Type
+            echo 'File Mime Type: '.$file->getMimeType();*/
+
+            //Move Uploaded File
+            $destinationPath = 'uploads';
+            $file1->move($destinationPath, $file1->getClientOriginalName());
+            $file2->move($destinationPath, $file2->getClientOriginalName());
+            $file3->move($destinationPath, $file3->getClientOriginalName());
+            return Response::json(['success' => '1']);
+        }
+        return Response::json(['errors' => $validator->errors()]);
+    }
+
+
 }
