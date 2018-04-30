@@ -109,7 +109,10 @@ class AdminController extends Controller
             'title' => 'required|max:60|unique:products,title',
             'type' => 'required|',
             'price' => 'required|numeric',
-            'quantity' => 'required|numeric'
+            'quantity' => 'required|numeric',
+            'title1' => 'required',
+            'field1' => 'required',
+            'value1' => 'required'
         ]);
 
         if ($validator->passes()) {
@@ -214,6 +217,21 @@ class AdminController extends Controller
         }
     }
 
+
+    public function deleteProduct(Request $request)
+    {
+        $results = DB::table('prod_images')->where('prod_title', '=', $request->title)->count();
+        if ($results == 0) {
+            try {
+                DB::table('products')->where('title', '=', $request->title)->delete();
+                return Response::json(['success' => '1']);
+            } catch (\SQLiteException $e) {
+                return Response::json(['errors' => '1']);
+            }
+        }
+        return Response::json(['success' => '1']);
+    }
+
     public function approveComment(Request $request) {
         try {
             DB::table('comments')
@@ -243,7 +261,7 @@ class AdminController extends Controller
         return view('test');
     }
     public function uploadFiles(Request $request){
-
+        /*var_dump($request->route('title'));*/
         $validator = Validator::make($request->all(), [
             'image1' => 'required|mimes:jpg,jpeg,png,gif',
             'image2' => 'required|mimes:jpg,jpeg,png,gif',
@@ -276,9 +294,20 @@ class AdminController extends Controller
 
             //Move Uploaded File
             $destinationPath = 'uploads';
-            $file1->move($destinationPath, $file1->getClientOriginalName());
-            $file2->move($destinationPath, $file2->getClientOriginalName());
-            $file3->move($destinationPath, $file3->getClientOriginalName());
+            $file1->move($destinationPath, '1'.$file1->getClientOriginalName());
+            $file2->move($destinationPath, '2'.$file2->getClientOriginalName());
+            $file3->move($destinationPath, '3'.$file3->getClientOriginalName());
+
+            try{
+                DB::table('prod_images')->insert([
+                    ['prod_title' => $request->route('title'), 'filename' => '1'.$file1->getClientOriginalName()],
+                    ['prod_title' => $request->route('title'), 'filename' => '2'.$file2->getClientOriginalName()],
+                    ['prod_title' => $request->route('title'), 'filename' => '3'.$file3->getClientOriginalName()]
+                ]);
+            }catch (\SQLiteException $e) {
+                return Response::json(['errors' => $validator->errors()]);
+            }
+
             return Response::json(['success' => '1']);
         }
         return Response::json(['errors' => $validator->errors()]);

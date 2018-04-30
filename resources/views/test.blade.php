@@ -14,7 +14,7 @@ echo Form::close();
 
 ?>
 
-{!! Form::open(['url' => 'uploadfile', 'id' => 'form','style'=>'text-align:left;','enctype'=>"multipart/form-data"]) !!}
+{!! Form::open(['id' => 'form','style'=>'text-align:left;','enctype'=>"multipart/form-data"]) !!}
 
 <div class="form-group">
     <label for="passport">Product Images</label>

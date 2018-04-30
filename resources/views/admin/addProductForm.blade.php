@@ -66,13 +66,26 @@
                 <label class="control-label" for="field1">Description:</label>
                 <div class="controls" id="profs">
 
-                        <div id="field">
-                            <input size="35" autocomplete="off" class="input" id="title1" name="title1" type="text" placeholder="Title"/>
-                            <br>
-                            <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Field1"/>
-                            <input autocomplete="off" class="input" id="value1" name="value1" type="text" placeholder="Value1"/>
-                            <button id="b1" class="btn add-more" type="button">+</button>
-                        </div>
+                    <div id="field">
+                        <input size="35" autocomplete="off" class="input" id="title1" name="title1" type="text" placeholder="Title" required/>
+                        <br>
+                        <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Field1" required/>
+
+                        <input autocomplete="off" class="input" id="value1" name="value1" type="text" placeholder="Value1" required/>
+                        <button id="b1" class="btn add-more" type="button">+</button>
+                        <br>
+                        <span class="text-danger">
+                            <strong id="title1-error"></strong>
+                        </span>
+                        <br>
+                        <span class="text-danger">
+                            <strong id="field1-error"></strong>
+                        </span>
+                        <br>
+                        <span class="text-danger">
+                            <strong id="value1-error"></strong>
+                        </span>
+                    </div>
 
                     <br>
                     <button id="b1" class="btn add-title" type="button">Add Title</button>

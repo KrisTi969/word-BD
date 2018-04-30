@@ -167,8 +167,11 @@
 
 </script>
 <script>
+    var title ;
+
     jQuery(document).ready(function(){
         jQuery('#ajaxSubmit').click(function(e){
+            title = jQuery('#mainTitle').val();
             var employees = {
             };
 
@@ -232,8 +235,10 @@
                     type: jQuery('#type').val(),
                     price: jQuery('#price').val(),
                     quantity: jQuery('#quantity').val(),
-                    description: employees,
-                    file: jQuery('#file').val()
+                    title1: jQuery('#title1').val(),
+                    field1: jQuery('#field1').val(),
+                    value1: jQuery('#value1').val(),
+                    description: employees
         },
                 success:function(data) {
                     console.log(data);
@@ -250,6 +255,17 @@
                         if (data.errors.quantity) {
                             $('#quantity-error').html(data.errors.quantity[0]);
                         }
+                        if (data.errors.title1) {
+                            $('#title1-error').html(data.errors.title1[0]);
+                        }
+                        if (data.errors.value1) {
+                            $('#value1-error').html(data.errors.value1[0]);
+                        }
+                        if (data.errors.field1) {
+                            $('#field1-error').html(data.errors.field1[0]);
+                        }
+
+
                     }
                     if (data.success) {
                         $('#success-msg').removeClass('hidden');
@@ -257,8 +273,6 @@
                         $("#image2").val('');
                         $("#image3").val('');
                         $('#myModal').modal('show');
-
-
                     }
                 }
             });
@@ -273,7 +287,7 @@
         var url = $this.attr('action');
         var formData = new FormData(this);
         $.ajax({
-            url: url,
+            url: "http://127.0.0.1:8000/uploadfile/"+title,
             type: "POST",
             dataType: "json",
             data: formData,
@@ -301,7 +315,31 @@
         });
     });
 </script>
+<script>
+    $('#myModal').on('hidden.bs.modal', function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        jQuery.ajax({
+            url: "{{ route('Admin-deleteProduct')}}",
+            method: 'post',
+            dataType: "json",
+            data: {
+                title: title,
+            },
+            success:function(data) {
+                console.log(data);
+                if (data.errors) {
+                }
+                if (data.success) {
+                }
+            }
+        });
+    });
 
+</script>
 
 <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
