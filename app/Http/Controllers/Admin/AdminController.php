@@ -52,6 +52,18 @@ class AdminController extends Controller
         return view('admin.admin-editUser',['users' => $users]);
     }
 
+    public function productList (Request $request){
+        $products = DB::table('products')->orderBy('title', 'asc')->paginate(18);
+        if($request->search){
+            $products = DB::table('products')->orderBy('title', 'asc')->where('title','like','%' . $request->search . '%')
+                ->orWhere('type','like','%' . $request->search . '%')
+                ->orWhere('price','like','%' . $request->search . '%')
+                ->orWhere('quantity','like','%' . $request->search . '%')
+                ->paginate(18);
+        }
+        return view('admin.admin-productList',['products' => $products]);
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

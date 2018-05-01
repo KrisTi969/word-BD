@@ -96,29 +96,11 @@
         </div>
     </div>
 
-    {{--<div id="form-group row">
-            <label for="field1" class="col-sm-2 form-control-label Whitish" >Description:</label>
-        <input class="input" id="field1" name="prof1" type="text" placeholder="Type something" />
-        <button id="b1" class="btn add-more" type="button">+</button>
-    </div>--}}
-
-   {{-- <div id="success-msg" class="hidden">
-        <div class="alert alert-info alert-dismissible fade in" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-            <strong>Success!</strong> Products has been added!
-        </div>
-    </div>--}}
-
-
     <div class="form-group row">
         <div class="col-sm-offset-5 col-sm-8">
             <input type="submit" class="btn btn-success btn-lg " id="ajaxSubmit" value="Add Product" />
         </div>
     </div>
-
-
 
 
 </form>

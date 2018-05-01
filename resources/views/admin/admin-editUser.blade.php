@@ -43,7 +43,7 @@
 </span>
             </div>
             <div class="container">
-
+{{Form::close()}}
                 <div class="table-responsive">
                     <table id="userTable" class="table table-hover">
                         <thead>
@@ -538,6 +538,7 @@
 </script>
 
 <script>
+    var changesMade = false;
     var emailBeforeUpgrade;
     $(function () {
         $('#editAccount').modal({
@@ -632,6 +633,7 @@
                     }
                 }
                 if (data.success) {
+                    changesMade = true;
                     $('#success-msg').removeClass('hidden');
                 }
             }
@@ -659,13 +661,16 @@
 
                 }
                 if (data.success) {
+                    changesMade = true;
                     $('#success-msg2').removeClass('hidden');
                 }
             }
         });
     });
     $('#editAccount').on('hidden.bs.modal', function () {
-        location.reload();
+        if(changesMade === true) {
+            location.reload();
+        }
     })
 </script>
 

@@ -139,7 +139,6 @@
         });
     });
 
-
     $(".popconfirm2").popConfirm();
 
 </script>
