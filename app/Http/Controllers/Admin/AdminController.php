@@ -232,10 +232,10 @@ class AdminController extends Controller
 
     public function deleteProduct(Request $request)
     {
-        $results = DB::table('prod_images')->where('prod_title', '=', $request->title)->count();
-        if ($results == 0) {
+        $results = DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->count();
+        if ($results != 0) {
             try {
-                DB::table('products')->where('title', '=', $request->title)->delete();
+                DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->delete();
                 return Response::json(['success' => '1']);
             } catch (\SQLiteException $e) {
                 return Response::json(['errors' => '1']);

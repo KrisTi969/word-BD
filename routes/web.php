@@ -34,6 +34,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('Admin/storeProduct','Admin\AdminController@storeProduct')->name('Admin-storeProduct');
     Route::post('/Admin/deleteProduct', 'Admin\AdminController@deleteProduct')->name('Admin-deleteProduct');
     Route::get('/Admin/productList','Admin\AdminController@productList')->name('Admin-productList');
+    Route::get('/Admin/deleteProduct','Admin\AdminController@deleteProduct')->name('Admin-deleteProduct');
 });
 
 
