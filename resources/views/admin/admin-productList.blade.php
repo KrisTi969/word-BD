@@ -191,19 +191,17 @@
                     <span class="text-danger">
                             <strong id="value1-error"></strong>
                         </span>--}}
+                    <button id="b1" class="btn add-title" type="button">Add Title</button>
                 </div>
 
 
-                <button id="b1" class="btn add-title" type="button">Add Title</button>
 
                 <small>Press - to remove a form field :)</small>
-
 
                 <div class="modal-footer">
                     <input type="button" class="btn btn-danger btn-lg " id="ajaxDelete" value="Delete" />
                     <input type="submit" class="btn btn-success btn-lg " id="ajaxSubmit" value="Edit" />
                 </div>
-
 
         </div>
     </div>
@@ -228,221 +226,111 @@
     });
 </script>
 
-    <script>
 
+<script type="text/javascript" src="{!! asset('js/admin-scripts/remove-button.js') !!}"></script>
 
+<script>
+    $(document).ready(function() {
+        var title;
+        jQuery('#ajaxSubmit').click(function (e) {
+            title = jQuery('#title1').val();
+            var employees = {};
 
+            var firstChestie;
 
-        var next = 1;
-        var doRefresh = false;
-        var titleBeforeUpgrade;
-        $(function () {
-            $('#editAccount').modal({
-                keyboard: true,
-                backdrop: "static",
-                show: false,
-            }).on('show', function () {
+            $("#field input").each(function () {
+                /* console.log($(this).find(':input').context.name )*///<-- Should return all input elements in that specific form.
+                var idGasit = $(this).find(':input.title').context.attributes.id.value;
 
+                var valoare = jQuery('#' + idGasit).val();
+                if (idGasit.indexOf('title') >= 0 || 'title'.indexOf(idGasit) >= 0) {
+                    employees[valoare] = [];
+                  /*  console.log(valoare + " ASTA E UN  titlu");*/
+                }
             });
-            $('#userTable tr').click(function() {
-                document.getElementById('title').value = $(this).children()[0].firstChild.textContent;
-                document.getElementById('type').value = $(this).children()[1].firstChild.textContent;
-                document.getElementById('quantity').value = $(this).children()[2].firstChild.textContent;
-                document.getElementById('price').value = $(this).children()[3].firstChild.textContent;
-                document.getElementById('description').value = $(this).children()[4].firstChild.textContent;
-                titleBeforeUpgrade = $(this).children()[0].firstChild.textContent;
-                var StringJson = document.getElementById('description').value;
-                var aux = JSON.parse(StringJson);
-                console.log(aux);
 
-                    // append input control at start of form
-                var pasTitlu = 1;
-                var pasSubTitlu = 1;
-                $.each(aux, function(index , incaceva) {
+            var currentId;
+            var currentTitle;
+            $("#field input").each(function () {
+                var idGasit = $(this).find(':input').context.attributes.id.value;
+                console.log("id Gasit: " + idGasit);
+                var valoare = jQuery('#' + idGasit).val();
+               /* console.log(valoare + " :val al lui idGasit");*/
+                if (idGasit.indexOf('title') >= 0 || 'title'.indexOf(idGasit) >= 0) {
+                    currentTitle = valoare;
+                }
 
-                    if(pasTitlu === 1) {
-                        $("<label id='label'>Title:</label>\n" +
-                            "<br>")
-                            .attr("id", "label" + pasTitlu)
-                            .appendTo("#field");
-
-
-                        $("<input size=\"14\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Title\" required/>\n" +
-                            "<br>")
-                            .attr("id", "title" + pasTitlu)
-                            .attr("name", "title" + pasTitlu)
-                            .attr("value", index)
-                            .appendTo("#field");
-                    }
-                    else {
-
-                        $("<label id='label'>Title:</label>\n" +
-                            "<br id='ssa'>")
-                            .attr("id", "label" + pasTitlu)
-                            .appendTo("#field");
-
-                        $("<input size=\"14\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Title\" required/>\n")
-                            .attr("id", "title" + pasTitlu)
-                            .attr("name", "title" + pasTitlu)
-                            .attr("value", index)
-                            .appendTo("#field");
-
-                        var idStergere = 'id=' + 'remove-titlu' + pasTitlu;
-                        $("input#title" + pasTitlu).after('<button '+ idStergere +' class=\"btn btn-danger remove-titlu\" >X</button><br id="ss">');
-                    }
-                    pasTitlu = pasTitlu + 1;
-                    for (var key in incaceva) {
-                        if(incaceva.hasOwnProperty(key)) {
-                            var rez = JSON.stringify(incaceva[key]);
-                            var rez1 = rez.substring(rez.indexOf('"') + 1, rez.indexOf(':') - 1);
-                            var rez2 = rez.substring(rez.lastIndexOf(":") + 2, rez.lastIndexOf('"'));
-
-                            $("  <input size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Field\" required/>\n")
-                                .attr("id", "field" + pasSubTitlu)
-                                .attr("name", "field" + pasSubTitlu)
-                                .attr("value", rez1)
-                                .appendTo("#field");
-
-                            $("  <input size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Value\" required/>\n <br>")
-                                .attr("id", "value" + pasSubTitlu)
-                                .attr("name", "value" + pasSubTitlu)
-                                .attr("value", rez2)
-                                .appendTo("#field");
-
-                            if (pasSubTitlu != 1) {
-                                var id = 'id=' + 'remove' + pasSubTitlu;
-                                $("input#value" + pasSubTitlu).after('<button ' + id + ' class=\"btn btn-danger remove-me\" >-</button>');
-                            }
-                            if (pasSubTitlu == 1) {
-                                var id = 'id=' + 'add' + pasSubTitlu;
-                                $("input#value" + pasSubTitlu).after('<button ' + id + ' class=\"btn btn-blue add-more\" >+</button>');
-                            }
-                            pasSubTitlu = pasSubTitlu + 1;
-
-                        }
+                if (idGasit.indexOf('field') >= 0 || 'field'.indexOf(idGasit) >= 0) {
+                    if (idGasit.length === 6) {
+                        currentId = idGasit.charAt(idGasit.length - 1);
+                        console.log("Primul if: currentID:" +currentId);
+                    } else {
+                        var unitati = idGasit.charAt(idGasit.length - 1);
+                        var zecimala = idGasit.charAt(idGasit.length - 2);
+                        currentId = zecimala.concat(unitati);
+                        console.log("Al doilea if: currentID:" +currentId);
                     }
 
-                });
-
-                $(".remove-titlu").click(function(e) {
-
-                    e.preventDefault();
-                     alert(e.target.id.match(/\d+/)[0]);
-                /*    pasSubTitlu = pasSubTitlu +1;
-
-                    var id = 'id=' + 'remove' + pasSubTitlu;
-                    var idField = 'id=' + 'field' + pasSubTitlu;
-                    var idValue = 'id=' + 'value' + pasSubTitlu;
-                    $("button#add"+e.target.id.match(/\d+/)[0]).after('<input  ' + idValue + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Field\" required/><input  ' + idField + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Value\" required/><button ' + id + ' class=\"btn btn-danger remove-me\" >-</button>');
-*/
-                var continua = true;
-                var toCheck = document.getElementById('remove-titlu2').nextSibling; // #foo3
-                    console.log(toCheck + "VERIFICAM");
-                while(continua) {
-
-                    rez = toCheck.match(/field|value/g);
-                    console.log(rez  + "rez");
-                    if (rez !== 'null') {
-                        console.log(toCheck + "VERIFICAM2");
-                        toCheck = document.getElementById('remove-titlu2').nextSibling;
-                        console.log(toCheck + "NEXT");
-
-                        $("#" + toCheck).remove();
-                        toCheck = document.getElementById(toCheck).nextSibling.id;
-                        console.log(toCheck + "NEXT");
-                    }
-                    else{
-                        toCheck = document.getElementById(toCheck).nextSibling.id;
-
-                        console.log( "false");
-                    }
+                    firstChestie = jQuery('#field' + currentId).val();
+                    console.log("Firstchestie final ii:  " +currentId);
 
                 }
-                });
-
-
-                $(".add-more").click(function(e) {
-
-                    e.preventDefault();
-                   /* alert(e.target.id.match(/\d+/)[0]);*/
-                    pasSubTitlu = pasSubTitlu +1;
-
-                    var id = 'id=' + 'remove' + pasSubTitlu;
-                    var idField = 'id=' + 'field' + pasSubTitlu;
-                    var idValue = 'id=' + 'value' + pasSubTitlu;
-                    $("button#add"+e.target.id.match(/\d+/)[0]).after('<input  ' + idValue + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Field\" required/><input  ' + idField + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Value\" required/><button ' + id + ' class=\"btn btn-danger remove-me\" >-</button>');
-
-
-                    $('.remove-me').click(function (e) {
-                        e.preventDefault();
-                        var fieldNum;
-                        if (this.id.length === 7) {
-                            fieldNum = this.id.charAt(this.id.length - 1);
-                            console.log(fieldNum);
-                        } else {
-                            var unitati = this.id.charAt(this.id.length - 1);
-                            var zecimala = this.id.charAt(this.id.length - 2);
-                            fieldNum = zecimala.concat(unitati);
-                            console.log(fieldNum);
-                        }
-
-                        var fieldID = "#field" + fieldNum;
-                        $(this).remove();
-                        $("#value" + fieldNum).remove();
-                        $(fieldID).remove();
+                if (idGasit.indexOf('value') >= 0 || 'value'.indexOf(idGasit) >= 0) {
+                    var second = jQuery('#value' + currentId).val();
+                    console.log("CE NE INTERESEAZA:     " + firstChestie + " " + second);
+                    employees[currentTitle].push({
+                        [firstChestie]: second  //// aparent numai asa stie [] ca te referi la text ca js ii nebunel
                     });
+                }
 
-
-                });
-                    $('.remove-me').click(function (e) {
-                        e.preventDefault();
-                        var fieldNum;
-                        if (this.id.length === 7) {
-                            fieldNum = this.id.charAt(this.id.length - 1);
-                            console.log(fieldNum);
-                        } else {
-                            var unitati = this.id.charAt(this.id.length - 1);
-                            var zecimala = this.id.charAt(this.id.length - 2);
-                            fieldNum = zecimala.concat(unitati);
-                            console.log(fieldNum);
-                        }
-
-                        var fieldID = "#field" + fieldNum;
-                        $(this).remove();
-                        $("#value" + fieldNum).remove();
-                        $(fieldID).remove();
-                    });
-
-                $(".add-title").click(function(e){
-                    e.preventDefault();
-                    pasTitlu = pasTitlu + 1;
-                    pasSubTitlu = pasSubTitlu +1;
-
-                    var id = 'id=' + 'remove' + pasSubTitlu;
-                    var idField = 'id=' + 'field' + pasSubTitlu;
-                    var idValue = 'id=' + 'value' + pasSubTitlu;
-                    var idDiv = 'id=' + 'div'+ pasTitlu;
-                  /*  $("#field"+e.target.id.match(/\d+/)[0]).after('<br><label >Title:</label> <br> <input size=\"14\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Title\" required/>' +
-                        '                        "<br>"' +
-                        '  <input  ' + idValue + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Field\" required/><input  ' + idField + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Value\" required/><button ' + id + ' class=\"btn btn-danger remove-me\" >-</button>');
-*/
-                    $("button#b1").before('<div ' + idDiv + '  ><input  ' + idValue + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Field\" required/><input  ' + idField + ' size=\"18\" autocomplete=\"off\" class=\"input\"  type=\"text\" placeholder=\"Value\" required/><button ' + id + ' class=\"btn btn-danger remove-me\" >-</button> </div>');
-                });
             });
+            console.log(JSON.stringify(employees));
+
+          /*  debugger;
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "",
+                method: 'post',
+                dataType: "json",
+                data: {
+                    title: jQuery('#mainTitle').val(),
+                    type: jQuery('#type').val(),
+                    price: jQuery('#price').val(),
+                    quantity: jQuery('#quantity').val(),
+                    title1: jQuery('#title1').val(),
+                    field1: jQuery('#field1').val(),
+                    value1: jQuery('#value1').val(),
+                    description: employees
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data.errors) {
+
+                    }
+                    if (data.success) {
+                        $('#success-msg').removeClass('hidden');
+                        $("#image1").val('');
+                        $("#image2").val('');
+                        $("#image3").val('');
+                        $('#myModal').modal('show');
+                    }
+                }
+            });*/
         });
-
-
-
-
-
-    </script>
-
+    });
+</script>
 
 <script>
     function myFunction(string) {
         $(string).empty();
     }
 </script>
+
 <script>
 
     jQuery('#ajaxDelete').click(function(e){
@@ -462,7 +350,7 @@
             },
             success:function(data) {
                 console.log(data);
-                doRefresh = true;
+                /*doRefresh = true;*/
                 if (data.errors) {
 
                 }
@@ -476,9 +364,9 @@
 
     $('#editAccount').on('hidden.bs.modal', function () {
         $("#field").html("");
-        if(doRefresh===true) {
+       /* if(doRefresh===true) {
             location.reload();
-        }
+        }*/
     })
 </script>
 
