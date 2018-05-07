@@ -122,17 +122,20 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="lastname" class="col-sm-2 form-control-label ">Type:</label>
-                    <div class="col-sm-8">
-                        <input type="text" name="type" class="form-control" id="type" placeholder="" minlength="2" required oninput="myFunction('#type-error')">
-
-                        <span class="text-danger">
+            <div class="form-group row">
+                <label for="type" class="col-sm-2 form-control-label Whitish">Type:</label>
+                <div class="col-sm-8"  >
+                    <select id="type" name="type" class="input-group-lg" >
+                        <option value="" selected="selected">(please select a type)</option>
+                        <option value="4kTV">4kTV</option>
+                        <option value="lcd">lcd</option>
+                    </select>
+                    <br>
+                    <span class="text-danger">
                             <strong id="type-error"></strong>
                         </span>
-
-                    </div>
                 </div>
+            </div>
 
 
                 <div class="form-group row">
@@ -161,9 +164,9 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="username" class="col-sm-2 form-control-label ">Description:</label>
+                    <label for="username" class="col-sm-2 form-control-label " hidden>Description:</label>
                     <div class="col-sm-8">
-                        <input type="text" name="description" class="form-control" id="description" placeholder="" oninput="myFunction('#price-error')">
+                        <input type="hidden" name="description" class="form-control" id="description" placeholder="" oninput="myFunction('#price-error')" hidden>
 
                         <span class="text-danger">
                             <strong id="price-error"></strong>
@@ -231,6 +234,7 @@
 
 <script>
     $(document).ready(function() {
+        console.log('facem update');
         var title;
         jQuery('#ajaxSubmit').click(function (e) {
             title = jQuery('#title1').val();
@@ -253,7 +257,7 @@
             var currentTitle;
             $("#field input").each(function () {
                 var idGasit = $(this).find(':input').context.attributes.id.value;
-                console.log("id Gasit: " + idGasit);
+             /*   console.log("id Gasit: " + idGasit);*/
                 var valoare = jQuery('#' + idGasit).val();
                /* console.log(valoare + " :val al lui idGasit");*/
                 if (idGasit.indexOf('title') >= 0 || 'title'.indexOf(idGasit) >= 0) {
@@ -263,21 +267,21 @@
                 if (idGasit.indexOf('field') >= 0 || 'field'.indexOf(idGasit) >= 0) {
                     if (idGasit.length === 6) {
                         currentId = idGasit.charAt(idGasit.length - 1);
-                        console.log("Primul if: currentID:" +currentId);
+                /*        console.log("Primul if: currentID:" +currentId);*/
                     } else {
                         var unitati = idGasit.charAt(idGasit.length - 1);
                         var zecimala = idGasit.charAt(idGasit.length - 2);
                         currentId = zecimala.concat(unitati);
-                        console.log("Al doilea if: currentID:" +currentId);
+                     /*   console.log("Al doilea if: currentID:" +currentId);*/
                     }
 
                     firstChestie = jQuery('#field' + currentId).val();
-                    console.log("Firstchestie final ii:  " +currentId);
+                /*    console.log("Firstchestie final ii:  " +currentId);*/
 
                 }
                 if (idGasit.indexOf('value') >= 0 || 'value'.indexOf(idGasit) >= 0) {
                     var second = jQuery('#value' + currentId).val();
-                    console.log("CE NE INTERESEAZA:     " + firstChestie + " " + second);
+                   /* console.log("CE NE INTERESEAZA:     " + firstChestie + " " + second);*/
                     employees[currentTitle].push({
                         [firstChestie]: second  //// aparent numai asa stie [] ca te referi la text ca js ii nebunel
                     });
@@ -286,7 +290,6 @@
             });
             console.log(JSON.stringify(employees));
 
-          /*  debugger;
             e.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -294,33 +297,42 @@
                 }
             });
             jQuery.ajax({
-                url: "",
+                url: "{{route('Admin-updateProduct')}}",
                 method: 'post',
                 dataType: "json",
                 data: {
-                    title: jQuery('#mainTitle').val(),
+                    title: jQuery('#title').val(),
                     type: jQuery('#type').val(),
                     price: jQuery('#price').val(),
                     quantity: jQuery('#quantity').val(),
-                    title1: jQuery('#title1').val(),
-                    field1: jQuery('#field1').val(),
-                    value1: jQuery('#value1').val(),
-                    description: employees
+                    description: employees,
+                    titleBeforeUpgrade: titleBeforeUpgrade
                 },
                 success: function (data) {
                     console.log(data);
                     if (data.errors) {
+                        if (data.errors.type) {
+                            $('#type-error').html(data.errors.type[0]);
+                        }
+                        if (data.errors.price) {
+                            $('#price-error').html(data.errors.price[0]);
+                        }
+                        if (data.errors.quantity) {
+                            $('#quantity-error').html(data.errors.quantity[0]);
+                        }
+                        if (data.errors.title) {
+                            $('#title-error').html(data.errors.quantity[0]);
+                        }
 
                     }
                     if (data.success) {
+                        doRefresh = true;
+                        console.log(data);
                         $('#success-msg').removeClass('hidden');
-                        $("#image1").val('');
-                        $("#image2").val('');
-                        $("#image3").val('');
                         $('#myModal').modal('show');
                     }
                 }
-            });*/
+            });
         });
     });
 </script>
@@ -332,42 +344,43 @@
 </script>
 
 <script>
-
-    jQuery('#ajaxDelete').click(function(e){
-        jQuery('.alert').show();
-        e.preventDefault();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-        jQuery.ajax({
-            url: "{{route('Admin-deleteProduct')}}",
-            method: 'post',
-            dataType: "json",
-            data: {
-                titleBeforeUpgrade: titleBeforeUpgrade
-            },
-            success:function(data) {
-                console.log(data);
-                /*doRefresh = true;*/
-                if (data.errors) {
-
+    $(document).ready(function() {
+        jQuery('#ajaxDelete').click(function (e) {
+            console.log('facem delete');
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
-                if (data.success) {
-                    $('#success-msg2').removeClass('hidden');
+            });
+            jQuery.ajax({
+                url: "{{route('Admin-deleteProduct')}}",
+                method: 'post',
+                dataType: "json",
+                data: {
+                    titleBeforeUpgrade: titleBeforeUpgrade
+                },
+                success: function (data) {
+                    console.log(data);
+                    doRefresh = true;
+                    if (data.errors) {
+
+                    }
+                    if (data.success) {
+                        $('#success-msg2').removeClass('hidden');
+                    }
                 }
-            }
+            });
         });
+
     });
+        $('#editAccount').on('hidden.bs.modal', function () {
+            $("#field").html("");
+            if (doRefresh === true) {
+                location.reload();
+            }
+        })
 
-
-    $('#editAccount').on('hidden.bs.modal', function () {
-        $("#field").html("");
-       /* if(doRefresh===true) {
-            location.reload();
-        }*/
-    })
 </script>
 
 </body>

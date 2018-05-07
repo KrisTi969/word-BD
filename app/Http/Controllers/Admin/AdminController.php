@@ -59,6 +59,7 @@ class AdminController extends Controller
                 ->orWhere('type','like','%' . $request->search . '%')
                 ->orWhere('price','like','%' . $request->search . '%')
                 ->orWhere('quantity','like','%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%')
                 ->paginate(18);
         }
         return view('admin.admin-productList',['products' => $products]);
@@ -235,6 +236,7 @@ class AdminController extends Controller
         $results = DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->count();
         if ($results != 0) {
             try {
+                DB::table('prod_images')->where('prod_title', '=', $request->titleBeforeUpgrade)->delete();
                 DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->delete();
                 return Response::json(['success' => '1']);
             } catch (\SQLiteException $e) {
@@ -242,6 +244,39 @@ class AdminController extends Controller
             }
         }
         return Response::json(['success' => '1']);
+    }
+
+    public function updateProduct(Request $request)
+    {
+            $validator = Validator::make($request->all(), [
+                'title' => 'required|max:200|',
+                'type' => 'required|max:50|',
+                'price' => 'required|numeric|',
+                'quantity' => 'required|numeric',
+            ]);
+        if ($validator->passes()) {
+            try {
+               /* DB::table('products')
+                    ->where('title', $request->titleBeforeUpgrade)
+                    ->update(['title' => $request->title, 'description' =>serialize($request->description), 'price'=>$request->price,'quantity'=>$request->quantity]);
+    */
+                $product = Product::where('title', $request->titleBeforeUpgrade)->first();;
+
+                $product->title = $request->title;
+                $product->type = $request->type;
+                $product->description = $request->description;
+                $product->quantity= $request->quantity;
+                $product->price = $request->price;
+                $product->save();
+
+               return Response::json(['success' => '1']);
+            } catch (\SQLiteException $e) {
+
+            }
+        }
+        else {
+            return Response::json(['errors' => $validator->errors()]);
+        }
     }
 
     public function approveComment(Request $request) {

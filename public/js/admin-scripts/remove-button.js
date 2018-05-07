@@ -1,4 +1,3 @@
-
 var next = 1;
 var doRefresh = false;
 var titleBeforeUpgrade;
