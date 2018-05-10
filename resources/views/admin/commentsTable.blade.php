@@ -10,7 +10,7 @@
             <tbody>
                 @foreach($comments as $item)
                     <tr data-toggle="collapse" data-target="#{{$loop->index}}" class="accordion-toggle">
-                        <td><a href="{{ route('product', $item->commentable_id) }}">  {{\App\Http\Controllers\Product\ProductController::getProductName($item->commentable_id)}}</a></td>
+                        <td>{{\App\Http\Controllers\Product\ProductController::getProductName($item->commentable_id)}}<a href="{{ route('product', $item->commentable_id) }}">  </a></td>
                         <td>{{$item->created_at}}</td>
                     </tr>
                     <tr>

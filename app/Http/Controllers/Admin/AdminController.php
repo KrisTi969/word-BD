@@ -62,6 +62,9 @@ class AdminController extends Controller
                 ->orWhere('description', 'like', '%' . $request->search . '%')
                 ->paginate(18);
         }
+        if(\Route::currentRouteName() == "Admin-UpdateProductImages") {
+            return view('admin.admin-updateProductImages',['products' => $products]);
+        }
         return view('admin.admin-productList',['products' => $products]);
     }
 
@@ -80,8 +83,6 @@ class AdminController extends Controller
             'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'phone_number' => 'required|min:10|numeric|'
         ]);
-
-
 
         if ($validator->passes()) {
 
@@ -358,6 +359,141 @@ class AdminController extends Controller
             return Response::json(['success' => '1']);
         }
         return Response::json(['errors' => $validator->errors()]);
+    }
+
+    public function uploadFilesAndModify(Request $request){
+
+
+        if($request->file('image1')&& $request->file('image2') && $request->file('image3')) {
+            $validator = Validator::make($request->all(), [
+                'image1' => 'required|mimes:jpg,jpeg,png,gif',
+                'image2' => 'required|mimes:jpg,jpeg,png,gif',
+                'image3' => 'required|mimes:jpg,jpeg,png,gif',
+            ]);
+        }
+        if($request->file('image1') && $request->file('image2') ) {
+            $validator = Validator::make($request->all(), [
+                'image1' => 'required|mimes:jpg,jpeg,png,gif',
+                'image2' => 'required|mimes:jpg,jpeg,png,gif',
+            ]);
+        }
+
+        if($request->file('image1') && $request->file('image3')) {
+            $validator = Validator::make($request->all(), [
+                'image1' => 'required|mimes:jpg,jpeg,png,gif',
+                'image3' => 'required|mimes:jpg,jpeg,png,gif',
+            ]);
+        }
+
+        if( $request->file('image2') && $request->file('image3')) {
+            $validator = Validator::make($request->all(), [
+                'image2' => 'required|mimes:jpg,jpeg,png,gif',
+                'image3' => 'required|mimes:jpg,jpeg,png,gif',
+            ]);
+        }
+        if($request->file('image1')) {
+            $validator = Validator::make($request->all(), [
+                'image1' => 'required|mimes:jpg,jpeg,png,gif',
+            ]);
+        }
+        if($request->file('image2')) {
+            $validator = Validator::make($request->all(), [
+                'image2' => 'required|mimes:jpg,jpeg,png,gif',
+            ]);
+        }
+        if($request->file('image3')) {
+            $validator = Validator::make($request->all(), [
+                'image3' => 'required|mimes:jpg,jpeg,png,gif',
+            ]);
+        }
+
+
+
+        $destinationPath = 'uploads';
+        if ($validator->passes()) {
+
+            if($request->file('image1')) {
+                $file1 = $request->file('image1');
+                $file1->move($destinationPath, '1'.$file1->getClientOriginalName());
+                DB::table('prod_images')->where('prod_title','=',$request->route('title'))->where('filename','like','1%')->delete();
+                DB::table('prod_images')->insert([
+                    ['prod_title' => $request->route('title'), 'filename' => '1'.$file1->getClientOriginalName()],
+                ]);
+            }
+            if($request->file('image2')) {
+                $file2 = $request->file('image2');
+                $file2->move($destinationPath, '2'.$file2->getClientOriginalName());
+                DB::table('prod_images')->where('prod_title','=',$request->route('title'))->where('filename','like','2%')->delete();
+                DB::table('prod_images')->insert([
+                    ['prod_title' => $request->route('title'), 'filename' => '2'.$file2->getClientOriginalName()],
+                ]);
+            }
+            if($request->file('image3')) {
+                $file3 = $request->file('image3');
+                $file3->move($destinationPath, '3'.$file3->getClientOriginalName());
+                DB::table('prod_images')->where('prod_title','=',$request->route('title'))->where('filename','like','3%')->delete();
+                DB::table('prod_images')->insert([
+                    ['prod_title' => $request->route('title'), 'filename' => '3'.$file3->getClientOriginalName()],
+                ]);
+            }
+
+
+            /*//Display File Name
+            echo 'File Name: '.$file->getClientOriginalName();
+            echo '<br>';
+
+            //Display File Extension
+            echo 'File Extension: '.$file->getClientOriginalExtension();
+            echo '<br>';
+
+            //Display File Real Path
+            echo 'File Real Path: '.$file->getRealPath();
+            echo '<br>';
+
+            //Display File Size
+            echo 'File Size: '.$file->getSize();
+            echo '<br>';
+
+            //Display File Mime Type
+            echo 'File Mime Type: '.$file->getMimeType();*/
+
+            //Move Uploaded File
+          /*  $destinationPath = 'uploads';
+            $file1->move($destinationPath, '1'.$file1->getClientOriginalName());
+            $file2->move($destinationPath, '2'.$file2->getClientOriginalName());
+            $file3->move($destinationPath, '3'.$file3->getClientOriginalName());*/
+
+           /* try{
+                DB::table('prod_images')->where('prod_title','=',$request->route('title'))->delete();
+
+                DB::table('prod_images')->insert([
+                    ['prod_title' => $request->route('title'), 'filename' => '1'.$file1->getClientOriginalName()],
+                    ['prod_title' => $request->route('title'), 'filename' => '2'.$file2->getClientOriginalName()],
+                    ['prod_title' => $request->route('title'), 'filename' => '3'.$file3->getClientOriginalName()]
+                ]);
+            }catch (\SQLiteException $e) {
+                return Response::json(['errors' => $validator->errors()]);
+            }*/
+
+            return Response::json(['success' => '1']);
+        }
+        return Response::json(['errors' => $validator->errors()]);
+    }
+
+    public function getProductImages(Request $request) {
+        $ceva = [];
+        $poz = 0;
+        try {
+            $images = DB::table('prod_images')->where('prod_title','=',$request->title)->get();
+            foreach ($images as $chestie) {
+                $ceva[$poz] = $chestie->filename;
+                $poz++;
+            }
+            return Response::json(['success' => '1','data'=>$ceva]);
+        }
+        catch (\SQLiteException $e) {
+            return Response::json(['errors' => '1']);
+        }
     }
 
 

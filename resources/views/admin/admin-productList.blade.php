@@ -234,7 +234,6 @@
 
 <script>
     $(document).ready(function() {
-        console.log('facem update');
         var title;
         jQuery('#ajaxSubmit').click(function (e) {
             title = jQuery('#title1').val();

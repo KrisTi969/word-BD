@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         return $product->title;
     }
-    return null;
+    return 'The product no longer exists! ';
     }
 
     public static function getProductReviewCount($id){

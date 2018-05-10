@@ -29,6 +29,7 @@
             <ul class="collapse list-unstyled" id="productSubmenu">
                 <li><a href="{{route('Admin-addProduct')}}">Add product</a></li>
                 <li><a href="{{route('Admin-productList')}}">Product List</a></li>
+                <li><a href="{{route('Admin-UpdateProductImages')}}">Update Product Image</a></li>
             </ul>
         </li>
     </ul>

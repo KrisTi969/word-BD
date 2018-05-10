@@ -585,7 +585,7 @@
             method: 'post',
             dataType: "json",
             data: {
-                    name: jQuery('#name').val(),
+                name: jQuery('#name').val(),
                 lname: jQuery('#lname').val(),
                 username: jQuery('#username').val(),
                 birthdate: jQuery('#birthdate').val(),

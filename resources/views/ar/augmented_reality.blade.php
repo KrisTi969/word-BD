@@ -9,16 +9,21 @@
 
 
 <html>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/examples/vendor/aframe/build/aframe.min.js"></script>
 <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"></script>
+
 <body style='margin : 0px; overflow: hidden;'>
 <a-scene embedded arjs>
     <a-assets>
-        <a-asset-item id="ship-obj" src="{{asset('images/ar/Iphone editat.obj')}}"></a-asset-item>
-        <a-asset-item id="ship-mtl" src="{{asset('images/ar/Iphone editat.mtl')}}"></a-asset-item>
+        {{--<a-asset-item id="ship-obj" src="{{asset('images/ar/Iphone editat.obj')}}"></a-asset-item>
+        <a-asset-item id="ship-mtl" src="{{asset('images/ar/Iphone editat.mtl')}}"></a-asset-item>--}}
+        <a-asset-item id="ship-obj" src="{{asset('images/ar/TV/LCD TV.obj')}}"></a-asset-item>
+       <a-asset-item id="ship-mtl" src="{{asset('images/ar/TV/LCD TV.mtl')}}"></a-asset-item>
+
     </a-assets>
     <a-marker preset="hiro">
-        <a-entity scale=".01 .01 .01" obj-model="obj: #ship-obj; mtl: #ship-mtl" ></a-entity>
+        <a-obj-model src="#ship-obj" mtl="#ship-mtl"></a-obj-model>
     </a-marker>
     <a-entity camera></a-entity>
 </a-scene>

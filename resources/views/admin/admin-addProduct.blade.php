@@ -287,7 +287,7 @@
         var url = $this.attr('action');
         var formData = new FormData(this);
         $.ajax({
-            url: "http://127.0.0.1:8000/uploadfile/"+title,
+            url: "http://127.0.0.1:8000/uploadfile/"+toSend,
             type: "POST",
             dataType: "json",
             data: formData,

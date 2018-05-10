@@ -15,6 +15,7 @@
 
 Route::get('/uploadfile','Admin\AdminController@show');
 Route::post('/uploadfile/{title}','Admin\AdminController@uploadFiles')->name('try');
+Route::post('/modifyPicture/{title}','Admin\AdminController@uploadFilesAndModify')->name('uploadAndModify');
 
 
 Route::group(['middleware' => 'admin'], function () {
@@ -35,6 +36,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/Admin/deleteProduct', 'Admin\AdminController@deleteProduct')->name('Admin-deleteProduct');
     Route::get('/Admin/productList','Admin\AdminController@productList')->name('Admin-productList');
     Route::post('/Admin/updateProduct','Admin\AdminController@updateProduct')->name('Admin-updateProduct');
+    Route::get('/Admin/updateProductImages','Admin\AdminController@productList')->name('Admin-UpdateProductImages');
+    Route::post('/Admin/getProductImages', 'Admin\AdminController@getProductImages')->name('Admin-getProductImages');
 });
 
 

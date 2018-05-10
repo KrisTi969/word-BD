@@ -19,7 +19,12 @@ echo Form::close();
 <div class="form-group">
     <label for="passport">Product Images:</label>
     <br>
+
+
     {!! Form::file('image1',array('id'=>'image1')) !!}
+
+    <input hidden id="titleProduct" title="ceva" value=""/>
+
     <img id="img1" src=""  class="img-thumbnail" width="304" height="250" />
         <span class="text-danger">
                             <strong id="image1-error"></strong>
@@ -27,7 +32,7 @@ echo Form::close();
 
     <br>
     {!! Form::file('image2',array('id'=>'image2')) !!}
-    <img id="img2" src="{{asset('uploads/1img1.PNG')}}"  class="img-thumbnail" width="304" height="250" />
+    <img id="img2" src=""  class="img-thumbnail" width="304" height="250" />
         <span class="text-danger">
                             <strong id="image2-error"></strong>
                         </span>
@@ -38,7 +43,6 @@ echo Form::close();
         <span class="text-danger">
                             <strong id="image3-error"></strong>
                         </span>
-
 </div>
 
 <button type="submit" class="btn btn-default">Submit</button>
