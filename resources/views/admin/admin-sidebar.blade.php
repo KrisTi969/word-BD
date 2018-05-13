@@ -20,7 +20,7 @@
                 Comments
             </a>
             <ul class="collapse list-unstyled" id="commentsSubmenu">
-                <li><a href="{{route('Admin-UncheckedUsers')}}">Unchecked Comments</a></li>
+                <li><a href="{{route('Admin-UncheckedComments')}}">Unchecked Comments</a></li>
             </ul>
             <a href="#productSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="glyphicon glyphicon-phone"></i>
@@ -30,6 +30,13 @@
                 <li><a href="{{route('Admin-addProduct')}}">Add product</a></li>
                 <li><a href="{{route('Admin-productList')}}">Product List</a></li>
                 <li><a href="{{route('Admin-UpdateProductImages')}}">Update Product Image</a></li>
+            </ul>
+            <a href="#orderSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="glyphicon glyphicon-print"></i>
+                Orders
+            </a>
+            <ul class="collapse list-unstyled" id="orderSubmenu">
+                <li><a href="{{route('Admin-PendingOrders')}}">Approve Orders</a></li>
             </ul>
         </li>
     </ul>

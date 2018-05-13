@@ -137,8 +137,6 @@
     $(".popconfirm2").popConfirm();
 
 
-
-
     $('#important_action').click(function() {
         alert('You clicked, and valided this button !');
     });

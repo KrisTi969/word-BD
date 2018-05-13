@@ -26,7 +26,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/Admin/userList/', 'Admin\AdminController@userList')->name('Admin-userList');
     Route::post('/Admin/editUser', 'Admin\AdminController@editContactByAdmin')->name('Admin-editUser');
     Route::post('/Admin/deleteUser', 'Admin\AdminController@deleteUser')->name('Admin-deleteUser');
-    Route::get('/Admin/commentList', 'Admin\AdminController@showUncheckedComments')->name('Admin-UncheckedUsers');
+    Route::get('/Admin/commentList', 'Admin\AdminController@showUncheckedComments')->name('Admin-UncheckedComments');
     Route::post('/Admin/commentList', 'Admin\AdminController@showUncheckedComments')->name('Admin-UncheckedUsersPost');
     Route::post('/Admin/removeComment', 'Admin\AdminController@deleteComment')->name('Admin-deleteComment');
     Route::get('Admin/refreshComments','Admin\AdminController@refreshComments')->name('Admin-refreshComments');
@@ -38,6 +38,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/Admin/updateProduct','Admin\AdminController@updateProduct')->name('Admin-updateProduct');
     Route::get('/Admin/updateProductImages','Admin\AdminController@productList')->name('Admin-UpdateProductImages');
     Route::post('/Admin/getProductImages', 'Admin\AdminController@getProductImages')->name('Admin-getProductImages');
+    Route::get('/Admin/getPendingOrders','Admin\AdminController@showPendingOrders')->name('Admin-PendingOrders');
+    Route::post('Admin/approveOrder','Admin\AdminController@approveOrder')->name('Admin-approveOrder');
+    Route::get('/Admin/refreshOrders','Admin\AdminController@refreshPendingOrders')->name('Admin-RefreshPendingOrders');
+    Route::post('/Admin/removeOrder', 'Admin\AdminController@deleteOrder')->name('Admin-removeOrder');
 });
 
 

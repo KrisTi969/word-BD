@@ -218,12 +218,80 @@ class AdminController extends Controller
         }
     }
 
+    public function  showPendingOrders() {
+        if((new \Illuminate\Http\Request)->isMethod('get')) {
+            $orders = DB::table('orders')->where('status','=','Pending')->orderBy('created_at', 'desc')->paginate(10);
+            $products = collect();//cream colectie noua
+            foreach ($orders as $item){
+                $prodnou = DB::table('order_items')
+                    ->select(DB::raw('*'))
+                    ->where('order_id', '=', $item->id)
+                    ->get();
+                foreach ($prodnou as $prod){
+                    $products->push($prod);//adaugam produsul la lista de produse ale repectivului user
+                }
+            }
+            return view('admin.admin-PendingOrders', ['orders' => $orders, 'products' => $products]);
+        }
+        else{
+            $orders = DB::table('orders')->where('status','=','Pending')->orderBy('created_at', 'desc')->paginate(10);
+            $products = collect();//cream colectie noua
+            foreach ($orders as $item){
+                $prodnou = DB::table('order_items')
+                    ->select(DB::raw('*'))
+                    ->where('order_id', '=', $item->id)
+                    ->get();
+                foreach ($prodnou as $prod){
+                    $products->push($prod);//adaugam produsul la lista de produse ale repectivului user
+                }
+            }
+            try {
+                $html = view('admin.ordersTable', compact('orders', 'products'))->render();
+            } catch (\Throwable $e) {
+            }
+
+            return response()->json(compact('html'));
+        }
+    }
+
+    public function refreshPendingOrders() {
+        $orders = DB::table('orders')->where('status','=','Pending')->orderBy('created_at', 'desc')->paginate(10);
+        $products = collect();//cream colectie noua
+        foreach ($orders as $item){
+            $prodnou = DB::table('order_items')
+                ->select(DB::raw('*'))
+                ->where('order_id', '=', $item->id)
+                ->get();
+            foreach ($prodnou as $prod){
+                $products->push($prod);//adaugam produsul la lista de produse ale repectivului user
+            }
+        }
+        try {
+            $html = view('admin.ordersTable', compact('orders', 'products'))->render();
+        } catch (\Throwable $e) {
+        }
+
+        return response()->json(compact('html'));
+    }
+
 
 
     public function deleteComment(Request $request) {
         try {
             DB::table('comments')->where('id','=',$request->id)->delete();
 
+            return Response::json(['success' => '1']);
+        }
+        catch (\SQLiteException $e) {
+            return Response::json(['errors' => '1']);
+        }
+    }
+
+
+    public function deleteOrder(Request $request) {
+        try {
+            DB::table('orders')->where('id','=',$request->id)->delete();
+            DB::table('order_items')->where('order_id','=',$request->id)->delete();
             return Response::json(['success' => '1']);
         }
         catch (\SQLiteException $e) {
@@ -285,6 +353,18 @@ class AdminController extends Controller
             DB::table('comments')
                 ->where('id', $request->id)
                 ->update(['approved' => 1]);
+            return Response::json(['success' => '1']);
+        }
+        catch (\SQLiteException $e) {
+            return Response::json(['errors' => '1']);
+        }
+    }
+
+    public function approveOrder(Request $request) {
+        try {
+            DB::table('orders')
+                ->where('id', $request->id)
+                ->update(['status' => 'Sent to Courier']);
             return Response::json(['success' => '1']);
         }
         catch (\SQLiteException $e) {

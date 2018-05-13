@@ -66,7 +66,7 @@
                                     @if($item->status=='Pending')
                                     <td class="text-warning">{{$item->status}}</td>
                                         @endif
-                                    @if($item->status=='Sent')
+                                    @if($item->status=='Sent to courier')
                                         <td class="text-success">{{$item->status}}</td>
                                     @endif
                                 </tr>
