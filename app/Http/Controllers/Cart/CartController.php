@@ -61,7 +61,6 @@ class CartController extends Controller
                         //cazul cand o fost luat din db, si trebuie adaugat iar
                         \Cart::store(\Auth::user()->id);
                     }
-
                 }
                 /*Cart::add($product->id,$product->title, 1,$product->price);*/
                 return view('account.account_cart');
@@ -92,7 +91,5 @@ class CartController extends Controller
     public static function  cartTotal(){
         return \Cart::total();
     }
-
-
 
 }

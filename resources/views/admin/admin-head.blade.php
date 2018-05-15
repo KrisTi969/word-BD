@@ -13,6 +13,8 @@
 
     <link type="text/css" rel="stylesheet" href="{{ asset('css/flexslider.css') }} "/>
     <link type="text/css" rel="stylesheet" href="{{ asset('css/datepicker.css') }} " />
+    <link type="text/css" rel="stylesheet" href="{{ asset('css/startmin.css') }} " />
+
 
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/admin-style.css')}}">
