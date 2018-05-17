@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use DB;
 use Response;
 use App\Model\Order;
+use App\Model\Wishlist;
+use Gloudemans\Shoppingcart\Cart;
 
 class AccountController extends Controller
 {
@@ -40,6 +42,51 @@ class AccountController extends Controller
             }
         }
             return view('account.orders',['orders' => $order, 'products' => $products]);
+        }
+        else {
+            return abort(404);
+        }
+    }
+
+    public function saveWishlist(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:60|unique:wishlists',
+        ]);
+        if ($validator->passes()) {
+            DB::table('wishlists')->insert(
+                ['name' => $request->name, 'user_id' => \Auth::user()->id, 'price' => \Cart::total()]
+            );
+            $wishlist = Wishlist::where('name',$request->name)->first();
+            foreach (\Cart::content() as $product) {
+                DB::insert('insert into wishlist_products (wishlist_id, product_id,quantity, price, product_name)
+            values (?, ?, ?, ?, ?)', [$wishlist->id, $product->id, $product->qty, $product->price, $product->name]);
+
+             /*  $query = DB::table('products')
+                  ->where('title','=',$product->name);
+
+                $query->decrement('quantity',intval($product->quantity));*/
+            }
+
+
+            return Response::json(['success' => '1']);
+        }
+        return Response::json(['errors' => $validator->errors()]);
+    }
+
+    public function getWishlists(){
+        if(\Auth::check()){
+            $wishlists = Wishlist::where('user_id',\Auth::user()->id)->get();
+            $products = collect();//cream colectie noua
+            foreach ($wishlists as $item){
+                $prodnou = DB::table('wishlist_products')
+                    ->select(DB::raw('*'))
+                    ->where('wishlist_id', '=', $item->id)
+                    ->get();
+                foreach ($prodnou as $prod){
+                    $products->push($prod);//adaugam produsul la lista de produse ale repectivului user
+                }
+            }
+            return view('account.account_wishlists',['wishlists' => $wishlists, 'products' => $products]);
         }
         else {
             return abort(404);
@@ -84,9 +131,7 @@ class AccountController extends Controller
                       'address'=>$request->address, 'city'=>$request->city, 'postal_code'=>$request->postal_code, 'country'=>$request->country, 'phone_number'=>$request->phone_number    ]);
               return Response::json(['success' => '1']);
         }
-
         return Response::json(['errors' => $validator->errors()]);
-
     }
 
 }

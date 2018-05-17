@@ -68,7 +68,8 @@ else {
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel
                             </button>
                             <a href="<?php echo $reddirect_link?>account_cart.php" class="btn btn-yellow">Check Out</a>
-                        </div>
+
+                    </div>
                     </div>
 
                 </div>
@@ -321,8 +322,8 @@ else {
                                     @if(Auth::check())
                                         <li><a href="{{route('Account')}}"><i class="fa fa-black-tie"></i>View Profile</a></li>
                                             <li><a href="{{route('seeCart')}}"><i class="fa fa-shopping-cart"></i>My Cart</a></li>
-                                        <li><a href="#"><i class="fa fa-heart"></i>My Wishlist</a></li>
-                                        <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>
+                                        <li><a href="{{route('getWishlists')}}"><i class="fa fa-heart"></i>My Wishlist</a></li>
+                                      {{--  <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>--}}
                                         <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>
                                     @if(Auth::user()->role == "admin")
                                             <li><a href="{{route('Admin')}}"><i class="fa fa-exclamation-triangle"></i>Admin Page</a></li>

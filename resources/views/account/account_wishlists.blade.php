@@ -37,40 +37,53 @@
                         <div class="col-sm-9">
                             <h2>Account Control Panel</h2>
                             <strong>Hello, {{\Auth::user()->name}}</strong><br />
-                            <p>From this pannel you can see your reviews.</p>
+                            <p>From this pannel you can see your wishlist.</p>
                             <div class="table-responsive">
                                 <table class="table table-condensed" style="border-collapse:collapse;">
                                     <thead>
                                     <tr>
-                                        <th>Reviewed Product</th>
-                                        <th>Date</th>
-
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Total Price</th>
+                                        <th>Created At</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($comments as $item)
+                                    @foreach($wishlists as $item)
                                         <tr data-toggle="collapse" data-target="#{{$loop->index}}" class="accordion-toggle">
-                                            <td><a href="Product/{{$item->commentable_id}}">  {{\App\Http\Controllers\Product\ProductController::getProductName($item->commentable_id)}}</a></td>
+                                            <td>{{$item->name}}</td>
+                                            <td>{{$item->price}}</td>
                                             <td>{{$item->created_at}}</td>
                                         </tr>
 
                                         <tr >
                                             <td colspan="9" class="hiddenRow"><div class="accordian-body collapse" id="{{$loop->index}}">
                                                     <table class="table table-hover">
-                                                        <tbody>
+                                                        <thead>
                                                         <tr>
-                                                            <td><textarea disabled>{{$item->comment}}</textarea></td>
-                                                            <td><div class="col-md-10">
-                                                                    <input type="number" name="rating" id="rating" class="rating" data-max="5" data-min="1" data-readonly value="{{$item->rate}}" data-empty-value="0"/>
-                                                                    <span class="help-block"></span>
-                                                                </div></td>
+                                                            <th>Product Name</th>
+                                                            <th>Quantity</th>
+                                                            <th>Price</th>
                                                         </tr>
-                                                        </tbody>
+                                                        </thead>
+                                                        @foreach($products as $product)
+                                                            @if($product->wishlist_id == $item->id)
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>{{$product->product_name}}</td>
+                                                                    <td>{{$product->quantity}}</td>
+                                                                    <td>{{$product->price}}</td>
+                                                                </tr>
+
+                                                                </tbody>
+                                                            @endif
+                                                        @endforeach
                                                     </table>
                                                 </div> </td>
 
 
                                         </tr>
+
                                     @endforeach
 
                                     </tbody>

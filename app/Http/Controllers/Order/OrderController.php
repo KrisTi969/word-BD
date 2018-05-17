@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Order;
 use DB;
-use function PHPSTORM_META\elementType;
+
 
 class OrderController extends Controller
 {

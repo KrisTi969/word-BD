@@ -21,6 +21,7 @@
                         <ul>
                             <li><a href="{{route('Account')}}">Account Control Panel</a></li>
                             <li><a href="{{route('Orders')}}">My Orders</a></li>
+                            <li><a href="{{route('getWishlists')}}">My Wishlists</a></li>
                             <li class="active"><a href="{{route('seeCart')}}">My Carts Products</a></li>
                             <li><a href="{{route('Reviews')}}">My Reviews and Ratings</a></li>
                         </ul>
@@ -77,7 +78,7 @@
                                                 </span>
                                                 <div class="clearfix"></div>
                                             </td>
-                                            <td><input type="number" min="1" name="product_quantity_p1" value="1" class="form-control product_quantity_p1" /></td>
+                                            <td><input type="text" min="1" name="product_quantity_p1" value="1" class="form-control product_quantity_p1" /></td>
                                             <td>{{$row->price}}</td>
                                             <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
                                         </tr>
@@ -101,12 +102,46 @@
                                                 <i class="fa"></i> Continue to checkout</a>
                                             <a href="{{route('/')}}" class="btn btn-success btn-lg pull-right margin-right-20">
                                                 <i class="fa fa-plus"></i> Add More Products</a>
+                                            <button type="button" class="btn btn-warning btn-lg pull-left margin-right-20"data-toggle="modal" data-target="#exampleModalCenter">
+                                                <i class="fa fa-heart"></i> Save as Wishlist</button>
 
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Save Wishlist</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div id="success-msg" class="hidden">
+                                                                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                                        <span aria-hidden="true">×</span>
+                                                                    </button>
+                                                                    <strong>Success!</strong> Cart saved as wishlist !
+                                                                </div>
+                                                            </div>
+                                                            <label for="name" >Wishlist name:</label>
+                                                            <input id="name" type="text">
+                                                            <span class="text-danger">
+                                                                <strong id="name-error"></strong>
+                                                            </span>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary" id="ajaxSubmit" value="Save Wishlist">Save Wishlist </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="clearfix"></div>
                                         </td>
                                     </tr>
                                     </tbody>
-
                                 </table>
                         </div> <!--End Cart page-->
 
@@ -154,6 +189,40 @@
         }));
     });
 
+</script>
+
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#ajaxSubmit').click(function(e){
+            // jQuery('.alert').show();
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "{{route('Wishlist')}}",
+                method: 'post',
+                dataType: "json",
+                data: {
+                    name: jQuery('#name').val(),
+                },
+                success:function(data) {
+                    console.log(data);
+                    if (data.errors) {
+                        if (data.errors.name) {
+                            $('#name-error').html(data.errors.name[0]);
+                        }
+
+                    }
+                    if (data.success) {
+                        $('#success-msg').removeClass('hidden');
+                    }
+                }
+            });
+        });
+    });
 </script>
 <script type="text/javascript" src="{{asset('js/jquery.validate.min.js')}}"></script>
 

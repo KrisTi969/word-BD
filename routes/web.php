@@ -44,7 +44,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('/Admin/removeOrder', 'Admin\AdminController@deleteOrder')->name('Admin-removeOrder');
 });
 
-
+Route::group(['middleware' => 'web'], function () {
 
 /*Route::group(array('middleware' => 'forceSSL'), function() {*/
 Route::post('/ar', 'Ar\AugmentedRealityController@index')->name('Augmented-Reality');
@@ -58,6 +58,8 @@ Route::post('/addReview', 'Product\ProductController@addReview');
 Route::get('/AccountCart', 'Cart\CartController@index')->name('seeCart');
 Route::get('/Account', 'Account\AccountController@index')->name('Account');
 Route::get('/Orders', 'Account\AccountController@orderIndex')->name('Orders');
+Route::post('/SaveWishlist', 'Account\AccountController@saveWishlist')->name('Wishlist');
+Route::get('/get-wishlists', 'Account\AccountController@getWishlists')->name('getWishlists');
 Route::get('/reviews', 'Account\AccountController@reviewsIndex')->name('Reviews');
 
 
@@ -101,7 +103,7 @@ Route::get('user/{name?}/{type?}', function ($name = 'John', $type = 'ceva') {
 });
 
 Route::get("/autocomplete",array('as'=>'autocomplete','uses'=> 'Api\SearchController@autocomplete'));
-
+});
 /*
  * Controller based Routes :) */
 

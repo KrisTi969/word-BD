@@ -29,6 +29,7 @@
                             <ul>
                                 <li  class=""><a href="{{route('Account')}}">Account Control Panel</a></li>
                                 <li class="active"><a href="{{route('Orders')}}">My Orders</a></li>
+                                <li><a href="{{route('getWishlists')}}">My Wishlists</a></li>
                                 <li><a href="{{route('seeCart')}}">My Cart Products</a></li>
                                 <li><a href="{{route('Reviews')}}">My Reviews and Ratings</a></li>
                             </ul>
