@@ -31,7 +31,8 @@ class AllProducts extends Controller
     public function getProducts()
     {
         $products = DB::table('products')->paginate(16);
-        return view('product.productsRedirect', ['products' => $products]);
+        $images = DB::table('prod_images')->get();
+        return view('product.productsRedirect', ['products' => $products])->with(['images' => $images]);
     }
 
     public function getProductsWithFilterNew()
@@ -70,13 +71,13 @@ class AllProducts extends Controller
    /*         $baseQuery->where("type", "=", $type);
             $baseQuery->where("description", "like", "%".$producer."%");*/
         if($request->input('type')) {
-            $baseQuery->where('type','=',$request->input('type'));
+            $baseQuery->where('type','=',$request->input('type'))->where('quantity','>',0);
         }
         if($request->input('producer')) {
             $baseQuery->where('description','like',"%".$request->input('producer')."%");
         }
         if($request->input('priceMin') && $request->input('priceMax')) {
-            $baseQuery->whereBetween('price',array($request->input('priceMin'),$request->input('priceMax')));
+            $baseQuery->whereBetween('price',array($request->input('priceMin'),$request->input('priceMax')))->where('quantity','>',0);
         }
         //Gasim id'ul produselor care nu se incadreaza in dimensiune
 

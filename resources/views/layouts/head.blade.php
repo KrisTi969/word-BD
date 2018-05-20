@@ -29,7 +29,9 @@
 
     <!-- Main css link -->
     <link type="text/css" rel="stylesheet" href="{{ asset('css/main.css') }} " />
-
+    {{--jquery-3.3.1.min.js adaugat ultimul--}}
+    <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/share.js') }}"></script>
     <script src="{{asset('js/bootstrap-rating-input.min.js')}}" type="text/javascript"></script>
 </head>

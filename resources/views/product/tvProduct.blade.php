@@ -5,7 +5,7 @@
  * Date: 21.02.2018
  * Time: 15:49
  */
-
+use Jorenvh\Share\Share;
 ?>
 
         <!DOCTYPE html>
@@ -34,16 +34,27 @@
                         <div class="col-md-6 single-top-left">
                             <div class="flexslider">
                                 <ul class="slides">
-                                    <li data-thumb="../../public/images/products/4ksamsung6120.jpg">
-                                        <div class="thumb-image detail_images"> <img src="../../../public/images/products/4ksamsung6120.jpg" data-imagezoom="true" class="img-responsive" alt="" width="420"> </div>
+                                    @if($images)
+                                    @foreach($images as $image)
+                                        @if($loop->index==0)
+                                    <li data-thumb="http://127.0.0.1:8000/uploads/{{$image->filename}}">
+                                        <div class="thumb-image detail_images"> <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" data-imagezoom="true" class="img-responsive" alt="" width="420"> </div>
                                     </li>
-                                    <li data-thumb="../../public/images/products/4ksamsung6120-2.jpg">
-                                        <div class="thumb-image"> <img src="../../../public/images/products/4ksamsung6120-2.jpg" data-imagezoom="true" class="img-responsive" alt="" aria-posinset="" width="420"/> </div>
+                                        @endif
+                                            @if($loop->index==1)
+                                    <li data-thumb="http://127.0.0.1:8000/uploads/{{$image->filename}}">
+                                        <div class="thumb-image"> <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" data-imagezoom="true" class="img-responsive" alt="" aria-posinset="" width="420"/> </div>
                                     </li>
-                                    <li data-thumb="../../public/images/products/4ksamsung6120-3.jpg">
-                                        <div class="thumb-image"> <img src="../../../public/images/products/4ksamsung6120-3.jpg" data-imagezoom="true" class="img-responsive" alt="" width="420"/>  </div>
+                                            @endif
+                                                @if($loop->index==2)
+                                    <li data-thumb="http://127.0.0.1:8000/uploads/{{$image->filename}}">
+                                        <div class="thumb-image"> <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" data-imagezoom="true" class="img-responsive" alt="" width="420"/>  </div>
                                     </li>
+                                            @endif
+                                        @endforeach
+                                        @endif
                                 </ul>
+
                             </div>
                         </div>
                         <div class="col-md-6 single-top-right">
@@ -129,17 +140,16 @@
                         <div class="clearfix"> </div>
                     </div>
                     <br><br>
-                    <div class="single-page-icons social-icons">
-                        <ul>
-                            <li><h4>Share on</h4></li>
-                            <li><a href="#" class="fa fa-facebook-square icon facebook"> </a></li>
-                            <li><a href="#" class="fa fa-twitter-square icon twitter"> </a></li>
-                            <li><a href="#" class="fa fa-google-plus-square icon googleplus"> </a></li>
-                            <li><a href="#" class="fa fa-rss-square icon rss"> </a></li>
-                        </ul>
+                    <div class="container">
+                        <h3 class="Whitish">Share: </h3>
+                    <?php
+                    $share = new Share();
+                    echo $share->page(url()->current(),$product->title )
+                        ->facebook()
+                        ->twitter()
+                        ->googlePlus()
+                    ?>
                     </div>
-
-
                     <div class="single-product-everything">
                         <div class="single-extra-div">
                             <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productDescriptionCollapse" aria-controls="#productDescriptionCollapse">
@@ -220,18 +230,6 @@
                             </div>
                         </div> <!-- End single product extra div -->
 
-                        <div class="single-extra-div">
-                            <a data-toggle="collapse" class="pointer main" aria-expanded="true" data-target="#productCollapse" aria-controls="#productCollapse">
-                                <span class="pull-left title-sidebar"> <i class="fa fa-question-circle"></i> Accesories </span>
-
-                                <span class="pull-right"><i class="fa fa-plus"></i></span>
-                                <span class="pull-right"><i class="fa fa-minus"></i></span>
-                                <div class="clearfix"></div>
-                            </a>
-                            <div id="productCollapse" class="collapse collapseDiv">
-                                <p>Accesorii</p>
-                            </div>
-                        </div> <!-- End single product extra div -->
 
 
                     </div> <!--End Sidebar title div-->
@@ -246,7 +244,6 @@
         @include('layouts.footer')
     </div> <!-- End wrapper -->
     <!-- Scripts -->
-
     <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
 
     <script src="{{ asset('js/jquery.flexslider.js') }}" type="text/javascript"></script>
@@ -269,6 +266,7 @@
 <link type="text/css" rel="stylesheet" href="{{ asset('css/jquery-ui.css') }} " />
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
+
 <script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
 
 </body>

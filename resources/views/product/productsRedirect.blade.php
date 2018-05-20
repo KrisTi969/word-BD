@@ -62,8 +62,6 @@
                     </div>
 
 
-
-
                     <!-------------------------------------------------------------->
 
 
@@ -96,21 +94,26 @@
                                         <div class="col-md-3">
                                             <div class="product-item">
                                                 <div class="product-borde-inner">
-                                                    <a href="product_single.html">
-                                                        <img src="images/product-slide/product1.png" class="img img-responsive"/>
+                                                    @foreach($images as $image)
+                                                        @if($image->prod_title==$product->title)
+                                                    <a href="http://127.0.0.1:8000/Product/{{$product->id}}">
+                                                        <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive"/>
                                                     </a>
+                                                        @endif
+                                                        @break
+                                                    @endforeach
 
                                                     <div class="product-price">
                                                         <a href="{{route('product', ['id' => $product->id])}}">{{$product->title}}</a><br />
                                                         <span class="prev-price">
-                                                    <del>200$</del>
+                                                    {{--<del>200$</del>--}}
                                                 </span>
                                                         <span class="current-price">
                                                     {{$product->price}} $
                                                 </span>
                                                     </div>
 
-                                                    <a href="{{route('cart', ['id' => $product->id])}}"  class="btn btn-cart text-center add-to-cart pull-right">
+                                                    <a href="{{route('cart', ['id' => $product->id])}}"  class="btn btn-cart text-center add-to-cart pull-right" >
                                                         <i class="fa fa-cart-plus"></i>
                                                         Add to cart
                                                     </a>
@@ -178,5 +181,38 @@
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
 <script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
+<script>
+    jQuery(document).ready(function(){
+        jQuery('#ajaxSubmit').click(function(e){
+            // jQuery('.alert').show();
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            jQuery.ajax({
+                url: "{{route('Wishlist')}}",
+                method: 'post',
+                dataType: "json",
+                data: {
+                    name: jQuery('#name').val(),
+                },
+                success:function(data) {
+                    console.log(data);
+                    if (data.errors) {
+                        if (data.errors.name) {
+                            $('#name-error').html(data.errors.name[0]);
+                        }
+
+                    }
+                    if (data.success) {
+                        $('#success-msg').removeClass('hidden');
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>

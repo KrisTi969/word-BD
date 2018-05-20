@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Validator;
 use Response;
 use Hash;
+use DB;
 
 class ProductController extends Controller
 {
@@ -38,11 +39,14 @@ class ProductController extends Controller
         $product = new Product();
         $product = Product::where('id', $id)->first();
         if (isset($product)) {
+            $images = DB::table('prod_images')->where('prod_title','=',$product->title)->get();
             $description = json_encode($product->description);
             $description = json_decode($description);
             $description = json_encode($description);
+            $product->views = $product->views + 1; // increment number of views
+            $product->save();
             return view('product.tvProduct')->with(['product'=>$product])
-                                        ->with(['description'=>$description]);
+                                        ->with(['description'=>$description])->with(['images'=>$images]);
         }
         else
             return abort(404);

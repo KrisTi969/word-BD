@@ -303,8 +303,10 @@ class AdminController extends Controller
     public function deleteProduct(Request $request)
     {
         $results = DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->count();
+        $product = Product::where('title', '=', $request->titleBeforeUpgrade)->first();
         if ($results != 0) {
             try {
+                DB::table('comments')->where('commentable_id', '=', $product->id)->delete();
                 DB::table('prod_images')->where('prod_title', '=', $request->titleBeforeUpgrade)->delete();
                 DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->delete();
                 return Response::json(['success' => '1']);
@@ -574,6 +576,26 @@ class AdminController extends Controller
         catch (\SQLiteException $e) {
             return Response::json(['errors' => '1']);
         }
+    }
+
+    public static function countUncheckedComments(){
+        $count = DB::table('comments')->where('approved','=',0)->count();
+        return $count;
+    }
+
+    public static function countUsers(){
+        $count = DB::table('users')->count();
+        return $count;
+    }
+
+    public static function countPendingOrders(){
+        $count = DB::table('orders')->where('status','=','pending')->count();
+        return $count;
+    }
+
+    public static function countProducts(){
+        $count = DB::table('products')->count();
+        return $count;
     }
 
 

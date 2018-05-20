@@ -63,7 +63,7 @@ class CartController extends Controller
                     }
                 }
                 /*Cart::add($product->id,$product->title, 1,$product->price);*/
-                return view('account.account_cart');
+                return redirect('/AccountCart');
             }
     }
 
@@ -84,7 +84,7 @@ class CartController extends Controller
                 }
             }
            /* \Cart::remove('c42f6beec9c93fd6afea6eb0684aa99');*/
-            return view('account.account_cart');
+            return redirect('/AccountCart');
         }
     }
 

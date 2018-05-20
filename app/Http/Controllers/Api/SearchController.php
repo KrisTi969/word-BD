@@ -22,10 +22,15 @@ class SearchController extends Controller
         $query = $request->input('search');
         // Returns an array of articles that have the query string located somewhere within
         // our articles titles. Paginates them so we can break up lots of search results.
-        $products = DB::table('products')->where('title', 'LIKE', '%' . $query . '%')->orWhere('type', 'LIKE', '%' . $query . '%')->paginate(16);
+        $products = DB::table('products')->where('title', 'LIKE', '%' . $query . '%')->orWhere('type', 'LIKE', '%' . $query . '%')
+            ->orWhere('description', 'LIKE', '%' . $query . '%')
+            ->paginate(16);
+
+            $images = DB::table('prod_images')->paginate(16);
+
 
         // returns a view and passes the view the list of articles and the original query.
-        return view('search.results', compact('products', 'query'));
+        return view('search.results', compact('products', 'query'))->with(['images'=>$images]);
     }
 
     public function autocomplete(Request $request)

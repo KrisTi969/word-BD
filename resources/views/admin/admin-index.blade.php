@@ -12,23 +12,7 @@
             <!-- Page Content Holder -->
             <div id="content">
 
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-
-                        <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                <i class="glyphicon glyphicon-align-left"></i>
-                                <span>Sidebar</span>
-                            </button>
-                        </div>
-
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{route('Admin')}}">Front Page</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+             @include('admin.admin-header')
                 <div class="container">
                 <h2>Welcome, {{ Auth::user()->name}}</h2>
                 <p>Please select a task to do from the sidebar.</p>
@@ -39,15 +23,21 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <i class="fa fa-comments fa-5x"></i>
+                                            <i style="font-size:5em;" class="glyphicon glyphicon-comment"></i>
                                         </div>
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">26</div>
-                                            <div>New Comments!</div>
+                                            @if(\App\Http\Controllers\Admin\AdminController::countUncheckedComments()!= 0 )
+                                            <div class="huge">{{\App\Http\Controllers\Admin\AdminController::countUncheckedComments()}}</div>
+                                            <div>New Comments</div>
+                                            @endif
+                                                @if(\App\Http\Controllers\Admin\AdminController::countUncheckedComments()== 0 )
+                                                    <div class="huge">{{\App\Http\Controllers\Admin\AdminController::countUncheckedComments()}}</div>
+                                                    <div>There are no new comments</div>
+                                                @endif
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="{{route('Admin-UncheckedComments')}}">
                                     <div class="panel-footer">
                                         <span class="pull-left">View Details</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -62,38 +52,17 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <i class="fa fa-tasks fa-5x"></i>
+                                            <i style="font-size:5em" class="glyphicon glyphicon-user"></i>
                                         </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">12</div>
-                                            <div>New Tasks!</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <a href="#">
-                                    <div class="panel-footer">
-                                        <span class="pull-left">View Details</span>
-                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-
-                                        <div class="clearfix"></div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="panel panel-yellow">
-                                <div class="panel-heading">
-                                    <div class="row">
-                                        <div class="col-xs-3">
-                                            <i class="fa fa-shopping-cart fa-5x"></i>
-                                        </div>
-                                        <div class="col-xs-9 text-right">
-                                            <div class="huge">124</div>
-                                            <div>New Orders!</div>
+                                        <div  class="col-xs-9 text-right">
+                                            @if(\App\Http\Controllers\Admin\AdminController::countUsers()!= 0 )
+                                            <div class="huge">{{\App\Http\Controllers\Admin\AdminController::countUsers()}}</div>
+                                            <div>Registered users</div>
+                                                @endif
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="{{route('Admin-userList')}}">
                                     <div class="panel-footer">
                                         <span class="pull-left">View Details</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -108,15 +77,47 @@
                                 <div class="panel-heading">
                                     <div class="row">
                                         <div class="col-xs-3">
-                                            <i class="fa fa-support fa-5x"></i>
+                                            <i  style="font-size:5em" class="glyphicon glyphicon-phone"></i>
                                         </div>
+                                        @if(\App\Http\Controllers\Admin\AdminController::countProducts()!= 0 )
                                         <div class="col-xs-9 text-right">
-                                            <div class="huge">13</div>
-                                            <div>Support Tickets!</div>
+                                            <div class="huge">{{\App\Http\Controllers\Admin\AdminController::countProducts()}}</div>
+                                            <div>Products for sale</div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#">
+                                <a href="{{route('Admin-productList')}}">
+                                    <div class="panel-footer">
+                                        <span class="pull-left">View Details</span>
+                                        <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-yellow">
+                                <div class="panel-heading">
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <i style="font-size:5em" class="glyphicon glyphicon-shopping-cart"></i>
+                                        </div>
+                                        @if(\App\Http\Controllers\Admin\AdminController::countPendingOrders()!= 0 )
+                                        <div class="col-xs-9 text-right">
+                                            <div class="huge">{{\App\Http\Controllers\Admin\AdminController::countPendingOrders()}}</div>
+                                            <div>New Orders</div>
+                                            @endif
+                                            @if(\App\Http\Controllers\Admin\AdminController::countPendingOrders()== 0 )
+                                                <div class="col-xs-9 text-right">
+                                                    <div class="huge">{{\App\Http\Controllers\Admin\AdminController::countPendingOrders()}}</div>
+                                                    <div>There are no new orders</div>
+                                                    @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="{{route('Admin-PendingOrders')}}">
                                     <div class="panel-footer">
                                         <span class="pull-left">View Details</span>
                                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

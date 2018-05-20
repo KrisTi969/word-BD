@@ -95,6 +95,7 @@ Route::get('/products/high-price', 'Product\AllProducts@getProductsWithFilterHig
 Route::get('/products/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Electronic-Appliances-Best-Rating');
 
 /**/
+    // FILTRARI PRODUSE
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
 ////
 

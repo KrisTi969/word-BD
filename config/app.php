@@ -152,6 +152,7 @@ return [
         \Actuallymab\LaravelComment\LaravelCommentServiceProvider::class,
         Riverskies\Laravel\MobileDetect\MobileDetectServiceProvider::class,
         Matriphe\Imageupload\ImageuploadServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -218,7 +219,7 @@ return [
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
         'MobileDetect' => Riverskies\Laravel\MobileDetect\Facades\MobileDetect::class,
         'Imageupload' => Matriphe\Imageupload\ImageuploadFacade::class,
-
+        'Share' => Jorenvh\Share\ShareFacade::class,
     ],
 
 ];

@@ -55,9 +55,14 @@
                                             <div class="col-md-3">
                                                 <div class="product-item">
                                                     <div class="product-borde-inner">
-                                                        <a href="product_single.html">
-                                                            <img src="images/product-slide/product1.png" class="img img-responsive"/>
-                                                        </a>
+                                                        @foreach($images as $image)
+                                                            @if($image->prod_title==$product->title)
+                                                                <a href="http://127.0.0.1:8000/Product/{{$product->id}}">
+                                                                    <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive"/>
+                                                                </a>
+                                                            @endif
+                                                            @break
+                                                        @endforeach
 
                                                         <div class="product-price">
                                                             <a href="{{route('product', ['id' => $product->id])}}">{{$product->title}}</a><br />
