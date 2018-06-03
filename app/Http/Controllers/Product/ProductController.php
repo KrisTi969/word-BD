@@ -79,10 +79,25 @@ class ProductController extends Controller
     public static function getProductName($id) {
         $product = Product::where('id', $id)->first();
     if($product) {
-
         return $product->title;
     }
     return 'The product no longer exists! ';
+    }
+
+    public static function getProductARFile($id) {
+        $filename = DB::table('ar_files')->where('product_id',$id)->first();
+        if($filename) {
+            return $filename->filename;
+        }
+        return 'The product no longer exists! ';
+    }
+
+    public static function getProductId($name) {
+        $product = Product::where('title', $name)->first();
+        if($product) {
+            return $product->id;
+        }
+        return 'The product no longer exists! ';
     }
 
     public static function getProductReviewCount($id){

@@ -30,6 +30,7 @@
                 <li><a href="{{route('Admin-addProduct')}}">Add product</a></li>
                 <li><a href="{{route('Admin-productList')}}">Product List</a></li>
                 <li><a href="{{route('Admin-UpdateProductImages')}}">Update Product Image</a></li>
+                <li><a href="{{route('Admin-productListAR')}}">Add or Update Product w/ AR</a></li>
             </ul>
             <a href="#orderSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="glyphicon glyphicon-print"></i>

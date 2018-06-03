@@ -16,6 +16,7 @@
 Route::get('/uploadfile','Admin\AdminController@show');
 Route::post('/uploadfile/{title}','Admin\AdminController@uploadFiles')->name('try');
 Route::post('/modifyPicture/{title}','Admin\AdminController@uploadFilesAndModify')->name('uploadAndModify');
+Route::post('/uploadGLTF/{title}','Admin\AdminController@uploadGltfFile')->name('GLTF');
 
 
 Route::group(['middleware' => 'admin'], function () {
@@ -42,12 +43,13 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('Admin/approveOrder','Admin\AdminController@approveOrder')->name('Admin-approveOrder');
     Route::get('/Admin/refreshOrders','Admin\AdminController@refreshPendingOrders')->name('Admin-RefreshPendingOrders');
     Route::post('/Admin/removeOrder', 'Admin\AdminController@deleteOrder')->name('Admin-removeOrder');
+    Route::get('/Admin/getProductsAR','Admin\AdminController@productList')->name('Admin-productListAR');
 });
 
 Route::group(['middleware' => 'web'], function () {
 
 /*Route::group(array('middleware' => 'forceSSL'), function() {*/
-Route::post('/ar', 'Ar\AugmentedRealityController@index')->name('Augmented-Reality');
+Route::post('/ar/{filename}', 'Ar\AugmentedRealityController@index')->name('Augmented-Reality');
 /*});*/
 Route::get('/checkout', 'Order\OrderController@index')->name('checkout');
 

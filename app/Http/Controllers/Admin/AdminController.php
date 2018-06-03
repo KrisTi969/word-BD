@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Intervention\Image\ImageManager;
 use Matriphe\Imageupload\ImageuploadModel;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -64,6 +65,9 @@ class AdminController extends Controller
         }
         if(\Route::currentRouteName() == "Admin-UpdateProductImages") {
             return view('admin.admin-updateProductImages',['products' => $products]);
+        }
+        if(\Route::currentRouteName() == "Admin-productListAR") {
+            return view('admin.admin-ProductsAr',['products' => $products]);
         }
         return view('admin.admin-productList',['products' => $products]);
     }
@@ -309,6 +313,7 @@ class AdminController extends Controller
                 DB::table('comments')->where('commentable_id', '=', $product->id)->delete();
                 DB::table('prod_images')->where('prod_title', '=', $request->titleBeforeUpgrade)->delete();
                 DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->delete();
+                DB::table('ar_files')->where('product_id', \App\Http\Controllers\Product\ProductController::getProductId($request->titleBeforeUpgrade))->delete();
                 return Response::json(['success' => '1']);
             } catch (\SQLiteException $e) {
                 return Response::json(['errors' => '1']);
@@ -433,6 +438,63 @@ class AdminController extends Controller
                     ['prod_title' => $request->route('title'), 'filename' => '1'.$file1->getClientOriginalName()],
                     ['prod_title' => $request->route('title'), 'filename' => '2'.$file2->getClientOriginalName()],
                     ['prod_title' => $request->route('title'), 'filename' => '3'.$file3->getClientOriginalName()]
+                ]);
+            }catch (\SQLiteException $e) {
+                return Response::json(['errors' => $validator->errors()]);
+            }
+
+            return Response::json(['success' => '1']);
+        }
+        return Response::json(['errors' => $validator->errors()]);
+    }
+
+    public function uploadGltfFile(Request $request){
+
+       /* var_dump('File Extension: '.$request->file('file')->getMimeType());
+        var_dump('File Extension: '.$request->file('file')->getClientOriginalExtension());*/
+        /*var_dump($request->route('title'));*/
+        $validator = Validator::make($request->all(), [
+            'file' => 'required',
+        ]);
+
+        if ($validator->passes()) {
+
+            $file1 = $request->file('file');
+
+            /*//Display File Name
+            echo 'File Name: '.$file->getClientOriginalName();
+            echo '<br>';
+
+            //Display File Extension
+            echo 'File Extension: '.$file->getClientOriginalExtension();
+            echo '<br>';
+
+            //Display File Real Path
+            echo 'File Real Path: '.$file->getRealPath();
+            echo '<br>';
+
+            //Display File Size
+            echo 'File Size: '.$file->getSize();
+            echo '<br>';
+
+            //Display File Mime Type
+            echo 'File Mime Type: '.$file->getMimeType();*/
+
+            //Move Uploaded File
+            $destinationPath = 'uploads/ar';
+            $file1->move($destinationPath, $request->route('title').$file1->getClientOriginalName());
+            try{
+                $product = Product::where('title',$request->route('title'))->first();
+                $product->rating = 1;
+                if($product->rating==1){
+                    $filename = DB::table('ar_files')->where('product_id', \App\Http\Controllers\Product\ProductController::getProductId($request->route('title')))->first();
+                    /*var_dump($filename->filename);*/
+                    Storage::delete($filename->filename);
+                    DB::table('ar_files')->where('product_id',\App\Http\Controllers\Product\ProductController::getProductId($request->route('title')))->delete();
+                }
+                $product->save();
+                DB::table('ar_files')->insert([
+                    ['product_id' => \App\Http\Controllers\Product\ProductController::getProductId($request->route('title')), 'filename' => $request->route('title').$file1->getClientOriginalName()]
                 ]);
             }catch (\SQLiteException $e) {
                 return Response::json(['errors' => $validator->errors()]);

@@ -90,19 +90,20 @@
                                 <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Our Latest Products available</h2>
                                 <div class="products">
                                     <div class="row">
+
                             @foreach ($products as $product)
                                         <div class="col-md-3">
                                             <div class="product-item">
                                                 <div class="product-borde-inner">
                                                     @foreach($images as $image)
                                                         @if($image->prod_title==$product->title)
+
                                                     <a href="http://127.0.0.1:8000/Product/{{$product->id}}">
                                                         <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive"/>
                                                     </a>
+                                                            @break
                                                         @endif
-                                                        @break
                                                     @endforeach
-
                                                     <div class="product-price">
                                                         <a href="{{route('product', ['id' => $product->id])}}">{{$product->title}}</a><br />
                                                         <span class="prev-price">

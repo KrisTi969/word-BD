@@ -14,6 +14,7 @@ class AugmentedRealityController extends Controller
     public function index()
     {
         // Gets the query string from our form submission
-        return view('ar.augmented_reality');
+        $text = 'ar.augmented_reality';
+        return view($text);
     }
 }
