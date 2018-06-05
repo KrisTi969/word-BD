@@ -23,7 +23,7 @@
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <div class="sidebar-products-main"><br>
                         <h2 class="title-div">Categories</h2>
-                            @if($afisare == "Electronic-Appliances")
+                            @if(strpos($afisare,"Electronic-Appliances")===0)
                                 <li>Electronic Appliances
                             <ul>
                                     <li><a href="{{route("TVs")}}">TVs</a></li>
@@ -33,10 +33,10 @@
                             </ul>
                             </li>
                             @endif
-                            @if($afisare == "Computers-and-Accesories")
+                            @if(strpos($afisare,"Computers-and-Accesories")===0)
                             <li>Computer & Accesories
                                 <ul>
-                                    <li><a href="#">Monitors</a></li>
+                                    <li><a href="{{route('Monitors')}}">Monitors</a></li>
                                     <li><a href="#">Printers</a></li>
                                     <li><a href="#">Laptops</a></li>
                                     <li><a href="#">Accesories</a></li>
@@ -79,14 +79,15 @@
                                 <li class="dropdown head-dpdn">
                                     <a href="#" class="dropdown" data-toggle="dropdown" style="font-size: large">Sort By<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        @if($afisare == "Electronic-Appliances")
+
+                                        @if(strpos($afisare,"Electronic-Appliances")===0)
                                         <li><a href="{{route('Electronic-Appliances-New')}}">New In</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Most-Popular')}}">Most Popular</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Low-Price')}}">Lowest price</a></li>
                                         <li><a href="{{route('Electronic-Appliances-High-Price')}}">Highest price</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Best-Rating')}}">Best Rating</a></li>
                                             @endif
-                                            @if($afisare == "Computers-and-Accesories")
+                                            @if(strpos($afisare,"Computers-and-Accesories")===0)
                                                 <li><a href="{{route('Computers-and-Accesories-New')}}">New In</a></li>
                                                 <li><a href="{{route('Computers-and-Accesories-Most-Popular')}}">Most Popular</a></li>
                                                 <li><a href="{{route('Computers-and-Accesories-Low-Price')}}">Lowest price</a></li>

@@ -45,7 +45,7 @@ class AllProducts extends Controller
 
     public function getProductsWithFilterNew()
     {
-        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+        if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('created_at', 'desc')->paginate(16);
         }
         else {
@@ -162,7 +162,7 @@ class AllProducts extends Controller
 
     public function getProductsWithFilterMostPopular()
     {
-        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+        if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('views', 'desc')->paginate(16);
         }
         else {
@@ -174,7 +174,7 @@ class AllProducts extends Controller
 
     public function getProductsWithFilterLowPrice()
     {
-        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+        if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('price', 'asc')->paginate(16);
         }
         else {
@@ -186,7 +186,7 @@ class AllProducts extends Controller
 
     public function getProductsWithFilterHighPrice()
     {
-        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+        if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('price', 'desc')->paginate(16);
         }
         else {
@@ -198,7 +198,7 @@ class AllProducts extends Controller
 
     public function getProductsWithFilterBestRating()
     {
-        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+        if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('average_reviews', 'desc')->paginate(16);
         }
         else {
@@ -291,6 +291,57 @@ class AllProducts extends Controller
     }
 
     public function getSmartphones(Request $request)
+{
+
+    $baseQuery = DB::table("products");
+
+    if ($request->input('type')) {
+        $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+    }
+    if ($request->input('producer')) {
+        $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+    }
+    if ($request->input('priceMin') && $request->input('priceMax')) {
+        $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+    }
+    if ($request->input('review')) {
+        if ($request->input('review') >= 1) {
+            $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+        }
+    }
+
+    //Gasim id'ul produselor care nu se incadreaza in dimensiune
+    if ($request->input('sizeMin') && $request->input('sizeMax')) {
+
+        $poziton = 0;
+        foreach ($baseQuery->get() as $result) {
+            $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
+            /*var_dump($result->description);*/
+            $descr = json_decode($result->description);
+            if (isset($descr->{'Technical specifications'})) {
+                foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
+                    if (isset($ceva2->{'Display size'})) {
+                        $id = str_replace('inch', '', $ceva2->{'Display size'});
+                        if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
+                            $poziton++;
+                        } else {
+                            $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+                        }
+                    }
+                }
+            } else {
+                $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+            }
+
+        }
+    }
+
+    $products = $baseQuery->whereIn('type',['smartphone','smartwatch','phonecase','bluetooth-headset','smartphone-accesories','headphone'])->paginate(16);
+    $images = DB::table('prod_images')->get();
+    return view("product.smartphones")->with(["products" => $products, 'images' => $images]);
+}
+
+    public function getMonitors(Request $request)
     {
 
         $baseQuery = DB::table("products");
@@ -321,7 +372,7 @@ class AllProducts extends Controller
                 if (isset($descr->{'Technical specifications'})) {
                     foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
                         if (isset($ceva2->{'Display size'})) {
-                            $id = str_replace('inch', '', $ceva2->{'Display size'});
+                            $id = str_replace('cm', '', $ceva2->{'Display size'});
                             if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
                                 $poziton++;
                             } else {
@@ -336,8 +387,8 @@ class AllProducts extends Controller
             }
         }
 
-        $products = $baseQuery->whereIn('type',['smartphone','smartwatch','phonecase','bluetooth-headset','smartphone-accesories','headphone'])->paginate(16);
+        $products = $baseQuery->whereIn('type',['monitor-4k','monitor-touchscreen','monitor-led'])->paginate(16);
         $images = DB::table('prod_images')->get();
-        return view("product.smartphones")->with(["products" => $products, 'images' => $images]);
+        return view("product.monitors")->with(["products" => $products, 'images' => $images]);
     }
 }

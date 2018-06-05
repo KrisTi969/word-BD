@@ -114,6 +114,7 @@ Route::get('/Computers-and-Accesories/best-rating', 'Product\AllProducts@getProd
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
 Route::get('/Cameras-Photo-Video', 'Product\AllProducts@getCamerasPhotosVideos')->name('Cameras');
 Route::get('/Smartphones', 'Product\AllProducts@getSmartphones')->name('Smartphones');
+Route::get('/Monitors', 'Product\AllProducts@getMonitors')->name('Monitors');
 ////
 
 Route::get('user/{name?}/{type?}', function ($name = 'John', $type = 'ceva') {
