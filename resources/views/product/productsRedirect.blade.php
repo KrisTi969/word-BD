@@ -32,7 +32,7 @@
                             </ul>
                             </li>
 
-                            <li>Computer & Accesories
+                         {{--   <li>Computer & Accesories
                                 <ul>
                                     <li><a href="#">Monitors</a></li>
                                     <li><a href="#">Printers</a></li>
@@ -57,7 +57,7 @@
                                 <ul>
                                     <li><a href="#">Popular Music Genre</a></li>
                                 </ul>
-                            </li>
+                            </li>--}}
                         </div>
                     </div>
 
@@ -67,7 +67,7 @@
 
                     <div class="col-sm-10 col-md-10 col-lg-10">
                         <ol class="breadcrumb breadcrumb1">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{route('/')}}">Home</a></li>
                             <li class="active">Products</li>
                         </ol>
                         <div class="product-top">
@@ -77,6 +77,7 @@
                                     <a href="#" class="dropdown" data-toggle="dropdown" style="font-size: large">Sort By<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{route('Electronic-Appliances-New')}}">New In</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-Most-Popular')}}">Most Popular</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Low-Price')}}">Lowest price</a></li>
                                         <li><a href="{{route('Electronic-Appliances-High-Price')}}">Highest price</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Best-Rating')}}">Best Rating</a></li>

@@ -20,9 +20,10 @@ $(document).ready(function () {
         $('#userTable tr').click(function () {
             document.getElementById('title').value = $(this).children()[0].firstChild.textContent;
             document.getElementById('type').value = $(this).children()[1].firstChild.textContent;
-            document.getElementById('quantity').value = $(this).children()[2].firstChild.textContent;
-            document.getElementById('price').value = $(this).children()[3].firstChild.textContent;
-            document.getElementById('description').value = $(this).children()[4].firstChild.textContent;
+            document.getElementById('category').value = $(this).children()[2].firstChild.textContent;
+            document.getElementById('quantity').value = $(this).children()[3].firstChild.textContent;
+            document.getElementById('price').value = $(this).children()[4].firstChild.textContent;
+            document.getElementById('description').value = $(this).children()[5].firstChild.textContent;
             titleBeforeUpgrade = $(this).children()[0].firstChild.textContent;
             var StringJson = document.getElementById('description').value;
             var aux = JSON.parse(StringJson);

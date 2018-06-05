@@ -73,7 +73,7 @@
 	display: none;
 }
 .smllogo {
-	padding: 9px 0px 0px 0px;
+	padding: 20px 0px 0px 0px;
 	margin: 0;
 	float: left;
 	width: 5%;
@@ -1000,12 +1000,10 @@
 }
 
 .kitchenmenuimg{
-	background-image: url(../images/kitchen-menu-img.png);
 	background-position: bottom right;
 	background-repeat: no-repeat;
 }
 .computermenubg {
-	background-image: url(../images/computer-menu-img.png);
 	background-position: bottom right;
 	background-repeat: no-repeat;
 }

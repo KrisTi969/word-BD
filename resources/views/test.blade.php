@@ -27,7 +27,7 @@ echo Form::close();
 
     <br>
     {!! Form::file('image2',array('id'=>'image2')) !!}
-    <img id="img2" src="{{asset('uploads/1img1.PNG')}}"  class="img-thumbnail" width="304" height="250" />
+    <img id="img2" src=""  class="img-thumbnail" width="304" height="250" />
         <span class="text-danger">
                             <strong id="image2-error"></strong>
                         </span>

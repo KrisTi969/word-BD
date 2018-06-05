@@ -20,14 +20,11 @@
         <div class="content-area prodcuts">
             <div class="row">
                 <div class="container">
-                 {{--   @include('layouts.tvNavigationBar')--}} {{--de facut SORTAREA SMECHERA--}}
+                    @include('layouts.tvNavigationBar')
                     <div class="col-sm-10 col-md-10 col-lg-10">
                         <ol class="breadcrumb breadcrumb1">
-                            <li><a href="{{route('/')}}">Home</a></li>
+                            <li><a href="index.html">Home</a></li>
                             <li class="active">Products</li>
-                            @if(count($products))
-                                <li class="active">{{$query}}</li>
-                                @endif
                         </ol>
                         <div class="product-top">
                             <h4>All Products</h4>
@@ -35,48 +32,28 @@
                                 <li class="dropdown head-dpdn">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort By<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
-                                        <?php if (isset($_GET['search'])):
-                                        $var = route('All-Products-Most-Popular')."?search=".$_GET['search'];
-                                        ?>
-                                        <li><a href="{{$var}}">Most Popular</a></li>
-                                            <?php $var = route('All-Products-New')."?search=".$_GET['search']; ?>
-                                        <li><a href="{{$var}}">New In</a></li>
-                                            <?php $var = route('All-Products-Low-Price')."?search=".$_GET['search']; ?>
-                                        <li><a href="{{$var}}">Lowest price</a></li>
-                                            <?php $var = route('All-Products-High-Price')."?search=".$_GET['search']; ?>
-                                        <li><a href="{{$var}}">Highest price</a></li>
-                                            <?php $var = route('All-Products-Best-Rating')."?search=".$_GET['search']; ?>
-                                        <li><a href="{{$var}}">Best Rating</a></li>
-                                           <?php else: ?>
-                                            <li><a href="{{route('All-Products-Most-Popular')}}">Most Popular</a></li>
-                                            <li><a href="{{route('All-Products-New')}}">New In</a></li>
-                                            <li><a href="{{route('All-Products-Low-Price')}}">Lowest price</a></li>
-                                            <li><a href="{{route('All-Products-High-Price')}}">Highest price</a></li>
-                                            <li><a href="{{route('All-Products-Best-Rating')}}">Best Rating</a></li>
-                                        <?php endif;?>
+                                        <li><a href="{{route('Electronic-Appliances-Most-Popular')}}">Most Popular</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-New')}}">New In</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-Low-Price')}}">Lowest price</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-High-Price')}}">Highest price</a></li>
+                                        <li><a href="{{route('Electronic-Appliances-Best-Rating')}}">Best Rating</a></li>
                                     </ul>
                                 </li>
                             </ul>
                             <div class="clearfix"> </div>
                         </div>
-                        @if(count($products))
                         <div class="all-products">
                             <div class="">
-                                <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"><?php if(count($_GET) === 1 && isset($_GET['type'])) { echo "Our latest ".strtoupper($_GET['type'])." TVs are:";} else {echo "Your results: ";}?></h2>
+                                <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"><?php if(count($_GET) === 1 && isset($_GET['type'])) { echo "Our latest ".strtoupper($_GET['type'])." TVs are:";} else {echo "Your filtered results: ";}?></h2>
                                 <div class="products">
                                     <div class="row">
                                         @foreach ($products as $product)
                                             <div class="col-md-3">
                                                 <div class="product-item">
                                                     <div class="product-borde-inner">
-                                                        @foreach($images as $image)
-                                                            @if($image->prod_title==$product->title)
-                                                                <a href="http://127.0.0.1:8000/Product/{{$product->id}}">
-                                                                    <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive"/>
-                                                                </a>
-                                                                @break
-                                                            @endif
-                                                        @endforeach
+                                                        <a href="product_single.html">
+                                                            <img src="images/product-slide/product1.png" class="img img-responsive"/>
+                                                        </a>
 
                                                         <div class="product-price">
                                                             <a href="{{route('product', ['id' => $product->id])}}">{{$product->title}}</a><br />
@@ -107,10 +84,6 @@
                                 </div> <!-- End products div-->
                             </div> <!-- End container latest products-->
                         </div>  <!-- End Latest products -->
-                        @else
-                            <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">"{{'No results found!'}}"</h2>
-
-                        @endif
                     </div>
                 </div>
 

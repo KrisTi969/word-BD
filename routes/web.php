@@ -72,10 +72,15 @@ Route::get('/removeItem/{id}','Cart\CartController@removeItem')->name('remove');
 
 Route::get('/', 'Index\IndexController@index')->name('/');
 
-Route::post('/search', 'Api\SearchController@search')->name('search');
+Route::get('/search/{search?}', 'Api\SearchController@search')->name('search');
+Route::get('/search-param/new/{search?}', 'Product\AllProducts@getAllProductsWithFilterNew')->name('All-Products-New');
+Route::get('/search-param/most-popular/{search?}', 'Product\AllProducts@getAllProductsWithFilterPopular')->name('All-Products-Most-Popular');
+Route::get('/search-param/lowest-price/{search?}', 'Product\AllProducts@getAllProductsWithFilterPriceLow')->name('All-Products-Low-Price');
+Route::get('/search-param/high-price/{search?}', 'Product\AllProducts@getAllProductsWithFilterPriceHigh')->name('All-Products-High-Price');
+Route::get('/search-param/best-rating/{search?}', 'Product\AllProducts@getAllProductsWithFilterRating')->name('All-Products-Best-Rating');
 Route::auth();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('/home', 'HomeController@index')->name('home');*/
 
 ////
 
@@ -90,15 +95,17 @@ Route::get('/verifyemail/{token}', 'Auth\RegisterController@email_verification')
 
 /**/
 
-Route::get('/products', 'Product\AllProducts@getProducts')->name('Electronic-Appliances');
-Route::get('/products/new', 'Product\AllProducts@getProductsWithFilterNew')->name('Electronic-Appliances-New');
-Route::get('/products/lowest-price', 'Product\AllProducts@getProductsWithFilterLowPrice')->name('Electronic-Appliances-Low-Price');
-Route::get('/products/high-price', 'Product\AllProducts@getProductsWithFilterHighPrice')->name('Electronic-Appliances-High-Price');
-Route::get('/products/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Electronic-Appliances-Best-Rating');
+Route::get('/Electronic-Appliances/', 'Product\AllProducts@getProducts')->name('Electronic-Appliances');
+Route::get('/Electronic-Appliances/new', 'Product\AllProducts@getProductsWithFilterNew')->name('Electronic-Appliances-New');
+Route::get('/Electronic-Appliances/most-popular', 'Product\AllProducts@getProductsWithFilterMostPopular')->name('Electronic-Appliances-Most-Popular');
+Route::get('/Electronic-Appliances/lowest-price', 'Product\AllProducts@getProductsWithFilterLowPrice')->name('Electronic-Appliances-Low-Price');
+Route::get('/Electronic-Appliances/high-price', 'Product\AllProducts@getProductsWithFilterHighPrice')->name('Electronic-Appliances-High-Price');
+Route::get('/Electronic-Appliances/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Electronic-Appliances-Best-Rating');
 
 /**/
     // FILTRARI PRODUSE
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
+Route::get('/Cameras', 'Product\AllProducts@getTVs')->name('Cameras');
 ////
 
 Route::get('user/{name?}/{type?}', function ($name = 'John', $type = 'ceva') {

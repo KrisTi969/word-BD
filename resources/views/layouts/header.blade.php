@@ -92,8 +92,9 @@ else {
 
             <div class="headerfull">
                 <!--Main Menu HTML Code-->
+                <div class="smllogo navbar-fixed"><a href="{{route('/')}}"><img src="{{asset('images/shop/Skyshop2.png')}}" style="max-width: 140%; " alt=""></a></div>
                 <div class="wsmain">
-                    <!-- <div class="smllogo"><a href="#"><img src="images/logo.jpg" alt=""></a></div> -->
+
                     <nav class="wsmenu clearfix">
                         <ul class="mobile-sub wsmenu-list">
                             <li><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" class="navtext"><span>Shop By</span> <span>Department</span></a>
@@ -287,8 +288,7 @@ else {
                                 </div>
                             </li>
                             <li class="wssearchbar clearfix">
-                                <form method="post" action="{{route('search')}}" class="topmenusearch">
-                                    @csrf
+                                <form method="get" action="{{route('search')}}" class="topmenusearch">
                                     <input type="text" name="search" id="search" placeholder="Search Product By Name, Type...">
                                     <button class="btnstyle"><i class="searchicon fa fa-search" aria-hidden="true"></i></button>
                                 </form>

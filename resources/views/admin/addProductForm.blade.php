@@ -23,12 +23,13 @@
     </div>
 
     <div class="form-group row">
-        <label for="country" class="col-sm-2 form-control-label Whitish">Type:</label>
+        <label for="type" class="col-sm-2 form-control-label Whitish">Type:</label>
         <div class="col-sm-8"  >
             <select id="type" name="type" class="input-group-lg" >
                 <option value="" selected="selected">(please select a type)</option>
                 <option value="4kTV">4kTV</option>
                 <option value="lcd">lcd</option>
+                <option value="smartphone">smartphone</option>
             </select>
             <br>
             <span class="text-danger">
@@ -36,6 +37,26 @@
                         </span>
         </div>
     </div>
+
+    {{----}}
+
+    <div class="form-group row">
+        <label for="category" class="col-sm-2 form-control-label Whitish">Category:</label>
+        <div class="col-sm-8"  >
+            <select id="category" name="category" class="input-group-lg" >
+                <option value="" selected="selected">(please select a category)</option>
+                <option value="Electronic Appliances">Electronic Appliances</option>
+                <option value="Computers & Accesories">Computers & Accesories</option>
+                <option value="Movies">Movies</option>
+                <option value="Music">Music</option>
+            </select>
+            <br>
+            <span class="text-danger">
+                            <strong id="category-error"></strong>
+                        </span>
+        </div>
+    </div>
+
     <br>
 
     <div class="form-group row">

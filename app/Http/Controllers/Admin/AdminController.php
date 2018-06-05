@@ -60,6 +60,7 @@ class AdminController extends Controller
                 ->orWhere('type','like','%' . $request->search . '%')
                 ->orWhere('price','like','%' . $request->search . '%')
                 ->orWhere('quantity','like','%' . $request->search . '%')
+                ->orWhere('category','like','%' . $request->search . '%')
                 ->orWhere('description', 'like', '%' . $request->search . '%')
                 ->paginate(18);
         }
@@ -126,6 +127,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:60|unique:products,title',
             'type' => 'required|',
+            'category' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|numeric',
             'title1' => 'required',
@@ -136,6 +138,7 @@ class AdminController extends Controller
         if ($validator->passes()) {
             $product = new Product();
 
+            $product->category = $request->category;
             $product->type = $request->type;
             $product->title= $request->title;
             $product->price = $request->price;
@@ -306,14 +309,14 @@ class AdminController extends Controller
 
     public function deleteProduct(Request $request)
     {
-        $results = DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->count();
-        $product = Product::where('title', '=', $request->titleBeforeUpgrade)->first();
+        $results = DB::table('products')->where('title', '=', $request->title)->count();
+        $product = Product::where('title', '=', $request->title)->first();
         if ($results != 0) {
             try {
                 DB::table('comments')->where('commentable_id', '=', $product->id)->delete();
-                DB::table('prod_images')->where('prod_title', '=', $request->titleBeforeUpgrade)->delete();
-                DB::table('products')->where('title', '=', $request->titleBeforeUpgrade)->delete();
-                DB::table('ar_files')->where('product_id', \App\Http\Controllers\Product\ProductController::getProductId($request->titleBeforeUpgrade))->delete();
+                DB::table('prod_images')->where('prod_title', '=', $request->title)->delete();
+                DB::table('products')->where('title', '=', $request->title)->delete();
+                DB::table('ar_files')->where('product_id', \App\Http\Controllers\Product\ProductController::getProductId($request->title))->delete();
                 return Response::json(['success' => '1']);
             } catch (\SQLiteException $e) {
                 return Response::json(['errors' => '1']);
@@ -326,6 +329,7 @@ class AdminController extends Controller
     {
             $validator = Validator::make($request->all(), [
                 'title' => 'required|max:200|',
+                'category' => 'required|max:100',
                 'type' => 'required|max:50|',
                 'price' => 'required|numeric|',
                 'quantity' => 'required|numeric',
@@ -339,6 +343,7 @@ class AdminController extends Controller
                 $product = Product::where('title', $request->titleBeforeUpgrade)->first();;
 
                 $product->title = $request->title;
+                $product->category = $request->category;
                 $product->type = $request->type;
                 $product->description = $request->description;
                 $product->quantity= $request->quantity;

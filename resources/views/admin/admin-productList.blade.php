@@ -34,6 +34,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Type</th>
+                            <th>Category</th>
                             <th>Quantity</th>
                             <th>Price</th>
                             <th hidden>Description</th>
@@ -44,6 +45,7 @@
                             <tr data-toggle="modal" data-target="#editAccount" data-id="{{$product->id}}">
                                 <td>{{$product->title}}</td>
                                 <td>{{$product->type}}</td>
+                                <td>{{$product->category}}</td>
                                 <td>{{$product->quantity}}</td>
                                 <td>{{$product->price}}</td>
                                 <td hidden>{{$product->description}}</td>
@@ -121,7 +123,27 @@
             </div>
 
 
-                <div class="form-group row">
+
+            <div class="form-group row">
+                <label for="category" class="col-sm-2 form-control-label Whitish">Category:</label>
+                <div class="col-sm-8"  >
+                    <select id="category" name="category" class="input-group-lg" >
+                        <option value="" selected="selected">(please select a category)</option>
+                        <option value="Electronic Appliances">Electronic Appliances</option>
+                        <option value="Computers & Accesories">Computers & Accesories</option>
+                        <option value="Movies">Movies</option>
+                        <option value="Music">Music</option>
+                    </select>
+                    <br>
+                    <span class="text-danger">
+                            <strong id="category-error"></strong>
+                        </span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group row">
                     <label for="lastname" class="col-sm-2 form-control-label ">Quantity:</label>
                     <div class="col-sm-8">
                         <input type="number" name="quantity" class="form-control" id="quantity" placeholder="" minlength="2" required oninput="myFunction('#quantity-error')">
@@ -285,6 +307,7 @@
                 data: {
                     title: jQuery('#title').val(),
                     type: jQuery('#type').val(),
+                    category: jQuery('#category').val(),
                     price: jQuery('#price').val(),
                     quantity: jQuery('#quantity').val(),
                     description: employees,
@@ -304,6 +327,9 @@
                         }
                         if (data.errors.title) {
                             $('#title-error').html(data.errors.quantity[0]);
+                        }
+                        if (data.errors.category) {
+                            $('#category-error').html(data.errors.category[0]);
                         }
 
                     }
@@ -328,7 +354,6 @@
 <script>
     $(document).ready(function() {
         jQuery('#ajaxDelete').click(function (e) {
-            console.log('facem delete');
             e.preventDefault();
             $.ajaxSetup({
                 headers: {
@@ -340,7 +365,7 @@
                 method: 'post',
                 dataType: "json",
                 data: {
-                    titleBeforeUpgrade: titleBeforeUpgrade
+                    title: titleBeforeUpgrade
                 },
                 success: function (data) {
                     console.log(data);

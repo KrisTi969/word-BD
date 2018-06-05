@@ -16,6 +16,23 @@ class SearchController extends Controller
     {
       //  $this->middleware('guest')->except('logout');
     }
+   /* public function search(Request $request)
+    {
+        // Gets the query string from our form submission
+        $query = $request->input('search');
+        // Returns an array of articles that have the query string located somewhere within
+        // our articles titles. Paginates them so we can break up lots of search results.
+        $products = DB::table('products')->where('title', 'LIKE', '%' . $query . '%')->orWhere('type', 'LIKE', '%' . $query . '%')
+            ->orWhere('description', 'LIKE', '%' . $query . '%')
+            ->paginate(16);
+
+            $images = DB::table('prod_images')->get();
+
+
+        // returns a view and passes the view the list of articles and the original query.
+        return view('search.results', compact('products', 'query'))->with(['images'=>$images]);
+    }*/
+
     public function search(Request $request)
     {
         // Gets the query string from our form submission
@@ -26,11 +43,11 @@ class SearchController extends Controller
             ->orWhere('description', 'LIKE', '%' . $query . '%')
             ->paginate(16);
 
-            $images = DB::table('prod_images')->paginate(16);
+        $images = DB::table('prod_images')->get();
 
 
         // returns a view and passes the view the list of articles and the original query.
-        return view('search.results', compact('products', 'query'))->with(['images'=>$images]);
+        return view('search.results')->with(['products'=>$products])->with(['images'=>$images, 'query' => $query]);
     }
 
     public function autocomplete(Request $request)

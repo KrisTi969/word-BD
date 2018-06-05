@@ -152,6 +152,7 @@
 </script>
 <script>
     var title ;
+    var refresh=false;
 
     jQuery(document).ready(function(){
         jQuery('#ajaxSubmit').click(function(e){
@@ -217,6 +218,7 @@
                 data: {
                     title: jQuery('#mainTitle').val(),
                     type: jQuery('#type').val(),
+                    category: jQuery('#category').val(),
                     price: jQuery('#price').val(),
                     quantity: jQuery('#quantity').val(),
                     title1: jQuery('#title1').val(),
@@ -245,6 +247,9 @@
                         if (data.errors.value1) {
                             $('#value1-error').html(data.errors.value1[0]);
                         }
+                        if (data.errors.category) {
+                            $('#category-error').html(data.errors.category[0]);
+                        }
                         if (data.errors.field1) {
                             $('#field1-error').html(data.errors.field1[0]);
                         }
@@ -271,7 +276,7 @@
         var url = $this.attr('action');
         var formData = new FormData(this);
         $.ajax({
-            url: "http://127.0.0.1:8000/uploadfile/"+toSend,
+            url: "http://127.0.0.1:8000/uploadfile/"+title,
             type: "POST",
             dataType: "json",
             data: formData,
@@ -290,7 +295,9 @@
                     }
                 }
                 if(data.success) {
+
                     $('#product-added').removeClass('hidden');
+                    refresh=true;
                 }
             },
             error: function (data) {
@@ -301,27 +308,30 @@
 </script>
 <script>
     $('#myModal').on('hidden.bs.modal', function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        });
-        jQuery.ajax({
-            url: "{{ route('Admin-deleteProduct')}}",
-            method: 'post',
-            dataType: "json",
-            data: {
-                title: title,
-            },
-            success:function(data) {
-                console.log(data);
-                if (data.errors) {
+        if (refresh === false) {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
-                if (data.success) {
+            });
+            jQuery.ajax({
+                url: "{{ route('Admin-deleteProduct')}}",
+                method: 'post',
+                dataType: "json",
+                data: {
+                    title: title,
+                },
+                success: function (data) {
+                    console.log(data);
+                    if (data.errors) {
+                    }
+                    if (data.success) {
+                    }
                 }
-            }
-        });
+            });
+        }
     });
+
 
 </script>
 

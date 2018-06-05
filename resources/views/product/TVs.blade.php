@@ -26,21 +26,7 @@
                             <li><a href="index.html">Home</a></li>
                             <li class="active">Products</li>
                         </ol>
-                        <div class="product-top">
-                            <h4>All Products</h4>
-                            <ul>
-                                <li class="dropdown head-dpdn">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort By<span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{route('Electronic-Appliances-New')}}">New In</a></li>
-                                        <li><a href="{{route('Electronic-Appliances-Low-Price')}}">Lowest price</a></li>
-                                        <li><a href="{{route('Electronic-Appliances-High-Price')}}">Highest price</a></li>
-                                        <li><a href="{{route('Electronic-Appliances-Best-Rating')}}">Best Rating</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <div class="clearfix"> </div>
-                        </div>
+
                         <div class="all-products">
                             <div class="">
                                 <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"><?php if(count($_GET) === 1 && isset($_GET['type'])) { echo "Our latest ".strtoupper($_GET['type'])." TVs are:";} else {echo "Your filtered results: ";}?></h2>
@@ -50,9 +36,14 @@
                                             <div class="col-md-3">
                                                 <div class="product-item">
                                                     <div class="product-borde-inner">
-                                                        <a href="product_single.html">
-                                                            <img src="images/product-slide/product1.png" class="img img-responsive"/>
-                                                        </a>
+                                                        @foreach($images as $image)
+                                                            @if($image->prod_title==$product->title)
+                                                                <a href="http://127.0.0.1:8000/Product/{{$product->id}}">
+                                                                    <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive"/>
+                                                                </a>
+                                                                @break
+                                                            @endif
+                                                        @endforeach
 
                                                         <div class="product-price">
                                                             <a href="{{route('product', ['id' => $product->id])}}">{{$product->title}}</a><br />
@@ -78,7 +69,7 @@
                                         <div class="clear"></div>
 
                                     </div> <!-- End Latest products row-->
-                                    {{ $products->links() }}
+                                    {{ $products->appends(request()->input())->links() }}
                                     <div class="clear"></div>
                                 </div> <!-- End products div-->
                             </div> <!-- End container latest products-->
@@ -94,78 +85,7 @@
     </div> <!-- End wrapper -->
     <!-- Scripts -->
 </div>
-    <script>
-        function addOrUpdateUrlParam(min, value1, max, value2)
-        {
-            var href = window.location.href;
-            var regex = new RegExp("[&\\?]" + min + "=");
-            var regex2 = new RegExp("[&\\?]" + max + "=");
-            if(regex.test(href))
-            {
-                regex = new RegExp("([&\\?])" + min + "=\\d+" + "([&\\?])" + max + "=\\d+");
-                window.location.href = href.replace(regex, "$1" + min + "=" + value1 + "$2" +max + "=" + value2);
-            }
-            else
-            {
-                if(href.indexOf("?") > -1)
-                    window.location.href = href + "&" + min + "=" + value1 + "&" +max + "=" +value2;
-                else
-                    window.location.href = href + "?" + min + "=" + value1 + "&"+ max + "=" +value2;
-            }
-        }
 
-        function addOrUpdateUrlParam1(min, value1)
-        {
-            var href = window.location.href;
-            var regex = new RegExp("[&\\?]" + min + "=");
-            if(regex.test(href))
-            {
-                regex = new RegExp("([&\\?])" + min + "=\\d+");
-                window.location.href = href.replace(regex, "$1" + min + "=" + value1);
-            }
-            else
-            {
-                if(href.indexOf("?") > -1)
-                    window.location.href = href + "&" + min + "=" + value1;
-                else
-                    window.location.href = href + "?" + min + "=" + value1;
-            }
-        }
-
-        function addOrReplace(key, value) {
-
-            var baseUrl = [location.protocol, '//', location.host, location.pathname].join(''),
-                urlQueryString = document.location.search,
-                newParam = key + '=' + value,
-                params = '?' + newParam;
-
-            // If the "search" string exists, then build params from it
-            if (urlQueryString) {
-
-                updateRegex = new RegExp('([\?&])' + key + '[^&]*');
-                removeRegex = new RegExp('([\?&])' + key + '=[^&;]+[&;]?');
-
-                if( typeof value == 'undefined' || value == null || value == '' ) { // Remove param if value is empty
-
-                    params = urlQueryString.replace(removeRegex, "$1");
-                    params = params.replace( /[&;]$/, "" );
-
-                } else if (urlQueryString.match(updateRegex) !== null) { // If param exists already, update it
-
-                    params = urlQueryString.replace(updateRegex, "$1" + newParam);
-
-                } else { // Otherwise, add it to end of query string
-
-                    params = urlQueryString + '&' + newParam;
-                }
-            }
-            window.history.replaceState({}, "", baseUrl + params);
-            location.reload();
-        };
-
-
-
-    </script>
     <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
