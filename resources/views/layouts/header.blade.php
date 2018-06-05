@@ -128,34 +128,20 @@ else {
                                                     </ul>
                                                     <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img03.jpg" alt=" "></li>
-                                                        <li class="wstheading">Cell Phones &amp; Accessories</li>
-                                                        <li><a href="#">Unlocked Cell Phones </a></li>
+                                                        <li class="wstheading">Smartphones &amp; Accessories</li>
+                                                        <li><a href="#">Smartphones</a></li>
                                                         <li><a href="#">Smartwatches </a></li>
-                                                        <li><a href="#">Carrier Phones</a></li>
-                                                        <li><a href="#">Cell Phone Cases</a> <span class="wstmenutag orangetag">Hot</span></li>
-                                                        <li><a href="#">Apple Cell Phones</a></li>
+                                                        <li><a href="#">Phone Cases</a> <span class="wstmenutag orangetag">Hot</span></li>
                                                         <li><a href="#">Bluetooth Headsets</a></li>
-                                                        <li><a href="#">Cell Phone Accessories</a></li>
+                                                        <li><a href="#">Smartphone Accessories</a></li>
                                                         <li><a href="#">Fashion Tech</a></li>
                                                         <li><a href="#">Headphone</a></li>
                                                     </ul>
-                                                    <ul class="wstliststy02">
-                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img04.jpg" alt=" "></li>
-                                                        <li class="wstheading">Wearable Device</li>
-                                                        <li><a href="#">Activity Trackers </a></li>
-                                                        <li><a href="#">Sports &amp; GPS Watches</a></li>
-                                                        <li><a href="#">Smart Watches</a> <span class="wstmenutag greentag">New</span></li>
-                                                        <li><a href="#">Virtual Reality Headsets</a></li>
-                                                        <li><a href="#">Smart Tracking</a></li>
-                                                        <li><a href="#">Wearable Cameras</a></li>
-                                                        <li><a href="#">Smart Glasses</a></li>
-                                                        <li><a href="#">Kids &amp; Pets</a></li>
-                                                        <li><a href="#">Smart Sport Accessories</a></li>
-                                                    </ul>
+
                                                 </div>
                                             </li>
                                             <!--cat 3-->
-                                            <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#"><i class="fa fa-laptop"></i>Computers &amp; Accessories</a>
+                                            <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Computers-and-Accesories')}}"><i class="fa fa-laptop"></i>Computers &amp; Accessories</a>
                                                 <div class="wstitemright clearfix computermenubg" style="height: auto;">
                                                     <div class="wstmegamenucoll01 clearfix">
                                                         <div class="wstheading">Monitors <a href="#" class="wstmorebtn">View All</a></div>
@@ -173,19 +159,16 @@ else {
                                                             <li><a href="#">All-In-One</a> </li>
                                                             <li><a href="#">Copying </a> <span class="wstmenutag orangetag">Exclusive</span></li>
                                                             <li><a href="#">Faxing </a> </li>
-                                                            <li><a href="#">Printing Photo Printing</a> </li>
-                                                            <li><a href="#">Printing Only</a> </li>
-                                                            <li><a href="#">Scanning </a> </li>
+                                                            <li><a href="#">Photo Printers</a> </li>
+                                                            {{--<li><a href="#">Printing Only</a> </li>--}}
+                                                            <li><a href="#">Scanners</a> </li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
-                                                        <div class="wstheading">Software <a href="#" class="wstmorebtn">View All</a></div>
+                                                        <div class="wstheading">Laptops <a href="#" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
-                                                            <li><a href="#">Antivirus &amp; Security</a> </li>
-                                                            <li><a href="#">Business &amp; Office</a> <span class="wstmenutag orangetag">Exclusive</span></li>
-                                                            <li><a href="#">Web Design</a> </li>
-                                                            <li><a href="#">Digital Software</a> </li>
-                                                            <li><a href="#">Education &amp; Reference</a> </li>
-                                                            <li><a href="#">Lifestyle &amp; Hobbies</a> </li>
+                                                            <li><a href="#">Gaming laptops</a> </li>
+                                                                <li><a href="#">Ultrabooks</a> <span class="wstmenutag orangetag">Exclusive</span></li>
+                                                            <li><a href="#">2 in 1 Laptops</a> </li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
                                                         <div class="wstheading">Accessories <a href="#" class="wstmorebtn">View All</a></div>

@@ -8,7 +8,7 @@
             <div class="panel-body"style="color: black;" id="panel-size" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-review" hidden></div>
         </div>
-        <a role="button" href="{{route('TVs')}}">Reset filters</a>
+        <a role="button" href="{{route('Smartphones')}}">Reset filters</a>
 
         <h2>Filter by :</h2>
         <div class="sidebar-single">
@@ -23,7 +23,7 @@
             </div>
             <div id="brandCollapse" class="collapse out">
 
-               {{-- <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />--}}
+                {{-- <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />--}}
                 <br>
                 <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
                 <br>
@@ -36,31 +36,31 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-            <div class="sidebar-single">
-                <div class="sidebar-title">
-                    <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#typeCollapse" aria-controls="#typeCollapse">
-                        <span class="pull-left title-sidebar">Type</span>
-                        <span class="pull-right"><i class="fa fa-plus"></i></span>
-                        <span class="pull-right"><i class="fa fa-minus"></i></span>
-                        <div class="clearfix"></div>
-                    </a>
-                </div> <!--End Sidebar title div-->
-                <div id="typeCollapse" class="collapse out">
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','4kTV')"><span></span>4kTV</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','curvedTV')"><span></span>CURVED TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','ledTV')"><span></span>LED TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','lcdTV')"><span></span>LCD TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','oledTV')"><span></span>OLED TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','plasmaTV')"><span></span>PLASMA TVs</a><br />
+        <div class="sidebar-single">
+            <div class="sidebar-title">
+                <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#typeCollapse" aria-controls="#typeCollapse">
+                    <span class="pull-left title-sidebar">Type</span>
+                    <span class="pull-right"><i class="fa fa-plus"></i></span>
+                    <span class="pull-right"><i class="fa fa-minus"></i></span>
                     <div class="clearfix"></div>
-                </div>
+                </a>
+            </div> <!--End Sidebar title div-->
+            <div id="typeCollapse" class="collapse out">
+                <br>
+                <a role="button" onclick="addOrReplace('type','smartphone')"><span></span>Smartphone</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','smartwatch')"><span></span>Smartwatch</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','phonecase')"><span></span>PhoneCase</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','bluetooth-headset')"><span></span>Bluetooth-Headset</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','smartphone-accesories')"><span></span>Smartphone-Accesories</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','headphone')"><span></span>Headphone</a><br />
+                <div class="clearfix"></div>
             </div>
+        </div>
         <!--End Single Sidebar-->
 
         <div class="sidebar-single">
@@ -78,17 +78,23 @@
                 <br>
                 <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>SONY</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Apple</a><br/>
                 <br>
                 <a role="button" onclick="addOrReplace('producer','LG')"><span></span>LG</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Panasonic')"><span></span>PANASONIC</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Sony</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Asus')"><span></span>Asus</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','HTC')"><span></span>HTC</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Lenovo')"><span></span>Lenovo</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
         </div> <!--End Second Sidebar-->
 
-        <div class="sidebar-single">
+        <div class="sidebar-single" id="size-bar">
             <div class="sidebar-title">
                 <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#size" aria-controls="#sizeController">
                     <span class="pull-left title-sidebar">Size</span>
@@ -100,14 +106,13 @@
             </div> <!--End Sidebar title div-->
 
             <div id="size" class="collapse out">
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',1,'sizeMax',4)"><span></span>Below 4 inch</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',70,'sizeMax',100)"><span></span>70 - 100 CM</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',4,'sizeMax',5)"><span></span>4 - 5 inch</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',100,'sizeMax',120)"><span></span>100 - 120 CM</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',5,'sizeMax',6)"><span></span>5 - 6 inch</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',120,'sizeMax',140)"><span></span>120 - 140 CM</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',140,'sizeMax',9999)"><span></span>ABOVE 140 CM</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',6,'sizeMax',20)"><span></span>ABOVE 6 inch</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -160,8 +165,8 @@
         var size2 = url.searchParams.get("sizeMax");
         if(size1!==null &&size2!==null){
             document.getElementById('panel').removeAttribute('hidden');
-            document.getElementById('panel-price').removeAttribute('hidden');
-            document.getElementById('panel-price').innerHTML = "TV Size: " + size1+ " - " +size2;
+            document.getElementById('panel-size').removeAttribute('hidden');
+            document.getElementById('panel-size').innerHTML = "Screen size: " + size1+ " - " +size2;
         }
         if(producer!==null){
             document.getElementById('panel').removeAttribute('hidden');
@@ -180,10 +185,12 @@
             document.getElementById('panel-price').innerHTML = "Price: " + price1+ " - " +price2;
         }
         if(type!==null){
+            if(type==='bluetooth-headset' || type==='smartphone-accesories' || type==='headphone') {
+                document.getElementById('size-bar').setAttribute('hidden', 'true');
+            }
             document.getElementById('panel').removeAttribute('hidden');
             document.getElementById('panel-type').removeAttribute('hidden');
             document.getElementById('panel-type').innerHTML = "Type: " + type;
-
         }
     });
     function addOrUpdateUrlParam(min, value1, max, value2)

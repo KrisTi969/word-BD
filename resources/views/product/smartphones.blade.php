@@ -20,10 +20,10 @@
         <div class="content-area prodcuts">
             <div class="row">
                 <div class="container">
-                    @include('layouts.cameraNavigationBar')
+                    @include('layouts.smartphoneNavigation')
                     <div class="col-sm-10 col-md-10 col-lg-10">
                         <ol class="breadcrumb breadcrumb1">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{route('/')}}">Home</a></li>
                             <li class="active">Products</li>
                         </ol>
 
@@ -48,7 +48,7 @@
                                                         <div class="product-price">
                                                             <a href="{{route('product', ['id' => $product->id])}}">{{$product->title}}</a><br />
                                                             <span class="prev-price">
-                                                    {{--<del>200$</del>--}}
+                                                 {{--   <del>200$</del>--}}
                                                 </span>
                                                             <span class="current-price">
                                                     {{$product->price}} $

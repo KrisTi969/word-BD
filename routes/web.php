@@ -102,10 +102,18 @@ Route::get('/Electronic-Appliances/lowest-price', 'Product\AllProducts@getProduc
 Route::get('/Electronic-Appliances/high-price', 'Product\AllProducts@getProductsWithFilterHighPrice')->name('Electronic-Appliances-High-Price');
 Route::get('/Electronic-Appliances/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Electronic-Appliances-Best-Rating');
 
+Route::get('/Computers-and-Accesories/', 'Product\AllProducts@getProductsComputers')->name('Computers-and-Accesories');
+Route::get('/Computers-and-Accesories/new', 'Product\AllProducts@getProductsWithFilterNew')->name('Computers-and-Accesories-New');
+Route::get('/Computers-and-Accesories/most-popular', 'Product\AllProducts@getProductsWithFilterMostPopular')->name('Computers-and-Accesories-Most-Popular');
+Route::get('/Computers-and-Accesories/lowest-price', 'Product\AllProducts@getProductsWithFilterLowPrice')->name('Computers-and-Accesories-Low-Price');
+Route::get('/Computers-and-Accesories/high-price', 'Product\AllProducts@getProductsWithFilterHighPrice')->name('Computers-and-Accesories-High-Price');
+Route::get('/Computers-and-Accesories/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Computers-and-Accesories-Best-Rating');
+
 /**/
     // FILTRARI PRODUSE
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
-Route::get('/Cameras', 'Product\AllProducts@getTVs')->name('Cameras');
+Route::get('/Cameras-Photo-Video', 'Product\AllProducts@getCamerasPhotosVideos')->name('Cameras');
+Route::get('/Smartphones', 'Product\AllProducts@getSmartphones')->name('Smartphones');
 ////
 
 Route::get('user/{name?}/{type?}', function ($name = 'John', $type = 'ceva') {

@@ -5,10 +5,9 @@
             <div class="panel-body"style="color: black;" id="panel-price" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-type" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-producer" hidden></div>
-            <div class="panel-body"style="color: black;" id="panel-size" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-review" hidden></div>
         </div>
-        <a role="button" href="{{route('TVs')}}">Reset filters</a>
+        <a role="button" href="{{route('Cameras')}}">Reset filters</a>
 
         <h2>Filter by :</h2>
         <div class="sidebar-single">
@@ -23,7 +22,7 @@
             </div>
             <div id="brandCollapse" class="collapse out">
 
-               {{-- <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />--}}
+                {{-- <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />--}}
                 <br>
                 <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
                 <br>
@@ -36,31 +35,39 @@
                 <div class="clearfix"></div>
             </div>
         </div>
-            <div class="sidebar-single">
-                <div class="sidebar-title">
-                    <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#typeCollapse" aria-controls="#typeCollapse">
-                        <span class="pull-left title-sidebar">Type</span>
-                        <span class="pull-right"><i class="fa fa-plus"></i></span>
-                        <span class="pull-right"><i class="fa fa-minus"></i></span>
-                        <div class="clearfix"></div>
-                    </a>
-                </div> <!--End Sidebar title div-->
-                <div id="typeCollapse" class="collapse out">
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','4kTV')"><span></span>4kTV</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','curvedTV')"><span></span>CURVED TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','ledTV')"><span></span>LED TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','lcdTV')"><span></span>LCD TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','oledTV')"><span></span>OLED TVs</a><br />
-                    <br>
-                    <a role="button" onclick="addOrReplace('type','plasmaTV')"><span></span>PLASMA TVs</a><br />
+
+        <div class="sidebar-single">
+            <div class="sidebar-title">
+                <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#typeCollapse" aria-controls="#typeCollapse">
+                    <span class="pull-left title-sidebar">Type</span>
+                    <span class="pull-right"><i class="fa fa-plus"></i></span>
+                    <span class="pull-right"><i class="fa fa-minus"></i></span>
                     <div class="clearfix"></div>
-                </div>
+                </a>
+            </div> <!--End Sidebar title div-->
+            <div id="typeCollapse" class="collapse out">
+                <br>
+                <a role="button" onclick="addOrReplace('type','accesories')"><span></span>accesories</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','bags&cases')"><span></span>Bags & Cases</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','binoculars&scopes')"><span></span>Binoculars & Scopes</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','digital-cameras')"><span></span>Digital-Cameras</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','film-photografy')"><span></span>Film-Photografy</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','flashes')"><span></span>Flashes</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','lenses')"><span></span>Lenses</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','lightning&studio')"><span></span>Lightning & Studio</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','video')"><span></span>Video</a><br />
+                <div class="clearfix"></div>
             </div>
+        </div>
+
         <!--End Single Sidebar-->
 
         <div class="sidebar-single">
@@ -76,42 +83,20 @@
 
             <div id="producer" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
+                <a role="button" onclick="addOrReplace('producer','AF')"><span></span>AF</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>SONY</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Canon')"><span></span>Canon</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','LG')"><span></span>LG</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Case-Logic')"><span></span>Case-Logic</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Panasonic')"><span></span>PANASONIC</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Nikon')"><span></span>Nikon</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Olympus')"><span></span>Olympus</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
         </div> <!--End Second Sidebar-->
 
-        <div class="sidebar-single">
-            <div class="sidebar-title">
-                <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#size" aria-controls="#sizeController">
-                    <span class="pull-left title-sidebar">Size</span>
-
-                    <span class="pull-right"><i class="fa fa-plus"></i></span>
-                    <span class="pull-right"><i class="fa fa-minus"></i></span>
-                    <div class="clearfix"></div>
-                </a>
-            </div> <!--End Sidebar title div-->
-
-            <div id="size" class="collapse out">
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',70,'sizeMax',100)"><span></span>70 - 100 CM</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',100,'sizeMax',120)"><span></span>100 - 120 CM</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',120,'sizeMax',140)"><span></span>120 - 140 CM</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',140,'sizeMax',9999)"><span></span>ABOVE 140 CM</a><br />
-                <br>
-                <div class="clearfix"></div>
-            </div>
-        </div> <!--End Third Sidebar-->
 
         <div class="sidebar-single">
             <div class="sidebar-title">

@@ -23,41 +23,44 @@
                     <div class="col-sm-2 col-md-2 col-lg-2">
                         <div class="sidebar-products-main"><br>
                         <h2 class="title-div">Categories</h2>
+                            @if($afisare == "Electronic-Appliances")
                                 <li>Electronic Appliances
                             <ul>
                                     <li><a href="{{route("TVs")}}">TVs</a></li>
-                                    <li><a href="#">Camera, Photo &amp; Video </a></li>
-                                    <li><a href="#">Cell Phones &amp; Accessories</a></li>
-                                    <li><a href="#">Wearable Devices</a></li>
+                                    <li><a href="{{route('Cameras')}}">Camera, Photo &amp; Video </a></li>
+                                    <li><a href="{{route('Smartphones')}}">Smartphones &amp; Accessories</a></li>
+                                    {{--<li><a href="#">Wearable Devices</a></li>--}}
                             </ul>
                             </li>
-
-                         {{--   <li>Computer & Accesories
+                            @endif
+                            @if($afisare == "Computers-and-Accesories")
+                            <li>Computer & Accesories
                                 <ul>
                                     <li><a href="#">Monitors</a></li>
                                     <li><a href="#">Printers</a></li>
-                                    <li><a href="#">Software</a></li>
+                                    <li><a href="#">Laptops</a></li>
                                     <li><a href="#">Accesories</a></li>
                                 </ul>
                             </li>
+                            @endif
+                            {{--
+                                                        <li>Movies
+                                                            <ul>
+                                                                <li><a href="#">Latest Movies</a></li>
+                                                            </ul>
+                                                        </li>
 
-                            <li>Movies
-                                <ul>
-                                    <li><a href="#">Latest Movies</a></li>
-                                </ul>
-                            </li>
+                                                        <li>Games
+                                                            <ul>
+                                                                <li><a href="#">Newest Games</a></li>
+                                                            </ul>
+                                                        </li>
 
-                            <li>Games
-                                <ul>
-                                    <li><a href="#">Newest Games</a></li>
-                                </ul>
-                            </li>
-
-                            <li>Music
-                                <ul>
-                                    <li><a href="#">Popular Music Genre</a></li>
-                                </ul>
-                            </li>--}}
+                                                        <li>Music
+                                                            <ul>
+                                                                <li><a href="#">Popular Music Genre</a></li>
+                                                            </ul>
+                                                        </li>--}}
                         </div>
                     </div>
 
@@ -76,11 +79,20 @@
                                 <li class="dropdown head-dpdn">
                                     <a href="#" class="dropdown" data-toggle="dropdown" style="font-size: large">Sort By<span class="caret"></span></a>
                                     <ul class="dropdown-menu">
+                                        @if($afisare == "Electronic-Appliances")
                                         <li><a href="{{route('Electronic-Appliances-New')}}">New In</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Most-Popular')}}">Most Popular</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Low-Price')}}">Lowest price</a></li>
                                         <li><a href="{{route('Electronic-Appliances-High-Price')}}">Highest price</a></li>
                                         <li><a href="{{route('Electronic-Appliances-Best-Rating')}}">Best Rating</a></li>
+                                            @endif
+                                            @if($afisare == "Computers-and-Accesories")
+                                                <li><a href="{{route('Computers-and-Accesories-New')}}">New In</a></li>
+                                                <li><a href="{{route('Computers-and-Accesories-Most-Popular')}}">Most Popular</a></li>
+                                                <li><a href="{{route('Computers-and-Accesories-Low-Price')}}">Lowest price</a></li>
+                                                <li><a href="{{route('Computers-and-Accesories-High-Price')}}">Highest price</a></li>
+                                                <li><a href="{{route('Computers-and-Accesories-Best-Rating')}}">Best Rating</a></li>
+                                                @endif
                                     </ul>
                                 </li>
                             </ul>

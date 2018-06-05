@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class AllProducts extends Controller
 {
@@ -30,16 +31,28 @@ class AllProducts extends Controller
 
     public function getProducts()
     {
-        $products = DB::table('products')->paginate(16);
+        $products = DB::table('products')->where('category','=','Electronic Appliances')->paginate(16);
         $images = DB::table('prod_images')->get();
-        return view('product.productsRedirect', ['products' => $products])->with(['images' => $images]);
+        return view('product.productsRedirect', ['products' => $products])->with(['images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
+    }
+
+    public function getProductsComputers()
+    {
+        $products = DB::table('products')->where('category','=','Computers-and-Accesories')->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view('product.productsRedirect', ['products' => $products])->with(['images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getProductsWithFilterNew()
     {
-        $products = DB::table('products')->orderBy('created_at', 'desc')->paginate(16);
+        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+            $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('created_at', 'desc')->paginate(16);
+        }
+        else {
+            $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('created_at', 'desc')->paginate(16);
+        }
         $images = DB::table('prod_images')->get();
-        return view('product.productsRedirect', ['products' => $products, 'images' => $images]);
+        return view('product.productsRedirect', ['products' => $products, 'images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getAllProductsWithFilterNew(Request $request)
@@ -60,7 +73,7 @@ class AllProducts extends Controller
 
 
         // returns a view and passes the view the list of articles and the original query.
-        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query]);
+        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getAllProductsWithFilterPopular(Request $request)
@@ -81,7 +94,7 @@ class AllProducts extends Controller
 
 
         // returns a view and passes the view the list of articles and the original query.
-        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query]);
+        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getAllProductsWithFilterPriceLow(Request $request)
@@ -102,7 +115,7 @@ class AllProducts extends Controller
 
 
         // returns a view and passes the view the list of articles and the original query.
-        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query]);
+        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getAllProductsWithFilterPriceHigh(Request $request)
@@ -123,7 +136,7 @@ class AllProducts extends Controller
 
 
         // returns a view and passes the view the list of articles and the original query.
-        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query]);
+        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getAllProductsWithFilterRating(Request $request)
@@ -144,52 +157,65 @@ class AllProducts extends Controller
 
 
         // returns a view and passes the view the list of articles and the original query.
-        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query]);
+        return view('search.results')->with(['products' => $products])->with(['images' => $images, 'query' => $query,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getProductsWithFilterMostPopular()
     {
-        $products = DB::table('products')->orderBy('views', 'desc')->paginate(16);
+        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+            $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('views', 'desc')->paginate(16);
+        }
+        else {
+            $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('views', 'desc')->paginate(16);
+        }
         $images = DB::table('prod_images')->get();
-        return view('product.productsRedirect', ['products' => $products, 'images' => $images]);
+        return view('product.productsRedirect', ['products' => $products, 'images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getProductsWithFilterLowPrice()
     {
-        $products = DB::table('products')->orderBy('price', 'asc')->paginate(16);
+        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+            $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('price', 'asc')->paginate(16);
+        }
+        else {
+            $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('price', 'asc')->paginate(16);
+        }
         $images = DB::table('prod_images')->get();
-        return view('product.productsRedirect', ['products' => $products, 'images' => $images]);
+        return view('product.productsRedirect', ['products' => $products, 'images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getProductsWithFilterHighPrice()
     {
-        $products = DB::table('products')->orderBy('price', 'desc')->paginate(16);
+        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+            $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('price', 'desc')->paginate(16);
+        }
+        else {
+            $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('price', 'desc')->paginate(16);
+        }
         $images = DB::table('prod_images')->get();
-        return view('product.productsRedirect', ['products' => $products, 'images' => $images]);
+        return view('product.productsRedirect', ['products' => $products, 'images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getProductsWithFilterBestRating()
     {
-        $products = DB::table('products')->orderBy('rating', 'desc')->paginate(16);
+        if( Route::getFacadeRoot()->current()->uri()== "Computers-and-Accesories") {
+            $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('average_reviews', 'desc')->paginate(16);
+        }
+        else {
+            $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('average_reviews', 'desc')->paginate(16);
+        }
         $images = DB::table('prod_images')->get();
-        return view('product.productsRedirect', ['products' => $products, 'images' => $images]);
+        return view('product.productsRedirect', ['products' => $products, 'images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
     public function getTVs(Request $request)
     {
-        function testRange($int, $min, $max)
-        {
-            return ($min < $int && $int < $max);
-        }
-
         $baseQuery = DB::table("products");
 
-        $products = $baseQuery->get();
-        /*         $baseQuery->where("type", "=", $type);
-                 $baseQuery->where("description", "like", "%".$producer."%");*/
         if ($request->input('type')) {
             $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
         }
+
         if ($request->input('producer')) {
             $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
         }
@@ -235,8 +261,83 @@ class AllProducts extends Controller
                 }
             }
 
-        $products = $baseQuery->paginate(16);
+
+        $products = $baseQuery->whereIn('type',['4kTV','curvedTV','oledTV','lcdTV','plasmaTV','ledTV'])->paginate(16);
         $images = DB::table('prod_images')->get();
         return view("product.TVs")->with(["products" => $products, 'images' => $images]);
+    }
+
+    public function getCamerasPhotosVideos(Request $request)
+    {
+        $baseQuery = DB::table("products");
+
+        if ($request->input('type')) {
+            $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+        }
+        if ($request->input('producer')) {
+            $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+        }
+        if ($request->input('priceMin') && $request->input('priceMax')) {
+            $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+        }
+        if ($request->input('review')) {
+            if ($request->input('review') >= 1) {
+                $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+            }
+        }
+        $products = $baseQuery->whereIn('type',['accesories','bags&cases','digital-cameras','film-photografy','flashes','lightning&studio','lenses','video','binoculars&scopes'])->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view("product.cameras")->with(["products" => $products, 'images' => $images]);
+    }
+
+    public function getSmartphones(Request $request)
+    {
+
+        $baseQuery = DB::table("products");
+
+        if ($request->input('type')) {
+            $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+        }
+        if ($request->input('producer')) {
+            $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+        }
+        if ($request->input('priceMin') && $request->input('priceMax')) {
+            $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+        }
+        if ($request->input('review')) {
+            if ($request->input('review') >= 1) {
+                $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+            }
+        }
+
+        //Gasim id'ul produselor care nu se incadreaza in dimensiune
+        if ($request->input('sizeMin') && $request->input('sizeMax')) {
+
+            $poziton = 0;
+            foreach ($baseQuery->get() as $result) {
+                $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
+                /*var_dump($result->description);*/
+                $descr = json_decode($result->description);
+                if (isset($descr->{'Technical specifications'})) {
+                    foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
+                        if (isset($ceva2->{'Display size'})) {
+                            $id = str_replace('inch', '', $ceva2->{'Display size'});
+                            if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
+                                $poziton++;
+                            } else {
+                                $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+                            }
+                        }
+                    }
+                } else {
+                    $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+                }
+
+            }
+        }
+
+        $products = $baseQuery->whereIn('type',['smartphone','smartwatch','phonecase','bluetooth-headset','smartphone-accesories','headphone'])->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view("product.smartphones")->with(["products" => $products, 'images' => $images]);
     }
 }
