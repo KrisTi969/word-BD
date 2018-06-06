@@ -37,11 +37,21 @@
                             <li>Computer & Accesories
                                 <ul>
                                     <li><a href="{{route('Monitors')}}">Monitors</a></li>
-                                    <li><a href="#">Printers</a></li>
-                                    <li><a href="#">Laptops</a></li>
+                                    <li><a href="{{route('Printers')}}">Printers</a></li>
+                                    <li><a href="{{route('Laptops')}}">Laptops</a></li>
                                     <li><a href="#">Accesories</a></li>
                                 </ul>
                             </li>
+                            @endif
+                            @if(strpos($afisare,"Entertainment")===0)
+                                <li>Electronic Appliances
+                                    <ul>
+                                        <li><a href="{{route("Movies")}}">Movies</a></li>
+                                        <li><a href="{{route('Games')}}">Games</a></li>
+                                        <li><a href="{{route('Music')}}">Music</a></li>
+                                        {{--<li><a href="#">Wearable Devices</a></li>--}}
+                                    </ul>
+                                </li>
                             @endif
                             {{--
                                                         <li>Movies
@@ -94,6 +104,13 @@
                                                 <li><a href="{{route('Computers-and-Accesories-High-Price')}}">Highest price</a></li>
                                                 <li><a href="{{route('Computers-and-Accesories-Best-Rating')}}">Best Rating</a></li>
                                                 @endif
+                                            @if(strpos($afisare,"Entertainment")===0)
+                                                <li><a href="{{route('Entertainment-New')}}">New In</a></li>
+                                                <li><a href="{{route('Entertainment-Most-Popular')}}">Most Popular</a></li>
+                                                <li><a href="{{route('Entertainment-Low-Price')}}">Lowest price</a></li>
+                                                <li><a href="{{route('Entertainment-High-Price')}}">Highest price</a></li>
+                                                <li><a href="{{route('Entertainment-Best-Rating')}}">Best Rating</a></li>
+                                            @endif
                                     </ul>
                                 </li>
                             </ul>

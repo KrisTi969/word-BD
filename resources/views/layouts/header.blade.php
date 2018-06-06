@@ -92,26 +92,26 @@ else {
 
             <div class="headerfull">
                 <!--Main Menu HTML Code-->
-                <div class="smllogo navbar-fixed"><a href="{{route('/')}}"><img src="{{asset('images/shop/Skyshop2.png')}}" style="max-width: 140%; " alt=""></a></div>
+                <div class="smllogo navbar-fixed"><a href="{{route('/')}}"><img src="{{asset('images/shop/Skyshop2.png')}}" style="max-width: 100px;" alt=""></a></div>
                 <div class="wsmain">
 
                     <nav class="wsmenu clearfix">
                         <ul class="mobile-sub wsmenu-list">
                             <li><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" class="navtext"><span>Shop By</span> <span>Department</span></a>
                                 <div class="wsshoptabing wtsdepartmentmenu clearfix">
-                                    <div class="wsshopwp clearfix" style="height: 421px;">
+                                    <div class="wsshopwp clearfix" style="color: red !important;">
                                         <ul class="wstabitem clearfix">
                                             <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Electronic-Appliances')}}"><i class="fa fa-television"></i>Electronic Appliances</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
                                                   <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>
                                                         <li class="wstheading">TVs</li>
-                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=4kTV">4K Ultra HD TVs </a></li>
-                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=curved">Curved TVs </a></li>
-                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=led">LED TVs</a></li>
-                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=lcd">LCD TVs</a></li>
-                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=oled">OLED TVs</a> <span class="wstmenutag bluetag">Popular</span></li>
-                                                        <li><a href="<?php echo $reddirect_link; ?>TVs?type=plasma">Plasma TVs</a></li>
+                                                        <li><a href="TVs?type=4kTV">4K Ultra HD TVs </a></li>
+                                                        <li><a href="">Curved TVs </a></li>
+                                                        <li><a href="TVs?type=led">LED TVs</a></li>
+                                                        <li><a href="TVs?type=lcd">LCD TVs</a></li>
+                                                        <li><a href="TVs?type=oled">OLED TVs</a> <span class="wstmenutag bluetag">Popular</span></li>
+                                                        <li><a href="TVs?type=plasma">Plasma TVs</a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
                                                         <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img02.jpg" alt=" "></li>
@@ -146,12 +146,9 @@ else {
                                                     <div class="wstmegamenucoll01 clearfix">
                                                         <div class="wstheading">Monitors <a href="#" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
-                                                            <li><a href="#">127 CM &amp; Above <span class="wstmenutag greentag">New</span></a></li>
-                                                            <li><a href="#">102 to 126.9 CM </a></li>
-                                                            <li><a href="#">76 to 101.9 CM</a></li>
-                                                            <li><a href="#">51 to 75.9 CM</a></li>
-                                                            <li><a href="#">46 to 50.9 CM</a></li>
-                                                            <li><a href="#">40 to 45.9 CM</a></li>
+                                                            <li><a href="#">15.5 - 30inch <span class="wstmenutag greentag">New</span></a></li>
+                                                            <li><a href="#">30 - 40inch </a></li>
+                                                            <li><a href="#">40+inch</a></li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
                                                         <div class="wstheading">Printers <a href="#" class="wstmorebtn">View All</a></div>
@@ -169,9 +166,10 @@ else {
                                                             <li><a href="#">Gaming laptops</a> </li>
                                                                 <li><a href="#">Ultrabooks</a> <span class="wstmenutag orangetag">Exclusive</span></li>
                                                             <li><a href="#">2 in 1 Laptops</a> </li>
+                                                            <br>  <br>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
-                                                        <div class="wstheading">Accessories <a href="#" class="wstmorebtn">View All</a></div>
+                                                      {{--  <div class="wstheading">Accessories <a href="#" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
                                                             <li><a href="#">Audio &amp; Video Accessories</a> </li>
                                                             <li><a href="#">Cable Security Devices</a> </li>
@@ -179,18 +177,56 @@ else {
                                                             <li><a href="#">Memory Cards</a> </li>
                                                             <li><a href="#">Monitor Accessories</a> </li>
                                                             <li><a href="#">USB Gadgets</a> </li>
-                                                        </ul>
+                                                        </ul>--}}
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class=""><span class="wsmenu-click02"><i
+                                            <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Entertainment')}}"><i class="fa fa-gamepad"></i>Entertainment</a>
+                                                <div class="wstitemright clearfix" style="height: auto;">
+                                                    <ul class="wstliststy02">
+                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>
+                                                        <li class="wstheading">Movies</li>
+                                                        <li><a href="#">Action &amp; Adventure <span
+                                                                        class="wstmenutag greentag">New</span></a></li>
+                                                        <li><a href="#">Comedy</a></li>
+                                                        <li><a href="#">Documentary</a></li>
+                                                        <li><a href="#">Thriller</a></li>
+                                                        <li><a href="#">Exercise &amp; Fitness </a></li>
+                                                        <li><a href="#">Animation</a></li>
+                                                        <li><a href="#">Fantasy</a></li>
+                                                        <li><a href="#">Romance</a></li>
+                                                    </ul>
+                                                    <ul class="wstliststy02">
+                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img02.jpg" alt=" "></li>
+                                                        <li class="wstheading">Games</li>
+                                                        <li><a href="#">PC</a> </li>
+                                                        <li><a href="#">PlayStation 4 </a> </li>
+                                                        <li><a href="#">Xbox One </a> <span class="wstmenutag orangetag">Most Viewed</span></li>
+                                                        <li><a href="#">Nintendo DS</a> </li>
+                                                        <li><a href="#">Nintendo Switch</a> </li>
+                                                    </ul>
+                                                    <ul class="wstliststy02">
+                                                        <li class="wstheading">Music</li>
+                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img03.jpg" alt=" "></li>
+                                                        <li><a href="#">Rock</a> </li>
+                                                        <li><a href="#">Pop <span class="wstmenutag bluetag">50% off</span></a> </li>
+                                                        <li><a href="#">Classical</a> </li>
+                                                        <li><a href="#">Rap</a> </li>
+                                                        <li><a href="#">Classic Rock</a> </li>
+                                                        <li><a href="#">Country</a> </li>
+                                                        <li><a href="#">Dance &amp; Electronic</a> </li>
+                                                    </ul>
+
+                                                </div>
+                                            </li>
+
+                                           {{-- <li class=""><span class="wsmenu-click02"><i
                                                             class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#"><i class="fa fa-film "></i> Movies</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
                                                     <ul class="wstliststy02">
                                                         <li class="wstheading">Latest Movies</li>
                                                         <li><a href="#">Action &amp; Adventure <span
                                                                         class="wstmenutag greentag">New</span></a></li>
-                                                        <li><a href="#">Bollywood </a></li>
                                                         <li><a href="#">Comedy</a></li>
                                                         <li><a href="#">Documentary</a></li>
                                                         <li><a href="#">Educational</a></li>
@@ -211,10 +247,9 @@ else {
                                                         <li><a href="#">Xbox One </a> <span class="wstmenutag orangetag">Most Viewed</span></li>
                                                         <li><a href="#">Xbox 360 </a> </li>
                                                         <li><a href="#">Nintendo DS</a> </li>
-                                                        <li><a href="#">PlayStation Vita </a> </li>
+                                                        <li><a href="#">Nintendo Switch</a> </li>
                                                         <li><a href="#">Retro Gaming</a> </li>
                                                         <li><a href="#">Digital Games</a> </li>
-                                                        <li><a href="#">Microconsoles</a> </li>
                                                         <li><a href="#">Kids &amp; Family </a> </li>
                                                     </ul>
                                                 </div>
@@ -225,18 +260,17 @@ else {
                                                 <div class="wstitemright clearfix" style="height: auto;">
                                                     <ul class="wstliststy02">
                                                         <li class="wstheading">Popular Music Genre</li>
-                                                        <li><a href="#">Alternative &amp; Indie Rock</a> </li>
-                                                        <li><a href="#">Broadway &amp; Vocalists</a> </li>
-                                                        <li><a href="#">Children's Music</a> </li>
-                                                        <li><a href="#">Christian <span class="wstmenutag bluetag">50% off</span></a> </li>
+                                                        <li><a href="#">Rock</a> </li>
+                                                        <li><a href="#">Pop <span class="wstmenutag bluetag">50% off</span></a> </li>
                                                         <li><a href="#">Classical</a> </li>
+                                                        <li><a href="#">Rap</a> </li>
                                                         <li><a href="#">Classic Rock</a> </li>
                                                         <li><a href="#">Comedy &amp; Miscellaneous </a> </li>
                                                         <li><a href="#">Country</a> </li>
                                                         <li><a href="#">Dance &amp; Electronic</a> </li>
                                                     </ul>
                                                 </div>
-                                            </li>
+                                            </li>--}}
                                             <!--Sfarsti categoriiiiiiiiiiiiii-->
 
                                         </ul>
@@ -245,7 +279,7 @@ else {
                             </li>
 
 
-                            <li><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" class="navtext"><span>Shop By</span> <span>Half menu</span></a>
+                           {{-- <li><span class="wsmenu-click"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="#" class="navtext"><span>Shop By</span> <span>Half menu</span></a>
                                 <div class="megamenu clearfix halfmenu">
 
 
@@ -269,7 +303,7 @@ else {
                                     </ul>
 
                                 </div>
-                            </li>
+                            </li>--}}
                             <li class="wssearchbar clearfix">
                                 <form method="get" action="{{route('search')}}" class="topmenusearch">
                                     <input type="text" name="search" id="search" placeholder="Search Product By Name, Type...">

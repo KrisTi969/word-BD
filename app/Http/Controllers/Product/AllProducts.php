@@ -43,10 +43,20 @@ class AllProducts extends Controller
         return view('product.productsRedirect', ['products' => $products])->with(['images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
     }
 
+    public function getEntertainment()
+    {
+        $products = DB::table('products')->where('category','=','Entertainment')->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view('product.productsRedirect', ['products' => $products])->with(['images' => $images,'afisare' => Route::getFacadeRoot()->current()->uri()]);
+    }
+
     public function getProductsWithFilterNew()
     {
         if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('created_at', 'desc')->paginate(16);
+        }
+        else if( strpos(Route::getFacadeRoot()->current()->uri(), "Entertainment")===0) {
+            $products = DB::table('products')->where('category','=','Entertainment')->orderBy('created_at', 'desc')->paginate(16);
         }
         else {
             $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('created_at', 'desc')->paginate(16);
@@ -165,6 +175,9 @@ class AllProducts extends Controller
         if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('views', 'desc')->paginate(16);
         }
+        else if( strpos(Route::getFacadeRoot()->current()->uri(), "Entertainment")===0) {
+            $products = DB::table('products')->where('category','=','Entertainment')->orderBy('views', 'desc')->paginate(16);
+        }
         else {
             $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('views', 'desc')->paginate(16);
         }
@@ -176,6 +189,9 @@ class AllProducts extends Controller
     {
         if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('price', 'asc')->paginate(16);
+        }
+        else if( strpos(Route::getFacadeRoot()->current()->uri(), "Entertainment")===0) {
+            $products = DB::table('products')->where('category','=','Entertainment')->orderBy('price', 'asc')->paginate(16);
         }
         else {
             $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('price', 'asc')->paginate(16);
@@ -189,6 +205,9 @@ class AllProducts extends Controller
         if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('price', 'desc')->paginate(16);
         }
+        else if( strpos(Route::getFacadeRoot()->current()->uri(), "Entertainment")===0) {
+            $products = DB::table('products')->where('category','=','Entertainment')->orderBy('price', 'desc')->paginate(16);
+        }
         else {
             $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('price', 'desc')->paginate(16);
         }
@@ -200,6 +219,9 @@ class AllProducts extends Controller
     {
         if( strpos(Route::getFacadeRoot()->current()->uri(), "Computers-and-Accesories")===0) {
             $products = DB::table('products')->where('category','=','Computers-and-Accesories')->orderBy('average_reviews', 'desc')->paginate(16);
+        }
+        else if( strpos(Route::getFacadeRoot()->current()->uri(), "Entertainment")===0) {
+            $products = DB::table('products')->where('category','=','Entertainment')->orderBy('average_reviews', 'desc')->paginate(16);
         }
         else {
             $products = DB::table('products')->where('category', '=', 'Electronic Appliances')->orderBy('average_reviews', 'desc')->paginate(16);
@@ -372,7 +394,7 @@ class AllProducts extends Controller
                 if (isset($descr->{'Technical specifications'})) {
                     foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
                         if (isset($ceva2->{'Display size'})) {
-                            $id = str_replace('cm', '', $ceva2->{'Display size'});
+                            $id = str_replace('inch', '', $ceva2->{'Display size'});
                             if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
                                 $poziton++;
                             } else {
@@ -390,5 +412,152 @@ class AllProducts extends Controller
         $products = $baseQuery->whereIn('type',['monitor-4k','monitor-touchscreen','monitor-led'])->paginate(16);
         $images = DB::table('prod_images')->get();
         return view("product.monitors")->with(["products" => $products, 'images' => $images]);
+    }
+
+    public function getPrinters(Request $request)
+    {
+        $baseQuery = DB::table("products");
+
+        if ($request->input('type')) {
+            $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+        }
+        if ($request->input('producer')) {
+            $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+        }
+        if ($request->input('priceMin') && $request->input('priceMax')) {
+            $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+        }
+        if ($request->input('review')) {
+            if ($request->input('review') >= 1) {
+                $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+            }
+        }
+        $products = $baseQuery->whereIn('type',['printer-scanners','printer-copying','printer-photo','printer-all-in-one'])->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view("product.printers")->with(["products" => $products, 'images' => $images]);
+    }
+
+    public function getLaptops(Request $request)
+    {
+        $baseQuery = DB::table("products");
+
+        if ($request->input('type')) {
+            $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+        }
+        if ($request->input('producer')) {
+            $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+        }
+        if ($request->input('priceMin') && $request->input('priceMax')) {
+            $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+        }
+        if ($request->input('review')) {
+            if ($request->input('review') >= 1) {
+                $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+            }
+        }
+
+        if ($request->input('sizeMin') && $request->input('sizeMax')) {
+
+            $poziton = 0;
+            foreach ($baseQuery->get() as $result) {
+                $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
+                /*var_dump($result->description);*/
+                $descr = json_decode($result->description);
+                if (isset($descr->{'Technical specifications'})) {
+                    foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
+                        if (isset($ceva2->{'Display size'})) {
+                            $id = str_replace('cm', '', $ceva2->{'Display size'});
+                            if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
+                                $poziton++;
+                            } else {
+                                $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+                            }
+                        }
+                    }
+                } else {
+                    $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+                }
+
+            }
+        }
+
+        $products = $baseQuery->whereIn('type',['laptop-gaming','laptop-ultrabooks','laptop-2-in-1'])->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view("product.laptops")->with(["products" => $products, 'images' => $images]);
+    }
+
+    public function getMoviews(Request $request)
+{
+    $baseQuery = DB::table("products");
+
+    if ($request->input('type')) {
+        $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+    }
+    if ($request->input('producer')) {
+        $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+    }
+    if ($request->input('priceMin') && $request->input('priceMax')) {
+        $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+    }
+    if ($request->input('review')) {
+        if ($request->input('review') >= 1) {
+            $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+        }
+    }
+
+
+    $products = $baseQuery->whereIn('type',['movie-fantasy','movie-fitness','movie-thriller','movie-documentary','movie-comedy','movie-action','movie-animation '])->paginate(16);
+    $images = DB::table('prod_images')->get();
+    return view("product.movie")->with(["products" => $products, 'images' => $images]);
+}
+
+    public function getGames(Request $request)
+    {
+        $baseQuery = DB::table("products");
+
+        if ($request->input('type')) {
+            $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+        }
+        if ($request->input('producer')) {
+            $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+        }
+        if ($request->input('priceMin') && $request->input('priceMax')) {
+            $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+        }
+        if ($request->input('review')) {
+            if ($request->input('review') >= 1) {
+                $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+            }
+        }
+
+
+        $products = $baseQuery->whereIn('type',['game-nintendoswitch','game-nintendods','game-xboxone','game-ps4','game-pc'])->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view("product.games")->with(["products" => $products, 'images' => $images]);
+    }
+
+    public function getMusic(Request $request)
+    {
+        $baseQuery = DB::table("products");
+
+        if ($request->input('type')) {
+            $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
+        }
+        /*if ($request->input('producer')) {
+            $baseQuery->where('description', 'like', "%" . $request->input('producer') . "%");
+        }*/
+        if ($request->input('priceMin') && $request->input('priceMax')) {
+            $baseQuery->whereBetween('price', [$request->input('priceMin'),$request->input('priceMax')]);
+        }
+        if ($request->input('review')) {
+            if ($request->input('review') >= 1) {
+                $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
+            }
+        }
+
+
+        $products = $baseQuery->whereIn('type',['music-rap','music-rock','music-pop','music-classical','music-electronic','music-country','music-comedy'])->paginate(16);
+        $images = DB::table('prod_images')->get();
+        return view("product.music")->with(["products" => $products, 'images' => $images]);
     }
 }

@@ -8,7 +8,7 @@
             <div class="panel-body"style="color: black;" id="panel-size" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-review" hidden></div>
         </div>
-        <a role="button" href="{{route('Monitors')}}">Reset filters</a>
+        <a role="button" href="{{route('Games')}}">Reset filters</a>
 
         <h2>Filter by :</h2>
         <div class="sidebar-single">
@@ -25,13 +25,13 @@
 
                 {{-- <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />--}}
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',0.1,'priceMax',10)"><span></span>Below 10€</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',200,'priceMax',450)"><span></span>200 - 450 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',10,'priceMax',25)"><span></span>10 - 25€</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',450,'priceMax',800)"><span></span>450 - 800€</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',25,'priceMax',50)"><span></span>450 - 800€</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',800,'priceMax',9999)"><span></span>ABOVE 800 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',50,'priceMax',250)"><span></span>ABOVE 50€</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -47,11 +47,15 @@
             </div> <!--End Sidebar title div-->
             <div id="typeCollapse" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-4k')"><span></span>Monitor 4k</a><br />
+                <a role="button" onclick="addOrReplace('type','game-pc')"><span></span>PC</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-led')"><span></span>Monitor Led</a><br />
+                <a role="button" onclick="addOrReplace('type','game-ps4')"><span></span>Playstation 4</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-touchscreen')"><span></span>Monitor Touchscreen</a><br />
+                <a role="button" onclick="addOrReplace('type','game-xboxone')"><span></span>Xbox one</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','game-nintendods')"><span></span>Nintendo DS</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','game-nintendoswitch')"><span></span>Nintendo Switch</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -71,42 +75,20 @@
 
             <div id="producer" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Ubisoft')"><span></span>Ubisoft</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Apple</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Activison')"><span></span>Activison</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','LG')"><span></span>LG</a><br/>
+                <a role="button" onclick="addOrReplace('producer','EA')"><span></span>EA</a><br/>
                 <br>
                 <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Sony</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Asus')"><span></span>Asus</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Nintendo')"><span></span>Nintendo</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
         </div> <!--End Second Sidebar-->
 
-        <div class="sidebar-single" id="size-bar">
-            <div class="sidebar-title">
-                <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#size" aria-controls="#sizeController">
-                    <span class="pull-left title-sidebar">Size</span>
-
-                    <span class="pull-right"><i class="fa fa-plus"></i></span>
-                    <span class="pull-right"><i class="fa fa-minus"></i></span>
-                    <div class="clearfix"></div>
-                </a>
-            </div> <!--End Sidebar title div-->
-
-            <div id="size" class="collapse out">
-
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',15.5,'sizeMax',30)"><span></span>15.5 - 30inch</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',30,'sizeMax',40)"><span></span>30 - 40inch</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',40,'sizeMax',70)"><span></span>ABOVE 40+inch</a><br />
-                <br>
-                <div class="clearfix"></div>
-            </div>
-        </div> <!--End Third Sidebar-->
 
         <div class="sidebar-single">
             <div class="sidebar-title">

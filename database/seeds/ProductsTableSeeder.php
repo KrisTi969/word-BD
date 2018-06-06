@@ -27,12 +27,12 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker::create();
-        foreach (range(1,5) as $index) {
+        foreach (range(1,4) as $index) {
             DB::table('products')->insert([
                 'title' => $faker->company,
-                'type' => 'printer',
-                'category' => 'Computers-and-Accesories',
-                    'description' =>'{"Technical specifications":[{"Series":"case"},{"Producer":"Asus"},{"Warranty":"24Months"},{"Display size":"102cm"}],"General":[{"Type":"Phone"},{"Color":"Black"}]}',
+                'type' => 'music-rap',
+                'category' => 'Entertainment',
+                'description' =>'{"Technical specifications":[{"Series":"Music12312"},{"Producer":"Niche Records"},{"Warranty":"24Months"}],"General":[{"Artist":"Disturbed"},{"Color":"White"}]}',
                 'price' => $faker->randomDigitNotNull,
                 'quantity' => $faker->randomDigitNotNull,
             ]);

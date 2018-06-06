@@ -109,48 +109,34 @@ Route::get('/Computers-and-Accesories/lowest-price', 'Product\AllProducts@getPro
 Route::get('/Computers-and-Accesories/high-price', 'Product\AllProducts@getProductsWithFilterHighPrice')->name('Computers-and-Accesories-High-Price');
 Route::get('/Computers-and-Accesories/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Computers-and-Accesories-Best-Rating');
 
+Route::get('/Entertainment/', 'Product\AllProducts@getEntertainment')->name('Entertainment');
+    Route::get('/Entertainment/new', 'Product\AllProducts@getProductsWithFilterNew')->name('Entertainment-New');
+    Route::get('/Entertainment/most-popular', 'Product\AllProducts@getProductsWithFilterMostPopular')->name('Entertainment-Most-Popular');
+    Route::get('/Entertainment/lowest-price', 'Product\AllProducts@getProductsWithFilterLowPrice')->name('Entertainment-Low-Price');
+    Route::get('/Entertainment/high-price', 'Product\AllProducts@getProductsWithFilterHighPrice')->name('Entertainment-High-Price');
+    Route::get('/Entertainment/best-rating', 'Product\AllProducts@getProductsWithFilterBestRating')->name('Entertainment-Best-Rating');
+
+
 /**/
     // FILTRARI PRODUSE
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
 Route::get('/Cameras-Photo-Video', 'Product\AllProducts@getCamerasPhotosVideos')->name('Cameras');
 Route::get('/Smartphones', 'Product\AllProducts@getSmartphones')->name('Smartphones');
 Route::get('/Monitors', 'Product\AllProducts@getMonitors')->name('Monitors');
+Route::get('/Printers', 'Product\AllProducts@getPrinters')->name('Printers');
+Route::get('/Laptops', 'Product\AllProducts@getLaptops')->name('Laptops');
+Route::get('/Movies', 'Product\AllProducts@getMoviews')->name('Movies');
+Route::get('/Games', 'Product\AllProducts@getGames')->name('Games');
+Route::get('/Music', 'Product\AllProducts@getMusic')->name('Music');
+
 ////
 
-Route::get('user/{name?}/{type?}', function ($name = 'John', $type = 'ceva') {
-    return $name. "". $type;
-});
 
 Route::get("/autocomplete",array('as'=>'autocomplete','uses'=> 'Api\SearchController@autocomplete'));
 });
 /*
  * Controller based Routes :) */
 
-Route::get('salve', function() {
-   return view('test');
-});
 
-Route::get('ID/{id}', function ($id) {
-    echo 'ID: '.$id;
-});
-
-Route::get('/user/{name?}',function($name = 'Borat'){ // OPTIONAL PARAMETER
-    echo "Name: ".$name;
-});
-
-Route::get('role',[
-    'middleware' => 'Role:editor',
-    'uses' => 'TestController@index',
-]);
-
-Route::get('terminate',[
-    'middleware' => 'terminate',
-    'uses' => 'ABCController@index',
-]);
-
-Route::get('/usercontroller/path',[
-    'middleware' => 'First',
-    'uses' => 'UserController@showPath'
-]);
 
 

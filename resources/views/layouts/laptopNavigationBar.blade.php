@@ -8,7 +8,7 @@
             <div class="panel-body"style="color: black;" id="panel-size" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-review" hidden></div>
         </div>
-        <a role="button" href="{{route('Monitors')}}">Reset filters</a>
+        <a role="button" href="{{route('Laptops')}}">Reset filters</a>
 
         <h2>Filter by :</h2>
         <div class="sidebar-single">
@@ -25,7 +25,7 @@
 
                 {{-- <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />--}}
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 350 €</a><br />
                 <br>
                 <a role="button" onclick="addOrUpdateUrlParam('priceMin',200,'priceMax',450)"><span></span>200 - 450 €</a><br />
                 <br>
@@ -47,11 +47,11 @@
             </div> <!--End Sidebar title div-->
             <div id="typeCollapse" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-4k')"><span></span>Monitor 4k</a><br />
+                <a role="button" onclick="addOrReplace('type','laptop-gaming')"><span></span>Gaming</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-led')"><span></span>Monitor Led</a><br />
+                <a role="button" onclick="addOrReplace('type','laptop-ultrabooks')"><span></span>Ultrabooks</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-touchscreen')"><span></span>Monitor Touchscreen</a><br />
+                <a role="button" onclick="addOrReplace('type','laptop-2-in-1')"><span></span>2 in 1</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -73,13 +73,17 @@
                 <br>
                 <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Apple</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Apple')"><span></span>Apple</a><br/>
                 <br>
                 <a role="button" onclick="addOrReplace('producer','LG')"><span></span>LG</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Sony</a><br/>
-                <br>
                 <a role="button" onclick="addOrReplace('producer','Asus')"><span></span>Asus</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Acer')"><span></span>Acer</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','HP')"><span></span>HP</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Lenovo')"><span></span>Lenovo</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -98,11 +102,11 @@
 
             <div id="size" class="collapse out">
 
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',15.5,'sizeMax',30)"><span></span>15.5 - 30inch</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',11,'sizeMax',13)"><span></span>11 - 13inch</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',30,'sizeMax',40)"><span></span>30 - 40inch</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',13,'sizeMax',15)"><span></span>13 - 15inch</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',40,'sizeMax',70)"><span></span>ABOVE 40+inch</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',17,'sizeMax',21)"><span></span>Above 17</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>

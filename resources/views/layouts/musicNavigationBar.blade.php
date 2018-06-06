@@ -8,7 +8,7 @@
             <div class="panel-body"style="color: black;" id="panel-size" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-review" hidden></div>
         </div>
-        <a role="button" href="{{route('Monitors')}}">Reset filters</a>
+        <a role="button" href="{{route('Music')}}">Reset filters</a>
 
         <h2>Filter by :</h2>
         <div class="sidebar-single">
@@ -25,13 +25,13 @@
 
                 {{-- <input type="search" name="brand_name" class="form-control" value="" placeholder="De facut range la price" />--}}
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',1,'priceMax',200)"><span></span>UNDER 200 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',0.1,'priceMax',10)"><span></span>Below 10€</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',200,'priceMax',450)"><span></span>200 - 450 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',10,'priceMax',25)"><span></span>10 - 25€</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',450,'priceMax',800)"><span></span>450 - 800€</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',25,'priceMax',50)"><span></span>25 - 50€</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('priceMin',800,'priceMax',9999)"><span></span>ABOVE 800 €</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('priceMin',50,'priceMax',250)"><span></span>ABOVE 50€</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -47,18 +47,26 @@
             </div> <!--End Sidebar title div-->
             <div id="typeCollapse" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-4k')"><span></span>Monitor 4k</a><br />
+                <a role="button" onclick="addOrReplace('type','music-rock')"><span></span>Rock</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-led')"><span></span>Monitor Led</a><br />
+                <a role="button" onclick="addOrReplace('type','music-pop')"><span></span>Pop</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-touchscreen')"><span></span>Monitor Touchscreen</a><br />
+                <a role="button" onclick="addOrReplace('type','music-classical')"><span></span>Classical</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','music-rap')"><span></span>Rap</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','music-classicalrock')"><span></span>Classical Rock</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','music-country')"><span></span>Country</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','music-electronic')"><span></span>Electronic</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
         </div>
         <!--End Single Sidebar-->
 
-        <div class="sidebar-single">
+       {{-- <div class="sidebar-single">
             <div class="sidebar-title">
                 <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#producer" aria-controls="#producerCollapse">
                     <span class="pull-left title-sidebar">Producer</span>
@@ -71,42 +79,20 @@
 
             <div id="producer" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Warner')"><span></span>Warner</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Apple</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Paramount')"><span></span>Paramount</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','LG')"><span></span>LG</a><br/>
+                <a role="button" onclick="addOrReplace('producer','FOX')"><span></span>FOX</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Sony</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Sony Pictures</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Asus')"><span></span>Asus</a><br/>
-                <br>
-                <div class="clearfix"></div>
-            </div>
-        </div> <!--End Second Sidebar-->
-
-        <div class="sidebar-single" id="size-bar">
-            <div class="sidebar-title">
-                <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#size" aria-controls="#sizeController">
-                    <span class="pull-left title-sidebar">Size</span>
-
-                    <span class="pull-right"><i class="fa fa-plus"></i></span>
-                    <span class="pull-right"><i class="fa fa-minus"></i></span>
-                    <div class="clearfix"></div>
-                </a>
-            </div> <!--End Sidebar title div-->
-
-            <div id="size" class="collapse out">
-
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',15.5,'sizeMax',30)"><span></span>15.5 - 30inch</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',30,'sizeMax',40)"><span></span>30 - 40inch</a><br />
-                <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',40,'sizeMax',70)"><span></span>ABOVE 40+inch</a><br />
+                <a role="button" onclick="addOrReplace('producer','Disney')"><span></span>Disney</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
-        </div> <!--End Third Sidebar-->
+        </div> <!--End Second Sidebar-->--}}
+
 
         <div class="sidebar-single">
             <div class="sidebar-title">

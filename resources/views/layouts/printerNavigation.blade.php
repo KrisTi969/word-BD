@@ -8,7 +8,7 @@
             <div class="panel-body"style="color: black;" id="panel-size" hidden></div>
             <div class="panel-body"style="color: black;" id="panel-review" hidden></div>
         </div>
-        <a role="button" href="{{route('Monitors')}}">Reset filters</a>
+        <a role="button" href="{{route('Printers')}}">Reset filters</a>
 
         <h2>Filter by :</h2>
         <div class="sidebar-single">
@@ -47,11 +47,13 @@
             </div> <!--End Sidebar title div-->
             <div id="typeCollapse" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-4k')"><span></span>Monitor 4k</a><br />
+                <a role="button" onclick="addOrReplace('type','printer-all-in-one')"><span></span>All-in-One</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-led')"><span></span>Monitor Led</a><br />
+                <a role="button" onclick="addOrReplace('type','printer-photo')"><span></span>Photo Printer</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','monitor-touchscreen')"><span></span>Monitor Touchscreen</a><br />
+                <a role="button" onclick="addOrReplace('type','printer-scanners')"><span></span>Scanner</a><br />
+                <br>
+                <a role="button" onclick="addOrReplace('type','printer-copying')"><span></span>Copier</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -71,21 +73,23 @@
 
             <div id="producer" class="collapse out">
                 <br>
+                <a role="button" onclick="addOrReplace('producer','Brother')"><span></span>Brother</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Canon')"><span></span>Canon</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Epson')"><span></span>Epson</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','HP')"><span></span>HP</a><br/>
+                <br>
+                <a role="button" onclick="addOrReplace('producer','Lexmark')"><span></span>Lexmark</a><br/>
+                <br>
                 <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
-                <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Apple</a><br/>
-                <br>
-                <a role="button" onclick="addOrReplace('producer','LG')"><span></span>LG</a><br/>
-                <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Sony</a><br/>
-                <br>
-                <a role="button" onclick="addOrReplace('producer','Asus')"><span></span>Asus</a><br/>
                 <br>
                 <div class="clearfix"></div>
             </div>
         </div> <!--End Second Sidebar-->
 
-        <div class="sidebar-single" id="size-bar">
+       {{-- <div class="sidebar-single" id="size-bar">
             <div class="sidebar-title">
                 <a data-toggle="collapse"  class="pointer" aria-expanded="true" data-target="#size" aria-controls="#sizeController">
                     <span class="pull-left title-sidebar">Size</span>
@@ -98,15 +102,15 @@
 
             <div id="size" class="collapse out">
 
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',15.5,'sizeMax',30)"><span></span>15.5 - 30inch</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',40,'sizeMax',75)"><span></span>40 - 75cm</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',30,'sizeMax',40)"><span></span>30 - 40inch</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',75,'sizeMax',100)"><span></span>75 - 100cm</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',40,'sizeMax',70)"><span></span>ABOVE 40+inch</a><br />
+                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',100,'sizeMax',150)"><span></span>ABOVE 100cm</a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
-        </div> <!--End Third Sidebar-->
+        </div> <!--End Third Sidebar-->--}}
 
         <div class="sidebar-single">
             <div class="sidebar-title">
