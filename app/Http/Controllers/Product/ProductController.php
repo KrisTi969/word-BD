@@ -103,9 +103,13 @@ class ProductController extends Controller
     public static function getProductReviewCount($id){
         $product = Product::where('id',$id)->first();
         $review_count = $product->totalCommentCount();
-        $product->rating = $review_count;
-        $product->save();
         return $review_count;
+    }
+
+    public static function getCategory($id) {
+        $product = Product::where('id',$id)->first();
+        return $product->category;
+
     }
 
     public static function getProductAverageReview($id){

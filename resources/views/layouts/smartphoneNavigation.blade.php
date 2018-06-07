@@ -84,6 +84,8 @@
                 <br>
                 <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Sony</a><br/>
                 <br>
+                <a role="button" onclick="addOrReplace('producer','Nokia')"><span></span>Nokia</a><br/>
+                <br>
                 <a role="button" onclick="addOrReplace('producer','Asus')"><span></span>Asus</a><br/>
                 <br>
                 <a role="button" onclick="addOrReplace('producer','HTC')"><span></span>HTC</a><br/>

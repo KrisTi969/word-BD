@@ -49,9 +49,9 @@
                 <br>
                 <a role="button" onclick="addOrReplace('type','accesories')"><span></span>accesories</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','bags&cases')"><span></span>Bags & Cases</a><br />
+                <a role="button" onclick="addOrReplace('type','bags-cases')"><span></span>Bags & Cases</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','binoculars&scopes')"><span></span>Binoculars & Scopes</a><br />
+                <a role="button" onclick="addOrReplace('type','binoculars-scopes')"><span></span>Binoculars & Scopes</a><br />
                 <br>
                 <a role="button" onclick="addOrReplace('type','digital-cameras')"><span></span>Digital-Cameras</a><br />
                 <br>

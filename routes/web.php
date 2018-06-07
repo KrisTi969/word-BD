@@ -67,7 +67,7 @@ Route::get('/reviews', 'Account\AccountController@reviewsIndex')->name('Reviews'
 
 Route::get('/cart/{id}', 'Cart\CartController@addToCart')->name('cart');
 Route::get('/removeItem/{id}','Cart\CartController@removeItem')->name('remove');
-
+Route::post('/updateItem/','Cart\CartController@updateProductQty')->name('updateCart');
 
 
 Route::get('/', 'Index\IndexController@index')->name('/');
@@ -121,7 +121,7 @@ Route::get('/Entertainment/', 'Product\AllProducts@getEntertainment')->name('Ent
     // FILTRARI PRODUSE
 Route::get('/TVs', 'Product\AllProducts@getTVs')->name('TVs');
 Route::get('/Cameras-Photo-Video', 'Product\AllProducts@getCamerasPhotosVideos')->name('Cameras');
-Route::get('/Smartphones', 'Product\AllProducts@getSmartphones')->name('Smartphones');
+Route::get('/Smartphones-Accesories', 'Product\AllProducts@getSmartphones')->name('Smartphones');
 Route::get('/Monitors', 'Product\AllProducts@getMonitors')->name('Monitors');
 Route::get('/Printers', 'Product\AllProducts@getPrinters')->name('Printers');
 Route::get('/Laptops', 'Product\AllProducts@getLaptops')->name('Laptops');

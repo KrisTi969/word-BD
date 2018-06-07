@@ -42,7 +42,7 @@
                                     <tbody>
                             {{--/////////////////////--}}
                                     @if(!Auth::check())
-                                        <?php foreach(Cart::content() as $row) :?>
+                                       @foreach(Cart::content() as $row)
                                     <tr>
                                         <td>
                                             <img src="images/product-slide/product2.png" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
@@ -57,14 +57,14 @@
                                         </span>
                                             <div class="clearfix"></div>
                                         </td>
-                                        <td><input type="number" min="1" name="product_quantity_p1" value="1" class="form-control product_quantity_p1" /></td>
+                                        <td><input type="number" min="1" name="product_quantity_p1" value="{{$row->qty}}" class="form-control product_quantity_p1" /></td>
                                         <td>{{$row->price}}</td>
                                         <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
                                     </tr>
-                                    <?php endforeach;?>
+                                   @endforeach
                                         @else
-                                        <?php foreach(Cart::content() as $row) :?>
-                                        <tr>
+                                        @foreach(Cart::content() as $row)
+                                        <tr>{{$loop->iteration}}
                                             <td>
                                                 <img src="images/product-slide/product2.png" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
                                                 <span class="pull-left cart-product-option"></span>
@@ -78,11 +78,13 @@
                                                 </span>
                                                 <div class="clearfix"></div>
                                             </td>
-                                            <td><input type="text" min="1" name="product_quantity_p1" value="1" class="form-control product_quantity_p1" /></td>
+                                            <td><input id="cart-qty-{{$loop->iteration}}" type="number" min="1" name="product_quantity_p1" value="{{$row->qty}}" class="form-control product_quantity_p1" />
+                                                <a href="#" onclick="updateQTY(new_quantity = document.getElementById('cart-qty-{{$loop->iteration}}').value, id = '{{$row->rowId}}', idProd = '{{$row->id}}')" id="updateQTY">Update Quantity</a></td>
+
                                             <td>{{$row->price}}</td>
                                             <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
                                         </tr>
-                                       <?php endforeach;?>
+                                       @endforeach
                                         @endif
 
 
@@ -98,6 +100,10 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4">
+
+
+
+
                                             <a href="{{route('checkout')}}" class="btn btn-yellow btn-lg pull-right margin-bottom-20">
                                                 <i class="fa"></i> Continue to checkout</a>
                                             <a href="{{route('/')}}" class="btn btn-success btn-lg pull-right margin-right-20">
@@ -165,34 +171,38 @@
 
 <!-- Scripts -->
 <script type="text/javascript" src="../../../public/js/jquery.min.js"></script>
-<script type="text/javascript">
-    // Cart adding product increasinf price too
-    $(document).ready(function(){
-
-        var product_price_p1 = 200;
-        var product_price_p2 = 300;
-        var total_product_sum = 0;
-
-        $('.product_quantity_p1, .product_quantity_p2').bind('keyup mouseup change click keydown focus', (function(){
-
-            var quantity_p1 = $('.product_quantity_p1').val();
-            var quantity_p2 = $('.product_quantity_p2').val();
-
-            total_ammount_p1 = quantity_p1 * product_price_p1;
-            total_ammount_p2 = quantity_p2 * product_price_p2;
-
-            $('.total_product_sum').html(total_product_sum+"$");
-            $('.total_ammount_p1').html(total_ammount_p1+"$");
-            $('.total_ammount_p2').html(total_ammount_p2+"$");
-            total_product_sum = total_ammount_p1 + total_ammount_p2;
-            $('.total_product_sum').html(total_product_sum+"$");
-        }));
-    });
-
+<script>
+    function updateQTY( a, b, c){
+        // e.preventDefault();
+        //  alert(a + b);
+         console.log(a + b + " " + c);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        {{--console.log({{route('updateCart')}})--}}
+        jQuery.ajax({
+            url: "{{route('updateCart')}}",
+            method: 'post',
+            dataType: "json",
+            data: {
+                id: b,
+                quantity : a,
+                idProd : c,
+            },
+            success:function(data) {
+                if(data.success ) {
+                    console.log(data);
+                    location.reload(true);
+                }
+            }
+        });
+    }
 </script>
-
 <script>
     jQuery(document).ready(function(){
+
         jQuery('#ajaxSubmit').click(function(e){
             // jQuery('.alert').show();
             e.preventDefault();
@@ -222,6 +232,7 @@
                 }
             });
         });
+
     });
 </script>
 <script type="text/javascript" src="{{asset('js/jquery.validate.min.js')}}"></script>

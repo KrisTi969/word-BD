@@ -336,10 +336,7 @@ class AdminController extends Controller
             ]);
         if ($validator->passes()) {
             try {
-               /* DB::table('products')
-                    ->where('title', $request->titleBeforeUpgrade)
-                    ->update(['title' => $request->title, 'description' =>serialize($request->description), 'price'=>$request->price,'quantity'=>$request->quantity]);
-    */
+
                 $product = Product::where('title', $request->titleBeforeUpgrade)->first();;
 
                 $product->title = $request->title;
@@ -490,13 +487,13 @@ class AdminController extends Controller
             $file1->move($destinationPath, $request->route('title').$file1->getClientOriginalName());
             try{
                 $product = Product::where('title',$request->route('title'))->first();
-                $product->rating = 1;
-                if($product->rating==1){
+                if($product->ar_ready==1){
                     $filename = DB::table('ar_files')->where('product_id', \App\Http\Controllers\Product\ProductController::getProductId($request->route('title')))->first();
                     /*var_dump($filename->filename);*/
                     Storage::delete($filename->filename);
                     DB::table('ar_files')->where('product_id',\App\Http\Controllers\Product\ProductController::getProductId($request->route('title')))->delete();
                 }
+                $product->ar_ready = 1;
                 $product->save();
                 DB::table('ar_files')->insert([
                     ['product_id' => \App\Http\Controllers\Product\ProductController::getProductId($request->route('title')), 'filename' => $request->route('title').$file1->getClientOriginalName()]

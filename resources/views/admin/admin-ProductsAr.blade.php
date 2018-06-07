@@ -15,7 +15,7 @@
         @include('admin.admin-header')
 
         <div class="container">
-            {!! Form::open(['method'=>'GET','url'=>'/Admin/updateProductImages','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
+            {!! Form::open(['method'=>'GET','url'=>'/Admin/getProductsAR','class'=>'navbar-form navbar-left','role'=>'search'])  !!}
 
             <div class="input-group custom-search-form">
                 <input type="text" class="form-control" name="search" placeholder="Search...">

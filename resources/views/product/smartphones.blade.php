@@ -39,7 +39,7 @@
                                                         @foreach($images as $image)
                                                             @if($image->prod_title==$product->title)
                                                                 <a href="http://127.0.0.1:8000/Product/{{$product->id}}">
-                                                                    <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive"/>
+                                                                    <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive" style="max-width: 170px; min-width: 170px; max-height: 200px; min-height: 200px"/>
                                                                 </a>
                                                                 @break
                                                             @endif

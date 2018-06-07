@@ -307,7 +307,7 @@ class AllProducts extends Controller
                 $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
             }
         }
-        $products = $baseQuery->whereIn('type',['accesories','bags&cases','digital-cameras','film-photografy','flashes','lightning&studio','lenses','video','binoculars&scopes'])->paginate(16);
+        $products = $baseQuery->whereIn('type',['accesories','bags-cases','digital-cameras','film-photografy','flashes','lightning-studio','lenses','video','binoculars-scopes'])->paginate(16);
         $images = DB::table('prod_images')->get();
         return view("product.cameras")->with(["products" => $products, 'images' => $images]);
     }
@@ -432,7 +432,7 @@ class AllProducts extends Controller
                 $baseQuery->whereBetween('average_reviews', [$request->input('review') - 0.5, $request->input('review') + 0.5]);
             }
         }
-        $products = $baseQuery->whereIn('type',['printer-scanners','printer-copying','printer-photo','printer-all-in-one'])->paginate(16);
+        $products = $baseQuery->whereIn('type',['printer-faxing','printer-scanners','printer-copying','printer-photo','printer-all-in-one'])->paginate(16);
         $images = DB::table('prod_images')->get();
         return view("product.printers")->with(["products" => $products, 'images' => $images]);
     }
@@ -506,7 +506,7 @@ class AllProducts extends Controller
     }
 
 
-    $products = $baseQuery->whereIn('type',['movie-fantasy','movie-fitness','movie-thriller','movie-documentary','movie-comedy','movie-action','movie-animation '])->paginate(16);
+    $products = $baseQuery->whereIn('type',['movie-romance','movie-fantasy','movie-fitness','movie-thriller','movie-documentary','movie-comedy','movie-action','movie-animation '])->paginate(16);
     $images = DB::table('prod_images')->get();
     return view("product.movie")->with(["products" => $products, 'images' => $images]);
 }
@@ -556,7 +556,7 @@ class AllProducts extends Controller
         }
 
 
-        $products = $baseQuery->whereIn('type',['music-rap','music-rock','music-pop','music-classical','music-electronic','music-country','music-comedy'])->paginate(16);
+        $products = $baseQuery->whereIn('type',['music-classicalrock','music-rap','music-rock','music-pop','music-classical','music-electronic','music-country','music-comedy'])->paginate(16);
         $images = DB::table('prod_images')->get();
         return view("product.music")->with(["products" => $products, 'images' => $images]);
     }

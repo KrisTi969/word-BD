@@ -51,6 +51,8 @@
                 <br>
                 <a role="button" onclick="addOrReplace('type','printer-photo')"><span></span>Photo Printer</a><br />
                 <br>
+                <a role="button" onclick="addOrReplace('type','printer-faxing')"><span></span>Faxing</a><br />
+                <br>
                 <a role="button" onclick="addOrReplace('type','printer-scanners')"><span></span>Scanner</a><br />
                 <br>
                 <a role="button" onclick="addOrReplace('type','printer-copying')"><span></span>Copier</a><br />

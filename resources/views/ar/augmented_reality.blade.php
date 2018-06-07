@@ -6,25 +6,47 @@
  * Time: 15:22
  */
 ?>
-{{request()->segment(count(request()->segments()))}}
+
 
 <!doctype HTML>
 <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
 <script src="{{asset('js/ar/aframe.min.js')}}"></script>
 <script src="{{asset('js/ar/aframe-ar.js')}}"></script>
 <body style='margin : 0px; overflow: hidden;'>
-<a-assets>
-    <a-asset-item id="tree" src="{{asset('uploads/ar')}}/{{request()->segment(count(request()->segments()))}}"></a-asset-item>
-</a-assets>
-<a-scene embedded arjs='sourceType: webcam;'>
 
-    <a-marker-camera preset='hiro'>
-        <a-gltf-model scale="4 4 4" src="#tree" ></a-gltf-model>
-    </a-marker-camera>
+<a-scene embedded arjs>
+    <a-assets>
+        <a-asset-item id="tree" src="{{asset('uploads/ar')}}/{{request()->segment(count(request()->segments()))}}"></a-asset-item>
+    </a-assets>
+    <a-marker preset="hiro">
+
+
+           {{-- {{request()->segment(count(request()->segments()))}}--}}
+        <a-gltf-model scale="0.03 0.03 0.03" src="#tree" ></a-gltf-model>
+
+    </a-marker>
+    <a-entity camera></a-entity>
+
+
 </a-scene>
 </body>
 
 </html>
+
+{{--<!doctype HTML>
+<html>
+<script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
+<script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.5.0/aframe/build/aframe-ar.js"> </script>
+<body style='margin : 0px; overflow: hidden;'>
+<a-scene embedded arjs>
+    <a-marker preset="hiro">
+        <a-box position='0 0.5 0' material='color: black;'></a-box>
+    </a-marker>
+    <a-entity camera></a-entity>
+</a-scene>
+</body>
+</html>--}}
 
 {{-- 60 FPS BASIC SHIT
 <!doctype HTML>

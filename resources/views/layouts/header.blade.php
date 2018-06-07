@@ -5,16 +5,7 @@
  * Date: 16.02.2018
  * Time: 20:49
  */
-$file_name = basename($_SERVER['SCRIPT_FILENAME']);
 
-$new_path = "";
-if($file_name != "index.blade.php") {
-    $new_path = "../../public/";
-    $reddirect_link = "";
-}
-else {
-    $reddirect_link = "";
-}
 ?>
 <div class="header">
     <!-- Start Top Header -->
@@ -49,7 +40,7 @@ else {
                                 <tbody>
                                 <tr>
                                     <td>{{$row->name}}</td>
-                                    <td><img src="<?php echo $new_path?>images/product-slide/product2.png" class="img img-responsive img-thumbnail" alt=""></td>
+                                    <td><img src="images/product-slide/product2.png" class="img img-responsive img-thumbnail" alt=""></td>
                                     <td>{{$row->qty}}</td>
                                     <td>{{$row->price}}$</td>
                                 </tr>
@@ -67,8 +58,9 @@ else {
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel
                             </button>
-                            <a href="<?php echo $reddirect_link?>account_cart.php" class="btn btn-yellow">Check Out</a>
-
+                            <?php if (\Cart::count()):?>
+                            <a href="{{route('checkout')}}" class="btn btn-yellow">Check Out</a>
+                            <?php endif; ?>
                     </div>
                     </div>
 
@@ -104,38 +96,37 @@ else {
                                             <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Electronic-Appliances')}}"><i class="fa fa-television"></i>Electronic Appliances</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
                                                   <ul class="wstliststy02">
-                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>
+                                                        <li><img src="" alt=" "></li>
                                                         <li class="wstheading">TVs</li>
-                                                        <li><a href="TVs?type=4kTV">4K Ultra HD TVs </a></li>
-                                                        <li><a href="">Curved TVs </a></li>
-                                                        <li><a href="TVs?type=led">LED TVs</a></li>
-                                                        <li><a href="TVs?type=lcd">LCD TVs</a></li>
-                                                        <li><a href="TVs?type=oled">OLED TVs</a> <span class="wstmenutag bluetag">Popular</span></li>
-                                                        <li><a href="TVs?type=plasma">Plasma TVs</a></li>
+                                                        <li><a href="{{route('TVs')}}?type=4kTV">4K Ultra HD TVs </a></li>
+                                                        <li><a href="{{route('TVs')}}?type=curvedTV">Curved TVs </a></li>
+                                                        <li><a href="{{route('TVs')}}?type=ledTV">LED TVs</a></li>
+                                                        <li><a href="{{route('TVs')}}?type=lcdTV">LCD TVs</a></li>
+                                                        <li><a href="{{route('TVs')}}?type=oledTV">OLED TVs</a> <span class="wstmenutag bluetag">Popular</span></li>
+                                                        <li><a href="{{route('TVs')}}?type=plasmaTV">Plasma TVs</a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
-                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img02.jpg" alt=" "></li>
+                                                        <li><img src="" alt=" "></li>
                                                         <li class="wstheading">Camera, Photo &amp; Video</li>
-                                                        <li><a href="#">Accessories <span class="wstcount">(1145)</span></a></li>
-                                                        <li><a href="#">Bags &amp; Cases <span class="wstcount">(445)</span></a></li>
-                                                        <li><a href="#">Binoculars &amp; Scopes <span class="wstcount">(45)</span></a></li>
-                                                        <li><a href="#">Digital Cameras <span class="wstcount">(845)</span></a> </li>
-                                                        <li><a href="#">Film Photography <span class="wstcount">(245)</span></a> <span class="wstmenutag bluetag">Popular</span></li>
-                                                        <li><a href="#">Flashes <span class="wstcount">(105)</span></a></li>
-                                                        <li><a href="#">Lenses <span class="wstcount">(445)</span></a></li>
-                                                        <li><a href="#">Lighting &amp; Studio <span class="wstcount">(225)</span></a></li>
-                                                        <li><a href="#">Video <span class="wstcount">(145)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=accesories">Accessories <span class="wstcount">(1145)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=bags&cases">Bags &amp; Cases <span class="wstcount">(445)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=binoculars-scopes">Binoculars &amp; Scopes <span class="wstcount">(45)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=digital-cameras">Digital Cameras <span class="wstcount">(845)</span></a> </li>
+                                                        <li><a href="{{route('Cameras')}}?type=film-photografy">Film Photography <span class="wstcount">(245)</span></a> <span class="wstmenutag bluetag">Popular</span></li>
+                                                        <li><a href="{{route('Cameras')}}?type=flashes">Flashes <span class="wstcount">(105)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=lenses">Lenses <span class="wstcount">(445)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=lightning-studio">Lighting &amp; Studio <span class="wstcount">(225)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=video">Video <span class="wstcount">(145)</span></a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
-                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img03.jpg" alt=" "></li>
+                                                        <li><img src="" alt=" "></li>
                                                         <li class="wstheading">Smartphones &amp; Accessories</li>
-                                                        <li><a href="#">Smartphones</a></li>
-                                                        <li><a href="#">Smartwatches </a></li>
-                                                        <li><a href="#">Phone Cases</a> <span class="wstmenutag orangetag">Hot</span></li>
-                                                        <li><a href="#">Bluetooth Headsets</a></li>
-                                                        <li><a href="#">Smartphone Accessories</a></li>
-                                                        <li><a href="#">Fashion Tech</a></li>
-                                                        <li><a href="#">Headphone</a></li>
+                                                        <li><a href="{{route('Smartphones')}}?type=smartphone">Smartphones</a></li>
+                                                        <li><a href="{{route('Smartphones')}}?type=smartwatches">Smartwatches </a></li>
+                                                        <li><a href="{{route('Smartphones')}}?type=phonecase">Phone Cases</a> <span class="wstmenutag orangetag">Hot</span></li>
+                                                        <li><a href="{{route('Smartphones')}}?type=bluetooth-headset">Bluetooth Headsets</a></li>
+                                                        <li><a href="{{route('Smartphones')}}?type=smartphone-accesories">Smartphone Accessories</a></li>
+                                                        <li><a href="{{route('Smartphones')}}?type=headphone">Headphone</a></li>
                                                     </ul>
 
                                                 </div>
@@ -146,26 +137,26 @@ else {
                                                     <div class="wstmegamenucoll01 clearfix">
                                                         <div class="wstheading">Monitors <a href="#" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
-                                                            <li><a href="#">15.5 - 30inch <span class="wstmenutag greentag">New</span></a></li>
-                                                            <li><a href="#">30 - 40inch </a></li>
-                                                            <li><a href="#">40+inch</a></li>
+                                                            <li><a href="{{route('Monitors')}}?sizeMin=15.5&sizeMax=30">15.5 - 30inch <span class="wstmenutag greentag">New</span></a></li>
+                                                            <li><a href="{{route('Monitors')}}?sizeMin=30&sizeMax=40">30 - 40inch </a></li>
+                                                            <li><a href="{{route('Monitors')}}?sizeMin=40&sizeMax=70">40+inch</a></li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
                                                         <div class="wstheading">Printers <a href="#" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
-                                                            <li><a href="#">All-In-One</a> </li>
-                                                            <li><a href="#">Copying </a> <span class="wstmenutag orangetag">Exclusive</span></li>
-                                                            <li><a href="#">Faxing </a> </li>
-                                                            <li><a href="#">Photo Printers</a> </li>
+                                                            <li><a href="{{route('Printers')}}?type=printer-all-in-one">All-In-One</a> </li>
+                                                            <li><a href="{{route('Printers')}}?type=printer-photo">Copying </a> <span class="wstmenutag orangetag">Exclusive</span></li>
+                                                            <li><a href="{{route('Printers')}}?type=printer-faxing">Faxing </a> </li>
+                                                            <li><a href="{{route('Printers')}}?type=printer-photo">Photo Printers</a> </li>
                                                             {{--<li><a href="#">Printing Only</a> </li>--}}
                                                             <li><a href="#">Scanners</a> </li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
                                                         <div class="wstheading">Laptops <a href="#" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
-                                                            <li><a href="#">Gaming laptops</a> </li>
-                                                                <li><a href="#">Ultrabooks</a> <span class="wstmenutag orangetag">Exclusive</span></li>
-                                                            <li><a href="#">2 in 1 Laptops</a> </li>
+                                                            <li><a href="{{route('Laptops')}}?type=laptop-gaming">Gaming laptops</a> </li>
+                                                                <li><a href="{{route('Laptops')}}?type=laptop-ultrabooks">Ultrabooks</a> <span class="wstmenutag orangetag">Exclusive</span></li>
+                                                            <li><a href="{{route('Laptops')}}?type=laptop-2-in-1">2 in 1 Laptops</a> </li>
                                                             <br>  <br>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
@@ -184,37 +175,37 @@ else {
                                             <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Entertainment')}}"><i class="fa fa-gamepad"></i>Entertainment</a>
                                                 <div class="wstitemright clearfix" style="height: auto;">
                                                     <ul class="wstliststy02">
-                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img01.jpg" alt=" "></li>
+                                                        <li><img src="" alt=" "></li>
                                                         <li class="wstheading">Movies</li>
-                                                        <li><a href="#">Action &amp; Adventure <span
+                                                        <li><a href="{{route('Movies')}}?type=movie-action">Action &amp; Adventure <span
                                                                         class="wstmenutag greentag">New</span></a></li>
-                                                        <li><a href="#">Comedy</a></li>
-                                                        <li><a href="#">Documentary</a></li>
-                                                        <li><a href="#">Thriller</a></li>
-                                                        <li><a href="#">Exercise &amp; Fitness </a></li>
-                                                        <li><a href="#">Animation</a></li>
-                                                        <li><a href="#">Fantasy</a></li>
-                                                        <li><a href="#">Romance</a></li>
+                                                        <li><a href="{{route('Movies')}}?type=movie-comedy">Comedy</a></li>
+                                                        <li><a href="{{route('Movies')}}?type=movie-documentary">Documentary</a></li>
+                                                        <li><a href="{{route('Movies')}}?type=movie-thriller">Thriller</a></li>
+                                                        <li><a href="{{route('Movies')}}?type=movie-fitness">Exercise &amp; Fitness </a></li>
+                                                        <li><a href="{{route('Movies')}}?type=movie-animation">Animation</a></li>
+                                                        <li><a href="{{route('Movies')}}?type=movie-fantasy">Fantasy</a></li>
+                                                        <li><a href="{{route('Movies')}}?type=movie-romance">Romance</a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
-                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img02.jpg" alt=" "></li>
+                                                        <li><img src="" alt=" "></li>
                                                         <li class="wstheading">Games</li>
-                                                        <li><a href="#">PC</a> </li>
-                                                        <li><a href="#">PlayStation 4 </a> </li>
-                                                        <li><a href="#">Xbox One </a> <span class="wstmenutag orangetag">Most Viewed</span></li>
-                                                        <li><a href="#">Nintendo DS</a> </li>
-                                                        <li><a href="#">Nintendo Switch</a> </li>
+                                                        <li><a href="{{route('Games')}}?type=game-pc">PC</a> </li>
+                                                        <li><a href="{{route('Games')}}?type=game-ps4">PlayStation 4 </a> </li>
+                                                        <li><a href="{{route('Games')}}?type=game-xboxone">Xbox One </a> <span class="wstmenutag orangetag">Most Viewed</span></li>
+                                                        <li><a href="{{route('Games')}}?type=game-nintendods">Nintendo DS</a> </li>
+                                                        <li><a href="{{route('Games')}}?type=game-nintendoswitch">Nintendo Switch</a> </li>
                                                     </ul>
                                                     <ul class="wstliststy02">
                                                         <li class="wstheading">Music</li>
-                                                        <li><img src="<?php echo $new_path?>./Megamenu_files/ele-menu-img03.jpg" alt=" "></li>
-                                                        <li><a href="#">Rock</a> </li>
-                                                        <li><a href="#">Pop <span class="wstmenutag bluetag">50% off</span></a> </li>
-                                                        <li><a href="#">Classical</a> </li>
-                                                        <li><a href="#">Rap</a> </li>
-                                                        <li><a href="#">Classic Rock</a> </li>
-                                                        <li><a href="#">Country</a> </li>
-                                                        <li><a href="#">Dance &amp; Electronic</a> </li>
+                                                        <li><img src="" alt=" "></li>
+                                                        <li><a href="{{route('Music')}}?type=music-rock">Rock</a> </li>
+                                                        <li><a href="{{route('Music')}}?type=music-pop">Pop <span class="wstmenutag bluetag">50% off</span></a> </li>
+                                                        <li><a href="{{route('Music')}}?type=music-classical">Classical</a> </li>
+                                                        <li><a href="{{route('Music')}}?type=music-rap">Rap</a> </li>
+                                                        <li><a href="{{route('Music')}}?type=music-classicalrock">Classic Rock</a> </li>
+                                                        <li><a href="{{route('Music')}}?type=music-country">Country</a> </li>
+                                                        <li><a href="{{route('Music')}}?type=music-electronic">Dance &amp; Electronic</a> </li>
                                                     </ul>
 
                                                 </div>

@@ -113,7 +113,65 @@
                     <select id="type" name="type" class="input-group-lg" >
                         <option value="" selected="selected">(please select a type)</option>
                         <option value="4kTV">4kTV</option>
-                        <option value="lcd">lcd</option>
+                        <option value="lcdTV">lcdTV</option>
+                        <option value="curvedTV">curvedTV</option>
+                        <option value="curvedTV">curvedTV</option>
+                        <option value="curvedTV">curvedTV</option>
+                        <option value="curvedTV">curvedTV</option>
+                        <option value="curvedTV">curvedTV</option>
+
+                        <option value="accesories">accesories</option>
+                        <option value="bags-cases">bags-cases</option>
+                        <option value="binoculars-scopes">binoculars-scopes</option>
+                        <option value="bluetooth-headset">bluetooth-headset</option>
+                        <option value="digital-cameras">digital-cameras</option>
+                        <option value="film-photografy">film-photografy</option>
+                        <option value="flashes">flashes</option>
+                        <option value="game-nintendods">game-nintendods</option>
+                        <option value="game-nintendoswitch">game-nintendoswitch</option>
+                        <option value="game-ps4">game-ps4</option>
+                        <option value="game-xboxone">game-xboxone</option>
+
+                        <option value="headphone">headphone</option>
+                        <option value="laptop-2-in-1">laptop-2-in-1</option>
+                        <option value="laptop-ultrabooks">laptop-ultrabooks</option>
+                        <option value="lcdTV">lcdTV</option>
+                        <option value="ledTV">ledTV</option>
+                        <option value="lenses">lenses</option>
+                        <option value="lightning-studio">lightning-studio</option>
+                        <option value="monitor-4k">monitor-4k</option>
+                        <option value="monitor-led">monitor-led</option>
+                        <option value="monitor-touchscreen">monitor-touchscreen</option>
+                        <option value="movie-action">movie-action</option>
+                        <option value="movie-animation">movie-animation</option>
+                        <option value="movie-comedy">movie-comedy</option>
+                        <option value="movie-documentary">movie-documentary</option>
+                        <option value="movie-fantasy">movie-fantasy</option>
+                        <option value="movie-fitness">movie-fitness</option>
+                        <option value="movie-romance">movie-romance</option>
+                        <option value="movie-thriller">movie-thriller</option>
+                        <option value="music-classical">music-classical</option>
+                        <option value="music-comedy">music-comedy</option>
+                        <option value="music-country">music-country</option>
+                        <option value="music-electronic">music-electronic</option>
+                        <option value="music-pop">music-pop</option>
+                        <option value="music-rap">music-rap</option>
+                        <option value="music-rock">music-rock</option>
+                        <option value="oledTV">oledTV</option>
+                        <option value="phonecase">phonecase</option>
+                        <option value="plasmaTV">plasmaTV</option>
+                        <option value="printer-copying">printer-copying</option>
+                        <option value="printer-faxing">printer-faxing</option>
+                        <option value="printer-photo">printer-photo</option>
+                        <option value="printer-scanners">printer-scanners</option>
+                        <option value="smartphone">smartphone</option>
+                        <option value="smartphone-accesories">smartphone-accesories</option>
+                        <option value="video">video</option>
+
+
+
+
+
                     </select>
                     <br>
                     <span class="text-danger">
@@ -130,9 +188,8 @@
                     <select id="category" name="category" class="input-group-lg" >
                         <option value="" selected="selected">(please select a category)</option>
                         <option value="Electronic Appliances">Electronic Appliances</option>
-                        <option value="Computers & Accesories">Computers & Accesories</option>
-                        <option value="Movies">Movies</option>
-                        <option value="Music">Music</option>
+                        <option value="Computers-and-Accesories">Computers-and-Accesories</option>
+                        <option value="Entertainment">Entertainment</option>
                     </select>
                     <br>
                     <span class="text-danger">
