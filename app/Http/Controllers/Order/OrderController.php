@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Order;
 use DB;
+use Response;
+use Illuminate\Support\Facades\Validator;
 
 
 class OrderController extends Controller
@@ -57,7 +59,7 @@ class OrderController extends Controller
             $id = \Auth::user()->id;
         }
         else {
-            $id = 85;
+            $id = 85; //for unregister user
         }
 
         DB::insert('insert into orders (number, status,user_id, email,contact,shipping_name,shipping_city,shipping_address,country,postal_code,payment,notes)
@@ -79,5 +81,36 @@ class OrderController extends Controller
             $query->decrement('quantity',intval($product->quantity));
         }
         return view('order.orderSent');
+    }
+
+    public function verifyOrder(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|string|email|max:100|unique:users',
+            'contact' => 'required|min:10|numeric'
+        ]);
+
+        if ($validator->passes()) {
+            return Response::json(['success' => '1']);
+        }
+
+        return Response::json(['errors' => $validator->errors()]);
+    }
+
+    public function verifyOrder2(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'address' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'postal' => 'required|regex:/^[0-9]+$/u|max:18|',
+            'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'notes' => 'nullable|min:10|string|'
+        ]);
+
+        if ($validator->passes()) {
+            return Response::json(['success' => '1']);
+        }
+
+        return Response::json(['errors' => $validator->errors()]);
     }
 }

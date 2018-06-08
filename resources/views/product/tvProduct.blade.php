@@ -44,7 +44,7 @@ use Jorenvh\Share\Share;
                                         @foreach($images as $image)
                                             @if($loop->index==0)
                                                 <li data-thumb="http://127.0.0.1:8000/uploads/{{$image->filename}}">
-                                                    <div class="thumb-image detail_images"> <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" data-imagezoom="true" class="img-responsive" alt="" width="420"> </div>
+                                                    <div class="thumb-image detail_images"> <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" data-imagezoom="true" class="img-responsive" alt="" width="420" height="1000"> </div>
                                                 </li>
                                             @endif
                                             @if($loop->index==1)
@@ -184,17 +184,28 @@ use Jorenvh\Share\Share;
                                     {{--{{var_dump($description)}}<br>
                                     {{var_dump($product->description)}}--}}
                                     @foreach($product->description as $al=>$ceva)
-                                        <h1>{{$al}}</h1>
+                                        <table class="table table-striped">
+
+                                        <p class="text-uppercase">{{$al}}</p>
                                         {{-- {{var_dump($ceva)}}<br>--}}
                                         <div>
                                             @foreach($ceva as $altceva=>$celelalt)
                                                 {{-- {{var_dump($celelalt)}}<br>--}}
 
                                                 @foreach($celelalt as $x=>$y)
-                                                    {{$x}}{{":"}} {{$y}}<br>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="col-xs-4 text-muted">{{$x}}</td>
+                                                        <td class="col-xs-8">{{$y}}</td>
+                                                {{--    {{$x}}{{":"}} {{$y}}<br>--}}
+                                                    </tr>
+                                                    </tbody>
                                                 @endforeach
                                             @endforeach
+
                                         </div>
+                                    </tbody>
+                                        </table>
                                     @endforeach
                                 @endif
                             </div>

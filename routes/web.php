@@ -54,6 +54,8 @@ Route::post('/ar/{filename}', 'Ar\AugmentedRealityController@index')->name('Augm
 Route::get('/checkout', 'Order\OrderController@index')->name('checkout');
 
 Route::post('/newOrder', 'Order\OrderController@newOrder')->name('newOrder');
+Route::post('/verifyOrder','Order\OrderController@verifyOrder')->name('verifyOrder');
+Route::post('/verifyOrderStep2','Order\OrderController@verifyOrder2')->name('verifyOrder2');
 
 Route::post('/addReview', 'Product\ProductController@addReview');
 

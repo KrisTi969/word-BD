@@ -793,8 +793,10 @@ a.add-to-cart {
 
 /*** Footer top div ***/
 .footer-top{
+    background-image: url(../images/shop/logofooter_1667x302.png);
+    width: max-content;
     padding-top: 3em;
-    background-color:  	#640808;
+    background-color: #640808;
     background-size: cover;
 }
 .footer-top h3 {

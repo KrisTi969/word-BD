@@ -32,14 +32,8 @@ if($file_name != "index.blade.php") {
 
 
             </div>
-            <div class="col-md-8">
-                <div class="subscribe" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">
-                    <h3>Subscribe here to get some exciting offers</h3>
-                    <form action="#" method="post">
-                        <input type="text" name="email" placeholder="Enter your Email..." required="">
-                        <input type="submit" value="Subscribe">
-                    </form>
-                </div>
+           {{-- <div class="col-md-8" >
+
                 <div class="all-footer-links">
                     <div class="col-md-4">
                         <h3>Company</h3>
@@ -76,7 +70,14 @@ if($file_name != "index.blade.php") {
                         <li><i class="fa fa-credit-card" style="color: #FF9800"></i></li>
                     </ul>
                 </div>
-            </div>
+            </div>--}}
+            <br>
+            <br>
+            <br>
+            <br><br>
+            <br><br>    <br><br><br><br><br>
+
+
         </div>
 
     </div>
@@ -84,7 +85,7 @@ if($file_name != "index.blade.php") {
 
 <div class="footer-bottom">
     <p class="footer-credit">
-        &copy;<script type="text/javascript">document.write(new Date().getFullYear())</script> - All rights reserved <a href="index.blade.php">SkyShop</a> </a>
+        &copy;<script type="text/javascript">document.write(new Date().getFullYear())</script> - All rights reserved <a href="#">SkyShop</a> </a>
     </p>
 </div> <!--End Footer bottom -->
 

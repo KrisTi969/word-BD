@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Index;
+use App\Product;
 use DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -25,6 +26,12 @@ class IndexController extends Controller
              //   var_dump("daada");
            }
         }
-        return view('layouts.index');
+
+        $products_ar = DB::table('products')->where('ar_ready',0)->orderBy('created_at','desc')->take(8)->get();
+        $images_ar = DB::table('prod_images')->get();
+        /*B::table('products')->where('title', 'LIKE', '%' . $query . '%')->orWhere('type', 'LIKE', '%' . $query . '%')
+            ->orWhere('description', 'LIKE', '%' . $query . '%')
+            ->paginate(16);*/
+        return view('layouts.index',['products_ar'=>$products_ar])->with(['images_ar'=>$images_ar]);
     }
 }

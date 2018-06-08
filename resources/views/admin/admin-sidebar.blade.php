@@ -1,6 +1,6 @@
 <nav id="sidebar">
     <div class="sidebar-header">
-        <h3>Skysop Admin Page</h3>
+        <h3>Skyshop Admin Page</h3>
         <strong>SAP</strong>
     </div>
 

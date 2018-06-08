@@ -36,12 +36,18 @@
                             <label class="control-label col-sm-2" for="checkoutEmail">Email: *</label>
                             <div class="col-sm-10">
                                 <input type="email" class="form-control inputs" id="checkoutEmail" placeholder="Enter email"  required/>
+                                <span class="text-danger">
+                                        <strong id="mail-error"></strong>
+                                    </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="checkoutContact">Contact: *</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control inputs" id="checkoutContact" placeholder="Enter phone number"  required/>
+                                <span class="text-danger">
+                                        <strong id="contact-error"></strong>
+                                    </span><br>
                                 <span class="input-hint">Phone number</span>
                             </div>
                         </div>
@@ -50,19 +56,25 @@
                                 <label class="control-label col-sm-2" for="checkoutEmail">Email: *</label>
                                 <div class="col-sm-10">
                                     <input type="email" class="form-control inputs" id="checkoutEmail" placeholder="Enter email" value="{{Auth::user()->email}}" required/>
+                                    <span class="text-danger">
+                                        <strong id="mail-error"></strong>
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="checkoutContact">Contact: *</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control inputs" id="checkoutContact" placeholder="Enter phone number" value="{{Auth::user()->phone_number}}"  required/>
+                                    <span class="text-danger">
+                                        <strong id="contact-error"></strong>
+                                    </span><br>
                                     <span class="input-hint">Phone number</span>
                                 </div>
                             </div>
                         @endif
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn1" name="submit_check1" value="Next..."/>
+                                <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn1" id="checkbtn1" name="submit_check1" value="Next..."/>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -75,12 +87,18 @@
                             <label class="control-label col-sm-2" for="shipping_name">Shipping Name: *</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control inputs" id="shipping_name" value="{{Auth::user()->name . " " .  Auth::user()->lname}}" placeholder="Enter Your Shipping Name"  required/>
+                                <span class="text-danger">
+                                        <strong id="shipping_name-error"></strong>
+                                    </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="shipping_country">Country: *</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control inputs" value="{{Auth::user()->country}}" id="shipping_country" placeholder="Enter Your Country"  required/>
+                                <span class="text-danger">
+                                        <strong id="shipping_country-error"></strong>
+                                    </span>
                             </div>
                         </div>
 
@@ -88,12 +106,18 @@
                             <label class="control-label col-sm-2" for="shipping_city">Shipping City: *</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control inputs" value="{{Auth::user()->city}}" id="shipping_city" placeholder="Enter Your Shipping City "  required/>
+                                <span class="text-danger">
+                                        <strong id="shipping_city-error"></strong>
+                                    </span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="shipping_address">Shipping Address: *</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control inputs" value="{{Auth::user()->address}}" id="shipping_address" placeholder="Enter Your Shipping Address"  required/>
+                                <span class="text-danger">
+                                        <strong id="shipping_address-error"></strong>
+                                    </span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -107,12 +131,15 @@
                             <label class="control-label col-sm-2" for="shipping_notes">Notes: *</label>
                             <div class="col-sm-10">
                                 <textarea class="form-control inputs"  id="shipping_notes" placeholder="Enter Additional Details"></textarea>
+                                <span class="text-danger">
+                                        <strong id="shipping_notes-error"></strong>
+                                    </span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-sm-10 col-sm-offset-2">
-                                <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn2" name="submit_check2" value="Next..."/>
+                                <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn2" id="submit_check2" name="submit_check2" value="Next..."/>
 
                                 <input type="button" class="btn btn-danger pull-right  margin-top-20 margin-right-20 backToCheck1" name="backToCheck1" value="Back"/>
                                 <div class="clearfix"></div>
@@ -127,12 +154,18 @@
                                 <label class="control-label col-sm-2" for="shipping_name">Shipping Name: *</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control inputs" id="shipping_name" value="" placeholder="Enter Your Shipping Name"  required/>
+                                    <span class="text-danger">
+                                        <strong id="shipping_name-error"></strong>
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="shipping_country">Country: *</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control inputs" value="" id="shipping_country" placeholder="Enter Your Country"  required/>
+                                    <span class="text-danger">
+                                        <strong id="shipping_country-error"></strong>
+                                    </span>
                                 </div>
                             </div>
 
@@ -140,18 +173,27 @@
                                 <label class="control-label col-sm-2" for="shipping_city">Shipping City: *</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control inputs" value="" id="shipping_city" placeholder="Enter Your Shipping City"  required/>
+                                    <span class="text-danger">
+                                        <strong id="shipping_city-error"></strong>
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="shipping_address">Shipping Address: *</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control inputs" value="" id="shipping_address" placeholder="Enter Your Shipping Address"  required/>
+                                    <span class="text-danger">
+                                        <strong id="shipping_address-error"></strong>
+                                    </span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="shipping_postal">Postal Code: *</label>
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control inputs" value="" id="shipping_postal" placeholder="Enter Your Postal Code"  required/>
+                                    <span class="text-danger">
+                                        <strong id="shipping_postal-error"></strong>
+                                    </span>
                                 </div>
                             </div>
 
@@ -159,6 +201,9 @@
                                 <label class="control-label col-sm-2" for="shipping_notes">Notes: *</label>
                                 <div class="col-sm-10">
                                     <textarea class="form-control inputs"  id="shipping_notes" placeholder="Enter Additional Details"></textarea>
+                                    <span class="text-danger">
+                                        <strong id="shipping_notes-error"></strong>
+                                    </span>
                                 </div>
                             </div>
 
@@ -166,7 +211,7 @@
 
                             <div class="form-group">
                                 <div class="col-sm-10 col-sm-offset-2">
-                                    <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn2" name="submit_check2" value="Next..."/>
+                                    <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn2" id="submit_check2" name="submit_check2" value="Next..."/>
 
                                     <input type="button" class="btn btn-danger pull-right  margin-top-20 margin-right-20 backToCheck1" name="backToCheck1" value="Back"/>
                                     <div class="clearfix"></div>
@@ -223,7 +268,7 @@
                                                 </span>
                                                 <div class="clearfix"></div>
                                             </td>
-                                            <td><input type="number" min="1" name="product_quantity_p1" value="1" class="form-control product_quantity_p1" /></td>
+                                            <td>{{$row->qty}}</td>
                                             <td>{{$row->price}}</td>
                                             <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
                                         </tr>
@@ -285,96 +330,115 @@
 <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
+<script>
+    jQuery('#submit_check2').click(function(e){
+        // jQuery('.alert').show();
+        e.preventDefault();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        jQuery.ajax({
+            url: "{{ route('verifyOrder2')}}",
+            method: 'post',
+            dataType: "json",
+            data: {
+                name: jQuery('#shipping_name').val(),
+                country: jQuery('#shipping_country').val(),
+                city: jQuery('#shipping_city').val(),
+                address: jQuery('#shipping_address').val(),
+                postal: jQuery('#shipping_postal').val(),
+                notes: jQuery('#shipping_notes').val()
+            },
+            success:function(data) {
+                console.log(data);
+                if (data.errors) {
+                    if (data.errors.name) {
+                        $('#shipping_name').html(data.errors.name[0]);
+                    }
+                    if (data.errors.country) {
+                        $('#shipping_country-error').html(data.errors.country[0]);
+                    }
+                    if (data.errors.city) {
+                        $('#shipping_city-error').html(data.errors.city[0]);
+                    }
+                    if (data.errors.address) {
+                        $('#shipping_address-error').html(data.errors.address[0]);
+                    }
+                    if (data.errors.postal) {
+                        $('#shipping_postal-error').html(data.errors.postal[0]);
+                    }
+                    if (data.errors.notes) {
+                        $('#shipping_notes-error').html(data.errors.notes[0]);
+                    }
+
+                }
+                if (data.success) {
+                    //Focus on next div's element and remove hidden class from it.
+                    // $('#check1').addClass('animated fadeOut');
+                    $('#check2').addClass('hidden');
+                    $('#check-two-top').html('<i class="fa fa-check"></i>');
+                    $('#check-two-top').css({"background-color": "#bb0018"});
+                    $('#check-three-top').css({"background-color": "#ffa900"});
+                    $('#check3').removeClass('hidden');
+                    $('#check3').show('slow');
+                    $('#payments').focus();
+                }
+            }
+        });
+    });
+
+
+</script>
 <script type="text/javascript">
     //Scripts for checkout functions one by one input fields.
     jQuery(document).ready(function() {
 
-        $('.checkbtn1').click(function() {
-
-            var email = $('#checkoutEmail').val();
-            var contact = $('#checkoutContact').val();
-            var pass_check1 = false;
-
-            if(email == null || email == "" || ((/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i).test(email) == false))
-            {
-                pass_check1 = false;
-                $('#checkoutEmail').focus();
-                $('#checkoutEmail').addClass('error-input');
-            }else{
-                pass_check1 = true;
-                $('#checkoutContact').focus();
-                $('#checkoutEmail').removeClass('error-input');
-                $('#checkoutEmail').addClass('success-input');
-
-                if(contact == null || contact == "" || contact =="")
-                {
-                    pass_check1 = false;
-                    $('#checkoutContact').focus();
-                    $('#checkoutContact').addClass('error-input');
-                }else{
-                    pass_check1 = true;
-                    $('#checkoutContact').removeClass('error-input');
-                    $('#checkoutContact').addClass('success-input');
-
+        jQuery('#checkbtn1').click(function(e){
+            // jQuery('.alert').show();
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                 }
-            }
-            if (pass_check1 != false) {
-                //Focus on next div's element and remove hidden class from it.
-                // $('#check1').addClass('animated fadeOut');
-                $('#check1').addClass('hidden');
-                $('#check-one-top').html('<i class="fa fa-check"></i>');
-                $('#check-one-top').css({"background-color": "#bb0728"});
-                $('#check-two-top').css({"background-color": "#ffa900"});
-                $('#check2').removeClass('hidden');
-                $('#check2').show('slow');
-                $('#shipping_name').focus();
-            }
-        });
-
-        //Onclick Check button 2
-        $('.checkbtn2').click(function() {
-            var shipping_name = $('#shipping_name').val();
-            var shipping_contact = $('#shipping_contact').val();
-            var shipping_primary_address = $('#shipping_primary_address').val();
-            var shipping_secondary_address = $('#shipping_secondary_address').val();
-            var shipping_nearest_city = $('#shipping_nearest_city').val();
-            var pass_check2 = false;
-            if (shipping_name === null || shipping_name === "") {
-                $('#shipping_name').focus();
-                $('#shipping_name').addClass('error-input');
-            }else{
-                $('#shipping_name').addClass('success-input');
-                if (shipping_contact === null || shipping_contact === "") {
-                    $('#shipping_name').focus();
-                    $('#shipping_name').addClass('error-input');
-                }else{
-                    $('#shipping_contact').addClass('success-input');
-                    if (shipping_primary_address === null || shipping_primary_address === "") {
-                        $('#shipping_primary_address').focus();
-                        $('#shipping_primary_address').addClass('error-input');
-                    }else{
-
-                        $('#shipping_primary_address').addClass('success-input');
-                        $('#shipping_secondary_address').addClass('success-input');
-                        if (shipping_nearest_city === null || shipping_nearest_city === "") {
-                            $('#shipping_nearest_city').focus();
-                            $('#shipping_nearest_city').addClass('error-input');
-                        }else{
-                            pass_check2 = true;
+            });
+            jQuery.ajax({
+                url: "{{ route('verifyOrder')}}",
+                method: 'post',
+                dataType: "json",
+                data: {
+                    email: jQuery('#checkoutEmail').val(),
+                    contact: jQuery('#checkoutContact').val()
+                },
+                success:function(data) {
+                    console.log(data);
+                    if (data.errors) {
+                        if (data.errors.email) {
+                            $('#email-error').html(data.errors.email[0]);
                         }
+                        if (data.errors.contact) {
+                            $('#contact-error').html(data.errors.contact[0]);
+                        }
+
+                    }
+                    if (data.success) {
+                        //Focus on next div's element and remove hidden class from it.
+                        // $('#check1').addClass('animated fadeOut');
+                        $('#check1').addClass('hidden');
+                        $('#check-one-top').html('<i class="fa fa-check"></i>');
+                        $('#check-one-top').css({"background-color": "#bb0728"});
+                        $('#check-two-top').css({"background-color": "#ffa900"});
+                        $('#check2').removeClass('hidden');
+                        $('#check2').show('slow');
+                        $('#shipping_name').focus();
                     }
                 }
-            }
-            if (pass_check2 != false) {
-                $('#check2').addClass('hidden');
-                $('#check-two-top').html('<i class="fa fa-check"></i>');
-                $('#check-two-top').css({"background-color": "#bb0018"});
-                $('#check-three-top').css({"background-color": "#ffa900"});
-                $('#check3').removeClass('hidden');
-                $('#check3').show('slow');
-                $('#payments').focus();
-            }
+            });
         });
+
+
+
         $('.backToCheck1').click(function() {
             pass_check1 = false;
             $('#check1').removeClass('hidden');

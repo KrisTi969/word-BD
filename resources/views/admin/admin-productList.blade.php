@@ -239,6 +239,7 @@
 
 
                 <div id="field">
+
                {{--     <input size="35" autocomplete="off" class="input" id="title1" name="title1" type="text" placeholder="Title" required/>
                     <br>
                     <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Field1" required/>
@@ -256,19 +257,20 @@
                     <span class="text-danger">
                             <strong id="value1-error"></strong>
                         </span>--}}
+
+
+
+                    <small>Press - to remove a form field :)</small>
                     <button id="b1" class="btn add-title" type="button">Add Title</button>
-                </div>
 
-
-
-                <small>Press - to remove a form field :)</small>
-
+        </div>
                 <div class="modal-footer">
                     <input type="button" class="btn btn-danger btn-lg " id="ajaxDelete" value="Delete" />
                     <input type="submit" class="btn btn-success btn-lg " id="ajaxSubmit" value="Edit" />
                 </div>
 
         </div>
+
     </div>
 </div>
 
@@ -293,6 +295,7 @@
 
 
 <script type="text/javascript" src="{!! asset('js/admin-scripts/remove-button.js') !!}"></script>
+
 
 <script>
     $(document).ready(function() {
