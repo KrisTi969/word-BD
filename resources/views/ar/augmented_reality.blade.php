@@ -12,7 +12,7 @@
 <html>
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>--}}
 <script src="{{asset('js/ar/aframe.min.js')}}"></script>
-<script src="{{asset('js/ar/Xaframe-ar.js')}}"></script>
+<script src="{{asset('js/ar/aframe-ar.js')}}"></script>
 <body style='margin : 0px; overflow: hidden;'>
 
 <a-scene embedded arjs>
