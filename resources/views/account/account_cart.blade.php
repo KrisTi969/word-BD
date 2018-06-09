@@ -108,9 +108,14 @@
                                                 <i class="fa"></i> Continue to checkout</a>
                                             <a href="{{route('/')}}" class="btn btn-success btn-lg pull-right margin-right-20">
                                                 <i class="fa fa-plus"></i> Add More Products</a>
+                                            @foreach(Cart::content() as $row)
+                                                @if($row)
                                             <button type="button" class="btn btn-warning btn-lg pull-left margin-right-20"data-toggle="modal" data-target="#exampleModalCenter">
                                                 <i class="fa fa-heart"></i> Save as Wishlist</button>
+                                                @endif
+                                                @break
 
+                                            @endforeach
 
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

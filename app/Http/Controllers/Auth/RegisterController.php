@@ -87,7 +87,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'birthdate' => 'required|string',
-            'address' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'address' => 'required|regex:/^[ a-zA-Z]+$/u|max:100|',
             'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'postal_code' => 'required|regex:/^[0-9]+$/u|max:18|',
             'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',

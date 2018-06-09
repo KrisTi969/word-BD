@@ -55,7 +55,7 @@
                                                 </span>
                                                         </div>
 
-                                                        <a href="cart.html"  class="btn-cart text-center add-to-cart pull-right">
+                                                        <a href="{{route('cart', ['id' => $product->id])}}"  class="btn-cart text-center add-to-cart pull-right">
                                                             <i class="fa fa-cart-plus"></i>
                                                             Add to cart
                                                         </a>

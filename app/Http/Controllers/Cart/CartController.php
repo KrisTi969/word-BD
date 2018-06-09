@@ -38,7 +38,7 @@ class CartController extends Controller
         if(Auth::check()) {
             return view('account.account_cart');
         }
-        else return view('account.account_cart');
+        else abort(404);
 
     }
 

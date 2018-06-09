@@ -131,21 +131,14 @@
                     console.log(data);
                     if (data.errors) {
                         if (data.errors.email) {
-                            console.log(data.errors.email[0]);
+
                             $('#email-error').html(data.errors.email[0]);
                         }
                         if (data.errors.password) {
+
                             $('#password-error').html(data.errors.password[0]);
                         }
-                        if (data.errors && data.errors !== "Wrong password !") {
-                            $('#email-error').html(data.errors);
-                        }
-                        if (data.errors === "Wrong password !") {
-                            $('#password-error').html(data.errors);
-                        }
-                        if (data.errors === "The account is not verified !") {
-                            $('#mail-error').html(data.errors);
-                        }
+
                     }
                     if (data.success) {
                         //Craziness follows (in a good way)
