@@ -122,4 +122,10 @@ class ProductController extends Controller
         $product->save();
         return $average_review;
     }
+
+    public static function getProductImage($name){
+        $image = DB::table('prod_images')->where('prod_title',$name)->where('filename','like','1%')->first();
+        //var_dump($image);
+        return $image->filename;
+    }
 }

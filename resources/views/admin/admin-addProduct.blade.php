@@ -191,7 +191,7 @@
                         currentId = zecimala.concat(unitati);
                     }
 
-                     firstChestie = jQuery('#field' + currentId).val();
+                    firstChestie = jQuery('#field' + currentId).val();
 
                 }
                 if (idGasit.indexOf('value') >= 0 || 'value'.indexOf(idGasit) >= 0) {
@@ -225,7 +225,7 @@
                     field1: jQuery('#field1').val(),
                     value1: jQuery('#value1').val(),
                     description: employees
-        },
+                },
                 success:function(data) {
                     console.log(data);
                     if (data.errors) {

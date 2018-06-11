@@ -355,7 +355,7 @@
                 console.log(data);
                 if (data.errors) {
                     if (data.errors.name) {
-                        $('#shipping_name').html(data.errors.name[0]);
+                        $('#shipping_name-error').html(data.errors.name[0]);
                     }
                     if (data.errors.country) {
                         $('#shipping_country-error').html(data.errors.country[0]);
@@ -415,7 +415,7 @@
                     console.log(data);
                     if (data.errors) {
                         if (data.errors.email) {
-                            $('#email-error').html(data.errors.email[0]);
+                            $('#mail-error').html(data.errors.email[0]);
                         }
                         if (data.errors.contact) {
                             $('#contact-error').html(data.errors.contact[0]);

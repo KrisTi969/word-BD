@@ -86,7 +86,7 @@ class OrderController extends Controller
     public function verifyOrder(Request $request) {
 
         $validator = Validator::make($request->all(), [
-            'email' => 'required|string|email|max:100|unique:users',
+            'email' => 'required|string|email|max:100',
             'contact' => 'required|min:10|numeric'
         ]);
 

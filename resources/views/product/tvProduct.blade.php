@@ -89,7 +89,9 @@ use Jorenvh\Share\Share;
 
                                     {{-- <li><i class="fa fa-star-o" aria-hidden="true"></i></li>--}}
                                     <li class="rating">{{\App\Http\Controllers\Product\ProductController::getProductReviewCount($product->id)}} reviews</li>
+                                   @if(\Auth::check())
                                         <span class="fake-link" id="goToCommentSection" style="color: darkred; text-decoration: underline;cursor: pointer;">Add your review</span>
+                                       @endif
                                 </ul>
                             </div>
                             <div class="single-price">

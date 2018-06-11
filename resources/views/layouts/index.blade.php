@@ -30,7 +30,7 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="images/slider/e-commerce.jpg" alt="welcome"  height="243" width="1680">
+                            <img src="{{asset('images/shop/slide1-1680x500-1-1.jpg')}}" alt="welcome">
                             <div class="carousel-caption">
                                 <div class="slide-header-text wow slideInLeft" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Welcome</div> <br />
                                 <!-- \<a href="products.html" class="btn btn-red slider-link wow lightSpeedIn" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Buy this Now</a>
@@ -39,10 +39,9 @@
                         </div>
 
                         <div class="item">
-                            <img src="images/slider/black_friday.jpg" alt="Vader" height="" width="1680">
+                            <img src="images/slider/black_friday.jpg" alt="Vader" height="243" width="1680">
                             <div class="carousel-caption">
                                 <div class="slide-header-text wow rotateIn" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Turn your looking into an easy price</div> <br />
-                                <a href="../app/view/productsRedirect.php" class="btn btn-red slider-link wow lightSpeedIn" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10">Buy items on sale!</a>
                             </div>
                         </div>
                     </div>

@@ -13,14 +13,15 @@
 {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>--}}
 <script src="{{asset('js/ar/aframe.min.js')}}"></script>
 <script src="{{asset('js/ar/aframe-ar.js')}}"></script>
+<script src="{{asset('js/ar/a-frame-extras.js')}}"></script>
 <body style='margin : 0px; overflow: hidden;'>
 
 <a-scene embedded arjs>
     <a-assets>
         <a-asset-item id="tree" src="{{asset('uploads/ar')}}/{{request()->segment(count(request()->segments()))}}"></a-asset-item>
+
     </a-assets>
     <a-marker preset="hiro">
-
 
            {{-- {{request()->segment(count(request()->segments()))}}--}}
         <a-gltf-model scale="0.03 0.03 0.03" src="#tree" ></a-gltf-model>

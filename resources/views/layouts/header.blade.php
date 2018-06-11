@@ -40,14 +40,14 @@
                                 <tbody>
                                 <tr>
                                     <td>{{$row->name}}</td>
-                                    <td><img src="images/product-slide/product2.png" class="img img-responsive img-thumbnail" alt=""></td>
+                                    <td>   <img src="http://127.0.0.1:8000/uploads/{{\App\Http\Controllers\Product\ProductController::getProductImage($row->name)}}" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left"></td>
                                     <td>{{$row->qty}}</td>
                                     <td>{{$row->price}}$</td>
                                 </tr>
                                 <?php endforeach;?>
                                 <tr>
                                     <td colspan="5" rowspan="5">
-                                        Total Price <span class="bold text-primary" style="margin-left: 73%">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span>
+                                        Total Price (10% tax) <span class="bold text-primary" style="margin-left: 73%">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span>
                                     </td>
                                 </tr>
                                 <div class="clearfix"></div>

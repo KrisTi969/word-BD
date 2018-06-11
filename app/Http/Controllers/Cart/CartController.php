@@ -38,8 +38,9 @@ class CartController extends Controller
         if(Auth::check()) {
             return view('account.account_cart');
         }
-        else abort(404);
-
+        else {
+            return view('account.account_cart');
+        }
     }
 
     public function updateProductQty(Request $request)

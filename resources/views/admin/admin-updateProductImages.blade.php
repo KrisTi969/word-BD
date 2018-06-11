@@ -103,9 +103,9 @@
             </div>
 
 
-            <div class="modal-footer">
+           {{-- <div class="modal-footer">
                 <input type="button" class="btn btn-danger btn-lg " id="ajaxDelete" value="Delete" />
-            </div>
+            </div>--}}
 
         </div>
     </div>

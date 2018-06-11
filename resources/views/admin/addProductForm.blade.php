@@ -106,12 +106,15 @@
                         <span class="text-danger">
                             <strong id="value1-error"></strong>
                         </span>
+                        <br>
+                        <small>Press - to remove a form field :)</small>
+                        <button id="b1" class="btn add-title" type="button">Add Title</button>
                     </div>
 
-                    <br>
+                   {{-- <br>
                     <button id="b1" class="btn add-title" type="button">Add Title</button>
                     <br>
-                    <small>Press + to add another form field :)</small>
+                    <small>Press + to add another form field :)</small>--}}
                 </div>
             </div>
         </div>

@@ -4,11 +4,9 @@ var titleBeforeUpgrade;
 var pasTitlu = 1;
 var pasSubTitlu = 1;
 var addPlusButtonOnce = 1;
+var pressedButton = 0;
 $(document).ready(function () {
 
-
-
-// Asa ? din cate stiu eu nu...asa faci cand se auto apeleaza normal ii scri function abc(){} si o apelezi normal
 
         $('#editAccount').modal({
             keyboard: true,
@@ -124,8 +122,6 @@ $(document).ready(function () {
 });
 
 function addMore(btn) {
-    pasSubTitlu = pasSubTitlu + 1;
-
     var id = 'id=' + 'remove' + pasSubTitlu;
     var idField = 'id=' + 'field' + pasSubTitlu;
     var idValue = 'id=' + 'value' + pasSubTitlu;
@@ -134,16 +130,32 @@ function addMore(btn) {
 };
 
 function removeTtitle(btn) {
-    console.log(btn.id + " sasasa");
-    var titleToDelete = '#label' + btn.id.match(/\d+/)[0];
-    var titleToStop = '#label' + String(Number(btn.id.match(/\d+/)[0]) + 1); ///crazyness
 
-    $(titleToDelete).nextUntil(titleToStop).andSelf().remove();
+
+    if(document.getElementById("title"+(pasTitlu+1)) === null) {
+        console.log(pasSubTitlu);
+       /* document.getElementById("label"+pasTitlu).remove();
+        document.getElementById("title"+pasTitlu).remove();
+        document.getElementById("value"+pasSubTitlu).remove();
+        document.getElementById("field"+pasSubTitlu).remove();
+        document.getElementById("remove-title"+pasTitlu).remove();
+        document.getElementById("add"+pasSubTitlu).remove();*/
+    /*    $("li.start").nextUntil("li.stop").css({"color": "red", "border": "2px solid red"});*/
+        $("#label"+pasTitlu).nextUntil("#b1").andSelf().remove();
+    }
+    else {
+        console.log(btn.id + " sasasa");
+        var titleToDelete = '#label' + btn.id.match(/\d+/)[0];
+        var titleToStop = '#label' + String(Number(btn.id.match(/\d+/)[0]) + 1); ///crazyness
+
+        $(titleToDelete).nextUntil(titleToStop).andSelf().remove();
+    }
+    pasTitlu = pasTitlu - 1;
 };
 
 //cine e this.id.length> adica cine ar trebui sa fie butonul pe care apesi ii this
 function remove(btn) {
-    console.log(btn)
+    console.log(btn);
     console.log("intram");
    // e.preventDefault();
     var fieldNum;

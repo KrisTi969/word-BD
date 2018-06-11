@@ -260,6 +260,7 @@
 
 
 
+
                     <small>Press - to remove a form field :)</small>
                     <button id="b1" class="btn add-title" type="button">Add Title</button>
 
@@ -268,7 +269,6 @@
                     <input type="button" class="btn btn-danger btn-lg " id="ajaxDelete" value="Delete" />
                     <input type="submit" class="btn btn-success btn-lg " id="ajaxSubmit" value="Edit" />
                 </div>
-
         </div>
 
     </div>

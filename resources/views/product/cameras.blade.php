@@ -29,7 +29,7 @@
 
                         <div class="all-products">
                             <div class="">
-                                <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"><?php if(count($_GET) === 1 && isset($_GET['type'])) { echo "Our latest ".strtoupper($_GET['type'])." TVs are:";} else {echo "Your filtered results: ";}?></h2>
+                                <h2 class="title-div wow slideInRight" data-wow-duration="1s" data-wow-delay="0s" data-wow-offset="10"><?php if(count($_GET) === 1 && isset($_GET['type'])) { echo "Our latest ".strtoupper($_GET['type'])."S are:";} else {echo "Your filtered results: ";}?></h2>
                                 <div class="products">
                                     <div class="row">
                                         @foreach ($products as $product)
@@ -39,7 +39,7 @@
                                                         @foreach($images as $image)
                                                             @if($image->prod_title==$product->title)
                                                                 <a href="http://127.0.0.1:8000/Product/{{$product->id}}">
-                                                                    <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive" style="max-width: 170px; min-width: 170px; max-height: 200px; min-height: 200px"/>
+                                                                    <img src="http://127.0.0.1:8000/uploads/{{$image->filename}}" class="img img-responsive" style="max-width: 200px; min-width: 200px; max-height: 200px; min-height: 200px"/>
                                                                 </a>
                                                                 @break
                                                             @endif

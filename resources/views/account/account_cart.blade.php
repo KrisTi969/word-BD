@@ -45,7 +45,7 @@
                                        @foreach(Cart::content() as $row)
                                     <tr>
                                         <td>
-                                            <img src="images/product-slide/product2.png" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
+                                            <img src="http://127.0.0.1:8000/uploads/{{\App\Http\Controllers\Product\ProductController::getProductImage($row->name)}}" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
                                             <span class="pull-left cart-product-option"></span>
 
                                             <strong><?php echo $row->name ?></strong><br />
@@ -57,34 +57,38 @@
                                         </span>
                                             <div class="clearfix"></div>
                                         </td>
-                                        <td><input type="number" min="1" name="product_quantity_p1" value="{{$row->qty}}" class="form-control product_quantity_p1" /></td>
+
+                                        <td><input id="cart-qty-{{$loop->iteration}}" type="number" min="1" name="product_quantity_p1" value="{{$row->qty}}" class="form-control product_quantity_p1" />
+                                            <a href="#" onclick="updateQTY(new_quantity = document.getElementById('cart-qty-{{$loop->iteration}}').value, id = '{{$row->rowId}}', idProd = '{{$row->id}}')" id="updateQTY">Update Quantity</a></td>
+
                                         <td>{{$row->price}}</td>
                                         <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
                                     </tr>
                                    @endforeach
                                         @else
                                         @foreach(Cart::content() as $row)
-                                        <tr>{{$loop->iteration}}
-                                            <td>
-                                                <img src="images/product-slide/product2.png" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
-                                                <span class="pull-left cart-product-option"></span>
+                                            <tr>
+                                                <td>
+                                                    <img src="http://127.0.0.1:8000/uploads/{{\App\Http\Controllers\Product\ProductController::getProductImage($row->name)}}" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
+                                                    <span class="pull-left cart-product-option"></span>
 
-                                                <strong><?php echo $row->name ?></strong><br />
-                                                <form action="{{route('remove',['id' => $row->rowId])}}" method="get" accept-charset="utf-8">
-                                                    <input type="hidden" name="product_id" value="1">
-                                                    <input type="submit" class="btn btn-red btn-sm" name="" value="Remove Item">
-                                                </form>
+                                                    <strong><?php echo $row->name ?></strong><br />
+                                                    <form action="{{route('remove',['id' => $row->rowId])}}" method="get" accept-charset="utf-8">
+                                                        <input type="hidden" name="product_id" value="1">
+                                                        <input type="submit" class="btn btn-red btn-sm" name="" value="Remove Item">
+                                                    </form>
 
-                                                </span>
-                                                <div class="clearfix"></div>
-                                            </td>
-                                            <td><input id="cart-qty-{{$loop->iteration}}" type="number" min="1" name="product_quantity_p1" value="{{$row->qty}}" class="form-control product_quantity_p1" />
-                                                <a href="#" onclick="updateQTY(new_quantity = document.getElementById('cart-qty-{{$loop->iteration}}').value, id = '{{$row->rowId}}', idProd = '{{$row->id}}')" id="updateQTY">Update Quantity</a></td>
+                                                    </span>
+                                                    <div class="clearfix"></div>
+                                                </td>
 
-                                            <td>{{$row->price}}</td>
-                                            <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
-                                        </tr>
-                                       @endforeach
+                                                <td><input id="cart-qty-{{$loop->iteration}}" type="number" min="1" name="product_quantity_p1" value="{{$row->qty}}" class="form-control product_quantity_p1" />
+                                                    <a href="#" onclick="updateQTY(new_quantity = document.getElementById('cart-qty-{{$loop->iteration}}').value, id = '{{$row->rowId}}', idProd = '{{$row->id}}')" id="updateQTY">Update Quantity</a></td>
+
+                                                <td>{{$row->price}}</td>
+                                                <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
+                                            </tr>
+                                        @endforeach
                                         @endif
 
 
@@ -94,16 +98,12 @@
                                         <td colspan="1"><strong>Total:</strong></td>
                                         <td></td>
                                         <td>
-                                            <p><span class="total_product_sum">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span></p>
+                                            <p><span class="total_product_sum">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$ (10% Tax)</span></p>
                                         </td>
                                         <div class="clearfix"></div>
                                     </tr>
                                     <tr>
                                         <td colspan="4">
-
-
-
-
                                             <a href="{{route('checkout')}}" class="btn btn-yellow btn-lg pull-right margin-bottom-20">
                                                 <i class="fa"></i> Continue to checkout</a>
                                             <a href="{{route('/')}}" class="btn btn-success btn-lg pull-right margin-right-20">
