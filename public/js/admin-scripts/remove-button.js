@@ -131,9 +131,9 @@ function addMore(btn) {
 
 function removeTtitle(btn) {
 
-
-    if(document.getElementById("title"+(pasTitlu+1)) === null) {
-        console.log(pasSubTitlu);
+    if(document.getElementById("title"+(Number(btn.id.match(/\d+/)[0])+1)) === null) {
+        console.log(Number(btn.id.match(/\d+/)[0]));
+        console.log(document.getElementById(String("title"+(pasTitlu+1))));
        /* document.getElementById("label"+pasTitlu).remove();
         document.getElementById("title"+pasTitlu).remove();
         document.getElementById("value"+pasSubTitlu).remove();
@@ -145,7 +145,7 @@ function removeTtitle(btn) {
     }
     else {
         console.log(btn.id + " sasasa");
-        var titleToDelete = '#label' + btn.id.match(/\d+/)[0];
+        var titleToDelete = '#label' + Number(btn.id.match(/\d+/)[0]);
         var titleToStop = '#label' + String(Number(btn.id.match(/\d+/)[0]) + 1); ///crazyness
 
         $(titleToDelete).nextUntil(titleToStop).andSelf().remove();

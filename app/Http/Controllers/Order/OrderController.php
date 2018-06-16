@@ -99,11 +99,11 @@ class OrderController extends Controller
 
     public function verifyOrder2(Request $request) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
-            'address' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
-            'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'name' => 'required|regex:/^[ a-zA-Z]+$/u|max:50|',
+            'address' => 'required|regex:/^[ a-zA-Z.,0-9]+$/u|max:50|',
+            'city' => 'required|regex:/^[ a-zA-Z]+$/u|max:50|',
             'postal' => 'required|regex:/^[0-9]+$/u|max:18|',
-            'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'country' => 'required|regex:/^[ a-zA-Z]+$/u|max:50|',
             'notes' => 'nullable|min:10|string|'
         ]);
 

@@ -76,12 +76,24 @@ class AccountController extends Controller
     public function getWishlists(){
         if(\Auth::check()){
             $wishlists = Wishlist::where('user_id',\Auth::user()->id)->get();
+            foreach ($wishlists as $verificare) {
+                $count = DB::table('wishlist_products')->where('wishlist_id', $verificare->id)->count();
+                if($count == 0) {
+                    DB::table('wishlists')->where('id',$verificare->id)->delete();
+                }
+            }
             $products = collect();//cream colectie noua
             foreach ($wishlists as $item){
                 $prodnou = DB::table('wishlist_products')
                     ->select(DB::raw('*'))
                     ->where('wishlist_id', '=', $item->id)
                     ->get();
+                $count = $prodnou->count();
+
+                if($count==0)  {
+                /*DB::table('wishlists')->where('id',)*/
+                   /* Wishlist::where('user_id',\Auth::user()->id)->delete();*/
+                }
                 foreach ($prodnou as $prod){
                     $products->push($prod);//adaugam produsul la lista de produse ale repectivului user
                 }

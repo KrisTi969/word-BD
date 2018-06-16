@@ -47,8 +47,6 @@
             </div> <!--End Sidebar title div-->
             <div id="typeCollapse" class="collapse out">
                 <br>
-                <a role="button" onclick="addOrReplace('type','accesories')"><span></span>accesories</a><br />
-                <br>
                 <a role="button" onclick="addOrReplace('type','bags-cases')"><span></span>Bags & Cases</a><br />
                 <br>
                 <a role="button" onclick="addOrReplace('type','binoculars-scopes')"><span></span>Binoculars & Scopes</a><br />
@@ -61,9 +59,6 @@
                 <br>
                 <a role="button" onclick="addOrReplace('type','lenses')"><span></span>Lenses</a><br />
                 <br>
-                <a role="button" onclick="addOrReplace('type','lightning&studio')"><span></span>Lightning & Studio</a><br />
-                <br>
-                <a role="button" onclick="addOrReplace('type','video')"><span></span>Video</a><br />
                 <div class="clearfix"></div>
             </div>
         </div>

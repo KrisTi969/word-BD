@@ -110,8 +110,10 @@
                                                 <i class="fa fa-plus"></i> Add More Products</a>
                                             @foreach(Cart::content() as $row)
                                                 @if($row)
+
                                             <button type="button" class="btn btn-warning btn-lg pull-left margin-right-20"data-toggle="modal" data-target="#exampleModalCenter">
                                                 <i class="fa fa-heart"></i> Save as Wishlist</button>
+                                                    <br>
                                                 @endif
                                                 @break
 

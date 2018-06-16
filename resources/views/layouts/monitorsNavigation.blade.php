@@ -98,11 +98,11 @@
 
             <div id="size" class="collapse out">
 
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',15.5,'sizeMax',30)"><span></span>15.5 - 30inch</a><br />
+                <a role="button" href="{{route('Monitors')}}?sizeMin=15.5&sizeMax=30"><span></span>15.5 - 30inch</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',30,'sizeMax',40)"><span></span>30 - 40inch</a><br />
+                <a role="button" href="{{route('Monitors')}}?sizeMin=30&sizeMax=40"><span></span>30 - 40inch</a><br />
                 <br>
-                <a role="button" onclick="addOrUpdateUrlParam('sizeMin',40,'sizeMax',70)"><span></span>ABOVE 40+inch</a><br />
+                <a role="button" href="{{route('Monitors')}}?sizeMin=40&sizeMax=80"><span></span>40+ </a><br />
                 <br>
                 <div class="clearfix"></div>
             </div>
@@ -185,6 +185,7 @@
     });
     function addOrUpdateUrlParam(min, value1, max, value2)
     {
+        debugger
         var href = window.location.href;
         var regex = new RegExp("[&\\?]" + min + "=");
         var regex2 = new RegExp("[&\\?]" + max + "=");

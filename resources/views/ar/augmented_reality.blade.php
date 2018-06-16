@@ -15,7 +15,7 @@
 <script src="{{asset('js/ar/aframe-ar.js')}}"></script>
 <script src="{{asset('js/ar/a-frame-extras.js')}}"></script>
 <body style='margin : 0px; overflow: hidden;'>
-
+{{request()->segment(count(request()->segments()))}}
 <a-scene embedded arjs>
     <a-assets>
         <a-asset-item id="tree" src="{{asset('uploads/ar')}}/{{request()->segment(count(request()->segments()))}}"></a-asset-item>
@@ -24,11 +24,19 @@
     <a-marker preset="hiro">
 
            {{-- {{request()->segment(count(request()->segments()))}}--}}
-        <a-gltf-model scale="0.03 0.03 0.03" src="#tree" ></a-gltf-model>
+        @if(request()->segment(count(request()->segments())) == "Apple iPhone XIphone seceond version finished.gltf")
 
+            <a-gltf-model scale="1 1 1"  src="#tree" ></a-gltf-model>
     </a-marker>
     <a-entity camera></a-entity>
 
+@else
+        <a-gltf-model scale="0.03 0.03 0.03"  src="#tree" ></a-gltf-model>
+
+
+    </a-marker>
+    <a-entity camera></a-entity>
+    @endif
 
 </a-scene>
 </body>

@@ -263,7 +263,7 @@ class AllProducts extends Controller
                             if (isset($ceva2->{'Display size'})) {
                                 $id = str_replace('cm', '', $ceva2->{'Display size'});
                                 if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
-                                  /*    echo $idToDeleteIfNecessary ."ii bun  pe" . "ca are" . $id. "<br>";
+                                    /*  echo $idToDeleteIfNecessary ." ii bun  pt ca are " . $id. "<br>";
                                       echo ($request->input('sizeMax')) . "<br>";
                                         echo $idToDeleteIfNecessary ."<br>";
                                         echo $id ."<br>";
@@ -271,7 +271,7 @@ class AllProducts extends Controller
                                         echo ($request->input('sizeMax')) . "<br>";*/
                                     $poziton++;
                                 } else {
-                                  /*   echo $idToDeleteIfNecessary ."eliminam pe" . "ca are" . $id. "<br>";*/
+                                    /* echo $idToDeleteIfNecessary ."eliminam pe elementul cu dismiensiunea "  . $id. "<br>";*/
                                     $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
                                 }
                             }
@@ -315,7 +315,7 @@ class AllProducts extends Controller
     public function getSmartphones(Request $request)
 {
 
-    $baseQuery = DB::table("products");
+    $baseQuery = DB::table("products")->whereIn('type',['smartphone','smartwatch','phonecase','bluetooth-headset','smartphone-accesories','headphone']);
 
     if ($request->input('type')) {
         $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
@@ -337,28 +337,30 @@ class AllProducts extends Controller
 
         $poziton = 0;
         foreach ($baseQuery->get() as $result) {
-            $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
-            /*var_dump($result->description);*/
-            $descr = json_decode($result->description);
-            if (isset($descr->{'Technical specifications'})) {
-                foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
-                    if (isset($ceva2->{'Display size'})) {
-                        $id = str_replace('inch', '', $ceva2->{'Display size'});
-                        if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
-                            $poziton++;
-                        } else {
-                            $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+            if (isset($baseQuery->get()[$poziton]->id)) {
+                $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
+
+                $descr = json_decode($result->description);
+                if (isset($descr->{'Technical specifications'})) {
+                    foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
+                        if (isset($ceva2->{'Display size'})) {
+                            $id = str_replace('inch', '', $ceva2->{'Display size'});
+                            if (floatval($id) >= floatval($request->input('sizeMin')) && floatval($id) <= floatval($request->input('sizeMax'))) {
+                                $poziton++;
+                            } else {
+                                $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+                            }
                         }
                     }
+                } else {
+                    $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
                 }
-            } else {
-                $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
-            }
 
+            }
         }
     }
 
-    $products = $baseQuery->whereIn('type',['smartphone','smartwatch','phonecase','bluetooth-headset','smartphone-accesories','headphone'])->paginate(16);
+    $products = $baseQuery->paginate(16);
     $images = DB::table('prod_images')->get();
     return view("product.smartphones")->with(["products" => $products, 'images' => $images]);
 }
@@ -366,7 +368,7 @@ class AllProducts extends Controller
     public function getMonitors(Request $request)
     {
 
-        $baseQuery = DB::table("products");
+        $baseQuery = DB::table("products")->whereIn('type',['monitor-4k','monitor-touchscreen','monitor-led']);
 
         if ($request->input('type')) {
             $baseQuery->where('type', '=', $request->input('type'))->where('quantity', '>', 0);
@@ -385,20 +387,22 @@ class AllProducts extends Controller
 
         //Gasim id'ul produselor care nu se incadreaza in dimensiune
         if ($request->input('sizeMin') && $request->input('sizeMax')) {
-
+        //    var_dump("da");
             $poziton = 0;
             foreach ($baseQuery->get() as $result) {
                 $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
+                //var_dump(floatval($idToDeleteIfNecessary));
                 /*var_dump($result->description);*/
                 $descr = json_decode($result->description);
                 if (isset($descr->{'Technical specifications'})) {
                     foreach ($descr->{'Technical specifications'} as $ceva => $ceva2) {
                         if (isset($ceva2->{'Display size'})) {
                             $id = str_replace('inch', '', $ceva2->{'Display size'});
-                            if (intval($id) >= intval($request->input('sizeMin')) && intval($id) <= intval($request->input('sizeMax'))) {
+                            if (floatval($id) >= floatval($request->input('sizeMin')) && floatval($id) <= floatval($request->input('sizeMax'))) {
                                 $poziton++;
                             } else {
                                 $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
+
                             }
                         }
                     }
@@ -409,7 +413,7 @@ class AllProducts extends Controller
             }
         }
 
-        $products = $baseQuery->whereIn('type',['monitor-4k','monitor-touchscreen','monitor-led'])->paginate(16);
+        $products = $baseQuery->paginate(16);
         $images = DB::table('prod_images')->get();
         return view("product.monitors")->with(["products" => $products, 'images' => $images]);
     }
@@ -457,7 +461,6 @@ class AllProducts extends Controller
         }
 
         if ($request->input('sizeMin') && $request->input('sizeMax')) {
-
             $poziton = 0;
             foreach ($baseQuery->get() as $result) {
                 $idToDeleteIfNecessary = $baseQuery->get()[$poziton]->id;
@@ -477,7 +480,6 @@ class AllProducts extends Controller
                 } else {
                     $baseQuery->where('id', '!=', $idToDeleteIfNecessary);
                 }
-
             }
         }
 

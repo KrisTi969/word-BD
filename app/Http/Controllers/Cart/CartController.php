@@ -142,4 +142,6 @@ class CartController extends Controller
         return \Cart::total();
     }
 
+
+
 }

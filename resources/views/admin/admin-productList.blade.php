@@ -55,7 +55,7 @@
 
                     </table>
                 </div>
-                {{ $products->links() }}
+                <?php echo e($products->appends(request()->input())->links()); ?>
             </div>
 
         </div>
@@ -93,7 +93,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <strong>Success!</strong> The account information has been deleted.
+                        <strong>Success!</strong> The product has been deleted.
                     </div>
                 </div>
 
@@ -131,9 +131,10 @@
                         <option value="game-nintendoswitch">game-nintendoswitch</option>
                         <option value="game-ps4">game-ps4</option>
                         <option value="game-xboxone">game-xboxone</option>
-
+                        <option value="game-pc">game-pc</option>
                         <option value="headphone">headphone</option>
                         <option value="laptop-2-in-1">laptop-2-in-1</option>
+                        <option value="laptop-gaming">laptop-gaming</option>
                         <option value="laptop-ultrabooks">laptop-ultrabooks</option>
                         <option value="lcdTV">lcdTV</option>
                         <option value="ledTV">ledTV</option>
@@ -157,6 +158,7 @@
                         <option value="music-pop">music-pop</option>
                         <option value="music-rap">music-rap</option>
                         <option value="music-rock">music-rock</option>
+                        <option value="music-classicalrock">music-classicalrock</option>
                         <option value="oledTV">oledTV</option>
                         <option value="phonecase">phonecase</option>
                         <option value="plasmaTV">plasmaTV</option>
@@ -164,8 +166,11 @@
                         <option value="printer-faxing">printer-faxing</option>
                         <option value="printer-photo">printer-photo</option>
                         <option value="printer-scanners">printer-scanners</option>
+                        <option value="printer-all-in-one">printer-all-in-one</option>
+
                         <option value="smartphone">smartphone</option>
                         <option value="smartphone-accesories">smartphone-accesories</option>
+                        <option value="smartwatch">smartwatch</option>
                         <option value="video">video</option>
 
 
@@ -239,28 +244,6 @@
 
 
                 <div id="field">
-
-               {{--     <input size="35" autocomplete="off" class="input" id="title1" name="title1" type="text" placeholder="Title" required/>
-                    <br>
-                    <input autocomplete="off" class="input" id="field1" name="prof1" type="text" placeholder="Field1" required/>
-
-                    <input autocomplete="off" class="input" id="value1" name="value1" type="text" placeholder="Value1" required/>
-                    <br>
-                    <span class="text-danger">
-                            <strong id="title1-error"></strong>
-                        </span>
-                    <br>
-                    <span class="text-danger">
-                            <strong id="field1-error"></strong>
-                        </span>
-                    <br>
-                    <span class="text-danger">
-                            <strong id="value1-error"></strong>
-                        </span>--}}
-
-
-
-
                     <small>Press - to remove a form field :)</small>
                     <button id="b1" class="btn add-title" type="button">Add Title</button>
 

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Jobs\SendCommentApprovedOrDelete;
+use App\Jobs\SendCommentMail;
 use App\Product;
 use Intervention\Image\Image;
 use Matriphe\Imageupload\Imageupload;
@@ -285,6 +287,12 @@ class AdminController extends Controller
 
     public function deleteComment(Request $request) {
         try {
+
+            $comment = Comment::where('id',$request->id)->first();
+            $product = Product::where('id',$comment->commentable_id)->first();
+            $user = User::where('id',$comment->commented_id)->first();
+            dispatch(new SendCommentMail($user,$comment,$product));
+
             DB::table('comments')->where('id','=',$request->id)->delete();
 
             return Response::json(['success' => '1']);
@@ -315,8 +323,10 @@ class AdminController extends Controller
             try {
                 DB::table('comments')->where('commentable_id', '=', $product->id)->delete();
                 DB::table('prod_images')->where('prod_title', '=', $request->title)->delete();
-                DB::table('products')->where('title', '=', $request->title)->delete();
                 DB::table('ar_files')->where('product_id', \App\Http\Controllers\Product\ProductController::getProductId($request->title))->delete();
+
+                DB::table('wishlist_products')->where('product_name', $request->title)->delete();
+                DB::table('products')->where('title', '=', $request->title)->delete();
                 return Response::json(['success' => '1']);
             } catch (\SQLiteException $e) {
                 return Response::json(['errors' => '1']);
@@ -362,6 +372,11 @@ class AdminController extends Controller
             DB::table('comments')
                 ->where('id', $request->id)
                 ->update(['approved' => 1]);
+
+            $comment = Comment::where('id',$request->id)->first();
+            $product = Product::where('id',$comment->commentable_id)->first();
+            $user = User::where('id',$comment->commented_id)->first();
+            dispatch(new SendCommentMail($user,$comment,$product));
             return Response::json(['success' => '1']);
         }
         catch (\SQLiteException $e) {

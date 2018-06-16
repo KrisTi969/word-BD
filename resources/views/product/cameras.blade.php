@@ -23,7 +23,7 @@
                     @include('layouts.cameraNavigationBar')
                     <div class="col-sm-10 col-md-10 col-lg-10">
                         <ol class="breadcrumb breadcrumb1">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="{{route('/')}}">Home</a></li>
                             <li class="active">Products</li>
                         </ol>
 
@@ -55,7 +55,7 @@
                                                 </span>
                                                         </div>
 
-                                                        <a href="cart.html"  class="btn-cart text-center add-to-cart pull-right">
+                                                        <a href="{{route('cart', ['id' => $product->id])}}"  class="btn-cart text-center add-to-cart pull-right">
                                                             <i class="fa fa-cart-plus"></i>
                                                             Add to cart
                                                         </a>

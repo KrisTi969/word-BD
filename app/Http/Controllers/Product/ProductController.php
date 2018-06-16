@@ -125,7 +125,11 @@ class ProductController extends Controller
 
     public static function getProductImage($name){
         $image = DB::table('prod_images')->where('prod_title',$name)->where('filename','like','1%')->first();
-        //var_dump($image);
-        return $image->filename;
+        /*var_dump($image);*/
+        if($image) {
+            return $image->filename;
+        }else {
+            return null;
+        }
     }
 }

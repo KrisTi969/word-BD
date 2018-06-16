@@ -27,6 +27,7 @@
                             <h4 class="modal-title">Cart Products</h4>
                         </div>
                         <div class="modal-body">
+                            @if(!(App\Http\Controllers\Cart\CartController::cartTotal() == '0.00'))
                             <table class="table table-responsive">
                                 <thead>
                                 <tr>
@@ -36,6 +37,7 @@
                                     <th>Price</th>
                                 </tr>
                                 </thead>
+
                                 <?php foreach(Cart::content() as $row) :?>
                                 <tbody>
                                 <tr>
@@ -46,18 +48,33 @@
                                 </tr>
                                 <?php endforeach;?>
                                 <tr>
-                                    <td colspan="5" rowspan="5">
-                                        Total Price (10% tax) <span class="bold text-primary" style="margin-left: 73%">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span>
+                                    <td >
+                                        Total Price (10% tax)
                                     </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td><span class="bold text-primary">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span></td>
                                 </tr>
+
+
                                 <div class="clearfix"></div>
                                 </tbody>
                             </table>
+                            @else
+                                <div class="alert alert-warning" role="alert">
+                                   Your cart is empty!
+                                </div>
+                                @endif
                           {{--  <p class="text-right text-danger">There are <span style="font-weight: bold">2</span> more products in the cart. Click Checkout now to buy the items..</p>--}}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel
+                            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">Cancel
                             </button>
+                            <?php if (\Cart::count()):?>
+                            <a href="{{route('seeCart')}}" class="btn btn-blue">Go to cart</a>
+                            <?php endif; ?>
                             <?php if (\Cart::count()):?>
                             <a href="{{route('checkout')}}" class="btn btn-yellow">Check Out</a>
                             <?php endif; ?>
@@ -77,7 +94,7 @@
             <div class="wsmobileheader clearfix"> <a id="wsnavtoggle" class="animated-arrow"><span></span></a> <a class="smallogo"></a>{{-- <a class="callusicon" href="tel:0748105856"><span class="fa fa-phone"></span></a>--}}
                 <div class="header-cart2">
                     <a href="#" class="cart-link2" data-toggle="modal" data-target="#cart-item"><i class="fa fa-cart-arrow-down"></i></a>
-                    <span class="number-of-cart2">20</span>
+                    <span class="number-of-cart2">{{\Cart::count()}}</span>
                 </div>
             </div>
 
@@ -108,15 +125,12 @@
                                                     <ul class="wstliststy02">
                                                         <li><img src="" alt=" "></li>
                                                         <li class="wstheading">Camera, Photo &amp; Video</li>
-                                                        <li><a href="{{route('Cameras')}}?type=accesories">Accessories <span class="wstcount">(1145)</span></a></li>
                                                         <li><a href="{{route('Cameras')}}?type=bags&cases">Bags &amp; Cases <span class="wstcount">(445)</span></a></li>
                                                         <li><a href="{{route('Cameras')}}?type=binoculars-scopes">Binoculars &amp; Scopes <span class="wstcount">(45)</span></a></li>
                                                         <li><a href="{{route('Cameras')}}?type=digital-cameras">Digital Cameras <span class="wstcount">(845)</span></a> </li>
                                                         <li><a href="{{route('Cameras')}}?type=film-photografy">Film Photography <span class="wstcount">(245)</span></a> <span class="wstmenutag bluetag">Popular</span></li>
                                                         <li><a href="{{route('Cameras')}}?type=flashes">Flashes <span class="wstcount">(105)</span></a></li>
                                                         <li><a href="{{route('Cameras')}}?type=lenses">Lenses <span class="wstcount">(445)</span></a></li>
-                                                        <li><a href="{{route('Cameras')}}?type=lightning-studio">Lighting &amp; Studio <span class="wstcount">(225)</span></a></li>
-                                                        <li><a href="{{route('Cameras')}}?type=video">Video <span class="wstcount">(145)</span></a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
                                                         <li><img src="" alt=" "></li>
@@ -149,7 +163,7 @@
                                                             <li><a href="{{route('Printers')}}?type=printer-faxing">Faxing </a> </li>
                                                             <li><a href="{{route('Printers')}}?type=printer-photo">Photo Printers</a> </li>
                                                             {{--<li><a href="#">Printing Only</a> </li>--}}
-                                                            <li><a href="#">Scanners</a> </li>
+                                                            <li><a href="{{route('Printers')}}?type=printer-scanners">Scanners</a> </li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
                                                         <div class="wstheading">Laptops <a href="#" class="wstmorebtn">View All</a></div>
@@ -332,7 +346,7 @@
                                             <li><a href="{{route('seeCart')}}"><i class="fa fa-shopping-cart"></i>My Cart</a></li>
                                         <li><a href="{{route('getWishlists')}}"><i class="fa fa-heart"></i>My Wishlist</a></li>
                                       {{--  <li><a href="#"><i class="fa fa-bell"></i>Notifications</a></li>--}}
-                                        <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>
+                                      {{--  <li><a href="#"><i class="fa fa-question-circle"></i>Help Center</a></li>--}}
                                     @if(Auth::user()->role == "admin")
                                             <li><a href="{{route('Admin')}}"><i class="fa fa-exclamation-triangle"></i>Admin Page</a></li>
                                     @endif

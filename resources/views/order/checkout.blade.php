@@ -260,7 +260,7 @@
                                         <?php foreach(Cart::content() as $row) :?>
                                         <tr>
                                             <td>
-                                                <img src="images/product-slide/product2.png" width="50" alt="image sau nu ?" class="img img-thumbnail pull-left">
+                                                <img src="http://127.0.0.1:8000/uploads/{{App\Http\Controllers\Product\ProductController::getProductImage($row->name)}}" width="50" alt="no image?" class="img img-thumbnail pull-left">
                                                 <span class="pull-left cart-product-option"></span>
 
                                                 <strong><?php echo $row->name ?></strong><br />
@@ -269,7 +269,7 @@
                                                 <div class="clearfix"></div>
                                             </td>
                                             <td>{{$row->qty}}</td>
-                                            <td>{{$row->price}}</td>
+                                            <td>{{$row->price}}$</td>
                                             <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
                                         </tr>
                                         <?php endforeach;?>
@@ -278,7 +278,7 @@
                                     {{--/////////////////////--}}
                                     <tr>
                                         <td></td>
-                                        <td colspan="1"><strong>Total:</strong></td>
+                                        <td colspan="1"><strong>Total (10% Tax):</strong></td>
                                         <td></td>
                                         <td>
                                             <p><span class="total_product_sum">{{\App\Http\Controllers\Cart\CartController::cartTotal()}}$</span></p>

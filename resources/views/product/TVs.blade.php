@@ -48,7 +48,7 @@
                                                         <div class="product-price">
                                                             <a href="{{route('product', ['id' => $product->id])}}">{{$product->title}}</a><br />
                                                             <span class="prev-price">
-                                                    <del>200$</del>
+
                                                 </span>
                                                             <span class="current-price">
                                                     {{$product->price}} $

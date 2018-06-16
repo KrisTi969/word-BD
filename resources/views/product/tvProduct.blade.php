@@ -60,7 +60,6 @@ use Jorenvh\Share\Share;
                                         @endforeach
                                     @endif
                                 </ul>
-
                             </div>
                         </div>
                         <div class="col-md-6 single-top-right">
@@ -68,9 +67,9 @@ use Jorenvh\Share\Share;
                             @if($product->quantity > 0 && $product->quantity > 10)
                                 <?php echo '<span class="Whitish">Quantity had: <span style="color: green;">More than 10 available</span> </p>' ?>
                             @elseif($product->quantity >0 && $product->quantity < 10)
-                                <?php echo '<span class="Whitish">Quantity had: <span style="color: yellow;">Less than 10 available</span>(10+) </p>' ?>
+                                <?php echo '<span class="Whitish">Quantity had: <span style="color: yellow;">Less than 10 available</span> </p>' ?>
                             @elseif($product->quantity <= 0)
-                                <?php echo '<span class="Whitish">Quantity had: <span style="color: darkred;">suficient</span>(10+) </p>' ?>
+                                <?php echo '<span class="Whitish">Quantity had: <span style="color: darkred;">Out of stock</span></p>' ?>
                                 <div class="single-rating Whitish">
                                     @endif
                             <div class="single-rating Whitish">
@@ -237,7 +236,7 @@ use Jorenvh\Share\Share;
                                             <div class="form-group" id="idGroup">
                                                 <label class="col-md-2 control-label"for="id">Star number:</label>
                                                 <div class="col-md-10">
-                                                    <input type="number" name="rating" id="rating" class="rating" data-max="5" data-min="1" data-clearable="remove" data-empty-value="0"/>
+                                                    <input type="number" name="rating" id="rating" class="rating" data-max="5" data-min="1" data-clearable="remove" data-empty-value="0" required/>
                                                     <span class="help-block"></span>
                                                 </div>
                                             </div>
