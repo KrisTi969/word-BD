@@ -72,7 +72,7 @@
                     $request.always(function() {
                         $container.removeClass('loading');
                     });
-
+                    location.reload();
                     /**/
                 }
             }
@@ -116,6 +116,7 @@
                     $request.always(function() {
                         $container.removeClass('loading');
                     });
+                    location.reload();
 
                     /**/
                 }

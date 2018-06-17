@@ -132,8 +132,6 @@ Route::get('/Games', 'Product\AllProducts@getGames')->name('Games');
 Route::get('/Music', 'Product\AllProducts@getMusic')->name('Music');
 
 ////
-
-
 Route::get("/autocomplete",array('as'=>'autocomplete','uses'=> 'Api\SearchController@autocomplete'));
 });
 /*

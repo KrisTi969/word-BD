@@ -5,6 +5,8 @@ $(function() {
         return (email.match(r) == null) ? false : true;
     }
 
+
+
     $(".submitOrder").click(function() {
         /*var dataFields = { 'checkoutEmail': checkoutEmail, 'checkoutContact': checkoutContact ,'shipping_name':shipping_name, 'shipping_country':shipping_country, 'shipping_contact':shipping_contact,
             'shipping_address':shipping_address, 'shipping_postal':shipping_postal, 'shipping_notes':shipping_notes, 'payment':payment
@@ -56,10 +58,10 @@ $(function() {
             },
             timeout: 3000,
             success: function(dataBack){ // if success
-                alert("Succes");
+                    $('#success-msg').removeClass('hidden');
+                $('#myModal').modal('show');
             },
             error: function() { // if error
-                alert("Probliem comrade");
             }
         });
         //   }

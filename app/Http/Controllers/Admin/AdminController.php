@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Jobs\SendApprovedOrderMail;
 use App\Jobs\SendCommentApprovedOrDelete;
+use App\Jobs\SendCommentDelete;
 use App\Jobs\SendCommentMail;
+use App\Jobs\SendRefusedOrder;
+use App\Model\Order;
 use App\Product;
 use Intervention\Image\Image;
 use Matriphe\Imageupload\Imageupload;
@@ -291,7 +295,7 @@ class AdminController extends Controller
             $comment = Comment::where('id',$request->id)->first();
             $product = Product::where('id',$comment->commentable_id)->first();
             $user = User::where('id',$comment->commented_id)->first();
-            dispatch(new SendCommentMail($user,$comment,$product));
+            dispatch(new SendCommentDelete($user,$product));
 
             DB::table('comments')->where('id','=',$request->id)->delete();
 
@@ -304,16 +308,18 @@ class AdminController extends Controller
 
 
     public function deleteOrder(Request $request) {
+        $order = Order::where('id',$request->id)->first();
+        dispatch(new SendRefusedOrder($order));
         try {
-            DB::table('orders')->where('id','=',$request->id)->delete();
-            DB::table('order_items')->where('order_id','=',$request->id)->delete();
+            /*
+                        DB::table('orders')->where('id','=',$request->id)->delete();
+                        DB::table('order_items')->where('order_id','=',$request->id)->delete();*/
             return Response::json(['success' => '1']);
         }
         catch (\SQLiteException $e) {
             return Response::json(['errors' => '1']);
         }
     }
-
 
     public function deleteProduct(Request $request)
     {
@@ -389,6 +395,23 @@ class AdminController extends Controller
             DB::table('orders')
                 ->where('id', $request->id)
                 ->update(['status' => 'Sent to Courier']);
+
+
+
+            $order = Order::where('id',$request->id)->get();
+            $products = collect();//cream colectie noua
+            foreach ($order as $item){
+                $prodnou = DB::table('order_items')
+                    ->select(DB::raw('*'))
+                    ->where('order_id', '=', $item->id)
+                    ->get();
+                foreach ($prodnou as $prod){
+                    $products->push($prod);//adaugam produsul la lista de produse ale repectivului user
+                }
+            }
+            $order = Order::where('id',$request->id)->first();
+
+            dispatch(new SendApprovedOrderMail($order,$products));
             return Response::json(['success' => '1']);
         }
         catch (\SQLiteException $e) {

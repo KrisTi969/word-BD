@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+    @include('layouts.head')
     <meta name="viewport" content="width=device-width" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Simple Transactional Email</title>
@@ -290,10 +291,10 @@
                         <td class="wrapper">
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
-                                    <td>
-                                        <p>Hi there, {{$user->name}}</p>
-                                        <p>A recent review you submitted has been reviewed by one of our moderators.</p>
-                                        <p>You can see it on the {{$product->title}} page, below, by pressing the button.</p>
+                                    <p>
+                                        <p>Hi there, {{$order->shipping_name}}</p>
+                                        <p>A recent order with number:{{$order->number}} has been reviewed and approved by one of our moderators.</p>
+                                        <p>You can see the products below:</p>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>
                                             <tr>
@@ -302,7 +303,7 @@
                                                         <tbody>
 
                                                         <tr><td></td>
-                                                            <td> <a href="http://127.0.0.1:8000/Product/{{$product->id}}" target="_blank">Product page</a> </td>
+                                                          {{--  <td> <a href="http://127.0.0.1:8000" target="_blank">Product page</a> </td>--}}
                                                             <td></td>
                                                         </tr>
                                                         </tbody>
@@ -311,9 +312,33 @@
                                             </tr>
                                             </tbody>
                                         </table>
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Category</th>
+                                            <th>Name</th>
+                                            <th>Quantity</th>
+                                            <th>Price</th>
+
+                                        </tr>
+                                        </thead>
+                                        @foreach($products as $product)
+                                            @if($product->order_id == $order->id)
+                                                <tbody>
+                                                <tr>
+                                                    <td>{{$product->product_type}}</td>
+                                                    <td>{{$product->name}}</td>
+                                                    <td>{{$product->quantity}}</td>
+                                                    <td>{{$product->price}}</td>
+                                                </tr>
+
+                                                </tbody>
+                                            @endif
+                                        @endforeach
+                                    </table>
+                                    <br><br><br>
                                         <p>Thank you for using our services!</p>
                                         <p>Good day!</p>
-                                    </td>
                                 </tr>
                             </table>
                         </td>

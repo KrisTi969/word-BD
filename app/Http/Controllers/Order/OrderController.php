@@ -70,8 +70,10 @@ class OrderController extends Controller
         $order = Order::where('number','=',$number)->first();
         /*var_dump($order->number);*/
 
-
         foreach (\Cart::content() as $product) {
+
+            \Cart::remove($product->rowId);
+
             DB::insert('insert into order_items (order_id, product_type,product_id, name, quantity, price)
             values (?, ?, ?, ?, ?, ?)', [$order->id, $this->getProductType($product->name), $product->id, $product->name, $product->qty, $product->price]);
 
@@ -80,8 +82,17 @@ class OrderController extends Controller
 
             $query->decrement('quantity',intval($product->quantity));
         }
+
+        foreach (\Cart::content() as $product) {
+
+            $query = DB::table('products')
+                ->where('title', '=', $product->name);
+            $query->decrement('quantity', intval($product->quantity));
+        }
+
         return view('order.orderSent');
     }
+
 
     public function verifyOrder(Request $request) {
 

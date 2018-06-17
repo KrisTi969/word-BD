@@ -293,7 +293,7 @@
                                     <td>
                                         <p>Hi there, {{$user->name}}</p>
                                         <p>A recent review you submitted has been reviewed by one of our moderators.</p>
-                                        <p>You can see it on the {{$product->title}} page, below, by pressing the button.</p>
+                                        <p>We are sorry to announce you but the review you entered for {{$product->title}}, has been deemed inappropriate.</p>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                                             <tbody>
                                             <tr>
@@ -302,7 +302,7 @@
                                                         <tbody>
 
                                                         <tr><td></td>
-                                                            <td> <a href="http://127.0.0.1:8000/Product/{{$product->id}}" target="_blank">Product page</a> </td>
+                                                            <td> <a href="http://127.0.0.1:8000" target="_blank">Skyshop</a> </td>
                                                             <td></td>
                                                         </tr>
                                                         </tbody>
@@ -328,7 +328,7 @@
                         <tr>
                             <td class="content-block">
                                 <span class="apple-link">Skyshop Inc</span>
-                                <br>Jinga Cristian Lucian
+                                <br> Jinga Cristian Lucian
                             </td>
                         </tr>
                         <tr>

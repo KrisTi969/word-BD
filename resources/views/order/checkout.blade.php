@@ -17,9 +17,6 @@
 
     <div class="content-area">
         <div class="container">
-
-
-
             <div class="checkout-page">
                 <h2>Checkout  process</h2>
                 <div class="checkout-top-ok">
@@ -220,13 +217,11 @@
                         </div> <!-- End check2 for non loggged in-->
                     @endif
                     <div id="check3" class="hidden">
-
                         <h3>Payment Method Informations</h3>
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="address_primary">Select Payment Option: *</label>
                             <div class="col-sm-10">
-                                <select name="payment" id="payment" class="form-control inputs"  required>
-                                    <option value="">Select A payment method</option>
+                                <select name="payment" id="payment" class="form-control inputs" required>
                                     <option value="cash">Cash on arrival</option>
                                     <option value="paypal">Paypal</option>
                                     <option value="stripe">Stripe</option>
@@ -310,6 +305,32 @@
         </div> <!-- End Container -->
 
     </div> <!-- End content Area class -->
+    <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Thanks for shopping with us!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="success-msg" class="hidden">
+                            <div class="alert alert-info alert-dismissible fade in" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <strong>Success!</strong> The order has been sent successfully !!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @include('layouts.footer')
 
@@ -330,6 +351,11 @@
 <script type="text/javascript" src="{{asset('js/order.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
+<script>
+    $('#myModal').on('hidden.bs.modal', function () {
+        location.replace('http://127.0.0.1:8000/');
+    });
+</script>
 <script>
     jQuery('#submit_check2').click(function(e){
         // jQuery('.alert').show();

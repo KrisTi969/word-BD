@@ -7,23 +7,19 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class CommentMail extends Mailable
+class RefusedOrder extends Mailable
 {
     use Queueable, SerializesModels;
-    protected $user;
-    protected $comment;
-    protected $product;
+    protected $order;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-
-    public function __construct($user,$comment,$product)
+    public function __construct($order)
     {
-        $this->user = $user;
-        $this->comment = $comment;
-        $this->product = $product;
+        $this->order = $order;
     }
 
     /**
@@ -33,6 +29,6 @@ class CommentMail extends Mailable
      */
     public function build()
     {
-        return $this->view('email.comment')->with(['user'=>$this->user])->with(['product' => $this->product]);
+        return $this->view('email.order-rejected')->with(['order'=>$this->order]);
     }
 }
