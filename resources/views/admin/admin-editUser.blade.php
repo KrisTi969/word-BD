@@ -614,6 +614,9 @@
                     if (data.errors.email) {
                         $('#email-error').html(data.errors.email[0]);
                     }
+                    if (data.errors.country) {
+                        $('#country-error').html(data.errors.country[0]);
+                    }
                 }
                 if (data.success) {
                     changesMade = true;

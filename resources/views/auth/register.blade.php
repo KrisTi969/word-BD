@@ -482,7 +482,7 @@
                     address: jQuery('#address').val(),
                     city: jQuery('#city').val(),
                     postal_code: jQuery('#postal_code').val(),
-                    country: jQuery('#country').val()
+                    country: jQuery('#country option:selected').text()
                 },
                 success:function(data) {
                     console.log(data);

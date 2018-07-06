@@ -125,18 +125,18 @@
                                                     <ul class="wstliststy02">
                                                         <li><img src="" alt=" "></li>
                                                         <li class="wstheading">Camera, Photo &amp; Video</li>
-                                                        <li><a href="{{route('Cameras')}}?type=bags&cases">Bags &amp; Cases <span class="wstcount">(445)</span></a></li>
-                                                        <li><a href="{{route('Cameras')}}?type=binoculars-scopes">Binoculars &amp; Scopes <span class="wstcount">(45)</span></a></li>
-                                                        <li><a href="{{route('Cameras')}}?type=digital-cameras">Digital Cameras <span class="wstcount">(845)</span></a> </li>
-                                                        <li><a href="{{route('Cameras')}}?type=film-photografy">Film Photography <span class="wstcount">(245)</span></a> <span class="wstmenutag bluetag">Popular</span></li>
-                                                        <li><a href="{{route('Cameras')}}?type=flashes">Flashes <span class="wstcount">(105)</span></a></li>
-                                                        <li><a href="{{route('Cameras')}}?type=lenses">Lenses <span class="wstcount">(445)</span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=bags-cases">Bags &amp; Cases <span class="wstcount"></span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=binoculars-scopes">Binoculars &amp; Scopes <span class="wstcount"></span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=digital-cameras">Digital Cameras <span class="wstcount"></span></a> </li>
+                                                        <li><a href="{{route('Cameras')}}?type=film-photografy">Film Photography <span class="wstcount"></span></a> <span class="wstmenutag bluetag">Popular</span></li>
+                                                        <li><a href="{{route('Cameras')}}?type=flashes">Flashes <span class="wstcount"></span></a></li>
+                                                        <li><a href="{{route('Cameras')}}?type=lenses">Lenses <span class="wstcount"></span></a></li>
                                                     </ul>
                                                     <ul class="wstliststy02">
                                                         <li><img src="" alt=" "></li>
                                                         <li class="wstheading">Smartphones &amp; Accessories</li>
                                                         <li><a href="{{route('Smartphones')}}?type=smartphone">Smartphones</a></li>
-                                                        <li><a href="{{route('Smartphones')}}?type=smartwatches">Smartwatches </a></li>
+                                                        <li><a href="{{route('Smartphones')}}?type=smartwatch">Smartwatches </a></li>
                                                         <li><a href="{{route('Smartphones')}}?type=phonecase">Phone Cases</a> <span class="wstmenutag orangetag">Hot</span></li>
                                                         <li><a href="{{route('Smartphones')}}?type=bluetooth-headset">Bluetooth Headsets</a></li>
                                                         <li><a href="{{route('Smartphones')}}?type=smartphone-accesories">Smartphone Accessories</a></li>
@@ -149,14 +149,14 @@
                                             <li class=""><span class="wsmenu-click02"><i class="wsmenu-arrow fa fa-angle-down"></i></span><a href="{{route('Computers-and-Accesories')}}"><i class="fa fa-laptop"></i>Computers &amp; Accessories</a>
                                                 <div class="wstitemright clearfix computermenubg" style="height: auto;">
                                                     <div class="wstmegamenucoll01 clearfix">
-                                                        <div class="wstheading">Monitors <a href="#" class="wstmorebtn">View All</a></div>
+                                                        <div class="wstheading">Monitors <a href="{{route('Monitors')}}" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
                                                             <li><a href="{{route('Monitors')}}?sizeMin=15.5&sizeMax=30">15.5 - 30inch <span class="wstmenutag greentag">New</span></a></li>
                                                             <li><a href="{{route('Monitors')}}?sizeMin=30&sizeMax=40">30 - 40inch </a></li>
                                                             <li><a href="{{route('Monitors')}}?sizeMin=40&sizeMax=70">40+inch</a></li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
-                                                        <div class="wstheading">Printers <a href="#" class="wstmorebtn">View All</a></div>
+                                                        <div class="wstheading">Printers <a href="{{route('Printers')}}" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
                                                             <li><a href="{{route('Printers')}}?type=printer-all-in-one">All-In-One</a> </li>
                                                             <li><a href="{{route('Printers')}}?type=printer-photo">Copying </a> <span class="wstmenutag orangetag">Exclusive</span></li>
@@ -166,7 +166,7 @@
                                                             <li><a href="{{route('Printers')}}?type=printer-scanners">Scanners</a> </li>
                                                         </ul>
                                                         <div class="cl" style="height:8px;"></div>
-                                                        <div class="wstheading">Laptops <a href="#" class="wstmorebtn">View All</a></div>
+                                                        <div class="wstheading">Laptops <a href="{{route('Laptops')}}" class="wstmorebtn">View All</a></div>
                                                         <ul class="wstliststy03">
                                                             <li><a href="{{route('Laptops')}}?type=laptop-gaming">Gaming laptops</a> </li>
                                                                 <li><a href="{{route('Laptops')}}?type=laptop-ultrabooks">Ultrabooks</a> <span class="wstmenutag orangetag">Exclusive</span></li>

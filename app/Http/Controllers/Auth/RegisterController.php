@@ -82,12 +82,12 @@ class RegisterController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|regex:/^[a-zA-Z]+$/u|max:60|unique:users,name,',
-            'lname' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'lname' => 'required|regex:/^[ a-zA-Z]+$/u|max:50|',
             'username' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'email' => 'required|string|email|max:100|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'birthdate' => 'required|string',
-            'address' => 'required|regex:/^[ a-zA-Z]+$/u|max:100|',
+            'address' => 'required|regex:/^[ ,.a-zA-Z0-9]+$/u|max:100|',
             'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'postal_code' => 'required|regex:/^[0-9]+$/u|max:18|',
             'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',

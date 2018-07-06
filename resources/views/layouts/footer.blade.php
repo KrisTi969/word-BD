@@ -85,7 +85,7 @@ if($file_name != "index.blade.php") {
 
 <div class="footer-bottom">
     <p class="footer-credit">
-        &copy;<script type="text/javascript">document.write(new Date().getFullYear())</script> - All rights reserved <a href="#">SkyShop</a> </a>
+        &copy;<script type="text/javascript">document.write(new Date().getFullYear())</script> - All rights reserved <a href="{{route('/')}}">SkyShop</a> </a>
     </p>
 </div> <!--End Footer bottom -->
 

@@ -16,7 +16,7 @@
     @include('layouts.header')
     <!--Login form-->
         <div>
-            <p>De vazut ce facem apoi dupa succes</p>
+            <p></p>
         </div>
         <!--End Login form-->
         @include('layouts.footer')

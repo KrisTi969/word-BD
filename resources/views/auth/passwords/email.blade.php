@@ -20,7 +20,7 @@
         <div class="row col-md-offset-3">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header col-md-offset-4 Whitish \" >Reset Password</div>
+                    <div class="card-header col-md-offset-4 Whitish \">Reset Password</div>
                     <br><br><br>
 
                     <div class="card-body">
@@ -55,6 +55,7 @@
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

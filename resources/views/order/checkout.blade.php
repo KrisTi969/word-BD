@@ -6,14 +6,14 @@
  * Time: 15:09
  */
 ?>
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html>
 @include('layouts.head')
 <body>
 <div class="wrapper">
     <!-- Header part  -->
-    @include('layouts.header')
-    <!-- Header part  -->
+@include('layouts.header')
+<!-- Header part  -->
 
     <div class="content-area">
         <div class="container">
@@ -29,25 +29,25 @@
                     <div id="check1">
                         <h3>Basic Informations</h3>
                         @if(!Auth::check())
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="checkoutEmail">Email: *</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control inputs" id="checkoutEmail" placeholder="Enter email"  required/>
-                                <span class="text-danger">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="checkoutEmail">Email: *</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control inputs" id="checkoutEmail" placeholder="Enter email"  required/>
+                                    <span class="text-danger">
                                         <strong id="mail-error"></strong>
                                     </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="checkoutContact">Contact: *</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control inputs" id="checkoutContact" placeholder="Enter phone number"  required/>
-                                <span class="text-danger">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="checkoutContact">Contact: *</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputs" id="checkoutContact" placeholder="Enter phone number"  required/>
+                                    <span class="text-danger">
                                         <strong id="contact-error"></strong>
                                     </span><br>
-                                <span class="input-hint">Phone number</span>
+                                    <span class="input-hint">Phone number</span>
+                                </div>
                             </div>
-                        </div>
                         @else
                             <div class="form-group">
                                 <label class="control-label col-sm-2" for="checkoutEmail">Email: *</label>
@@ -78,71 +78,71 @@
                     </div> <!-- End check1 -->
 
                     @if(Auth::check())
-                    <div id="check2" class="hidden">
-                        <h3>Shipping Address Informations</h3>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="shipping_name">Shipping Name: *</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control inputs" id="shipping_name" value="{{Auth::user()->name . " " .  Auth::user()->lname}}" placeholder="Enter Your Shipping Name"  required/>
-                                <span class="text-danger">
+                        <div id="check2" class="hidden">
+                            <h3>Shipping Address Informations</h3>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="shipping_name">Shipping Name: *</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputs" id="shipping_name" value="{{Auth::user()->name . " " .  Auth::user()->lname}}" placeholder="Enter Your Shipping Name"  required/>
+                                    <span class="text-danger">
                                         <strong id="shipping_name-error"></strong>
                                     </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="shipping_country">Country: *</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control inputs" value="{{Auth::user()->country}}" id="shipping_country" placeholder="Enter Your Country"  required/>
-                                <span class="text-danger">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="shipping_country">Country: *</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputs" value="{{Auth::user()->country}}" id="shipping_country" placeholder="Enter Your Country"  required/>
+                                    <span class="text-danger">
                                         <strong id="shipping_country-error"></strong>
                                     </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="shipping_city">Shipping City: *</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control inputs" value="{{Auth::user()->city}}" id="shipping_city" placeholder="Enter Your Shipping City "  required/>
-                                <span class="text-danger">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="shipping_city">Shipping City: *</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputs" value="{{Auth::user()->city}}" id="shipping_city" placeholder="Enter Your Shipping City "  required/>
+                                    <span class="text-danger">
                                         <strong id="shipping_city-error"></strong>
                                     </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="shipping_address">Shipping Address: *</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control inputs" value="{{Auth::user()->address}}" id="shipping_address" placeholder="Enter Your Shipping Address"  required/>
-                                <span class="text-danger">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="shipping_address">Shipping Address: *</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputs" value="{{Auth::user()->address}}" id="shipping_address" placeholder="Enter Your Shipping Address"  required/>
+                                    <span class="text-danger">
                                         <strong id="shipping_address-error"></strong>
                                     </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="shipping_postal">Postal Code: *</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control inputs" value="{{Auth::user()->postal_code}}" id="shipping_postal" placeholder="Enter Your Postal Code"  required/>
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="shipping_postal">Postal Code: *</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control inputs" value="{{Auth::user()->postal_code}}" id="shipping_postal" placeholder="Enter Your Postal Code"  required/>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="shipping_notes">Notes: *</label>
-                            <div class="col-sm-10">
-                                <textarea class="form-control inputs"  id="shipping_notes" placeholder="Enter Additional Details"></textarea>
-                                <span class="text-danger">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2" for="shipping_notes">Notes: *</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control inputs"  id="shipping_notes" placeholder="Enter Additional Details"></textarea>
+                                    <span class="text-danger">
                                         <strong id="shipping_notes-error"></strong>
                                     </span>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-sm-10 col-sm-offset-2">
-                                <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn2" id="submit_check2" name="submit_check2" value="Next..."/>
+                            <div class="form-group">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <input type="button" class="btn btn-info pull-right  margin-top-20 checkbtn2" id="submit_check2" name="submit_check2" value="Next..."/>
 
-                                <input type="button" class="btn btn-danger pull-right  margin-top-20 margin-right-20 backToCheck1" name="backToCheck1" value="Back"/>
-                                <div class="clearfix"></div>
+                                    <input type="button" class="btn btn-danger pull-right  margin-top-20 margin-right-20 backToCheck1" name="backToCheck1" value="Back"/>
+                                    <div class="clearfix"></div>
+                                </div>
                             </div>
-                        </div>
-                    </div> <!-- End check2 -->
+                        </div> <!-- End check2 -->
                     @else
                         <div id="check2" class="hidden">
 
@@ -252,22 +252,22 @@
                                     </thead>
                                     <tbody>
                                     {{--/////////////////////--}}
-                                        <?php foreach(Cart::content() as $row) :?>
-                                        <tr>
-                                            <td>
-                                                <img src="http://127.0.0.1:8000/uploads/{{App\Http\Controllers\Product\ProductController::getProductImage($row->name)}}" width="50" alt="no image?" class="img img-thumbnail pull-left">
-                                                <span class="pull-left cart-product-option"></span>
+                                    <?php foreach(Cart::content() as $row) :?>
+                                    <tr>
+                                        <td>
+                                            <img src="http://127.0.0.1:8000/uploads/{{App\Http\Controllers\Product\ProductController::getProductImage($row->name)}}" width="50" alt="no image?" class="img img-thumbnail pull-left">
+                                            <span class="pull-left cart-product-option"></span>
 
-                                                <strong><?php echo $row->name ?></strong><br />
+                                            <strong><?php echo $row->name ?></strong><br />
 
-                                                </span>
-                                                <div class="clearfix"></div>
-                                            </td>
-                                            <td>{{$row->qty}}</td>
-                                            <td>{{$row->price}}$</td>
-                                            <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
-                                        </tr>
-                                        <?php endforeach;?>
+                                            </span>
+                                            <div class="clearfix"></div>
+                                        </td>
+                                        <td>{{$row->qty}}</td>
+                                        <td>{{$row->price}}$</td>
+                                        <td><p class="total_ammount_p1">{{$row->price*$row->qty}}$</p></td>
+                                    </tr>
+                                    <?php endforeach;?>
 
 
                                     {{--/////////////////////--}}
@@ -353,7 +353,23 @@
 <script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
 <script>
     $('#myModal').on('hidden.bs.modal', function () {
-        location.replace('http://127.0.0.1:8000/');
+        location.replace('http://127.0.0.1:8000/home');
+    });
+
+    $('#myModal').on('show.bs.modal', function (e) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
+        jQuery.ajax({
+            url: "{{ route('deleteCart')}}",
+            method: 'get',
+            dataType: "json",
+            success:function(data) {
+                console.log(data);
+                }
+        });
     });
 </script>
 <script>

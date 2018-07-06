@@ -119,11 +119,11 @@ class AccountController extends Controller
     public function editContact(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:60|unique:users,name,',
-            'lname' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:60',
+            'lname' => 'required|regex:/^[ a-zA-Z]+$/u|max:50|',
             'username' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'birthdate' => 'required|string',
-            'address' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
+            'address' => 'required|regex:/^[ ,.a-zA-Z0-9]+$/u|max:50|',
             'city' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',
             'postal_code' => 'required|regex:/^[0-9]+$/u|max:18|',
             'country' => 'required|regex:/^[a-zA-Z]+$/u|max:50|',

@@ -57,6 +57,8 @@ Route::post('/newOrder', 'Order\OrderController@newOrder')->name('newOrder');
 Route::post('/verifyOrder','Order\OrderController@verifyOrder')->name('verifyOrder');
 Route::post('/verifyOrderStep2','Order\OrderController@verifyOrder2')->name('verifyOrder2');
 
+Route::get('/deleteCart','Order\OrderController@deleteCart')->name('deleteCart');
+
 Route::post('/addReview', 'Product\ProductController@addReview');
 
 Route::get('/AccountCart', 'Cart\CartController@index')->name('seeCart');
@@ -73,6 +75,8 @@ Route::post('/updateItem/','Cart\CartController@updateProductQty')->name('update
 
 
 Route::get('/', 'Index\IndexController@index')->name('/');
+
+Route::get('/home', 'Index\IndexController@index2')->name('fromOrder');
 
 Route::get('/search/{search?}', 'Api\SearchController@search')->name('search');
 Route::get('/search-param/new/{search?}', 'Product\AllProducts@getAllProductsWithFilterNew')->name('All-Products-New');

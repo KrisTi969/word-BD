@@ -78,7 +78,7 @@
                 <br>
                 <a role="button" onclick="addOrReplace('producer','Samsung')"><span></span>Samsung</a><br/>
                 <br>
-                <a role="button" onclick="addOrReplace('producer','Sony')"><span></span>Apple</a><br/>
+                <a role="button" onclick="addOrReplace('producer','Apple')"><span></span>Apple</a><br/>
                 <br>
                 <a role="button" onclick="addOrReplace('producer','LG')"><span></span>LG</a><br/>
                 <br>

@@ -57,6 +57,9 @@ class LoginController extends Controller
 
         $user = User::where('email', $request->email)->first();
         $userp = User::where('password', bcrypt($request->password))->first();
+        if($validator->passes() && $user->verified === 0){
+            return Response::json(['errors' => 'The account is not verified !']);
+        }
         if ($validator->passes() & !$user )
             {
                 return Response::json(['errors' => 'This email does not exist !']);
@@ -65,7 +68,7 @@ class LoginController extends Controller
         {
             return Response::json(['errors' => 'Wrong password !']);
         }
-        if ($validator->passes() & isset($user) & isset($userp)) {
+        if ($validator->passes() && isset($user) && isset($userp)) {
             if($user->verified === 0) {
                 return Response::json(['errors' => 'The account is not verified !']);
             }

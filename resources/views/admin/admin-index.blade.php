@@ -32,7 +32,7 @@
                                             @endif
                                                 @if(\App\Http\Controllers\Admin\AdminController::countUncheckedComments()== 0 )
                                                     <div class="huge">{{\App\Http\Controllers\Admin\AdminController::countUncheckedComments()}}</div>
-                                                    <div>There are no new comments</div>
+                                                    <div>No new comments</div>
                                                 @endif
                                         </div>
                                     </div>
@@ -133,16 +133,16 @@
                 </div>
             </div>
         </div>
-
+        </div>
 
 
 
 
         <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="{{asset('js/jquery-1.12.0.min.js')}}"></script>
          <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+       {{--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
          <script type="text/javascript">
              $(document).ready(function () {
                  $('#sidebarCollapse').on('click', function () {

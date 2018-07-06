@@ -46,7 +46,7 @@
                                         <p>Last Name : {{\Auth::user()->lname}}</p>
                                         <p>Email : {{\Auth::user()->email}}</p>
                                         <p>Username : {{\Auth::user()->username}}</p>
-                                        <p>Birthdate : {{\Auth::user()->birthdate}}</p>
+                                        <p>Birthdate : 05-07-1992</p>
                                         <p>Address : {{\Auth::user()->address}}</p>
                                         <p>City : {{\Auth::user()->city}}</p>
                                         <p>postal_code : {{\Auth::user()->postal_code}}</p>
@@ -85,7 +85,7 @@
                                                         <div class="form-group row">
                                                             <label for="name" class="col-sm-2 form-control-label " >First Name:</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="name" class="form-control" id="name" placeholder="{{\Auth::user()->name}}"  minlength="2" required oninput="myFunction('#name-error')">
+                                                                <input type="text" name="name" class="form-control" id="name" value="{{\Auth::user()->name}}"  minlength="2" required oninput="myFunction('#name-error')">
                                                                 <span class="text-danger">
                                                                     <strong id="name-error"></strong>
                                                                 </span>
@@ -95,7 +95,7 @@
                                                         <div class="form-group row">
                                                             <label for="lastname" class="col-sm-2 form-control-label ">Last Name:</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="lname" class="form-control" id="lname" placeholder="{{\Auth::user()->lname}}" minlength="2" required oninput="myFunction('#lname-error')">
+                                                                <input type="text" name="lname" class="form-control" id="lname" value="{{\Auth::user()->lname}}" minlength="2" required oninput="myFunction('#lname-error')">
 
                                                                 <span class="text-danger">
                                                                     <strong id="lname-error"></strong>
@@ -108,7 +108,7 @@
                                                         <div class="form-group row">
                                                             <label for="username" class="col-sm-2 form-control-label ">Username:</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="username" class="form-control" id="username" placeholder="{{\Auth::user()->username}}" oninput="myFunction('#username-error')">
+                                                                <input type="text" name="username" class="form-control" id="username" value="{{\Auth::user()->username}}" oninput="myFunction('#username-error')">
 
                                                                 <span class="text-danger">
                                                                     <strong id="username-error"></strong>
@@ -121,7 +121,7 @@
                                                             <label for="birthdate" class="col-sm-2 form-control-label ">Birthdate:</label>
                                                             <div class="col-sm-8">
                                                                 <div class='input-group date'>
-                                                                    <input type='text' class="form-control" placeholder="{{\Auth::user()->birthdate}}" name="birthdate" id="birthdate" oninput="myFunction('#birthdate-error')"/>
+                                                                    <input type='text' class="form-control" value="05-07-1992" name="birthdate" id="birthdate" oninput="myFunction('#birthdate-error')"/>
 
 
                                                                     <span class="text-danger">
@@ -137,7 +137,7 @@
                                                         <div class="form-group row">
                                                             <label for="address-line" class="col-sm-2 form-control-label ">Address:</label>
                                                             <div class="col-sm-8" id="address-line">
-                                                                <input type='text' class="form-control" placeholder="{{\Auth::user()->address}}" name="address" id="address" oninput="myFunction('#address_line-error')"/>
+                                                                <input type='text' class="form-control" value="{{\Auth::user()->address}}" name="address" id="address" oninput="myFunction('#address_line-error')"/>
 
                                                                 <span class="text-danger">
                                                                     <strong id="address_line-error"></strong>
@@ -150,7 +150,7 @@
                                                         <div class="form-group row">
                                                             <label for="city" class="col-sm-2 form-control-label ">City:</label>
                                                             <div class="col-sm-8">
-                                                                <input type='text' class="form-control" placeholder="{{\Auth::user()->city}}" name="city" id="city" oninput="myFunction('#city-error')"/>
+                                                                <input type='text' class="form-control" value="{{\Auth::user()->city}}" name="city" id="city" oninput="myFunction('#city-error')"/>
 
                                                                 <span class="text-danger">
                                                                     <strong id="city-error"></strong>
@@ -163,7 +163,7 @@
                                                         <div class="form-group row">
                                                             <label for="phone_number" class="col-sm-2 form-control-label ">Phone Number:</label>
                                                             <div class="col-sm-8">
-                                                                <input type='text' class="form-control" placeholder="{{\Auth::user()->phone_number}}" name="phone_number" id="phone_number" oninput="myFunction('#phone_number-error')"/>
+                                                                <input type='text' class="form-control" value="{{\Auth::user()->phone_number}}" name="phone_number" id="phone_number" oninput="myFunction('#phone_number-error')"/>
 
                                                                 <span class="text-danger">
                                                                     <strong id="phone_number-error"></strong>
@@ -177,7 +177,7 @@
                                                         <div class="form-group row">
                                                             <label for="cp" class="col-sm-2 form-control-label ">Postal code:</label>
                                                             <div class="col-sm-8" id="cp">
-                                                                <input type='number' class="form-control" placeholder="{{\Auth::user()->postal_code}}" name="postal_code" id="postal_code" oninput="myFunction('#cp-error')">
+                                                                <input type='number' class="form-control" value="{{\Auth::user()->postal_code}}" name="postal_code" id="postal_code" oninput="myFunction('#cp-error')">
 
                                                                 <span class="text-danger">
                                                                     <strong id="cp-error"></strong>
@@ -511,7 +511,7 @@
                     address: jQuery('#address').val(),
                     city: jQuery('#city').val(),
                     postal_code: jQuery('#postal_code').val(),
-                    country: jQuery('#country').val()
+                    country: jQuery('#country option:selected').text()
                 },
                 success:function(data) {
                     console.log(data);

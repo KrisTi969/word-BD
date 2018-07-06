@@ -22,7 +22,7 @@
                     <div class="panel panel-default">
                         <div class=”panel-heading”>Registration Confirmed</div>
                         <div class=”panel-body”>
-                            Your Email is successfully verified. Click here to <a href="http://localhost:8000/login">login</a>
+                            Your Email is successfully verified. Click here to <a href="http://127.0.0.1:8000/login">login</a>
                         </div>
                     </div>
                 </div>

@@ -104,10 +104,12 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4">
+                                            @if(Cart::total()>0)
                                             <a href="{{route('checkout')}}" class="btn btn-yellow btn-lg pull-right margin-bottom-20">
                                                 <i class="fa"></i> Continue to checkout</a>
-                                            <a href="{{route('/')}}" class="btn btn-success btn-lg pull-right margin-right-20">
-                                                <i class="fa fa-plus"></i> Add More Products</a>
+                                            @endif
+                                            <a href="{{url()->previous()}}" class="btn btn-success btn-lg pull-right margin-right-20">
+                                                <i class="fa fa-arrow-circle-left"></i>        Go back</a>
                                             @foreach(Cart::content() as $row)
                                                 @if($row)
 

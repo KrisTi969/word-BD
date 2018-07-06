@@ -15,6 +15,33 @@
 <body>
 <div class="wrapper">
     <div class="wrapper">
+
+        <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Thanks for shopping with us!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="success-msg" >
+                                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <strong>Success!</strong> The order has been sent successfully !!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Header part  -->
         @include('layouts.header')
 
@@ -118,6 +145,8 @@
     @include('layouts.footer')
 </div> <!-- End wrapper -->
 
+
+
 <!-- Scripts --><script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/owl.carousel.min.js') }}"></script>
@@ -128,6 +157,17 @@
 <script type="text/javascript" src="{{ asset('js/jquery.circliful.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery-ui.js') }}"></script>
 <script type="text/javascript" src="{{asset('js/productSearch.js')}}"></script>
+
+<script>
+    $(document).ready(function(){
+        @if(isset($da))
+        var test = <?php echo json_encode($da); ?>;
+        console.log(test);
+            $("#myModal").modal();
+            @endif
+    });
+</script>
+
 </body>
 </html>
 
